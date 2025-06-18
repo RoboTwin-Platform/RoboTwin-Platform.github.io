@@ -221,7 +221,9 @@
 </head>
 <body>
     <!-- Add header title -->
-    <div class="main-title">RoboTwin 2.0 Tasks Visualizer</div>
+    <div class="main-title">
+        <span style="color:#65A487;">Robo</span><span style="color:#68349A;">Twin</span> 2.0 Tasks Visualizer
+    </div>
     <div class="layout">
         <nav class="sidebar">
             <!-- Add search box -->
@@ -298,52 +300,53 @@
             </div>
             <div class="content">
             <div class="title" style="font-size:32px;font-weight:900;">dump bin bigbin</div>
-            <div class="info-list">
-                <div class="status">
-                    <span class="label">Description:</span>
-                    <span class="value">Grab the small bin and pour the balls into the big bin.</span>
+            <div class="info-table-row" style="display:flex;flex-direction:row;justify-content:center;align-items:stretch;gap:32px;margin-top:18px;flex-wrap:wrap;">
+                <div class="info-list" style="flex:1 1 260px;max-width:360px;min-width:180px;">
+                    <div class="status">
+                        <span class="label">Description:</span>
+                        <span class="value">Grab the small bin and pour the balls into the big bin.</span>
+                    </div>
+                    <div class="status">
+                        <span class="label">Average Steps:</span>
+                        <span class="value">265 (Aloha-AgileX, save_freq=15)</span>
+                    </div>
+                    <div class="status">
+                        <span class="label">Objects:</span>
+                        <span class="value">011_dustbin, 063_tabletrashbin</span>
+                    </div>
                 </div>
-                <div class="status">
-                    <span class="label">Average Steps:</span>
-                    <span class="value">265 (Aloha-AgileX, save_freq=15)</span>
+                <div style="flex:1 1 260px;max-width:400px;min-width:180px;display:flex;align-items:center;">
+                    <table style="margin:0 auto;border-collapse:collapse;width:100%;min-width:180px;">
+                        <thead>
+                            <tr style="background:#f0f0f0;">
+                                <th style="border:1px solid #ccc;padding:6px 14px;">Embodiments</th>
+                                <th style="border:1px solid #ccc;padding:6px 14px;">Success Rate</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">Aloha-AgileX</td>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">84%</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">ARX-X5</td>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">100%</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">Franka-Panda</td>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">84%</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">Piper</td>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">9%</td>
+                            </tr>
+                            <tr>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">UR5-Wsg</td>
+                                <td style="border:1px solid #ccc;padding:6px 14px;">80%</td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div class="status">
-                    <span class="label">Objects:</span>
-                    <span class="value">011_dustbin, 063_tabletrashbin</span>
-                </div>
-            </div>
-            <div style="margin:18px 0 0 0;">
-                <table style="margin:0 auto;border-collapse:collapse;">
-                    <thead>
-                        <tr style="background:#f0f0f0;">
-                            <th style="border:1px solid #ccc;padding:6px 14px;">Embodiments</th>
-                            <th style="border:1px solid #ccc;padding:6px 14px;">Success Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">Aloha-AgileX</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">84%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">ARX-X5</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">100%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">Franka-Panda</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">84%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">Piper</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">9%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">UR5-Wsg</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">80%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
             </div>
         </div>
     </div>
