@@ -2,16 +2,16 @@
 <html lang="en">
 <body>
     <div style="display: flex;">
-        <video src="./task_video_clean/place_a2b_right/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_a2b_right/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_a2b_right/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_a2b_right/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <div style="display: flex;">
-        <video src="./task_video_clean/place_a2b_right/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_a2b_right/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_a2b_right/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_a2b_right/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_a2b_right/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <b>Description</b>: Use appropriate arm to place object A on the right of object B.<br>
     <b>Average Steps</b>: 145 (Aloha-AgileX, save_freq=15)<br>

@@ -2,16 +2,16 @@
 <html lang="en">
 <body>
     <div style="display: flex;">
-        <video src="./task_video_clean/stack_blocks_three/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/stack_blocks_three/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/stack_blocks_three/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/stack_blocks_three/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <div style="display: flex;">
-        <video src="./task_video_clean/stack_blocks_three/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/stack_blocks_three/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/stack_blocks_three/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/stack_blocks_three/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/stack_blocks_three/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <b>Description</b>: There are three blocks on the table, the color of the blocks is red, green and blue. Move the blocks to the center of the table, and stack the blue block on the green block, and the green block on the red block.<br>
     <b>Average Steps</b>: 481 (Aloha-AgileX, save_freq=15)<br>

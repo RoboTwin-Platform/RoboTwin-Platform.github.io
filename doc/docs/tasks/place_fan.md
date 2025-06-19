@@ -2,16 +2,16 @@
 <html lang="en">
 <body>
     <div style="display: flex;">
-        <video src="./task_video_clean/place_fan/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_fan/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_fan/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_fan/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <div style="display: flex;">
-        <video src="./task_video_clean/place_fan/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_fan/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_fan/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_fan/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_fan/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <b>Description</b>: Grab the fan and place it on a colored mat, and make sure the fan is facing the robot.<br>
     <b>Average Steps</b>: 148 (Aloha-AgileX, save_freq=15)<br>

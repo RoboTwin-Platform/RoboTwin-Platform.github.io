@@ -2,16 +2,16 @@
 <html lang="en">
 <body>
     <div style="display: flex;">
-        <video src="./task_video_clean/place_dual_shoes/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_dual_shoes/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_dual_shoes/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_dual_shoes/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <div style="display: flex;">
-        <video src="./task_video_clean/place_dual_shoes/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_dual_shoes/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_dual_shoes/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/place_dual_shoes/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/place_dual_shoes/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <b>Description</b>: Use both arms to pick up the two shoes on the table and put them in the shoebox, with the shoe tip pointing to the left.<br>
     <b>Average Steps</b>: 228 (Aloha-AgileX, save_freq=15)<br>

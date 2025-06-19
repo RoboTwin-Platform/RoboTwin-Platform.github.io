@@ -2,16 +2,16 @@
 <html lang="en">
 <body>
     <div style="display: flex;">
-        <video src="./task_video_clean/move_stapler_pad/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/move_stapler_pad/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/move_stapler_pad/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/move_stapler_pad/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/aloha-agilex_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/franka-panda_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/ARX-X5_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/ur5-wsg_head.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <div style="display: flex;">
-        <video src="./task_video_clean/move_stapler_pad/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/move_stapler_pad/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/move_stapler_pad/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
-        <video src="./task_video_clean/move_stapler_pad/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/aloha-agilex_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/franka-panda_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/ARX-X5_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
+        <video src="../task_video_clean/move_stapler_pad/ur5-wsg_world.mp4" controls loop muted autoplay style="width: 25%;"></video>
     </div>
     <b>Description</b>: Use appropriate arm to move the stapler to a colored mat.<br>
     <b>Average Steps</b>: 152 (Aloha-AgileX, save_freq=15)<br>
