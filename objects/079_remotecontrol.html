@@ -216,6 +216,28 @@
                 width: 80vw;
             }
         }
+        .back-home-btn {
+            position: fixed;
+            bottom: 26px;
+            right: 36px;
+            padding: 7px 18px;
+            background: #65A487;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.18s;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .back-home-btn:hover {
+            background: #4e8c6b;
+            color: #fff;
+            text-decoration: none;
+        }
     </style>
 </head>
 <body>
@@ -398,6 +420,7 @@
             <div class="content">
         </div>
     </div>
+    <a href="./index.html" class="back-home-btn">Back to Home</a>
     <!-- Add search filter script -->
     <script>
     // Simple search filter for the task list

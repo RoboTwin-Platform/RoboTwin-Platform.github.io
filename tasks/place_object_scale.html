@@ -69,6 +69,7 @@
             width: 100%;
             max-width: 900px;
             min-width: 400px;
+            position: relative;
         }
         .videos {
             display: flex;
@@ -148,6 +149,29 @@
             font-weight: bold;
             color: #222;
             letter-spacing: 2px;
+        }
+        /* 返回首页按钮样式 */
+        .back-home-btn {
+            position: fixed;
+            bottom: 26px;
+            right: 36px;
+            padding: 7px 18px;
+            background: #65A487;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 15px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.18s;
+            text-decoration: none;
+            z-index: 1000;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+        }
+        .back-home-btn:hover {
+            background: #4e8c6b;
+            color: #fff;
+            text-decoration: none;
         }
         /* 响应式布局：适配平板和手机 */
         @media (max-width: 900px) {
@@ -255,13 +279,13 @@
                 <li><a href="place_a2b_right.html">place a2b right</a></li>
                 <li><a href="place_bread_basket.html">place bread basket</a></li>
                 <li><a href="place_bread_skillet.html">place bread skillet</a></li>
+                <li><a href="place_burger_fries.html">place burger fries</a></li>
                 <li><a href="place_can_basket.html">place can basket</a></li>
                 <li><a href="place_cans_plasticbox.html">place cans plasticbox</a></li>
                 <li><a href="place_container_plate.html">place container plate</a></li>
                 <li><a href="place_dual_shoes.html">place dual shoes</a></li>
                 <li><a href="place_empty_cup.html">place empty cup</a></li>
                 <li><a href="place_fan.html">place fan</a></li>
-                <li><a href="place_hamburg_frenchfries_tray.html">place hamburg frenchfries tray</a></li>
                 <li><a href="place_mouse_pad.html">place mouse pad</a></li>
                 <li><a href="place_object_basket.html">place object basket</a></li>
                 <li style="background:#e6f7e6;"><a href="place_object_scale.html" style="font-weight:bold;">place object scale</a></li>
@@ -350,6 +374,7 @@
             </div>
         </div>
     </div>
+    <a href="index.html" class="back-home-btn">Back to Home</a>
     <!-- Add search filter script -->
     <script>
     // Simple search filter for the task list
