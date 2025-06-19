@@ -13,6 +13,56 @@ nav:
   - Tasks:
     - tasks/index.md
     - Adjust Bottle: tasks/adjust_bottle.md
+    - Beat Block Hammer: tasks/beat_block_hammer.md
+    - Blocks Ranking RGB: tasks/blocks_ranking_rgb.md
+    - Blocks Ranking Size: tasks/blocks_ranking_size.md
+    - Click Alarmclock: tasks/click_alarmclock.md
+    - Click Bell: tasks/click_bell.md
+    - Dump Bin Bigbin: tasks/dump_bin_bigbin.md
+    - Grab Roller: tasks/grab_roller.md
+    - Handover Block: tasks/handover_block.md
+    - Handover Mic: tasks/handover_mic.md
+    - Hanging Mug: tasks/hanging_mug.md
+    - Lift Pot: tasks/lift_pot.md
+    - Move Can Pot: tasks/move_can_pot.md
+    - Move Playingcard Away: tasks/move_playingcard_away.md
+    - Move Stapler Pad: tasks/move_stapler_pad.md
+    - Open Laptop: tasks/open_laptop.md
+    - Open Microwave: tasks/open_microwave.m
+    - Pick Diverse Bottles: tasks/pick_diverse_bottles.md
+    - Pick Dual Bottles: tasks/pick_dual_bottles.md
+    - Place A2B Left: tasks/place_a2b_left.md
+    - Place A2B Right: tasks/place_a2b_right.md
+    - Place Bread Basket: tasks/place_bread_basket.md
+    - Place Bread Skillet: tasks/place_bread_skillet.md
+    - Place Can Basket: tasks/place_can_basket.md
+    - Place Cans Plasticbox: tasks/place_cans_plasticbox.md
+    - Place Container Plate: tasks/place_container_plate.md
+    - Place Dual Shoes: tasks/place_dual_shoes.md
+    - Place Empty Cup: tasks/place_empty_cup.md
+    - Place Fan: tasks/place_fan.md
+    - Place Mouse Pad: tasks/place_mouse_pad.md
+    - Place Object Scale: tasks/place_object_scale.md
+    - Place Object Stand: tasks/place_object_stand.md
+    - Place Phone Stand: tasks/place_phone_stand.md
+    - Place Shoe: tasks/place_shoe.md
+    - Place Object Basket: tasks/place_object_basket.md
+    - Put Bottles Dustbin: tasks/put_bottles_dustbin.md
+    - Put Object Cabinet: tasks/put_object_cabinet.md
+    - Rotate QRcode: tasks/rotate_qrcode.md
+    - Scan Object: tasks/scan_object.md
+    - Shake Bottle Horizontally: tasks/shake_bottle_horizontally.md
+    - Shake Bottle: tasks/shake_bottle.md
+    - Stack Blocks Three: tasks/stack_blocks_three.md
+    - Stack Blocks Two: tasks/stack_blocks_two.md
+    - Stack Bowls Three: tasks/stack_bowls_three.md
+    - Stack Bowls Two: tasks/stack_bowls_two.md
+    - Stamp Seal: tasks/stamp_seal.md
+    - Turn Switch: tasks/turn_switch.md
+    - Move Pillbottle Pad: tasks/move_pillbottle_pad.md
+    - Place Burger Fries: tasks/place_burger_fries.md
+    - Press Stapler: tasks/press_stapler.md
+    
 theme:
   name: material
   palette:
