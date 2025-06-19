@@ -235,18 +235,18 @@
     </style>
 </head>
 <body>
-        <!-- <div class="videos">
+        <div class="videos">
             <video src="./task_video_clean/adjust_bottle/aloha-agilex_head.mp4" controls loop muted autoplay></video>
             <video src="./task_video_clean/adjust_bottle/franka-panda_head.mp4" controls loop muted autoplay></video>
             <video src="./task_video_clean/adjust_bottle/ARX-X5_head.mp4" controls loop muted autoplay></video>
             <video src="./task_video_clean/adjust_bottle/ur5-wsg_head.mp4" controls loop muted autoplay></video>
-        </div> -->
-        <!-- <div class="videos">
+        </div>
+        <div class="videos">
             <video src="./task_video_clean/adjust_bottle/aloha-agilex_world.mp4" controls loop muted autoplay></video>
             <video src="./task_video_clean/adjust_bottle/franka-panda_world.mp4" controls loop muted autoplay></video>
             <video src="./task_video_clean/adjust_bottle/ARX-X5_world.mp4" controls loop muted autoplay></video>
             <video src="./task_video_clean/adjust_bottle/ur5-wsg_world.mp4" controls loop muted autoplay></video>
-        </div> -->
+        </div>
         <div class="content">
         <div class="title" style="font-size:32px;font-weight:900;">adjust bottle</div>
         <div class="info-table-row" style="display:flex;flex-direction:row;justify-content:center;align-items:stretch;gap:32px;margin-top:18px;flex-wrap:wrap;">
@@ -264,38 +264,7 @@
                     <span class="value">001_bottle</span>
                 </div>
             </div>
-            <div style="flex:1 1 260px;max-width:400px;min-width:180px;display:flex;align-items:center;">
-                <table style="margin:0 auto;border-collapse:collapse;width:100%;min-width:180px;">
-                    <thead>
-                        <tr style="background:#f0f0f0;">
-                            <th style="border:1px solid #ccc;padding:6px 14px;">Embodiments</th>
-                            <th style="border:1px solid #ccc;padding:6px 14px;">Success Rate</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">Aloha-AgileX</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">93%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">ARX-X5</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">94%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">Franka-Panda</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">34%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">Piper</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">0%</td>
-                        </tr>
-                        <tr>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">UR5-Wsg</td>
-                            <td style="border:1px solid #ccc;padding:6px 14px;">12%</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
+            
         </div>
     </div>
 </body>
