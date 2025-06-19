@@ -138,19 +138,19 @@ if __name__ == "__main__":
     ]
 
     obj_head_data = '''<!DOCTYPE html>
-    <html lang="en">
-    <body>
-        <div class="layout">
-            <div class="container">
+<html lang="en">
+<body>
+    <div class="layout">
+        <div class="container">
     '''
-    show_code = '''                 <div style="flex: 0 0 auto; text-align: center;">
-                    <img src="../objects_imgs/${OBJ_NAME}$/base{ID}.jpg" 
-                        alt="base{ID}" 
-                        style="width:100%; max-width:350px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
-                    <p style="margin-top:8px; font-size:16px; color:#555;">base{ID}</p>
-                </div>
+    show_code = '''             <div style="flex: 0 0 auto; text-align: center;">
+                <img src="../objects_imgs/${OBJ_NAME}$/base{ID}.jpg" 
+                    alt="base{ID}" 
+                    style="width:100%; max-width:350px; border-radius:8px; box-shadow:0 2px 6px rgba(0,0,0,0.1);">
+                <p style="margin-top:8px; font-size:16px; color:#555;">base{ID}</p>
+            </div>
     '''
-    obj_end_data = '''        <div class="content">
+    obj_end_data = '''  <div class="content">
 </body>
 </html>
 '''
