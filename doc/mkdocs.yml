@@ -1,0 +1,101 @@
+site_name: 深圳大学飞跃手册
+repo_url: https://github.com/szu-feiyue/docs
+edit_uri: edit/main/docs/
+site_url: https://SZU-Aplication.github.io
+site_author: SZU Feiyue Team
+copyright: 'Copyright &copy; 2024 SZU Feiyue Team'
+
+nav:
+  - 首页:
+    - index.md
+    - 编写委员会: main/committee.md
+    - 友链: main/friendlink.md
+  - Tasks:
+    - tasks/index.md
+    - Adjust Bottle: tasks/adjust_bottle.md
+theme:
+  name: material
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+      primary: indigo
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+      primary: indigo
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.indexes
+    - navigation.tabs
+    - navigation.tabs.sticky
+    - navigation.expand
+    - navigation.footer
+    - navigation.top
+    - toc.follow
+    - announce.dismiss
+  font:
+    text: 'Fira Sans'
+    code: 'Fira Mono'
+  # Necessary for search to work properly
+  include_search_page: false
+  search_index_only: false
+
+markdown_extensions:
+  # Python Markdown
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - toc:
+      permalink: true
+  # Python Markdown Extensions
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.details
+  - pymdownx.highlight:
+      linenums: true
+      linenums_style: pymdownx-inline
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+
+extra_javascript:
+  - javascripts/config.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search:
+      lang:
+        - en
+        - ja
+      separator: '[\s\u200b\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+  - minify:
+      minify_html: true
+  - git-revision-date-localized
+  - add-number:
+      strict_mode: False
+      order: 2
+  - git-authors:
+      show_contribution: true
