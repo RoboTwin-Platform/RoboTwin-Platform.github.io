@@ -63,7 +63,7 @@ nav:
     - Place Burger Fries: tasks/place_burger_fries.md
     - Press Stapler: tasks/press_stapler.md
   - Objects:
-    - tasks/index.md
+    - objects/index.md
     - 001_Bottle: objects/001_bottle.md
     - 002_Bowl: objects/002_bowl.md
     - 003_Plate: objects/003_plate.md
