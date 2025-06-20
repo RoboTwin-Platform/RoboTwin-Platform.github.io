@@ -8,11 +8,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-    <!-- <link rel="icon" type="image/png" sizes="512x512" href="icon.png"> -->
     <link rel="manifest" href="/site.webmanifest">
 
     <meta property="og:type" content="website"/>
-    <!-- <meta property="og:image:type" content="image/png"> -->
     <meta property="og:url" content="https://robotwin-platform/.github.io/"/>
     <meta property="og:title" content="Robot Simulation Platform"/>
     <meta property="og:description" content="RoboTwin 2.0"/>
@@ -211,6 +209,16 @@
 
     <p>
         To enhance both manipulation capability and visual understanding, we construct a large-scale object dataset with rich semantic annotations, called <b>RoboTwin-OD</b>, covering 147 categories and 731 diverse objects. Specifically, this includes 534 instances across 111 categories with custom-generated and optimized meshes, 153 objects from 27 categories in Objaverse, and 44 articulated object instances from 9 categories in SAPIEN PartNet-Mobility. Objects from all sources, including Objaverse, are used for cluttered scene construction, with Objaverse specifically serving to further increase the visual and semantic diversity of distractor objects. Additionally, we develop a comprehensive surface and background texture library using generative AI and human-in-the-loop verification to ensure both diversity and realism. The dataset is available at <a href="https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/tree/main/objects">https://huggingface.co/datasets/TianxingChen/RoboTwin2.0/tree/main/objects</a>.
+    </p>
+
+    <hr class="rounded">
+
+
+    <h1>50 RoboTwin 2.0 Bimanual Tasks</h1>
+    <img src="assets/images/50-tasks.gif" alt="描述信息" style="display: block; margin: auto; width: 70%;">
+
+    <p>
+        Building on our automated task generation framework, embodiment-adaptive behavior synthesis, and the large-scale object asset library RoboTwin-OD, we construct a suite of over 50 dual-arm collaborative manipulation tasks. In addition, we support data collection and evaluation across 5 distinct robot platforms, enabling comprehensive benchmarking of manipulation policies. The complete task set is available at <a href="http://robotwin-platform.github.io/doc/tasks/">http://robotwin-platform.github.io/doc/tasks/</a>.
     </p>
 
     <br>
