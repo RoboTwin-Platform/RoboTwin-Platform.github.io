@@ -13,16 +13,16 @@
 
     <meta property="og:type" content="website"/>
     <meta property="og:image:type" content="image/png">
-    <meta property="og:url" content="https://humanoid-manipulation/.github.io/"/>
-    <meta property="og:title" content="Humanoid Manipulation"/>
-    <meta property="og:description" content="Generalizable Humanoid Manipulation with 3D Diffusion Policies"/>
+    <meta property="og:url" content="https://robotwin-platform/.github.io/"/>
+    <meta property="og:title" content="Robot Simulation Platform"/>
+    <meta property="og:description" content="RoboTwin 2.0"/>
 
     <!-- twitter card -->
     <meta name="twitter:card" content="summary_large_image"/>
-    <meta name="twitter:title" content="Humanoid Manipulation"/>
+    <meta name="twitter:title" content="Robot Simulation Platform"/>
     <meta name="twitter:description"
-          content="Generalizable Humanoid Manipulation with 3D Diffusion Policies"/>
-    <meta name="twitter:creator" content="@ZeYanjie"/>
+          content="RoboTwin 2.0: A Scalable Data Generator and Benchmark with <br>Strong Domain Randomization for Robust Bimanual Robotic Manipulation"/>
+    <meta name="twitter:creator" content="@Tianxing Chen"/>
 
 
     <!-- extra metadata — unknown support -->
@@ -163,14 +163,12 @@
     <img src="assets/images/institute-logo.png" alt="描述信息" style="display: block; margin: auto; width: 50%;">
     <br><br>
     <div class="button-container">
-        <a href="https://arxiv.org/abs/2410.10803" target="_blank" class="button"><i class="ai ai-arxiv"></i>&emsp14;arXiv</a>
-        <a href="assets/paper.pdf" target="_blank" class="button"><i class="fa-light fa-file"></i>&emsp14;PDF</a>
-        <a href="https://github.com/YanjieZe/Improved-3D-Diffusion-Policy" target="_blank" class="button_large"><i
-            class="fa fa-github"></i>&emsp14;Code (Learning)</a>
-            <a href="https://github.com/YanjieZe/Humanoid-Teleoperation" target="_blank" class="button_large"><i
-                class="fa fa-github"></i>&emsp14;Code (Teleop)</a>
-        <a href="https://x.com/ZeYanjie/status/1846024050067538399" target="_blank" class="button"><i class="fa-brands fa-x-twitter"></i>&emsp14;TL;DR</a>
-        <a href="https://youtu.be/6H2MkMetmFk" target="_blank" class="button"><i class="fa-brands fa-youtube"></i>&emsp14;YouTube</a>
+        <a href="" target="_blank" class="button"><i class="ai ai-arxiv"></i>&emsp14;arXiv</a>
+        <a href="" target="_blank" class="button"><i class="fa-light fa-file"></i>&emsp14;PDF</a>
+        <a href="" target="_blank" class="button_large"><i
+            class="fa fa-github"></i>&emsp14;Code</a>
+        <!-- <a href="https://x.com/ZeYanjie/status/1846024050067538399" target="_blank" class="button"><i class="fa-brands fa-x-twitter"></i>&emsp14;TL;DR</a> -->
+        <!-- <a href="https://youtu.be/6H2MkMetmFk" target="_blank" class="button"><i class="fa-brands fa-youtube"></i>&emsp14;YouTube</a> -->
     </div>
 </div>
            
@@ -181,9 +179,9 @@
         Simulation-based data synthesis has emerged as a powerful paradigm for enhancing real-world robotic manipulation. However, existing synthetic datasets remain insufficient for robust bimanual manipulation due to two challenges: (1) the lack of an efficient, scalable data generation method for novel tasks, and (2) oversimplified simulation environments that fail to capture real-world complexity. We present RoboTwin 2.0, a scalable simulation framework that enables automated, large-scale generation of diverse and realistic data, along with unified evaluation protocols for dual-arm manipulation. We first construct RoboTwin-OD, a large-scale object library comprising 731 instances across 147 categories, each annotated with semantic and manipulation-relevant labels. Building on this foundation, we develop an expert data synthesis pipeline that combines multimodal large language models (MLLMs) with simulation-in-the-loop refinement to generate task-level execution code automatically. To improve sim-to-real transfer, RoboTwin 2.0 incorporates structured domain randomization along five axes: clutter, lighting, background, tabletop height and language instructions, thereby enhancing data diversity and policy robustness. We instantiate this framework across 50 dual-arm tasks spanning five robot embodiments, and pre-collect over 100,000 domain-randomized expert trajectories. Empirical evaluation shows a 10.9% gain in code generation success rate and improved generalization to novel real-world conditions. A vision-language-action (VLA) model fine-tuned on our dataset achieves a 367% relative improvement (42.0% vs. 9.0%) on unseen scene real-world tasks, while zero-shot models trained exclusively on our synthetic data attain a 228% relative gain, demonstrating strong generalization without real-world supervision. We release the data generator, benchmark, pre-collected dataset, and code to support scalable research in robust bimanual manipulation.
     </p>
     <br>
-    <div class="publication-video">
+    <!-- <div class="publication-video">
         <iframe width="560" height="315" src="https://www.youtube.com/embed/6H2MkMetmFk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
-    </div>
+    </div> -->
 </div>
 
 <hr class="rounded">
@@ -247,13 +245,14 @@ These findings highlight the importance of scalable, automated generation of sem
 
 
     <h1>BibTeX</h1>
-    <p class="bibtex">@article{ze2024humanoid_manipulation,<br>
+    <p>Coming Soon !</p>
+    <!-- <p class="bibtex">@article{ze2024humanoid_manipulation,<br>
         &nbsp;&nbsp;title &nbsp;&nbsp;= {Generalizable Humanoid Manipulation with 3D Diffusion Policies},<br>
         &nbsp;&nbsp;author &nbsp;= {Yanjie Ze and Zixuan Chen and Wenhao Wang and Tianyi Chen and Xialin He and Ying Yuan and Xue Bin Peng and Jiajun Wu},<br>
         &nbsp;&nbsp;year &nbsp;&nbsp;&nbsp;= {2024},<br>
         &nbsp;&nbsp;journal = {arXiv preprint arXiv:2410.10803}<br>
         }
-    </p>
+    </p> -->
     <br>
 </div>
 </body>
