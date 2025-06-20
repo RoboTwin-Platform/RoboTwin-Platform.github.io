@@ -116,7 +116,7 @@ body, html {
 }
 
 .title_right > p {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     text-align: center;
@@ -125,7 +125,7 @@ body, html {
 
 .title_left > h1 {
     /* color: #8C1515; */
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: bold;
     font-size: 2.5vw;
@@ -134,14 +134,14 @@ body, html {
 
 .title_left > h2 {
     /* color: #8C1515; */
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: bold;
     font-size: 1.8vw;
     text-align: center;
 }
 .title_left > h3 {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: bold;
     font-size: 1.8vw;
@@ -151,7 +151,7 @@ body, html {
 }
 #abstract {
     mix-blend-mode: normal;
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 0.9vw;
@@ -294,7 +294,7 @@ body, html {
 
 
 .author-container {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1vw;
@@ -311,7 +311,7 @@ body, html {
     text-align: center;
     padding-right: 0.8vw;
     padding-left: 0.8vw;
-    color: black;
+    color: #2E2D29;
 }
 
 .contribution {
@@ -324,7 +324,7 @@ body, html {
 }
 
 .affiliation {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1vw;
@@ -334,7 +334,7 @@ body, html {
 }
 
 .venue {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1vw;
@@ -606,7 +606,7 @@ hr.rounded {
 }
 
 #overview h1 {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1.8vw;
@@ -617,7 +617,7 @@ hr.rounded {
 }
 
 #overview h2 {
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1.5vw;
@@ -629,7 +629,7 @@ hr.rounded {
 
 #overview p {
     padding-top: 1vw;
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1.04vw;
@@ -644,7 +644,7 @@ hr.rounded {
 
 #overview summary {
     padding-top: 1vw;
-    color: black;
+    color: #2E2D29;
     font-family: "Source Serif 4", serif;
     font-weight: normal;
     font-size: 1.04vw;
@@ -1513,7 +1513,7 @@ video {
 }
 
 a {
-    color: #68349a; /* 默认颜色 */
+    color: #613795; /* 默认颜色 */
     text-decoration: none; /* 去掉下划线 */
 }
 

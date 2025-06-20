@@ -1,3 +1,0 @@
-`mkdocs serve`
-
-mkdocs.yml
