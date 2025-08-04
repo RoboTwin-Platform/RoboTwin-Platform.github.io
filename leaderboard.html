@@ -1,0 +1,722 @@
+
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .styled-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 25px 0;
+      font-size: 14px;
+      text-align: center;
+    }
+    .styled-table thead tr {
+      background-color: #009879;
+      color: #ffffff;
+      text-align: center;
+    }
+    .styled-table th, .styled-table td {
+      padding: 12px 15px;
+      border: 1px solid #ddd;
+    }
+    .styled-table tbody tr {
+      border-bottom: 1px solid #ddd;
+    }
+    .styled-table tbody tr:nth-of-type(even) {
+      background-color: #f3f3f3;
+    }
+    .styled-table tbody tr:hover {
+      background-color: #f1f1f1;
+    }
+    .styled-table thead th {
+      position: sticky;
+      top: 0;
+      background-color: #009879; /* 或你自定义颜色 */
+      color: white;
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+  <h2>RoboTwin 2.0 Benchmark</h2>
+  <table class="dataframe styled-table">
+  <thead>
+    <tr>
+      <th></th>
+      <th colspan="2" halign="left">RDT</th>
+      <th colspan="2" halign="left">Pi0</th>
+      <th colspan="2" halign="left">ACT</th>
+      <th colspan="2" halign="left">DP</th>
+      <th colspan="2" halign="left">DP3</th>
+    </tr>
+    <tr>
+      <th></th>
+      <th>Easy</th>
+      <th>Hard</th>
+      <th>Easy</th>
+      <th>Hard</th>
+      <th>Easy</th>
+      <th>Hard</th>
+      <th>Easy</th>
+      <th>Hard</th>
+      <th>Easy</th>
+      <th>Hard</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Adjust Bottle</th>
+      <td>81%</td>
+      <td>75%</td>
+      <td>90%</td>
+      <td>56%</td>
+      <td>27%</td>
+      <td>14%</td>
+      <td>92%</td>
+      <td>0%</td>
+      <td>99%</td>
+      <td>3%</td>
+    </tr>
+    <tr>
+      <th>Beat Block Hammer</th>
+      <td>77%</td>
+      <td>37%</td>
+      <td>43%</td>
+      <td>21%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>14%</td>
+      <td>0%</td>
+      <td>72%</td>
+      <td>8%</td>
+    </tr>
+    <tr>
+      <th>Blocks Ranking RGB</th>
+      <td>3%</td>
+      <td>0%</td>
+      <td>19%</td>
+      <td>5%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>3%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Blocks Ranking Size</th>
+      <td>0%</td>
+      <td>0%</td>
+      <td>7%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>2%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Click Alarmclock</th>
+      <td>61%</td>
+      <td>12%</td>
+      <td>69%</td>
+      <td>13%</td>
+      <td>14%</td>
+      <td>2%</td>
+      <td>47%</td>
+      <td>13%</td>
+      <td>77%</td>
+      <td>14%</td>
+    </tr>
+    <tr>
+      <th>Click Bell</th>
+      <td>80%</td>
+      <td>9%</td>
+      <td>49%</td>
+      <td>2%</td>
+      <td>4%</td>
+      <td>2%</td>
+      <td>24%</td>
+      <td>0%</td>
+      <td>90%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Dump Bin Bigbin</th>
+      <td>64%</td>
+      <td>32%</td>
+      <td>83%</td>
+      <td>24%</td>
+      <td>2%</td>
+      <td>0%</td>
+      <td>50%</td>
+      <td>0%</td>
+      <td>/</td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <th>Grab Roller</th>
+      <td>74%</td>
+      <td>43%</td>
+      <td>96%</td>
+      <td>80%</td>
+      <td>66%</td>
+      <td>6%</td>
+      <td>98%</td>
+      <td>1%</td>
+      <td>98%</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <th>Handover Block</th>
+      <td>45%</td>
+      <td>14%</td>
+      <td>45%</td>
+      <td>8%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>48%</td>
+      <td>0%</td>
+      <td>70%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Handover Mic</th>
+      <td>90%</td>
+      <td>31%</td>
+      <td>98%</td>
+      <td>13%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>48%</td>
+      <td>0%</td>
+      <td>100%</td>
+      <td>3%</td>
+    </tr>
+    <tr>
+      <th>Hanging Mug</th>
+      <td>23%</td>
+      <td>16%</td>
+      <td>11%</td>
+      <td>3%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>18%</td>
+      <td>0%</td>
+      <td>17%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Lift Pot</th>
+      <td>72%</td>
+      <td>9%</td>
+      <td>84%</td>
+      <td>36%</td>
+      <td>7%</td>
+      <td>2%</td>
+      <td>37%</td>
+      <td>0%</td>
+      <td>97%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Move Can Pot</th>
+      <td>25%</td>
+      <td>12%</td>
+      <td>58%</td>
+      <td>21%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>30%</td>
+      <td>0%</td>
+      <td>70%</td>
+      <td>6%</td>
+    </tr>
+    <tr>
+      <th>Move Playingcard Away</th>
+      <td>43%</td>
+      <td>11%</td>
+      <td>53%</td>
+      <td>22%</td>
+      <td>3%</td>
+      <td>0%</td>
+      <td>28%</td>
+      <td>0%</td>
+      <td>/</td>
+      <td>/</td>
+    </tr>
+    <tr>
+      <th>Move Stapler Pad</th>
+      <td>2%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>2%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>12%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Open Laptop</th>
+      <td>59%</td>
+      <td>32%</td>
+      <td>85%</td>
+      <td>46%</td>
+      <td>32%</td>
+      <td>0%</td>
+      <td>46%</td>
+      <td>0%</td>
+      <td>82%</td>
+      <td>7%</td>
+    </tr>
+    <tr>
+      <th>Open Microwave</th>
+      <td>37%</td>
+      <td>20%</td>
+      <td>80%</td>
+      <td>50%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>2%</td>
+      <td>0%</td>
+      <td>61%</td>
+      <td>22%</td>
+    </tr>
+    <tr>
+      <th>Pick Diverse Bottles</th>
+      <td>2%</td>
+      <td>0%</td>
+      <td>27%</td>
+      <td>6%</td>
+      <td>3%</td>
+      <td>0%</td>
+      <td>5%</td>
+      <td>0%</td>
+      <td>52%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Pick Dual Bottles</th>
+      <td>42%</td>
+      <td>13%</td>
+      <td>57%</td>
+      <td>12%</td>
+      <td>4%</td>
+      <td>0%</td>
+      <td>26%</td>
+      <td>0%</td>
+      <td>60%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Place A2B Left</th>
+      <td>3%</td>
+      <td>1%</td>
+      <td>31%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>46%</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <th>Place A2B Right</th>
+      <td>1%</td>
+      <td>1%</td>
+      <td>27%</td>
+      <td>6%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>7%</td>
+      <td>0%</td>
+      <td>49%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Place Bread Basket</th>
+      <td>10%</td>
+      <td>2%</td>
+      <td>17%</td>
+      <td>4%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>9%</td>
+      <td>0%</td>
+      <td>26%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Place Bread Skillet</th>
+      <td>5%</td>
+      <td>1%</td>
+      <td>23%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>6%</td>
+      <td>0%</td>
+      <td>19%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Place Burger Fries</th>
+      <td>50%</td>
+      <td>27%</td>
+      <td>80%</td>
+      <td>4%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>69%</td>
+      <td>0%</td>
+      <td>72%</td>
+      <td>18%</td>
+    </tr>
+    <tr>
+      <th>Place Can Basket</th>
+      <td>19%</td>
+      <td>6%</td>
+      <td>41%</td>
+      <td>5%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>6%</td>
+      <td>0%</td>
+      <td>67%</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <th>Place Cans Plasticbox</th>
+      <td>6%</td>
+      <td>5%</td>
+      <td>34%</td>
+      <td>2%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>34%</td>
+      <td>0%</td>
+      <td>48%</td>
+      <td>3%</td>
+    </tr>
+    <tr>
+      <th>Place Container Plate</th>
+      <td>78%</td>
+      <td>17%</td>
+      <td>88%</td>
+      <td>45%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>37%</td>
+      <td>0%</td>
+      <td>86%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Place Dual Shoes</th>
+      <td>4%</td>
+      <td>4%</td>
+      <td>15%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>7%</td>
+      <td>0%</td>
+      <td>13%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Place Empty Cup</th>
+      <td>56%</td>
+      <td>7%</td>
+      <td>37%</td>
+      <td>11%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>32%</td>
+      <td>0%</td>
+      <td>65%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Place Fan</th>
+      <td>12%</td>
+      <td>2%</td>
+      <td>20%</td>
+      <td>10%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>36%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Place Mouse Pad</th>
+      <td>1%</td>
+      <td>0%</td>
+      <td>7%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>4%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Place Object Basket</th>
+      <td>33%</td>
+      <td>17%</td>
+      <td>16%</td>
+      <td>2%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>20%</td>
+      <td>0%</td>
+      <td>65%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Place Object Scale</th>
+      <td>1%</td>
+      <td>0%</td>
+      <td>10%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>15%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Place Object Stand</th>
+      <td>15%</td>
+      <td>5%</td>
+      <td>36%</td>
+      <td>11%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>7%</td>
+      <td>0%</td>
+      <td>60%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Place Phone Stand</th>
+      <td>15%</td>
+      <td>6%</td>
+      <td>35%</td>
+      <td>7%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>17%</td>
+      <td>0%</td>
+      <td>44%</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <th>Place Shoe</th>
+      <td>35%</td>
+      <td>7%</td>
+      <td>28%</td>
+      <td>6%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>15%</td>
+      <td>0%</td>
+      <td>58%</td>
+      <td>2%</td>
+    </tr>
+    <tr>
+      <th>Press Stapler</th>
+      <td>41%</td>
+      <td>24%</td>
+      <td>62%</td>
+      <td>29%</td>
+      <td>17%</td>
+      <td>1%</td>
+      <td>10%</td>
+      <td>0%</td>
+      <td>69%</td>
+      <td>3%</td>
+    </tr>
+    <tr>
+      <th>Put Bottles Dustbin</th>
+      <td>21%</td>
+      <td>4%</td>
+      <td>54%</td>
+      <td>13%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>23%</td>
+      <td>0%</td>
+      <td>66%</td>
+      <td>21%</td>
+    </tr>
+    <tr>
+      <th>Put Object Cabinet</th>
+      <td>33%</td>
+      <td>18%</td>
+      <td>68%</td>
+      <td>18%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>22%</td>
+      <td>0%</td>
+      <td>72%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Rotate QRcode</th>
+      <td>50%</td>
+      <td>5%</td>
+      <td>68%</td>
+      <td>15%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>3%</td>
+      <td>0%</td>
+      <td>74%</td>
+      <td>1%</td>
+    </tr>
+    <tr>
+      <th>Shake Bottle Horizontally</th>
+      <td>84%</td>
+      <td>51%</td>
+      <td>99%</td>
+      <td>51%</td>
+      <td>54%</td>
+      <td>19%</td>
+      <td>54%</td>
+      <td>19%</td>
+      <td>100%</td>
+      <td>25%</td>
+    </tr>
+    <tr>
+      <th>Shake Bottle</th>
+      <td>74%</td>
+      <td>45%</td>
+      <td>97%</td>
+      <td>60%</td>
+      <td>38%</td>
+      <td>0%</td>
+      <td>56%</td>
+      <td>7%</td>
+      <td>98%</td>
+      <td>19%</td>
+    </tr>
+    <tr>
+      <th>Stack Blocks Three</th>
+      <td>2%</td>
+      <td>0%</td>
+      <td>17%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>1%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Stack Blocks Two</th>
+      <td>21%</td>
+      <td>2%</td>
+      <td>42%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>6%</td>
+      <td>0%</td>
+      <td>24%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Stack Bowls Three</th>
+      <td>51%</td>
+      <td>17%</td>
+      <td>66%</td>
+      <td>24%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>64%</td>
+      <td>0%</td>
+      <td>57%</td>
+      <td>5%</td>
+    </tr>
+    <tr>
+      <th>Stack Bowls Two</th>
+      <td>76%</td>
+      <td>30%</td>
+      <td>91%</td>
+      <td>41%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>53%</td>
+      <td>0%</td>
+      <td>83%</td>
+      <td>6%</td>
+    </tr>
+    <tr>
+      <th>Stamp Seal</th>
+      <td>1%</td>
+      <td>0%</td>
+      <td>3%</td>
+      <td>4%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>18%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Turn Switch</th>
+      <td>35%</td>
+      <td>15%</td>
+      <td>27%</td>
+      <td>23%</td>
+      <td>7%</td>
+      <td>1%</td>
+      <td>31%</td>
+      <td>0%</td>
+      <td>46%</td>
+      <td>8%</td>
+    </tr>
+    <tr>
+      <th>Move Pillbottle Pad</th>
+      <td>8%</td>
+      <td>0%</td>
+      <td>21%</td>
+      <td>1%</td>
+      <td>0%</td>
+      <td>0%</td>
+      <td>2%</td>
+      <td>0%</td>
+      <td>41%</td>
+      <td>0%</td>
+    </tr>
+    <tr>
+      <th>Average</th>
+      <td>35%</td>
+      <td>14%</td>
+      <td>47%</td>
+      <td>17%</td>
+      <td>6%</td>
+      <td>1%</td>
+      <td>25%</td>
+      <td>1%</td>
+      <td>55%</td>
+      <td>4%</td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>
