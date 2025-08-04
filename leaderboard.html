@@ -1,71 +1,107 @@
-
 <html>
 <head>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
     }
+
+    h1 {
+      position: sticky;
+      top: 0;
+      background-color: white;
+      margin: 0;
+      padding: 10px 0;
+      text-align: center;
+      z-index: 1000;
+      font-size: 45px;
+      border-bottom: 2px solid #ccc;
+    }
+
     .styled-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 25px 0;
-      font-size: 14px;
-      text-align: center;
     }
-    .styled-table thead tr {
-      background-color: #009879;
-      color: #ffffff;
-      text-align: center;
-    }
-    .styled-table th, .styled-table td {
-      padding: 12px 15px;
-      border: 1px solid #ddd;
-    }
-    .styled-table tbody tr {
-      border-bottom: 1px solid #ddd;
-    }
-    .styled-table tbody tr:nth-of-type(even) {
-      background-color: #f3f3f3;
-    }
-    .styled-table tbody tr:hover {
-      background-color: #f1f1f1;
-    }
-    .styled-table thead th {
+
+    thead tr:nth-child(1) th {
       position: sticky;
-      top: 0;
-      background-color: #009879; /* 或你自定义颜色 */
+      top: 70px; /* 下移一行高度，避开 h1 */
+      background-color: #65a487;
       color: white;
-      z-index: 2;
+      z-index: 999;
+      text-align: center;
+    }
+
+    thead tr:nth-child(2) th {
+      position: sticky;
+      top: 100px; /* 避开 h1 和前一行 */
+      background-color: #65a487;
+      color: white;
+      z-index: 998;
+    }
+
+    th[colspan] {
+      text-align: center;
+    }
+
+    th, td {
+      padding: 8px;
+      border: 1px solid #65a487;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    tbody th {
+      position: sticky;
+      left: 0;
+      background-color: #f9f9f9;
+      z-index: 997;
+    }
+
+    .news {
+      padding: 10px 20px;
+      background-color: #f2f2f2;
+      border-bottom: 1px solid #ccc;
     }
   </style>
 </head>
 <body>
-  <h2>RoboTwin 2.0 Benchmark</h2>
+  <h1>
+    <span style="color:#65a487;">Robo</span><span style="color:#68349a;">Twin</span> 2.0 Benchmark
+  </h1>
+
+  <div class="news">
+    <ul>
+      <li>2025/08/05: Support RDT, Pi0, ACT, DP, and DP3 Result.</li>
+    </ul>
+    <b><i style="color: red;">Pending: G3Flow, DexVLA, TinyVLA, LLaVA-VLA, OpenVLA-oft, Chain-of-Action</i></b>
+  </div>
+
   <table class="dataframe styled-table">
-  <thead>
-    <tr>
-      <th></th>
-      <th colspan="2" halign="left">RDT</th>
-      <th colspan="2" halign="left">Pi0</th>
-      <th colspan="2" halign="left">ACT</th>
-      <th colspan="2" halign="left">DP</th>
-      <th colspan="2" halign="left">DP3</th>
-    </tr>
-    <tr>
-      <th></th>
-      <th>Easy</th>
-      <th>Hard</th>
-      <th>Easy</th>
-      <th>Hard</th>
-      <th>Easy</th>
-      <th>Hard</th>
-      <th>Easy</th>
-      <th>Hard</th>
-      <th>Easy</th>
-      <th>Hard</th>
-    </tr>
-  </thead>
-  <tbody>
+    <thead>
+      <tr>
+        <th></th>
+        <th colspan="2">RDT</th>
+        <th colspan="2">Pi0</th>
+        <th colspan="2">ACT</th>
+        <th colspan="2">DP</th>
+        <th colspan="2">DP3</th>
+      </tr>
+      <tr>
+        <th></th>
+        <th>Easy</th>
+        <th>Hard</th>
+        <th>Easy</th>
+        <th>Hard</th>
+        <th>Easy</th>
+        <th>Hard</th>
+        <th>Easy</th>
+        <th>Hard</th>
+        <th>Easy</th>
+        <th>Hard</th>
+      </tr>
+    </thead>
+    <tbody>
     <tr>
       <th>Adjust Bottle</th>
       <td>81%</td>
@@ -704,7 +740,7 @@
       <td>0%</td>
     </tr>
     <tr>
-      <th>Average</th>
+      <th><i style="color: red;">Average</i></th>
       <td>35%</td>
       <td>14%</td>
       <td>47%</td>
@@ -717,6 +753,6 @@
       <td>4%</td>
     </tr>
   </tbody>
-</table>
+  </table>
 </body>
 </html>
