@@ -146,7 +146,7 @@
     </style>
         
     <div class="affiliation" style="white-space: nowrap;">
-        <p><sup>1</sup>SJTU ScaleLab<sup>†</sup>,&nbsp;<sup>2</sup>HKU MMLab<sup>†</sup>,&nbsp; 
+        <p><sup>1</sup>MoE key Lab of Artificial Intelligence, AI Institute, SJTU<sup>†</sup>,&nbsp;<sup>2</sup>HKU MMLab<sup>†</sup>,&nbsp; 
            <sup>3</sup>Shanghai AI Lab,&nbsp; <sup>4</sup>D-Robotics,&nbsp; 
            <sup>5</sup>SZU,&nbsp; <sup>6</sup>THU,&nbsp;
            <sup>7</sup>TeleAI,&nbsp; <br> <sup>8</sup>FDU,&nbsp;
@@ -165,6 +165,7 @@
         <a href="https://arxiv.org/pdf/2506.18088" target="_blank" class="button"><i class="fa-light fa-file"></i>&emsp14;PDF</a>
         <a href="https://github.com/robotwin-Platform/RoboTwin" target="_blank" class="button"><i class="fa fa-github"></i>&emsp14;Code</a>
         <a href="https://robotwin-platform.github.io/doc/" target="_blank" class="button_large"><i class="fa-regular fa-file-lines"></i>&emsp14;Document</a>
+        <a href="https://robotwin-platform.github.io/leaderboard" target="_blank" class="button_large"><i class="fa-regular fa-file-lines"></i>&emsp14;Leaderboard</a>
     </div>
 </div>
            
@@ -172,7 +173,7 @@
 <div id="abstract">
     <h1>Abstract</h1>
     <p>
-        Simulation-based data synthesis has emerged as a powerful paradigm for enhancing real-world robotic manipulation. However, existing synthetic datasets remain insufficient for robust bimanual manipulation due to two challenges: (1) the lack of an efficient, scalable data generation method for novel tasks, and (2) oversimplified simulation environments that fail to capture real-world complexity. We present RoboTwin 2.0, a scalable simulation framework that enables automated, large-scale generation of diverse and realistic data, along with unified evaluation protocols for dual-arm manipulation. We first construct RoboTwin-OD, a large-scale object library comprising 731 instances across 147 categories, each annotated with semantic and manipulation-relevant labels. Building on this foundation, we develop an expert data synthesis pipeline that combines multimodal large language models (MLLMs) with simulation-in-the-loop refinement to generate task-level execution code automatically. To improve sim-to-real transfer, RoboTwin 2.0 incorporates structured domain randomization along five axes: clutter, lighting, background, tabletop height and language instructions, thereby enhancing data diversity and policy robustness. We instantiate this framework across 50 dual-arm tasks spanning five robot embodiments, and pre-collect over 100,000 domain-randomized expert trajectories. Empirical evaluation shows a 10.9% gain in code generation success rate and improved generalization to novel real-world conditions. A vision-language-action (VLA) model fine-tuned on our dataset achieves a 367% relative improvement (42.0% vs. 9.0%) on unseen scene real-world tasks, while zero-shot models trained exclusively on our synthetic data attain a 228% relative gain, demonstrating strong generalization without real-world supervision. We release the data generator, benchmark, pre-collected dataset, and code to support scalable research in robust bimanual manipulation.
+Simulation-based data synthesis has emerged as a powerful paradigm for advancing real-world robotic manipulation. Yet existing datasets remain insufficient for robust bimanual manipulation due to (1) the lack of scalable task generation methods and (2) oversimplified simulation environments. We present RoboTwin 2.0, a scalable framework for automated, large-scale generation of diverse and realistic data, together with unified evaluation protocols for dual-arm manipulation. At its core is RoboTwin-OD, an object library of 731 instances across 147 categories with semantic and manipulation-relevant annotations. Building on this, we design an expert data synthesis pipeline that leverages multimodal language models (MLLMs) and simulation-in-the-loop refinement to automatically generate task-level execution code. To improve sim-to-real transfer, RoboTwin 2.0 applies structured domain randomization along five axes: clutter, lighting, background, tabletop height, and language, enhancing data diversity and policy robustness. The framework is instantiated across 50 dual-arm tasks and five robot embodiments. Empirically, it yields a 10.9% gain in code generation success rate. For downstream policy learning, a VLA model trained with synthetic data plus only 10 real demonstrations achieves a 367% relative improvement over the 10-demo baseline, while zero-shot models trained solely on synthetic data obtain a 228% gain. These results highlight the effectiveness of RoboTwin 2.0 in strengthening sim-to-real transfer and robustness to environmental variations. We release the data generator, benchmark, dataset, and code to support scalable research in robust bimanual manipulation.
     </p>
     <br>
     <!-- <div class="publication-video">
@@ -278,7 +279,7 @@ These findings highlight the importance of scalable, automated generation of sem
             }
     </p>
 
-    <p><b>[1.0 Version]</b> RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins. <b style="color: red">Accepted to CVPR 2025 (Highlight)</b></p>
+    <p><b>[1.0 Version]</b> RoboTwin: Dual-Arm Robot Benchmark with Generative Digital Twins. Accepted to <b style="color: red">CVPR 2025 (Highlight)</b></p>
     <br>
     <p class="bibtex">@InProceedings{Mu_2025_CVPR,<br>
         &nbsp;&nbsp;author    = {Mu, Yao and Chen, Tianxing and Chen, Zanxin and Peng, Shijia and Lan, Zhiqian and Gao, Zeyu and Liang, Zhixuan and Yu, Qiaojun and Zou, Yude and Xu, Mingkun and Lin, Lunkai and Xie, Zhiqiang and Ding, Mingyu and Luo, Ping},<br>
