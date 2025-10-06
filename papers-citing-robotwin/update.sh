@@ -1,0 +1,1 @@
+python generate_cards/generate_cards.py

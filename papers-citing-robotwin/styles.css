@@ -1,0 +1,182 @@
+/* ====================================================================
+   基础主题变量
+   ==================================================================== */
+:root {
+  --bg: #f7f7fb;
+  --card: #ffffff;
+  --text: #0f172a;
+  --muted: #64748b;
+  --line: #e5e7eb;
+  --brand: #2563eb;
+  --chip: #eef2ff;
+  --chip-border: #c7d2fe;
+  --radius: 14px;
+  --shadow: 0 10px 24px rgba(2, 6, 23, .06);
+}
+
+/* ====================================================================
+   通用样式
+   ==================================================================== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  padding: 28px;
+  color: var(--text);
+  background: var(--bg);
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+  line-height: 1.6;
+}
+.container {
+  max-width: 1160px;
+  margin: 0 auto;
+}
+
+/* ====================================================================
+   顶部标题
+   ==================================================================== */
+.page-title {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 800;
+}
+.page-subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+/* ====================================================================
+   分割线样式（位于卡片下方）
+   ==================================================================== */
+.divider {
+  height: 1px;
+  width: 100%;
+  margin: 24px 0;                     /* 上下间距更均匀 */
+  background: rgba(0, 0, 0, 0.06);    /* 比原先更浅的灰色 */
+  border: none;
+  align-self: center;                 /* 对齐容器中心 */
+}
+
+/* ====================================================================
+   论文信息区
+   ==================================================================== */
+.paper-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+}
+.paper-hero .thumb img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+.paper-title {
+  margin: 24px 0 15px;
+  font-size: 28px;
+  font-weight: 800;
+}
+.linkbar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 18px;
+  font-size: 18px;
+  font-weight: 700;
+  color: #15034d;
+  background: var(--chip);
+  border: 1px solid var(--chip-border);
+  border-radius: 999px;
+  text-decoration: none;          /* 🚫 去掉默认下划线 */
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+/* 悬停与点击效果 */
+.chip:hover {
+  background: var(--brand);
+  color: #ffffff;
+  transform: translateY(-2px);
+  text-decoration: none;          /* 🚫 hover 也不要下划线 */
+}
+.chip:focus,
+.chip:active {
+  outline: none;
+  text-decoration: none;
+}
+
+/* ====================================================================
+   卡片区（标题 + 链接 + 日期）
+   ==================================================================== */
+.cite-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 20px;
+}
+.cite-card {
+  padding: 14px 18px;
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  box-shadow: var(--shadow);
+  transition: transform .1s ease;
+}
+.cite-card:hover {
+  transform: translateY(-3px);
+}
+.cite-title a {
+  font-weight: 700;
+  color: var(--brand);
+  text-decoration: none;          
+  border-bottom: none;            
+  transition: color 0.15s ease, text-shadow 0.15s ease;
+}
+.cite-title a:hover,
+.cite-title a:focus {
+  color: #1e40af;                 
+  text-decoration: none;         
+  text-shadow: 0 0 5px rgba(37,99,235,0.25); 
+  font-weight: 800;               
+}
+
+.pub-date {
+  display: inline-block;
+  min-width: 100px;
+  margin-right: 10px;
+  color: rgba(15, 23, 42, 0.55);   /* 更淡、更优雅的灰蓝色调 */
+  font-size: 16px;
+  font-weight: 600;
+  font-family: "Microsoft YaHei", "Heiti SC", "黑体", sans-serif; /* ✅ 黑体风格 */
+  letter-spacing: 0.4px;
+}
+
+/* ====================================================================
+   页脚
+   ==================================================================== */
+.footer {
+  margin: 28px 0 8px;
+  color: var(--muted);
+  font-size: 21px;
+  text-align: center;
+}
+
+/* ====================================================================
+   响应式
+   ==================================================================== */
+@media (max-width: 640px) {
+  body { padding: 18px; }
+  .chip { font-size: 16px; padding: 8px 14px; }
+}
