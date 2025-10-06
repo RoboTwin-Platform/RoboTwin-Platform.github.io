@@ -14,6 +14,25 @@
   --shadow: 0 10px 24px rgba(2, 6, 23, .06);
 }
 
+#overview > .bibtex {
+    font-family: "Courier", monospace;
+    font-size: 0.9vw !important;
+    color: #2f2f2f;
+    background-color: #f2f2f2;
+    border: 5px;
+    border-color: #2f2f2f;
+    border-radius: 10px;
+    margin-top: 0.6vw;
+    margin-bottom: 3vw;
+    padding-top: 0.6vw;
+    padding-bottom: 0.6vw;
+    vertical-align: center;
+    padding-left: 0.5vw;
+    padding-right: 0.5vw;
+    hyphens: none !important;
+    line-height: unset !important;
+}
+
 /* ====================================================================
    通用样式
    ==================================================================== */
