@@ -1,775 +1,402 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RoboTwin 2.0 Leaderboard</title>
+  <link rel="stylesheet" href="assets/css/site.css">
   <style>
+    :root { --lb-max: 1440px; }
     body {
-      margin: 0;
-      font-family: Arial, sans-serif;
+      background:
+        radial-gradient(1000px 460px at 12% -12%, rgba(101, 164, 135, 0.18), transparent 60%),
+        radial-gradient(900px 420px at 90% 0%, rgba(104, 52, 154, 0.10), transparent 55%),
+        linear-gradient(180deg, #f7faf8 0%, #f3f6f4 42%, #eef3f0 100%);
     }
-
-    h1 {
-      position: sticky;
-      top: 0;
-      background-color: white;
-      margin: 0;
-      padding: 10px 0;
-      text-align: center;
-      z-index: 1000;
-      font-size: 45px;
-      border-bottom: 2px solid #ccc;
+    .lb-top {
+      position: sticky; top: 0; z-index: 1000;
+      backdrop-filter: blur(10px);
+      background: rgba(247, 250, 248, 0.88);
+      border-bottom: 1px solid var(--line);
     }
-
-    .styled-table {
-      width: 100%;
-      border-collapse: collapse;
+    .lb-top-inner {
+      width: min(var(--lb-max), calc(100% - 32px));
+      margin: 0 auto; padding: 16px 0 14px;
+      display: flex; align-items: end; justify-content: space-between;
+      gap: 16px; flex-wrap: wrap;
     }
-
-    thead tr:nth-child(1) th {
-      position: sticky;
-      top: 70px; /* 下移一行高度，避开 h1 */
-      background-color: #65a487;
-      color: white;
-      z-index: 999;
-      text-align: center;
+    .lb-brand {
+      margin: 0; font-family: var(--display);
+      font-size: clamp(28px, 4vw, 40px);
+      letter-spacing: -0.03em; line-height: 1;
     }
-
-    thead tr:nth-child(2) th {
-      position: sticky;
-      top: 100px; /* 避开 h1 和前一行 */
-      background-color: #65a487;
-      color: white;
-      z-index: 998;
+    .lb-brand .g { color: var(--brand-green); }
+    .lb-brand .p { color: var(--brand-purple); }
+    .lb-sub { margin: 6px 0 0; color: var(--text-soft); font-size: 14px; }
+    .lb-nav { display: flex; gap: 8px; flex-wrap: wrap; }
+    .lb-nav a {
+      display: inline-flex; align-items: center; min-height: 36px;
+      padding: 0 12px; border-radius: 10px; border: 1px solid var(--line);
+      background: rgba(255,255,255,0.85); color: var(--text);
+      font-size: 13px; font-weight: 650;
     }
-
-    th[colspan] {
-      text-align: center;
+    .lb-nav a:hover { border-color: var(--brand-green); color: var(--brand-green-deep); }
+    .wrap {
+      width: min(var(--lb-max), calc(100% - 32px));
+      margin: 0 auto; padding: 18px 0 48px;
     }
-
-    th, td {
-      padding: 8px;
-      border: 1px solid #65a487;
-      text-align: center;
-      white-space: nowrap;
+    .panel {
+      background: rgba(255,255,255,0.82);
+      border: 1px solid var(--line); border-radius: 16px;
+      padding: 18px; margin-bottom: 14px;
+      box-shadow: 0 10px 28px rgba(28, 42, 35, 0.04);
     }
-
-    tbody th {
-      position: sticky;
-      left: 0;
-      background-color: #f9f9f9;
-      z-index: 997;
+    .panel h2 {
+      margin: 0 0 10px; font-family: var(--display);
+      font-size: 22px; letter-spacing: -0.02em; color: var(--text);
     }
+    .setting p { margin: 0; line-height: 1.6; font-size: 15px; color: var(--text-soft); }
+    .setting p b { color: var(--text); }
+    .setting .tag {
+      background: rgba(101,164,135,0.14); color: var(--brand-green-deep);
+      padding: 1px 7px; border-radius: 6px; font-size: 12px; font-weight: 700;
+      border: 1px solid rgba(101,164,135,0.25);
+    }
+    .legend { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 0; }
+    .legend span {
+      font-size: 12px; color: var(--text-soft); background: #f3f7f5;
+      border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px;
+    }
+    .legend span b { color: var(--text); }
+    .proto-callout {
+      margin: 0 0 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(101,164,135,0.35);
+      background: linear-gradient(135deg, rgba(101,164,135,0.14), rgba(255,255,255,0.9));
+    }
+    .proto-title {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--brand-green-deep);
+      margin-bottom: 4px;
+    }
+    .proto-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .proto-body b { color: var(--text); }
+    .contributor {
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+    .toolbar {
 
-    .news {
-      padding: 10px 20px;
-      background-color: #f2f2f2;
-      border-bottom: 1px solid #ccc;
+      display: flex; flex-wrap: wrap; gap: 12px;
+      align-items: center; justify-content: space-between;
+      margin-bottom: 12px;
+    }
+    .sort-group { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    .sort-label { font-size: 13px; color: var(--text-soft); font-weight: 650; }
+    .sort-btn {
+      border: 1px solid var(--line); background: #fff; color: var(--text);
+      padding: 9px 14px; border-radius: 10px; cursor: pointer;
+      font-size: 14px; font-weight: 700; font-family: var(--sans);
+    }
+    .sort-btn:hover { border-color: var(--brand-green); }
+    .sort-btn.active {
+      background: linear-gradient(135deg, var(--brand-green), #4f8a6e);
+      border-color: transparent; color: #fff;
+      box-shadow: 0 8px 18px rgba(101,164,135,0.28);
+    }
+    .hint { font-size: 13px; color: var(--text-soft); }
+    .table-scroll {
+      overflow: auto; border: 1px solid var(--line);
+      border-radius: 14px; background: #fff;
+      max-height: min(72vh, 860px);
+    }
+    table.lb {
+      border-collapse: separate; border-spacing: 0;
+      width: max-content; min-width: 100%; font-size: 13px;
+    }
+    .lb th, .lb td {
+      padding: 8px 10px; border-bottom: 1px solid #e7efea;
+      border-right: 1px solid #f0f5f2; text-align: center; white-space: nowrap;
+    }
+    .lb thead th {
+      position: sticky; top: 0; z-index: 5;
+      background: linear-gradient(135deg, var(--brand-green), #4f8a6e);
+      color: #fff; font-weight: 700;
+    }
+    .lb thead tr.sub th {
+      top: 36px; background: #3f6f58; font-size: 11px;
+      letter-spacing: 0.04em; text-transform: uppercase; font-weight: 650;
+    }
+    .lb .sticky-left {
+      position: sticky; left: 0; z-index: 4;
+      background: #f7faf8; text-align: left; font-weight: 650;
+    }
+    .lb thead .sticky-left {
+      z-index: 6; background: linear-gradient(135deg, var(--brand-green), #4f8a6e); color: #fff;
+    }
+    .lb thead tr.sub .sticky-left { background: #3f6f58; }
+    .lb tbody tr:hover td { filter: brightness(0.985); }
+    .lb tbody tr:hover .sticky-left { background: #eef5f1; }
+    .lb .avg-row th, .lb .avg-row td {
+      position: sticky; bottom: 0; z-index: 3;
+      background: #fff7ea !important; border-top: 2px solid #e2c48a; font-weight: 700;
+    }
+    .lb .avg-row .sticky-left {
+      z-index: 4; background: #fff7ea !important; color: #9a3412;
+      font-family: var(--display);
+    }
+    /* ranking table */
+    .rank-table { width: 100%; min-width: 0; }
+    .rank-table th, .rank-table td { white-space: nowrap; }
+    .rank-table .col-method { min-width: 180px; }
+    .rank-table .col-rank { width: 64px; }
+    .rank-num { font-weight: 750; color: var(--text-soft); }
+    .rank-num.top { color: var(--brand-green-deep); }
+    .method-name {
+      font-family: var(--display); font-size: 16px; font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .badge-sft {
+      display: inline-block; margin-left: 8px; padding: 2px 7px;
+      border-radius: 6px; font-family: var(--sans); font-size: 11px;
+      font-weight: 750; letter-spacing: 0.03em; vertical-align: 2px;
+      color: var(--text-soft); background: #eef2f0; border: 1px solid var(--line);
+    }
+    .badge-co {
+      display: inline-block; margin-left: 8px; padding: 2px 7px;
+      border-radius: 6px; font-family: var(--sans); font-size: 11px;
+      font-weight: 750; letter-spacing: 0.03em; vertical-align: 2px;
+      color: var(--brand-green-deep); background: rgba(101,164,135,0.14);
+      border: 1px solid rgba(101,164,135,0.28);
+    }
+    .score-easy { color: var(--easy); font-weight: 750; }
+    .score-hard { color: var(--hard); font-weight: 750; }
+    .sort-active { box-shadow: inset 0 -3px 0 rgba(255,255,255,0.85); }
+    .news ul { margin: 8px 0 0; padding-left: 18px; }
+    .news li { margin: 6px 0; font-size: 14px; color: var(--text-soft); }
+    .news li b { color: var(--text); }
+    a { color: var(--brand-purple); }
+    @media (max-width: 700px) {
+      .proto-callout {
+      margin: 0 0 14px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(101,164,135,0.35);
+      background: linear-gradient(135deg, rgba(101,164,135,0.14), rgba(255,255,255,0.9));
+    }
+    .proto-title {
+      font-family: var(--display);
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--brand-green-deep);
+      margin-bottom: 4px;
+    }
+    .proto-body {
+      font-size: 14px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .proto-body b { color: var(--text); }
+    .contributor {
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 600;
+    }
+    .toolbar {
+ align-items: stretch; }
     }
   </style>
 </head>
 <body>
-  <h1>
-    <span style="color:#65a487;">Robo</span><span style="color:#68349a;">Twin</span> 2.0 Benchmark
-  </h1>
-  <div class="news">
-    <b>Benchmark Setting</b>:
-    <br><br>
-   All policies are trained on the <b>Aloha-AgileX</b> embodiment using <b>50 demo_clean</b> demonstrations for each single task (specifically, all pre-trained policies (e.g. Pi0) are fine-tuned on the single task based on their open-source weights), and evaluated 100 times under the <i><b>demo_clean (Easy)</b></i> and <i><b>demo_randomized (Hard)</b></i> settings. All training details are provided in the Appendix of the <a href="https://arxiv.org/pdf/2506.18088">RoboTwin 2.0 Paper</a>.
-    <br><br>
-    <b>News</b>:<br>
-    <ul>
-      <li>2025/08/05: Support RDT, Pi0, ACT, DP, and DP3 Result.</li>
-    </ul>
-    <b><i style="color: red;">Pending: G3Flow, DexVLA, TinyVLA, LLaVA-VLA, OpenVLA-oft, Chain-of-Action</i></b>
+  <header class="lb-top">
+    <div class="lb-top-inner">
+      <div>
+        <h1 class="lb-brand"><span class="g">Robo</span><span class="p">Twin</span> 2.0 Leaderboard</h1>
+        <p class="lb-sub">clean→random · 50 tasks · 50 demo_clean trajectories / task</p>
+      </div>
+      <nav class="lb-nav">
+        <a href="./">Home</a>
+        <a href="https://robotwin-platform.github.io/doc/" target="_blank">Docs</a>
+        <a href="https://arxiv.org/pdf/2506.18088" target="_blank">Paper</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="wrap">
+    <section class="panel setting">
+      <h2>Benchmark Setting</h2>
+      <p>
+        Official protocol: <b>clean2random</b>. Policies are trained on <b>Aloha-AgileX</b>, then evaluated
+        100 trials/task under <i><b>demo_clean (Easy)</b></i> and <i><b>demo_randomized (Hard)</b></i>.
+        Co-train and Single-task SFT are listed in one board; use the sort control to rank by Easy or Hard.
+      </p>
+      <div class="legend">
+        <span><b>Co-train</b>: one policy jointly trained on all 50 tasks</span>
+        <span><b>Single</b>: one checkpoint fine-tuned per task (paper baselines)</span>
+        <span><b>Easy</b> = demo_clean &nbsp;|&nbsp; <b>Hard</b> = demo_randomized</span>
+        <span><b>Contributor</b>: RoboTwin Team</span>
+      </div>
+    </section>
+
+    <section class="panel">
+      <div class="toolbar">
+        <div class="sort-group">
+          <span class="sort-label">Rank by</span>
+          <button class="sort-btn active" data-sort="hard" type="button">Hard</button>
+          <button class="sort-btn" data-sort="easy" type="button">Easy</button>
+        </div>
+        <div class="hint" id="sortHint">Sorted by Hard (demo_randomized) mean ↓</div>
+      </div>
+
+      <div class="proto-callout">
+        <div class="proto-title">Primary track: Co-train</div>
+        <div class="proto-body"><b>50 demo_clean × 50 tasks</b> joint training (2,500 clean demos total), then clean→random evaluation.</div>
+      </div>
+
+      <h2>Overall Ranking</h2>
+      <div class="table-scroll" style="max-height:none">
+        <table class="lb rank-table" id="rankTable">
+          <thead>
+            <tr>
+              <th class="col-rank sticky-left">Rank</th>
+              <th class="col-method">Method</th>
+              <th>Contributor</th>
+              <th>Easy</th>
+              <th>Hard</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>Per-task Results</h2>
+      <p class="hint" style="margin:0 0 10px">Columns follow the current Easy/Hard ranking. Methods tagged <b>Single</b> are single-task SFT baselines.</p>
+      <div class="table-scroll">
+        <table class="lb" id="taskTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="panel news">
+      <h2>News</h2>
+      <ul>
+        <li><b>2026/07/22</b>: Merge Co-train + Single-task SFT into one clean2random board; add Easy/Hard ranking.</li>
+        <li><b>2025/08/05</b>: Support RDT, π0, ACT, DP, and DP3 single-task SFT results.</li>
+      </ul>
+    </section>
   </div>
 
-  <table class="dataframe styled-table">
-    <thead>
-      <tr>
-        <th></th>
-        <th colspan="2">RDT</th>
-        <th colspan="2">Pi0</th>
-        <th colspan="2">ACT</th>
-        <th colspan="2">DP</th>
-        <th colspan="2">DP3</th>
-      </tr>
-      <tr>
-        <th></th>
-        <th>Easy</th>
-        <th>Hard</th>
-        <th>Easy</th>
-        <th>Hard</th>
-        <th>Easy</th>
-        <th>Hard</th>
-        <th>Easy</th>
-        <th>Hard</th>
-        <th>Easy</th>
-        <th>Hard</th>
-      </tr>
-    </thead>
-    <tbody>
-    <tr>
-      <th>Adjust Bottle</th>
-      <td>81%</td>
-      <td>75%</td>
-      <td>90%</td>
-      <td>56%</td>
-      <td>97%</td>
-      <td>23%</td>
-      <td>97%</td>
-      <td>0%</td>
-      <td>99%</td>
-      <td>3%</td>
-    </tr>
-    <tr>
-      <th>Beat Block Hammer</th>
-      <td>77%</td>
-      <td>37%</td>
-      <td>43%</td>
-      <td>21%</td>
-      <td>56%</td>
-      <td>3%</td>
-      <td>42%</td>
-      <td>0%</td>
-      <td>72%</td>
-      <td>8%</td>
-    </tr>
-    <tr>
-      <th>Blocks Ranking RGB</th>
-      <td>3%</td>
-      <td>0%</td>
-      <td>19%</td>
-      <td>5%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>3%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Blocks Ranking Size</th>
-      <td>0%</td>
-      <td>0%</td>
-      <td>7%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>2%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Click Alarmclock</th>
-      <td>61%</td>
-      <td>12%</td>
-      <td>63%</td>
-      <td>11%</td>
-      <td>32%</td>
-      <td>4%</td>
-      <td>61%</td>
-      <td>5%</td>
-      <td>77%</td>
-      <td>14%</td>
-    </tr>
-    <tr>
-      <th>Click Bell</th>
-      <td>80%</td>
-      <td>9%</td>
-      <td>44%</td>
-      <td>3%</td>
-      <td>58%</td>
-      <td>3%</td>
-      <td>54%</td>
-      <td>0%</td>
-      <td>90%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Dump Bin Bigbin</th>
-      <td>64%</td>
-      <td>32%</td>
-      <td>83%</td>
-      <td>24%</td>
-      <td>68%</td>
-      <td>1%</td>
-      <td>49%</td>
-      <td>0%</td>
-      <td>85%</td>
-      <td>53%</td>
-    </tr>
-    <tr>
-      <th>Grab Roller</th>
-      <td>74%</td>
-      <td>43%</td>
-      <td>96%</td>
-      <td>80%</td>
-      <td>94%</td>
-      <td>25%</td>
-      <td>98%</td>
-      <td>0%</td>
-      <td>98%</td>
-      <td>2%</td>
-    </tr>
-    <tr>
-      <th>Handover Block</th>
-      <td>45%</td>
-      <td>14%</td>
-      <td>45%</td>
-      <td>8%</td>
-      <td>42%</td>
-      <td>0%</td>
-      <td>10%</td>
-      <td>0%</td>
-      <td>70%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Handover Mic</th>
-      <td>90%</td>
-      <td>31%</td>
-      <td>98%</td>
-      <td>13%</td>
-      <td>85%</td>
-      <td>0%</td>
-      <td>53%</td>
-      <td>0%</td>
-      <td>100%</td>
-      <td>3%</td>
-    </tr>
-    <tr>
-      <th>Hanging Mug</th>
-      <td>23%</td>
-      <td>16%</td>
-      <td>11%</td>
-      <td>3%</td>
-      <td>7%</td>
-      <td>0%</td>
-      <td>8%</td>
-      <td>0%</td>
-      <td>17%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Lift Pot</th>
-      <td>72%</td>
-      <td>9%</td>
-      <td>84%</td>
-      <td>36%</td>
-      <td>88%</td>
-      <td>0%</td>
-      <td>39%</td>
-      <td>0%</td>
-      <td>97%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Move Can Pot</th>
-      <td>25%</td>
-      <td>12%</td>
-      <td>58%</td>
-      <td>21%</td>
-      <td>22%</td>
-      <td>4%</td>
-      <td>39%</td>
-      <td>0%</td>
-      <td>70%</td>
-      <td>6%</td>
-    </tr>
-    <tr>
-      <th>Move Pillbottle Pad</th>
-      <td>8%</td>
-      <td>0%</td>
-      <td>21%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>41%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Move Playingcard Away</th>
-      <td>43%</td>
-      <td>11%</td>
-      <td>53%</td>
-      <td>22%</td>
-      <td>36%</td>
-      <td>0%</td>
-      <td>47%</td>
-      <td>0%</td>
-      <td>68%</td>
-      <td>3%</td>
-    </tr>
-    <tr>
-      <th>Move Stapler Pad</th>
-      <td>2%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>2%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>12%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Open Laptop</th>
-      <td>59%</td>
-      <td>32%</td>
-      <td>85%</td>
-      <td>46%</td>
-      <td>56%</td>
-      <td>0%</td>
-      <td>49%</td>
-      <td>0%</td>
-      <td>82%</td>
-      <td>7%</td>
-    </tr>
-    <tr>
-      <th>Open Microwave</th>
-      <td>37%</td>
-      <td>20%</td>
-      <td>80%</td>
-      <td>50%</td>
-      <td>86%</td>
-      <td>0%</td>
-      <td>5%</td>
-      <td>0%</td>
-      <td>61%</td>
-      <td>22%</td>
-    </tr>
-    <tr>
-      <th>Pick Diverse Bottles</th>
-      <td>2%</td>
-      <td>0%</td>
-      <td>27%</td>
-      <td>6%</td>
-      <td>7%</td>
-      <td>0%</td>
-      <td>6%</td>
-      <td>0%</td>
-      <td>52%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Pick Dual Bottles</th>
-      <td>42%</td>
-      <td>13%</td>
-      <td>57%</td>
-      <td>12%</td>
-      <td>31%</td>
-      <td>0%</td>
-      <td>24%</td>
-      <td>0%</td>
-      <td>60%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Place A2B Left</th>
-      <td>3%</td>
-      <td>1%</td>
-      <td>31%</td>
-      <td>1%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>2%</td>
-      <td>0%</td>
-      <td>46%</td>
-      <td>2%</td>
-    </tr>
-    <tr>
-      <th>Place A2B Right</th>
-      <td>1%</td>
-      <td>1%</td>
-      <td>27%</td>
-      <td>6%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>13%</td>
-      <td>0%</td>
-      <td>49%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Place Bread Basket</th>
-      <td>10%</td>
-      <td>2%</td>
-      <td>17%</td>
-      <td>4%</td>
-      <td>6%</td>
-      <td>0%</td>
-      <td>14%</td>
-      <td>0%</td>
-      <td>26%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Place Bread Skillet</th>
-      <td>5%</td>
-      <td>1%</td>
-      <td>23%</td>
-      <td>1%</td>
-      <td>7%</td>
-      <td>0%</td>
-      <td>11%</td>
-      <td>0%</td>
-      <td>19%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Place Burger Fries</th>
-      <td>50%</td>
-      <td>27%</td>
-      <td>80%</td>
-      <td>4%</td>
-      <td>49%</td>
-      <td>0%</td>
-      <td>72%</td>
-      <td>0%</td>
-      <td>72%</td>
-      <td>18%</td>
-    </tr>
-    <tr>
-      <th>Place Can Basket</th>
-      <td>19%</td>
-      <td>6%</td>
-      <td>41%</td>
-      <td>5%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>18%</td>
-      <td>0%</td>
-      <td>67%</td>
-      <td>2%</td>
-    </tr>
-    <tr>
-      <th>Place Cans Plasticbox</th>
-      <td>6%</td>
-      <td>5%</td>
-      <td>34%</td>
-      <td>2%</td>
-      <td>16%</td>
-      <td>0%</td>
-      <td>40%</td>
-      <td>0%</td>
-      <td>48%</td>
-      <td>3%</td>
-    </tr>
-    <tr>
-      <th>Place Container Plate</th>
-      <td>78%</td>
-      <td>17%</td>
-      <td>88%</td>
-      <td>45%</td>
-      <td>72%</td>
-      <td>1%</td>
-      <td>41%</td>
-      <td>0%</td>
-      <td>86%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Place Dual Shoes</th>
-      <td>4%</td>
-      <td>4%</td>
-      <td>15%</td>
-      <td>0%</td>
-      <td>9%</td>
-      <td>0%</td>
-      <td>8%</td>
-      <td>0%</td>
-      <td>13%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Place Empty Cup</th>
-      <td>56%</td>
-      <td>7%</td>
-      <td>37%</td>
-      <td>11%</td>
-      <td>61%</td>
-      <td>0%</td>
-      <td>37%</td>
-      <td>0%</td>
-      <td>65%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Place Fan</th>
-      <td>12%</td>
-      <td>2%</td>
-      <td>20%</td>
-      <td>10%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>3%</td>
-      <td>0%</td>
-      <td>36%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Place Mouse Pad</th>
-      <td>1%</td>
-      <td>0%</td>
-      <td>7%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>4%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Place Object Basket</th>
-      <td>33%</td>
-      <td>17%</td>
-      <td>16%</td>
-      <td>2%</td>
-      <td>15%</td>
-      <td>0%</td>
-      <td>15%</td>
-      <td>0%</td>
-      <td>65%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Place Object Scale</th>
-      <td>1%</td>
-      <td>0%</td>
-      <td>10%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>15%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Place Object Stand</th>
-      <td>15%</td>
-      <td>5%</td>
-      <td>36%</td>
-      <td>11%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>22%</td>
-      <td>0%</td>
-      <td>60%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Place Phone Stand</th>
-      <td>15%</td>
-      <td>6%</td>
-      <td>35%</td>
-      <td>7%</td>
-      <td>2%</td>
-      <td>0%</td>
-      <td>13%</td>
-      <td>0%</td>
-      <td>44%</td>
-      <td>2%</td>
-    </tr>
-    <tr>
-      <th>Place Shoe</th>
-      <td>35%</td>
-      <td>7%</td>
-      <td>28%</td>
-      <td>6%</td>
-      <td>5%</td>
-      <td>0%</td>
-      <td>23%</td>
-      <td>0%</td>
-      <td>58%</td>
-      <td>2%</td>
-    </tr>
-    <tr>
-      <th>Press Stapler</th>
-      <td>41%</td>
-      <td>24%</td>
-      <td>62%</td>
-      <td>29%</td>
-      <td>31%</td>
-      <td>6%</td>
-      <td>6%</td>
-      <td>0%</td>
-      <td>69%</td>
-      <td>3%</td>
-    </tr>
-    <tr>
-      <th>Put Bottles Dustbin</th>
-      <td>21%</td>
-      <td>4%</td>
-      <td>54%</td>
-      <td>13%</td>
-      <td>27%</td>
-      <td>1%</td>
-      <td>22%</td>
-      <td>0%</td>
-      <td>60%</td>
-      <td>21%</td>
-    </tr>
-    <tr>
-      <th>Put Object Cabinet</th>
-      <td>33%</td>
-      <td>18%</td>
-      <td>68%</td>
-      <td>18%</td>
-      <td>15%</td>
-      <td>0%</td>
-      <td>42%</td>
-      <td>0%</td>
-      <td>72%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Rotate QRcode</th>
-      <td>50%</td>
-      <td>5%</td>
-      <td>68%</td>
-      <td>15%</td>
-      <td>1%</td>
-      <td>0%</td>
-      <td>13%</td>
-      <td>0%</td>
-      <td>74%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Scan Object</th>
-      <td>4%</td>
-      <td>1%</td>
-      <td>18%</td>
-      <td>1%</td>
-      <td>2%</td>
-      <td>0%</td>
-      <td>9%</td>
-      <td>0%</td>
-      <td>31%</td>
-      <td>1%</td>
-    </tr>
-    <tr>
-      <th>Shake Bottle Horizontally</th>
-      <td>84%</td>
-      <td>51%</td>
-      <td>99%</td>
-      <td>51%</td>
-      <td>63%</td>
-      <td>4%</td>
-      <td>59%</td>
-      <td>18%</td>
-      <td>100%</td>
-      <td>25%</td>
-    </tr>
-    <tr>
-      <th>Shake Bottle</th>
-      <td>74%</td>
-      <td>45%</td>
-      <td>97%</td>
-      <td>60%</td>
-      <td>74%</td>
-      <td>10%</td>
-      <td>65%</td>
-      <td>8%</td>
-      <td>98%</td>
-      <td>19%</td>
-    </tr>
-    <tr>
-      <th>Stack Blocks Three</th>
-      <td>2%</td>
-      <td>0%</td>
-      <td>17%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>0%</td>
-      <td>1%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Stack Blocks Two</th>
-      <td>21%</td>
-      <td>2%</td>
-      <td>42%</td>
-      <td>1%</td>
-      <td>25%</td>
-      <td>0%</td>
-      <td>7%</td>
-      <td>0%</td>
-      <td>24%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Stack Bowls Three</th>
-      <td>51%</td>
-      <td>17%</td>
-      <td>66%</td>
-      <td>24%</td>
-      <td>48%</td>
-      <td>0%</td>
-      <td>63%</td>
-      <td>0%</td>
-      <td>57%</td>
-      <td>5%</td>
-    </tr>
-    <tr>
-      <th>Stack Bowls Two</th>
-      <td>76%</td>
-      <td>30%</td>
-      <td>91%</td>
-      <td>41%</td>
-      <td>82%</td>
-      <td>0%</td>
-      <td>61%</td>
-      <td>0%</td>
-      <td>83%</td>
-      <td>6%</td>
-    </tr>
-    <tr>
-      <th>Stamp Seal</th>
-      <td>1%</td>
-      <td>0%</td>
-      <td>3%</td>
-      <td>4%</td>
-      <td>2%</td>
-      <td>0%</td>
-      <td>2%</td>
-      <td>0%</td>
-      <td>18%</td>
-      <td>0%</td>
-    </tr>
-    <tr>
-      <th>Turn Switch</th>
-      <td>35%</td>
-      <td>15%</td>
-      <td>27%</td>
-      <td>23%</td>
-      <td>5%</td>
-      <td>2%</td>
-      <td>36%</td>
-      <td>1%</td>
-      <td>46%</td>
-      <td>8%</td>
-    </tr>
-    <tr>
-      <th><i style="color: red;">Average</i></th>
-      <td>34.50%</td>
-      <td>13.72%</td>
-      <td>46.42%</td>
-      <td>16.34%</td>
-      <td>29.74%</td>
-      <td>1.74%</td>
-      <td>28.04%</td>
-      <td>0.64%</td>
-      <td>55.24%</td>
-      <td>4.96%</td>
-    </tr>
-  </tbody>
-  </table>
+  <script id="lb-data" type="application/json">
+{"tasks":["Adjust Bottle","Beat Block Hammer","Blocks Ranking RGB","Blocks Ranking Size","Click Alarmclock","Click Bell","Dump Bin Bigbin","Grab Roller","Handover Block","Handover Mic","Hanging Mug","Lift Pot","Move Can Pot","Move Pillbottle Pad","Move Playingcard Away","Move Stapler Pad","Open Laptop","Open Microwave","Pick Diverse Bottles","Pick Dual Bottles","Place A2B Left","Place A2B Right","Place Bread Basket","Place Bread Skillet","Place Burger Fries","Place Can Basket","Place Cans Plasticbox","Place Container Plate","Place Dual Shoes","Place Empty Cup","Place Fan","Place Mouse Pad","Place Object Basket","Place Object Scale","Place Object Stand","Place Phone Stand","Place Shoe","Press Stapler","Put Bottles Dustbin","Put Object Cabinet","Rotate QRcode","Scan Object","Shake Bottle Horizontally","Shake Bottle","Stack Blocks Three","Stack Blocks Two","Stack Bowls Three","Stack Bowls Two","Stamp Seal","Turn Switch"],"entries":[{"id":"cotrain:Pi_05","name":"π0.5","setting":"cotrain","easy_mean":70.7,"hard_mean":46.0,"easy":[99.0,93.0,72.0,45.0,65.0,31.0,92.0,99.0,30.0,98.0,17.0,98.0,60.0,46.0,84.0,20.0,93.0,86.0,66.0,72.0,71.0,68.0,63.0,76.0,82.0,56.0,31.0,92.0,70.0,96.0,66.0,34.0,70.0,78.0,85.0,65.0,82.0,79.0,78.0,39.0,90.0,49.0,99.0,100.0,77.0,91.0,81.0,94.0,53.0,52.0],"hard":[77.0,23.0,44.0,21.0,50.0,35.0,84.0,97.0,12.0,6.0,14.0,35.0,10.0,32.0,65.0,18.0,68.0,59.0,42.0,57.0,49.0,39.0,60.0,47.0,86.0,10.0,73.0,72.0,45.0,80.0,26.0,31.0,29.0,38.0,47.0,37.0,50.0,63.0,50.0,22.0,21.0,40.0,100.0,100.0,25.0,43.0,52.0,70.0,21.0,25.0],"contributor":"RoboTwin Team"},{"id":"cotrain:Abot_M0","name":"Abot-M0","setting":"cotrain","easy_mean":57.4,"hard_mean":22.9,"easy":[99.0,72.0,61.0,33.0,0.0,5.0,89.0,100.0,16.0,90.0,7.0,51.0,42.0,56.0,78.0,16.0,68.0,67.0,12.0,28.0,56.0,41.0,70.0,73.0,93.0,38.0,56.0,100.0,28.0,97.0,48.0,31.0,70.0,73.0,79.0,33.0,74.0,78.0,46.0,41.0,52.0,38.0,97.0,96.0,39.0,82.0,76.0,92.0,45.0,38.0],"hard":[45.0,27.0,26.0,2.0,19.0,13.0,67.0,13.0,1.0,17.0,0.0,27.0,5.0,8.0,4.0,0.0,60.0,29.0,10.0,75.0,4.0,4.0,7.0,6.0,5.0,1.0,4.0,8.0,15.0,47.0,11.0,2.0,38.0,18.0,30.0,0.0,27.0,52.0,37.0,5.9,12.0,12.0,83.0,86.0,11.0,43.0,32.0,65.0,12.0,17.0],"contributor":"RoboTwin Team"},{"id":"cotrain:X_WAM","name":"X-WAM","setting":"cotrain","easy_mean":70.0,"hard_mean":25.8,"easy":[83.6,100.0,71.1,27.4,100.0,100.0,100.0,98.6,6.8,100.0,20.6,40.1,61.8,80.2,96.3,16.0,90.6,17.1,68.7,81.3,76.8,64.1,87.0,89.4,99.7,38.9,100.0,100.0,29.7,100.0,26.3,50.3,38.9,65.3,98.6,52.7,65.3,100.0,66.4,34.4,52.7,38.9,100.0,100.0,56.1,100.0,71.1,100.0,67.5,69.8],"hard":[5.7,21.6,22.7,2.3,57.9,61.3,65.8,3.4,1.1,5.7,2.3,1.1,28.4,28.4,10.2,5.7,10.2,9.1,30.6,60.1,17.0,17.0,52.2,28.4,61.3,7.9,34.0,69.2,2.3,30.6,6.8,3.4,6.8,13.6,31.8,4.5,22.7,39.7,19.3,10.2,3.4,9.1,60.1,64.7,31.8,59.0,46.5,84.0,9.1,10.2],"contributor":"RoboTwin Team"},{"id":"cotrain:X_VLA","name":"X-VLA","setting":"cotrain","easy_mean":68.0,"hard_mean":20.9,"easy":[99.0,87.0,3.0,56.0,62.0,100.0,83.0,100.0,77.0,98.0,19.0,96.0,58.0,66.0,84.0,42.0,85.0,43.0,50.0,41.0,53.0,49.0,85.0,89.0,90.0,70.0,93.0,94.0,30.0,90.0,63.0,53.0,81.0,76.0,91.0,84.0,83.0,87.0,47.0,41.0,81.0,57.0,100.0,100.0,0.0,10.0,77.0,85.0,50.0,40.0],"hard":[33.0,9.0,4.0,25.0,43.0,63.0,41.0,20.0,1.3,1.0,2.0,15.0,0.0,3.0,5.0,0.0,16.0,5.0,30.0,51.0,15.0,13.0,52.0,17.0,35.0,9.0,60.0,39.0,12.0,16.0,1.0,0.0,6.0,6.0,43.0,5.0,39.0,73.0,20.0,21.0,1.0,9.0,78.0,76.0,0.0,2.0,9.0,15.0,2.0,6.0],"contributor":"RoboTwin Team"},{"id":"cotrain:Xiaomi_Robotics_0","name":"Xiaomi Robotics-0","setting":"cotrain","easy_mean":62.9,"hard_mean":18.2,"easy":[100.0,51.0,57.0,19.0,97.0,100.0,94.0,99.0,31.0,92.0,16.0,67.0,63.0,65.0,77.0,16.0,90.0,45.0,47.0,56.0,45.0,36.0,54.0,63.0,85.0,52.0,10.0,91.0,31.0,92.0,50.0,18.0,76.0,54.0,84.0,44.0,75.0,79.0,73.0,35.0,56.0,46.0,100.0,99.0,73.0,85.0,78.0,93.0,46.0,38.0],"hard":[9.0,16.0,8.0,1.0,58.0,57.0,49.0,12.0,1.0,6.0,6.0,1.0,7.0,3.0,12.0,0.0,24.0,16.0,12.0,28.0,6.0,2.0,23.0,11.0,27.0,7.0,31.0,59.0,9.0,12.0,3.0,1.0,15.0,2.0,24.0,11.0,29.0,21.0,21.0,5.0,1.0,8.0,62.0,61.0,7.0,22.0,35.0,53.0,3.0,14.0],"contributor":"RoboTwin Team"},{"id":"cotrain:EventVLA","name":"EventVLA","setting":"cotrain","easy_mean":65.6,"hard_mean":15.7,"easy":[100.0,24.0,94.0,51.0,93.0,94.0,92.0,97.0,58.0,44.0,20.0,59.0,62.0,60.0,57.0,14.0,86.0,55.0,22.0,42.0,79.0,65.0,66.0,64.0,89.0,76.0,81.0,98.0,22.0,92.0,44.0,34.0,73.0,80.0,85.0,64.0,55.0,80.0,45.0,33.0,57.0,27.0,100.0,100.0,76.0,98.0,83.0,96.0,69.0,24.0],"hard":[24.0,1.0,6.0,1.0,30.0,48.0,64.0,48.0,4.0,5.0,2.0,1.0,0.0,3.0,17.0,2.0,23.0,44.0,9.0,8.0,20.0,17.0,15.0,4.0,7.0,7.0,14.0,15.0,1.0,18.0,5.0,6.0,29.0,24.0,32.0,3.0,10.0,32.0,31.0,27.0,1.0,3.0,37.0,34.0,3.0,13.0,11.0,17.0,3.0,8.0],"contributor":"RoboTwin Team"},{"id":"cotrain:Spatial_Forcing","name":"Spatial Forcing","setting":"cotrain","easy_mean":77.2,"hard_mean":9.5,"easy":[97.0,74.0,83.0,42.0,89.0,97.0,83.0,98.0,62.0,100.0,17.0,98.0,69.0,77.0,96.0,31.0,89.0,66.0,72.0,90.0,67.0,55.0,84.0,82.0,98.0,77.0,94.0,97.0,83.0,94.0,74.0,35.0,79.0,73.0,96.0,83.0,88.0,89.0,58.0,37.0,87.0,76.0,99.0,99.0,75.0,96.0,79.0,96.0,39.0,40.0],"hard":[16.0,6.0,8.0,0.0,5.0,4.0,56.0,20.0,0.0,10.0,2.0,2.0,2.0,6.0,9.0,0.0,4.0,8.0,6.0,25.5,6.0,7.0,7.0,6.0,11.0,3.0,4.0,15.0,4.0,19.0,3.0,0.0,8.0,4.0,8.0,5.0,13.0,12.0,44.0,11.0,6.0,5.0,17.0,17.0,5.0,11.0,9.0,20.0,3.0,3.0],"contributor":"RoboTwin Team"},{"id":"cotrain:GalaxeaVLA","name":"GalaxeaVLA","setting":"cotrain","easy_mean":62.7,"hard_mean":9.1,"easy":[100.0,82.0,42.0,19.0,79.0,77.0,88.0,100.0,10.0,85.0,20.0,75.0,58.0,69.0,88.0,8.0,74.0,41.0,62.0,77.0,56.0,47.0,77.0,70.0,90.0,67.0,89.0,97.0,44.0,91.0,41.0,19.0,70.0,35.0,79.0,53.0,67.0,74.0,54.0,37.0,66.0,42.0,100.0,100.0,28.0,85.0,59.0,92.0,33.0,20.0],"hard":[2.0,18.0,1.0,1.0,8.0,19.0,42.0,38.0,0.0,0.0,2.0,0.0,1.0,3.0,9.0,1.0,6.0,3.0,9.0,14.0,3.0,3.0,21.0,9.0,25.0,4.0,17.0,23.0,7.0,2.0,2.0,0.0,1.0,3.0,15.0,4.0,17.0,10.0,3.0,8.0,0.0,4.0,27.0,30.0,1.0,11.0,8.0,13.0,2.0,3.0],"contributor":"RoboTwin Team"},{"id":"cotrain:AHA_WAM","name":"AHA-WAM","setting":"cotrain","easy_mean":64.3,"hard_mean":3.2,"easy":[100.0,52.0,60.0,32.0,98.0,100.0,90.0,98.0,63.0,99.0,13.0,62.0,48.0,33.0,82.0,5.0,89.0,59.0,36.0,60.0,65.0,50.0,54.0,68.0,96.0,61.0,90.0,99.0,48.0,64.0,58.0,12.0,71.0,34.0,79.0,61.0,74.0,82.0,58.0,36.0,61.0,51.0,100.0,100.0,57.0,89.0,71.0,93.0,13.0,42.0],"hard":[0.0,0.0,1.0,0.0,17.0,19.0,27.0,3.0,1.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,9.0,1.0,0.0,1.0,1.0,0.0,3.0,0.0,0.0,2.0,1.0,11.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,2.0,1.0,0.0,0.0,0.0,15.0,14.0,1.0,2.0,0.0,5.0,0.0,13.0],"contributor":"RoboTwin Team"},{"id":"cotrain:starVLA","name":"starVLA","setting":"cotrain","easy_mean":44.3,"hard_mean":3.3,"easy":[100.0,100.0,3.2,17.3,89.1,7.4,82.0,100.0,3.2,96.1,3.2,6.0,46.8,51.1,8.9,28.5,3.2,13.1,49.7,100.0,3.2,35.6,100.0,100.0,100.0,10.2,3.2,100.0,53.9,7.4,46.8,20.1,8.9,32.7,3.2,30.0,65.2,100.0,3.2,3.2,18.7,73.6,100.0,100.0,3.2,77.8,72.3,7.4,3.2,23.0],"hard":[0.0,2.3,1.2,0.0,1.2,0.0,1.2,54.5,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.2,0.0,0.0,26.7,0.0,0.0,8.1,5.8,13.9,0.0,3.5,1.2,0.0,1.2,0.0,0.0,0.0,1.2,1.2,0.0,0.0,15.1,0.0,1.2,0.0,7.0,10.5,4.6,1.2,1.2,0.0,0.0,0.0,0.0],"contributor":"RoboTwin Team"},{"id":"cotrain:FastWAM","name":"FastWAM","setting":"cotrain","easy_mean":77.8,"hard_mean":1.9,"easy":[99.0,82.0,81.0,52.0,99.0,95.0,94.0,100.0,66.0,98.0,14.0,91.0,96.0,92.0,94.0,33.0,84.0,17.0,72.0,87.0,69.0,60.0,87.0,85.0,97.0,77.0,98.0,100.0,67.0,90.0,59.0,55.0,82.0,83.0,94.0,85.0,87.0,90.0,55.0,42.0,81.0,68.0,100.0,100.0,89.0,99.0,80.0,94.0,30.0,39.0],"hard":[0.0,0.0,0.0,0.0,60.0,7.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0,9.0,10.0,0.0,0.0,0.0,0.0,0.0,3.0],"contributor":"RoboTwin Team"},{"id":"sft:RDT","name":"RDT","setting":"sft","easy_mean":34.5,"hard_mean":13.72,"easy":[81.0,77.0,3.0,0.0,61.0,80.0,64.0,74.0,45.0,90.0,23.0,72.0,25.0,8.0,43.0,2.0,59.0,37.0,2.0,42.0,3.0,1.0,10.0,5.0,50.0,19.0,6.0,78.0,4.0,56.0,12.0,1.0,33.0,1.0,15.0,15.0,35.0,41.0,21.0,33.0,50.0,4.0,84.0,74.0,2.0,21.0,51.0,76.0,1.0,35.0],"hard":[75.0,37.0,0.0,0.0,12.0,9.0,32.0,43.0,14.0,31.0,16.0,9.0,12.0,0.0,11.0,0.0,32.0,20.0,0.0,13.0,1.0,1.0,2.0,1.0,27.0,6.0,5.0,17.0,4.0,7.0,2.0,0.0,17.0,0.0,5.0,6.0,7.0,24.0,4.0,18.0,5.0,1.0,51.0,45.0,0.0,2.0,17.0,30.0,0.0,15.0],"contributor":"RoboTwin Team"},{"id":"sft:π0","name":"π0","setting":"sft","easy_mean":46.42,"hard_mean":16.34,"easy":[90.0,43.0,19.0,7.0,63.0,44.0,83.0,96.0,45.0,98.0,11.0,84.0,58.0,21.0,53.0,0.0,85.0,80.0,27.0,57.0,31.0,27.0,17.0,23.0,80.0,41.0,34.0,88.0,15.0,37.0,20.0,7.0,16.0,10.0,36.0,35.0,28.0,62.0,54.0,68.0,68.0,18.0,99.0,97.0,17.0,42.0,66.0,91.0,3.0,27.0],"hard":[56.0,21.0,5.0,1.0,11.0,3.0,24.0,80.0,8.0,13.0,3.0,36.0,21.0,1.0,22.0,2.0,46.0,50.0,6.0,12.0,1.0,6.0,4.0,1.0,4.0,5.0,2.0,45.0,0.0,11.0,10.0,1.0,2.0,0.0,11.0,7.0,6.0,29.0,13.0,18.0,15.0,1.0,51.0,60.0,0.0,1.0,24.0,41.0,4.0,23.0],"contributor":"RoboTwin Team"},{"id":"sft:ACT","name":"ACT","setting":"sft","easy_mean":29.74,"hard_mean":1.74,"easy":[97.0,56.0,1.0,0.0,32.0,58.0,68.0,94.0,42.0,85.0,7.0,88.0,22.0,0.0,36.0,0.0,56.0,86.0,7.0,31.0,1.0,0.0,6.0,7.0,49.0,1.0,16.0,72.0,9.0,61.0,1.0,0.0,15.0,0.0,1.0,2.0,5.0,31.0,27.0,15.0,1.0,2.0,63.0,74.0,0.0,25.0,48.0,82.0,2.0,5.0],"hard":[23.0,3.0,0.0,0.0,4.0,3.0,1.0,25.0,0.0,0.0,0.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,1.0,0.0,0.0,0.0,4.0,10.0,0.0,0.0,0.0,0.0,0.0,2.0],"contributor":"RoboTwin Team"},{"id":"sft:DP","name":"DP","setting":"sft","easy_mean":28.04,"hard_mean":0.64,"easy":[97.0,42.0,0.0,1.0,61.0,54.0,49.0,98.0,10.0,53.0,8.0,39.0,39.0,1.0,47.0,1.0,49.0,5.0,6.0,24.0,2.0,13.0,14.0,11.0,72.0,18.0,40.0,41.0,8.0,37.0,3.0,0.0,15.0,1.0,22.0,13.0,23.0,6.0,22.0,42.0,13.0,9.0,59.0,65.0,0.0,7.0,63.0,61.0,2.0,36.0],"hard":[0.0,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,18.0,8.0,0.0,0.0,0.0,0.0,0.0,1.0],"contributor":"RoboTwin Team"},{"id":"sft:DP3","name":"DP3","setting":"sft","easy_mean":55.24,"hard_mean":4.96,"easy":[99.0,72.0,3.0,2.0,77.0,90.0,85.0,98.0,70.0,100.0,17.0,97.0,70.0,41.0,68.0,12.0,82.0,61.0,52.0,60.0,46.0,49.0,26.0,19.0,72.0,67.0,48.0,86.0,13.0,65.0,36.0,4.0,65.0,15.0,60.0,44.0,58.0,69.0,60.0,72.0,74.0,31.0,100.0,98.0,1.0,24.0,57.0,83.0,18.0,46.0],"hard":[3.0,8.0,0.0,0.0,14.0,0.0,53.0,2.0,0.0,3.0,1.0,0.0,6.0,0.0,3.0,0.0,7.0,22.0,1.0,1.0,2.0,0.0,1.0,0.0,18.0,2.0,3.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,2.0,3.0,21.0,1.0,1.0,1.0,25.0,19.0,0.0,0.0,5.0,6.0,0.0,8.0],"contributor":"RoboTwin Team"}],"updated":"2026-07-22"}
+  </script>
+  <script>
+    const DATA = JSON.parse(document.getElementById('lb-data').textContent);
+    let sortKey = 'hard';
+
+    const fmt = (v, digits) => {
+      if (digits != null) return v.toFixed(digits) + '%';
+      return (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1)) + '%';
+    };
+
+    const heat = (v) => {
+      const t = Math.max(0, Math.min(100, v)) / 100;
+      return `background:rgba(101,164,135,${0.08 + 0.55 * t})`;
+    };
+
+    const sortedEntries = () => {
+      const key = sortKey === 'easy' ? 'easy_mean' : 'hard_mean';
+      const alt = sortKey === 'easy' ? 'hard_mean' : 'easy_mean';
+      return [...DATA.entries].sort((a, b) => (b[key] - a[key]) || (b[alt] - a[alt]));
+    };
+
+    const renderRank = () => {
+      const rows = sortedEntries();
+      const tbody = document.querySelector('#rankTable tbody');
+      tbody.innerHTML = rows.map((e, i) => {
+        const rank = i + 1;
+        const badge = e.setting === 'sft'
+          ? '<span class="badge-sft">Single</span>'
+          : '<span class="badge-co">Co-train</span>';
+        const easyDigits = e.setting === 'sft' ? 2 : 1;
+        const hardDigits = e.setting === 'sft' ? 2 : 1;
+        const contributor = e.contributor || 'RoboTwin Team';
+        return `<tr>
+          <td class="sticky-left"><span class="rank-num ${rank <= 3 ? 'top' : ''}">#${rank}</span></td>
+          <td class="col-method"><span class="method-name">${e.name}</span>${badge}</td>
+          <td class="contributor">${contributor}</td>
+          <td class="score-easy" style="${heat(e.easy_mean)}">${fmt(e.easy_mean, easyDigits)}</td>
+          <td class="score-hard" style="${heat(e.hard_mean)}">${fmt(e.hard_mean, hardDigits)}</td>
+        </tr>`;
+      }).join('');
+    };
+
+    const renderTasks = () => {
+      const rows = sortedEntries();
+      const thead = document.querySelector('#taskTable thead');
+      const tbody = document.querySelector('#taskTable tbody');
+
+      thead.innerHTML = `
+        <tr>
+          <th class="sticky-left">Task</th>
+          ${rows.map(e => {
+            const mark = e.setting === 'sft' ? ' <span style="opacity:.9">· Single</span>' : '';
+            return `<th colspan="2">${e.name}${mark}</th>`;
+          }).join('')}
+        </tr>
+        <tr class="sub">
+          <th class="sticky-left"></th>
+          ${rows.map(() => `<th>Easy</th><th>Hard</th>`).join('')}
+        </tr>`;
+
+      const body = DATA.tasks.map((task, ti) => {
+        const cells = rows.map(e => {
+          const easy = e.easy[ti], hard = e.hard[ti];
+          return `<td style="${heat(easy)}">${fmt(easy)}</td><td style="${heat(hard)}">${fmt(hard)}</td>`;
+        }).join('');
+        return `<tr><th class="sticky-left">${task}</th>${cells}</tr>`;
+      });
+
+      const avg = rows.map(e => {
+        const d = e.setting === 'sft' ? 2 : 1;
+        return `<td class="avg" style="${heat(e.easy_mean)}">${fmt(e.easy_mean, d)}</td>
+                <td class="avg" style="${heat(e.hard_mean)}">${fmt(e.hard_mean, d)}</td>`;
+      }).join('');
+      body.push(`<tr class="avg-row"><th class="sticky-left">Average</th>${avg}</tr>`);
+      tbody.innerHTML = body.join('');
+    };
+
+    const setSort = (key) => {
+      sortKey = key;
+      document.querySelectorAll('.sort-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.sort === key);
+      });
+      document.getElementById('sortHint').textContent =
+        key === 'hard'
+          ? 'Sorted by Hard (demo_randomized) mean ↓'
+          : 'Sorted by Easy (demo_clean) mean ↓';
+      renderRank();
+      renderTasks();
+    };
+
+    document.querySelectorAll('.sort-btn').forEach(btn => {
+      btn.addEventListener('click', () => setSort(btn.dataset.sort));
+    });
+
+    setSort('hard');
+  </script>
 </body>
 </html>
