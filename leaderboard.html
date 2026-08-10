@@ -107,7 +107,6 @@
     }
     .updated-pill b { color: var(--text); font-weight: 750; }
     .toolbar {
-
       display: flex; flex-wrap: wrap; gap: 12px;
       align-items: center; justify-content: space-between;
       margin-bottom: 12px;
@@ -225,6 +224,14 @@
         100 trials/task under <i><b>demo_clean (Easy)</b></i> and <i><b>demo_randomized (Hard)</b></i>.
         Co-train and Single-task SFT are listed in one board; use the sort control to rank by Easy or Hard.
       </p>
+      <div class="proto-callout" style="margin:12px 0 0">
+        <div class="proto-title">XPolicyLab</div>
+        <div class="proto-body">
+          Results on this leaderboard are reproduced via the
+          <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener"><b>XPolicyLab</b></a>
+          standard interface.
+        </div>
+      </div>
       <div class="legend">
         <span><b>Co-train</b>: one policy jointly trained on all 50 tasks</span>
         <span><b>Single</b>: one checkpoint fine-tuned per task (paper baselines)</span>
