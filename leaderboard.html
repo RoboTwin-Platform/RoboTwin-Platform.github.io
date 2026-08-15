@@ -29,10 +29,60 @@
       margin: 0; font-family: var(--display);
       font-size: clamp(28px, 4vw, 40px);
       letter-spacing: -0.03em; line-height: 1;
+      display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     }
-    .lb-brand .g { color: var(--brand-green); }
-    .lb-brand .p { color: var(--brand-purple); }
+    .lb-brand img {
+      height: clamp(34px, 5vw, 48px);
+      width: auto;
+      display: block;
+    }
+    .lb-brand .lb-title {
+      font-weight: 750;
+      color: var(--text);
+    }
     .lb-sub { margin: 6px 0 0; color: var(--text-soft); font-size: 14px; }
+    .lb-sub b { color: var(--text); font-weight: 750; }
+    .setting-banner {
+      margin: 0 0 14px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(101,164,135,0.4);
+      background: linear-gradient(135deg, rgba(101,164,135,0.18), rgba(255,255,255,0.95));
+    }
+    .setting-banner-kicker {
+      font-size: 12px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--brand-green-deep);
+      margin-bottom: 4px;
+    }
+    .setting-banner-title {
+      margin: 0;
+      font-family: var(--display);
+      font-size: clamp(28px, 4vw, 36px);
+      font-weight: 750;
+      letter-spacing: -0.02em;
+      color: var(--text);
+      line-height: 1.15;
+    }
+    .setting-banner-title em {
+      font-style: normal;
+      color: var(--brand-green-deep);
+    }
+    .setting-banner-meta {
+      margin: 8px 0 0;
+      display: flex; flex-wrap: wrap; gap: 8px;
+    }
+    .setting-banner-meta span {
+      font-size: 13px; font-weight: 650;
+      color: var(--text);
+      background: rgba(255,255,255,0.92);
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      padding: 5px 10px;
+    }
+    .setting-banner-meta b { color: var(--brand-green-deep); }
     .lb-nav { display: flex; gap: 8px; flex-wrap: wrap; }
     .lb-nav a {
       display: inline-flex; align-items: center; min-height: 36px;
@@ -93,6 +143,12 @@
       font-size: 12px;
       color: var(--text-soft);
       font-weight: 600;
+    }
+    .listed-at {
+      font-size: 12px;
+      color: var(--text-soft);
+      font-weight: 650;
+      font-variant-numeric: tabular-nums;
     }
     .updated-pill {
       display: inline-flex; align-items: center; gap: 6px;
@@ -205,8 +261,11 @@
   <header class="lb-top">
     <div class="lb-top-inner">
       <div>
-        <h1 class="lb-brand"><span class="g">Robo</span><span class="p">Twin</span> 2.0 Leaderboard</h1>
-        <p class="lb-sub">clean→random · 50 tasks · 50 demo_clean trajectories / task · Updated <span id="updatedAt"></span></p>
+        <h1 class="lb-brand">
+          <img src="https://robotwin-platform.github.io/doc/assets/robotwin-text-logo.jpg" alt="RoboTwin" />
+          <span class="lb-title">2.0 Leaderboard</span>
+        </h1>
+        <p class="lb-sub"><b>Settings</b>: clean2random（hard） / clean2clean（easy） · 50 demo_clean × 50 tasks · Aloha-AgileX · Updated <span id="updatedAt"></span></p>
       </div>
       <nav class="lb-nav">
         <a href="./">Home</a>
@@ -220,9 +279,15 @@
     <section class="panel setting">
       <h2>Benchmark Setting</h2>
       <p>
-        Official protocol: <b>clean2random</b>. Policies are trained on <b>Aloha-AgileX</b>, then evaluated
-        100 trials/task under <i><b>demo_clean (Easy)</b></i> and <i><b>demo_randomized (Hard)</b></i>.
-        Co-train and Single-task SFT are listed in one board; use the sort control to rank by Easy or Hard.
+        Training data is fixed to <b>50 <i>demo_clean</i> trajectories × 50 tasks</b> (2,500 demos total)
+        on <b>Aloha-AgileX</b>, then evaluated 100 trials/task under <i><b>demo_clean</b></i> and
+        <i><b>demo_randomized</b></i>. Use the ranking control to switch titles between
+        <b>clean2random（hard）</b> and <b>clean2clean（easy）</b>. Co-train and Single-task SFT share one board.
+      </p>
+      <p style="margin-top:10px">
+        <b>Listing rule:</b> only models with <b>publicly released code and weights</b> are eligible
+        for this leaderboard. To submit or request listing, contact
+        <a href="mailto:chentianxing2002@gmail.com"><b>chentianxing2002@gmail.com</b></a>.
       </p>
       <div class="proto-callout" style="margin:12px 0 0">
         <div class="proto-title">XPolicyLab</div>
@@ -230,12 +295,20 @@
           Results on this leaderboard are reproduced via the
           <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener"><b>XPolicyLab</b></a>
           standard interface.
+          Website:
+          <a href="https://xpolicylab.github.io/" target="_blank" rel="noopener">https://xpolicylab.github.io/</a>
+          · Code:
+          <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener">https://github.com/XPolicyLab/XPolicyLab</a>.
+          The same stack is also shared with <b>RoboDojo</b> simulation and real-robot evaluation.
         </div>
       </div>
       <div class="legend">
+        <span><b>Data</b>: 50 demo_clean × 50 tasks</span>
         <span><b>Co-train</b>: one policy jointly trained on all 50 tasks</span>
         <span><b>Single</b>: one checkpoint fine-tuned per task (paper baselines)</span>
-        <span><b>Easy</b> = demo_clean &nbsp;|&nbsp; <b>Hard</b> = demo_randomized</span>
+        <span><b>clean2random（hard）</b>: ranked by demo_randomized</span>
+        <span><b>clean2clean（easy）</b>: ranked by demo_clean</span>
+        <span><b>Open</b>: public code + weights required</span>
         <span><b>Contributor</b>: RoboTwin Team</span>
       </div>
     </section>
@@ -243,20 +316,31 @@
     <section class="panel">
       <div class="toolbar">
         <div class="sort-group">
-          <span class="sort-label">Rank by</span>
-          <button class="sort-btn active" data-sort="hard" type="button">Hard</button>
-          <button class="sort-btn" data-sort="easy" type="button">Easy</button>
+          <span class="sort-label">Ranking setting</span>
+          <button class="sort-btn active" data-sort="hard" type="button">clean2random（hard）</button>
+          <button class="sort-btn" data-sort="easy" type="button">clean2clean（easy）</button>
         </div>
-        <div class="hint" id="sortHint">Sorted by Hard (demo_randomized) mean ↓</div>
+        <div class="sort-group">
+          <span class="sort-label">View</span>
+          <button class="sort-btn active" data-view="all" type="button">All</button>
+          <button class="sort-btn" data-view="top10" type="button">Top 10</button>
+        </div>
+        <div class="hint" id="sortHint">Ranked by clean2random（hard） mean ↓</div>
       </div>
 
-      <div class="proto-callout">
-        <div class="proto-title">Primary track: Co-train</div>
-        <div class="proto-body"><b>50 demo_clean × 50 tasks</b> joint training (2,500 clean demos total), then clean→random evaluation.</div>
+      <div class="setting-banner">
+        <div class="setting-banner-kicker">Current ranking setting</div>
+        <h2 class="setting-banner-title" id="rankSettingTitle"><em>clean2random（hard）</em></h2>
+        <div class="setting-banner-meta">
+          <span><b>Train</b>: 50 demo_clean × 50 tasks (2,500)</span>
+          <span id="rankSettingEval"><b>Eval / sort</b>: demo_randomized</span>
+          <span><b>Robot</b>: Aloha-AgileX</span>
+          <span><b>Track</b>: Co-train (+ Single SFT baselines)</span>
+        </div>
       </div>
 
       <div class="updated-pill" id="updatedPill">Latest update: <b id="updatedAtDetail"></b></div>
-      <h2>Overall Ranking</h2>
+      <h2 id="rankHeading">Overall Ranking — clean2random（hard）</h2>
       <div class="table-scroll" style="max-height:none">
         <table class="lb rank-table" id="rankTable">
           <thead>
@@ -264,8 +348,9 @@
               <th class="col-rank sticky-left">Rank</th>
               <th class="col-method">Method</th>
               <th>Contributor</th>
-              <th>Easy</th>
-              <th>Hard</th>
+              <th>Date</th>
+              <th>clean2random（hard）</th>
+              <th>clean2clean（easy）</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -275,7 +360,7 @@
 
     <section class="panel">
       <h2>Per-task Results</h2>
-      <p class="hint" style="margin:0 0 10px">Columns follow the current Easy/Hard ranking. Methods tagged <b>Single</b> are single-task SFT baselines.</p>
+      <p class="hint" style="margin:0 0 10px">Columns follow the current clean2random（hard） / clean2clean（easy） ranking. Methods tagged <b>Single</b> are single-task SFT baselines.</p>
       <div class="table-scroll">
         <table class="lb" id="taskTable">
           <thead></thead>
@@ -287,6 +372,7 @@
     <section class="panel news">
       <h2>News</h2>
       <ul>
+        <li><b>2026/08/15</b>: Add GigaBrain-0.7 co-train results (50 demo_clean × 50 tasks).</li>
         <li><b>2026/07/22</b>: Merge Co-train + Single-task SFT into one clean2random board; add Easy/Hard ranking.</li>
         <li><b>2025/08/05</b>: Support RDT, π0, ACT, DP, and DP3 single-task SFT results.</li>
       </ul>
@@ -294,11 +380,12 @@
   </div>
 
   <script id="lb-data" type="application/json">
-{"tasks":["Adjust Bottle","Beat Block Hammer","Blocks Ranking RGB","Blocks Ranking Size","Click Alarmclock","Click Bell","Dump Bin Bigbin","Grab Roller","Handover Block","Handover Mic","Hanging Mug","Lift Pot","Move Can Pot","Move Pillbottle Pad","Move Playingcard Away","Move Stapler Pad","Open Laptop","Open Microwave","Pick Diverse Bottles","Pick Dual Bottles","Place A2B Left","Place A2B Right","Place Bread Basket","Place Bread Skillet","Place Burger Fries","Place Can Basket","Place Cans Plasticbox","Place Container Plate","Place Dual Shoes","Place Empty Cup","Place Fan","Place Mouse Pad","Place Object Basket","Place Object Scale","Place Object Stand","Place Phone Stand","Place Shoe","Press Stapler","Put Bottles Dustbin","Put Object Cabinet","Rotate QRcode","Scan Object","Shake Bottle Horizontally","Shake Bottle","Stack Blocks Three","Stack Blocks Two","Stack Bowls Three","Stack Bowls Two","Stamp Seal","Turn Switch"],"entries":[{"id":"cotrain:Pi_05","name":"π0.5","setting":"cotrain","easy_mean":70.7,"hard_mean":46.0,"easy":[99.0,93.0,72.0,45.0,65.0,31.0,92.0,99.0,30.0,98.0,17.0,98.0,60.0,46.0,84.0,20.0,93.0,86.0,66.0,72.0,71.0,68.0,63.0,76.0,82.0,56.0,31.0,92.0,70.0,96.0,66.0,34.0,70.0,78.0,85.0,65.0,82.0,79.0,78.0,39.0,90.0,49.0,99.0,100.0,77.0,91.0,81.0,94.0,53.0,52.0],"hard":[77.0,23.0,44.0,21.0,50.0,35.0,84.0,97.0,12.0,6.0,14.0,35.0,10.0,32.0,65.0,18.0,68.0,59.0,42.0,57.0,49.0,39.0,60.0,47.0,86.0,10.0,73.0,72.0,45.0,80.0,26.0,31.0,29.0,38.0,47.0,37.0,50.0,63.0,50.0,22.0,21.0,40.0,100.0,100.0,25.0,43.0,52.0,70.0,21.0,25.0],"contributor":"RoboTwin Team"},{"id":"cotrain:Abot_M0","name":"Abot-M0","setting":"cotrain","easy_mean":57.4,"hard_mean":22.9,"easy":[99.0,72.0,61.0,33.0,0.0,5.0,89.0,100.0,16.0,90.0,7.0,51.0,42.0,56.0,78.0,16.0,68.0,67.0,12.0,28.0,56.0,41.0,70.0,73.0,93.0,38.0,56.0,100.0,28.0,97.0,48.0,31.0,70.0,73.0,79.0,33.0,74.0,78.0,46.0,41.0,52.0,38.0,97.0,96.0,39.0,82.0,76.0,92.0,45.0,38.0],"hard":[45.0,27.0,26.0,2.0,19.0,13.0,67.0,13.0,1.0,17.0,0.0,27.0,5.0,8.0,4.0,0.0,60.0,29.0,10.0,75.0,4.0,4.0,7.0,6.0,5.0,1.0,4.0,8.0,15.0,47.0,11.0,2.0,38.0,18.0,30.0,0.0,27.0,52.0,37.0,5.9,12.0,12.0,83.0,86.0,11.0,43.0,32.0,65.0,12.0,17.0],"contributor":"RoboTwin Team"},{"id":"cotrain:X_WAM","name":"X-WAM","setting":"cotrain","easy_mean":70.0,"hard_mean":25.8,"easy":[92.0,92.0,85.0,33.0,95.0,100.0,88.0,95.0,21.0,97.0,17.0,77.0,77.0,78.0,83.0,26.0,72.0,9.0,74.0,99.0,70.0,59.0,82.0,82.0,93.0,63.0,93.0,95.0,38.0,93.0,47.0,49.0,52.0,66.0,83.0,35.0,76.0,85.0,71.0,28.0,47.0,32.0,97.0,96.0,72.0,97.0,69.0,93.0,58.0,68.0],"hard":[13.0,21.0,36.0,0.0,61.0,52.0,40.0,16.0,21.0,8.0,0.0,0.0,34.0,26.0,11.0,2.0,6.0,24.0,26.0,55.0,18.0,21.0,40.0,37.0,36.0,15.0,36.0,52.0,7.0,36.0,6.0,6.0,20.0,14.0,28.0,4.0,31.0,20.0,21.0,16.0,2.0,14.0,66.0,67.0,26.0,76.0,38.0,67.0,16.0,4.0],"contributor":"RoboTwin Team"},{"id":"cotrain:X_VLA","name":"X-VLA","setting":"cotrain","easy_mean":68.0,"hard_mean":20.9,"easy":[99.0,87.0,3.0,56.0,62.0,100.0,83.0,100.0,77.0,98.0,19.0,96.0,58.0,66.0,84.0,42.0,85.0,43.0,50.0,41.0,53.0,49.0,85.0,89.0,90.0,70.0,93.0,94.0,30.0,90.0,63.0,53.0,81.0,76.0,91.0,84.0,83.0,87.0,47.0,41.0,81.0,57.0,100.0,100.0,0.0,10.0,77.0,85.0,50.0,40.0],"hard":[33.0,9.0,4.0,25.0,43.0,63.0,41.0,20.0,1.3,1.0,2.0,15.0,0.0,3.0,5.0,0.0,16.0,5.0,30.0,51.0,15.0,13.0,52.0,17.0,35.0,9.0,60.0,39.0,12.0,16.0,1.0,0.0,6.0,6.0,43.0,5.0,39.0,73.0,20.0,21.0,1.0,9.0,78.0,76.0,0.0,2.0,9.0,15.0,2.0,6.0],"contributor":"RoboTwin Team"},{"id":"cotrain:Xiaomi_Robotics_0","name":"Xiaomi Robotics-0","setting":"cotrain","easy_mean":62.9,"hard_mean":18.2,"easy":[100.0,51.0,57.0,19.0,97.0,100.0,94.0,99.0,31.0,92.0,16.0,67.0,63.0,65.0,77.0,16.0,90.0,45.0,47.0,56.0,45.0,36.0,54.0,63.0,85.0,52.0,10.0,91.0,31.0,92.0,50.0,18.0,76.0,54.0,84.0,44.0,75.0,79.0,73.0,35.0,56.0,46.0,100.0,99.0,73.0,85.0,78.0,93.0,46.0,38.0],"hard":[9.0,16.0,8.0,1.0,58.0,57.0,49.0,12.0,1.0,6.0,6.0,1.0,7.0,3.0,12.0,0.0,24.0,16.0,12.0,28.0,6.0,2.0,23.0,11.0,27.0,7.0,31.0,59.0,9.0,12.0,3.0,1.0,15.0,2.0,24.0,11.0,29.0,21.0,21.0,5.0,1.0,8.0,62.0,61.0,7.0,22.0,35.0,53.0,3.0,14.0],"contributor":"RoboTwin Team"},{"id":"cotrain:EventVLA","name":"EventVLA","setting":"cotrain","easy_mean":65.6,"hard_mean":15.7,"easy":[100.0,24.0,94.0,51.0,93.0,94.0,92.0,97.0,58.0,44.0,20.0,59.0,62.0,60.0,57.0,14.0,86.0,55.0,22.0,42.0,79.0,65.0,66.0,64.0,89.0,76.0,81.0,98.0,22.0,92.0,44.0,34.0,73.0,80.0,85.0,64.0,55.0,80.0,45.0,33.0,57.0,27.0,100.0,100.0,76.0,98.0,83.0,96.0,69.0,24.0],"hard":[24.0,1.0,6.0,1.0,30.0,48.0,64.0,48.0,4.0,5.0,2.0,1.0,0.0,3.0,17.0,2.0,23.0,44.0,9.0,8.0,20.0,17.0,15.0,4.0,7.0,7.0,14.0,15.0,1.0,18.0,5.0,6.0,29.0,24.0,32.0,3.0,10.0,32.0,31.0,27.0,1.0,3.0,37.0,34.0,3.0,13.0,11.0,17.0,3.0,8.0],"contributor":"RoboTwin Team"},{"id":"cotrain:Spatial_Forcing","name":"Spatial Forcing","setting":"cotrain","easy_mean":77.2,"hard_mean":9.5,"easy":[97.0,74.0,83.0,42.0,89.0,97.0,83.0,98.0,62.0,100.0,17.0,98.0,69.0,77.0,96.0,31.0,89.0,66.0,72.0,90.0,67.0,55.0,84.0,82.0,98.0,77.0,94.0,97.0,83.0,94.0,74.0,35.0,79.0,73.0,96.0,83.0,88.0,89.0,58.0,37.0,87.0,76.0,99.0,99.0,75.0,96.0,79.0,96.0,39.0,40.0],"hard":[16.0,6.0,8.0,0.0,5.0,4.0,56.0,20.0,0.0,10.0,2.0,2.0,2.0,6.0,9.0,0.0,4.0,8.0,6.0,25.5,6.0,7.0,7.0,6.0,11.0,3.0,4.0,15.0,4.0,19.0,3.0,0.0,8.0,4.0,8.0,5.0,13.0,12.0,44.0,11.0,6.0,5.0,17.0,17.0,5.0,11.0,9.0,20.0,3.0,3.0],"contributor":"RoboTwin Team"},{"id":"cotrain:GalaxeaVLA","name":"GalaxeaVLA","setting":"cotrain","easy_mean":62.7,"hard_mean":9.1,"easy":[100.0,82.0,42.0,19.0,79.0,77.0,88.0,100.0,10.0,85.0,20.0,75.0,58.0,69.0,88.0,8.0,74.0,41.0,62.0,77.0,56.0,47.0,77.0,70.0,90.0,67.0,89.0,97.0,44.0,91.0,41.0,19.0,70.0,35.0,79.0,53.0,67.0,74.0,54.0,37.0,66.0,42.0,100.0,100.0,28.0,85.0,59.0,92.0,33.0,20.0],"hard":[2.0,18.0,1.0,1.0,8.0,19.0,42.0,38.0,0.0,0.0,2.0,0.0,1.0,3.0,9.0,1.0,6.0,3.0,9.0,14.0,3.0,3.0,21.0,9.0,25.0,4.0,17.0,23.0,7.0,2.0,2.0,0.0,1.0,3.0,15.0,4.0,17.0,10.0,3.0,8.0,0.0,4.0,27.0,30.0,1.0,11.0,8.0,13.0,2.0,3.0],"contributor":"RoboTwin Team"},{"id":"cotrain:AHA_WAM","name":"AHA-WAM","setting":"cotrain","easy_mean":64.3,"hard_mean":3.2,"easy":[100.0,52.0,60.0,32.0,98.0,100.0,90.0,98.0,63.0,99.0,13.0,62.0,48.0,33.0,82.0,5.0,89.0,59.0,36.0,60.0,65.0,50.0,54.0,68.0,96.0,61.0,90.0,99.0,48.0,64.0,58.0,12.0,71.0,34.0,79.0,61.0,74.0,82.0,58.0,36.0,61.0,51.0,100.0,100.0,57.0,89.0,71.0,93.0,13.0,42.0],"hard":[0.0,0.0,1.0,0.0,17.0,19.0,27.0,3.0,1.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,9.0,1.0,0.0,1.0,1.0,0.0,3.0,0.0,0.0,2.0,1.0,11.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,2.0,1.0,0.0,0.0,0.0,15.0,14.0,1.0,2.0,0.0,5.0,0.0,13.0],"contributor":"RoboTwin Team"},{"id":"cotrain:starVLA","name":"starVLA","setting":"cotrain","easy_mean":44.3,"hard_mean":3.3,"easy":[79.0,79.0,48.0,18.0,59.0,77.0,56.0,95.0,11.0,58.0,2.0,76.0,31.0,38.0,58.0,17.0,23.0,8.0,42.0,60.0,22.0,26.0,76.0,68.0,86.0,4.0,98.0,85.0,42.0,81.0,33.0,10.0,3.0,19.0,59.0,16.0,48.0,92.0,0.0,34.0,12.0,7.0,76.0,97.0,3.0,55.0,49.0,68.0,13.0,0.0],"hard":[0.0,4.0,1.0,0.0,0.0,7.0,3.0,42.0,0.0,1.0,0.0,0.0,0.0,0.0,3.0,0.0,2.0,0.0,14.0,18.0,0.0,0.0,5.0,6.0,14.0,0.0,3.0,1.0,3.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,16.0,0.0,0.0,0.0,6.0,6.0,6.0,1.0,1.0,0.0,0.0,0.0,0.0],"contributor":"RoboTwin Team"},{"id":"cotrain:FastWAM","name":"FastWAM","setting":"cotrain","easy_mean":77.8,"hard_mean":1.9,"easy":[99.0,82.0,81.0,52.0,99.0,95.0,94.0,100.0,66.0,98.0,14.0,91.0,96.0,92.0,94.0,33.0,84.0,17.0,72.0,87.0,69.0,60.0,87.0,85.0,97.0,77.0,98.0,100.0,67.0,90.0,59.0,55.0,82.0,83.0,94.0,85.0,87.0,90.0,55.0,42.0,81.0,68.0,100.0,100.0,89.0,99.0,80.0,94.0,30.0,39.0],"hard":[0.0,0.0,0.0,0.0,60.0,7.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0,9.0,10.0,0.0,0.0,0.0,0.0,0.0,3.0],"contributor":"RoboTwin Team"},{"id":"sft:RDT","name":"RDT","setting":"sft","easy_mean":34.5,"hard_mean":13.72,"easy":[81.0,77.0,3.0,0.0,61.0,80.0,64.0,74.0,45.0,90.0,23.0,72.0,25.0,8.0,43.0,2.0,59.0,37.0,2.0,42.0,3.0,1.0,10.0,5.0,50.0,19.0,6.0,78.0,4.0,56.0,12.0,1.0,33.0,1.0,15.0,15.0,35.0,41.0,21.0,33.0,50.0,4.0,84.0,74.0,2.0,21.0,51.0,76.0,1.0,35.0],"hard":[75.0,37.0,0.0,0.0,12.0,9.0,32.0,43.0,14.0,31.0,16.0,9.0,12.0,0.0,11.0,0.0,32.0,20.0,0.0,13.0,1.0,1.0,2.0,1.0,27.0,6.0,5.0,17.0,4.0,7.0,2.0,0.0,17.0,0.0,5.0,6.0,7.0,24.0,4.0,18.0,5.0,1.0,51.0,45.0,0.0,2.0,17.0,30.0,0.0,15.0],"contributor":"RoboTwin Team"},{"id":"sft:π0","name":"π0","setting":"sft","easy_mean":46.42,"hard_mean":16.34,"easy":[90.0,43.0,19.0,7.0,63.0,44.0,83.0,96.0,45.0,98.0,11.0,84.0,58.0,21.0,53.0,0.0,85.0,80.0,27.0,57.0,31.0,27.0,17.0,23.0,80.0,41.0,34.0,88.0,15.0,37.0,20.0,7.0,16.0,10.0,36.0,35.0,28.0,62.0,54.0,68.0,68.0,18.0,99.0,97.0,17.0,42.0,66.0,91.0,3.0,27.0],"hard":[56.0,21.0,5.0,1.0,11.0,3.0,24.0,80.0,8.0,13.0,3.0,36.0,21.0,1.0,22.0,2.0,46.0,50.0,6.0,12.0,1.0,6.0,4.0,1.0,4.0,5.0,2.0,45.0,0.0,11.0,10.0,1.0,2.0,0.0,11.0,7.0,6.0,29.0,13.0,18.0,15.0,1.0,51.0,60.0,0.0,1.0,24.0,41.0,4.0,23.0],"contributor":"RoboTwin Team"},{"id":"sft:ACT","name":"ACT","setting":"sft","easy_mean":29.74,"hard_mean":1.74,"easy":[97.0,56.0,1.0,0.0,32.0,58.0,68.0,94.0,42.0,85.0,7.0,88.0,22.0,0.0,36.0,0.0,56.0,86.0,7.0,31.0,1.0,0.0,6.0,7.0,49.0,1.0,16.0,72.0,9.0,61.0,1.0,0.0,15.0,0.0,1.0,2.0,5.0,31.0,27.0,15.0,1.0,2.0,63.0,74.0,0.0,25.0,48.0,82.0,2.0,5.0],"hard":[23.0,3.0,0.0,0.0,4.0,3.0,1.0,25.0,0.0,0.0,0.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,1.0,0.0,0.0,0.0,4.0,10.0,0.0,0.0,0.0,0.0,0.0,2.0],"contributor":"RoboTwin Team"},{"id":"sft:DP","name":"DP","setting":"sft","easy_mean":28.04,"hard_mean":0.64,"easy":[97.0,42.0,0.0,1.0,61.0,54.0,49.0,98.0,10.0,53.0,8.0,39.0,39.0,1.0,47.0,1.0,49.0,5.0,6.0,24.0,2.0,13.0,14.0,11.0,72.0,18.0,40.0,41.0,8.0,37.0,3.0,0.0,15.0,1.0,22.0,13.0,23.0,6.0,22.0,42.0,13.0,9.0,59.0,65.0,0.0,7.0,63.0,61.0,2.0,36.0],"hard":[0.0,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,18.0,8.0,0.0,0.0,0.0,0.0,0.0,1.0],"contributor":"RoboTwin Team"},{"id":"sft:DP3","name":"DP3","setting":"sft","easy_mean":55.24,"hard_mean":4.96,"easy":[99.0,72.0,3.0,2.0,77.0,90.0,85.0,98.0,70.0,100.0,17.0,97.0,70.0,41.0,68.0,12.0,82.0,61.0,52.0,60.0,46.0,49.0,26.0,19.0,72.0,67.0,48.0,86.0,13.0,65.0,36.0,4.0,65.0,15.0,60.0,44.0,58.0,69.0,60.0,72.0,74.0,31.0,100.0,98.0,1.0,24.0,57.0,83.0,18.0,46.0],"hard":[3.0,8.0,0.0,0.0,14.0,0.0,53.0,2.0,0.0,3.0,1.0,0.0,6.0,0.0,3.0,0.0,7.0,22.0,1.0,1.0,2.0,0.0,1.0,0.0,18.0,2.0,3.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,2.0,3.0,21.0,1.0,1.0,1.0,25.0,19.0,0.0,0.0,5.0,6.0,0.0,8.0],"contributor":"RoboTwin Team"}],"updated":"2026-08-10","updated_note":"X-WAM & starVLA per-task scores refreshed"}
+{"tasks":["Adjust Bottle","Beat Block Hammer","Blocks Ranking RGB","Blocks Ranking Size","Click Alarmclock","Click Bell","Dump Bin Bigbin","Grab Roller","Handover Block","Handover Mic","Hanging Mug","Lift Pot","Move Can Pot","Move Pillbottle Pad","Move Playingcard Away","Move Stapler Pad","Open Laptop","Open Microwave","Pick Diverse Bottles","Pick Dual Bottles","Place A2B Left","Place A2B Right","Place Bread Basket","Place Bread Skillet","Place Burger Fries","Place Can Basket","Place Cans Plasticbox","Place Container Plate","Place Dual Shoes","Place Empty Cup","Place Fan","Place Mouse Pad","Place Object Basket","Place Object Scale","Place Object Stand","Place Phone Stand","Place Shoe","Press Stapler","Put Bottles Dustbin","Put Object Cabinet","Rotate QRcode","Scan Object","Shake Bottle Horizontally","Shake Bottle","Stack Blocks Three","Stack Blocks Two","Stack Bowls Three","Stack Bowls Two","Stamp Seal","Turn Switch"],"entries":[{"id":"cotrain:GigaBrain_0_7","name":"GigaBrain-0.7","setting":"cotrain","easy_mean":66.8,"hard_mean":67.9,"easy":[98.0,94.0,68.0,42.0,98.0,98.0,90.0,100.0,16.0,100.0,26.0,86.0,86.0,32.0,58.0,26.0,78.0,82.0,38.0,26.0,68.0,58.0,60.0,80.0,82.0,20.0,8.0,94.0,68.0,90.0,78.0,26.0,74.0,64.0,88.0,36.0,88.0,90.0,68.0,78.0,54.0,32.0,100.0,100.0,60.0,80.0,70.0,90.0,52.0,42.0],"hard":[98.0,74.0,76.0,28.0,96.0,84.0,66.0,100.0,32.0,100.0,36.0,86.0,82.0,58.0,82.0,40.0,88.0,50.0,50.0,56.0,72.0,68.0,68.0,50.0,86.0,22.0,18.0,94.0,72.0,90.0,74.0,44.0,64.0,54.0,76.0,52.0,92.0,74.0,54.0,82.0,58.0,46.0,92.0,98.0,78.0,92.0,64.0,74.0,54.0,52.0],"contributor":"GigaAI","listed_at":"26.08.15"},{"id":"cotrain:Pi_05","name":"π0.5","setting":"cotrain","easy_mean":70.7,"hard_mean":46.0,"easy":[99.0,93.0,72.0,45.0,65.0,31.0,92.0,99.0,30.0,98.0,17.0,98.0,60.0,46.0,84.0,20.0,93.0,86.0,66.0,72.0,71.0,68.0,63.0,76.0,82.0,56.0,31.0,92.0,70.0,96.0,66.0,34.0,70.0,78.0,85.0,65.0,82.0,79.0,78.0,39.0,90.0,49.0,99.0,100.0,77.0,91.0,81.0,94.0,53.0,52.0],"hard":[77.0,23.0,44.0,21.0,50.0,35.0,84.0,97.0,12.0,6.0,14.0,35.0,10.0,32.0,65.0,18.0,68.0,59.0,42.0,57.0,49.0,39.0,60.0,47.0,86.0,10.0,73.0,72.0,45.0,80.0,26.0,31.0,29.0,38.0,47.0,37.0,50.0,63.0,50.0,22.0,21.0,40.0,100.0,100.0,25.0,43.0,52.0,70.0,21.0,25.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Abot_M0","name":"Abot-M0","setting":"cotrain","easy_mean":57.4,"hard_mean":22.9,"easy":[99.0,72.0,61.0,33.0,0.0,5.0,89.0,100.0,16.0,90.0,7.0,51.0,42.0,56.0,78.0,16.0,68.0,67.0,12.0,28.0,56.0,41.0,70.0,73.0,93.0,38.0,56.0,100.0,28.0,97.0,48.0,31.0,70.0,73.0,79.0,33.0,74.0,78.0,46.0,41.0,52.0,38.0,97.0,96.0,39.0,82.0,76.0,92.0,45.0,38.0],"hard":[45.0,27.0,26.0,2.0,19.0,13.0,67.0,13.0,1.0,17.0,0.0,27.0,5.0,8.0,4.0,0.0,60.0,29.0,10.0,75.0,4.0,4.0,7.0,6.0,5.0,1.0,4.0,8.0,15.0,47.0,11.0,2.0,38.0,18.0,30.0,0.0,27.0,52.0,37.0,5.9,12.0,12.0,83.0,86.0,11.0,43.0,32.0,65.0,12.0,17.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:X_WAM","name":"X-WAM","setting":"cotrain","easy_mean":70.0,"hard_mean":25.8,"easy":[92.0,92.0,85.0,33.0,95.0,100.0,88.0,95.0,21.0,97.0,17.0,77.0,77.0,78.0,83.0,26.0,72.0,9.0,74.0,99.0,70.0,59.0,82.0,82.0,93.0,63.0,93.0,95.0,38.0,93.0,47.0,49.0,52.0,66.0,83.0,35.0,76.0,85.0,71.0,28.0,47.0,32.0,97.0,96.0,72.0,97.0,69.0,93.0,58.0,68.0],"hard":[13.0,21.0,36.0,0.0,61.0,52.0,40.0,16.0,21.0,8.0,0.0,0.0,34.0,26.0,11.0,2.0,6.0,24.0,26.0,55.0,18.0,21.0,40.0,37.0,36.0,15.0,36.0,52.0,7.0,36.0,6.0,6.0,20.0,14.0,28.0,4.0,31.0,20.0,21.0,16.0,2.0,14.0,66.0,67.0,26.0,76.0,38.0,67.0,16.0,4.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:X_VLA","name":"X-VLA","setting":"cotrain","easy_mean":68.0,"hard_mean":20.9,"easy":[99.0,87.0,3.0,56.0,62.0,100.0,83.0,100.0,77.0,98.0,19.0,96.0,58.0,66.0,84.0,42.0,85.0,43.0,50.0,41.0,53.0,49.0,85.0,89.0,90.0,70.0,93.0,94.0,30.0,90.0,63.0,53.0,81.0,76.0,91.0,84.0,83.0,87.0,47.0,41.0,81.0,57.0,100.0,100.0,0.0,10.0,77.0,85.0,50.0,40.0],"hard":[33.0,9.0,4.0,25.0,43.0,63.0,41.0,20.0,1.3,1.0,2.0,15.0,0.0,3.0,5.0,0.0,16.0,5.0,30.0,51.0,15.0,13.0,52.0,17.0,35.0,9.0,60.0,39.0,12.0,16.0,1.0,0.0,6.0,6.0,43.0,5.0,39.0,73.0,20.0,21.0,1.0,9.0,78.0,76.0,0.0,2.0,9.0,15.0,2.0,6.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Xiaomi_Robotics_0","name":"Xiaomi Robotics-0","setting":"cotrain","easy_mean":62.9,"hard_mean":18.2,"easy":[100.0,51.0,57.0,19.0,97.0,100.0,94.0,99.0,31.0,92.0,16.0,67.0,63.0,65.0,77.0,16.0,90.0,45.0,47.0,56.0,45.0,36.0,54.0,63.0,85.0,52.0,10.0,91.0,31.0,92.0,50.0,18.0,76.0,54.0,84.0,44.0,75.0,79.0,73.0,35.0,56.0,46.0,100.0,99.0,73.0,85.0,78.0,93.0,46.0,38.0],"hard":[9.0,16.0,8.0,1.0,58.0,57.0,49.0,12.0,1.0,6.0,6.0,1.0,7.0,3.0,12.0,0.0,24.0,16.0,12.0,28.0,6.0,2.0,23.0,11.0,27.0,7.0,31.0,59.0,9.0,12.0,3.0,1.0,15.0,2.0,24.0,11.0,29.0,21.0,21.0,5.0,1.0,8.0,62.0,61.0,7.0,22.0,35.0,53.0,3.0,14.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:EventVLA","name":"EventVLA","setting":"cotrain","easy_mean":65.6,"hard_mean":15.7,"easy":[100.0,24.0,94.0,51.0,93.0,94.0,92.0,97.0,58.0,44.0,20.0,59.0,62.0,60.0,57.0,14.0,86.0,55.0,22.0,42.0,79.0,65.0,66.0,64.0,89.0,76.0,81.0,98.0,22.0,92.0,44.0,34.0,73.0,80.0,85.0,64.0,55.0,80.0,45.0,33.0,57.0,27.0,100.0,100.0,76.0,98.0,83.0,96.0,69.0,24.0],"hard":[24.0,1.0,6.0,1.0,30.0,48.0,64.0,48.0,4.0,5.0,2.0,1.0,0.0,3.0,17.0,2.0,23.0,44.0,9.0,8.0,20.0,17.0,15.0,4.0,7.0,7.0,14.0,15.0,1.0,18.0,5.0,6.0,29.0,24.0,32.0,3.0,10.0,32.0,31.0,27.0,1.0,3.0,37.0,34.0,3.0,13.0,11.0,17.0,3.0,8.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Spatial_Forcing","name":"Spatial Forcing","setting":"cotrain","easy_mean":77.2,"hard_mean":9.5,"easy":[97.0,74.0,83.0,42.0,89.0,97.0,83.0,98.0,62.0,100.0,17.0,98.0,69.0,77.0,96.0,31.0,89.0,66.0,72.0,90.0,67.0,55.0,84.0,82.0,98.0,77.0,94.0,97.0,83.0,94.0,74.0,35.0,79.0,73.0,96.0,83.0,88.0,89.0,58.0,37.0,87.0,76.0,99.0,99.0,75.0,96.0,79.0,96.0,39.0,40.0],"hard":[16.0,6.0,8.0,0.0,5.0,4.0,56.0,20.0,0.0,10.0,2.0,2.0,2.0,6.0,9.0,0.0,4.0,8.0,6.0,25.5,6.0,7.0,7.0,6.0,11.0,3.0,4.0,15.0,4.0,19.0,3.0,0.0,8.0,4.0,8.0,5.0,13.0,12.0,44.0,11.0,6.0,5.0,17.0,17.0,5.0,11.0,9.0,20.0,3.0,3.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:GalaxeaVLA","name":"GalaxeaVLA","setting":"cotrain","easy_mean":62.7,"hard_mean":9.1,"easy":[100.0,82.0,42.0,19.0,79.0,77.0,88.0,100.0,10.0,85.0,20.0,75.0,58.0,69.0,88.0,8.0,74.0,41.0,62.0,77.0,56.0,47.0,77.0,70.0,90.0,67.0,89.0,97.0,44.0,91.0,41.0,19.0,70.0,35.0,79.0,53.0,67.0,74.0,54.0,37.0,66.0,42.0,100.0,100.0,28.0,85.0,59.0,92.0,33.0,20.0],"hard":[2.0,18.0,1.0,1.0,8.0,19.0,42.0,38.0,0.0,0.0,2.0,0.0,1.0,3.0,9.0,1.0,6.0,3.0,9.0,14.0,3.0,3.0,21.0,9.0,25.0,4.0,17.0,23.0,7.0,2.0,2.0,0.0,1.0,3.0,15.0,4.0,17.0,10.0,3.0,8.0,0.0,4.0,27.0,30.0,1.0,11.0,8.0,13.0,2.0,3.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:AHA_WAM","name":"AHA-WAM","setting":"cotrain","easy_mean":64.3,"hard_mean":3.2,"easy":[100.0,52.0,60.0,32.0,98.0,100.0,90.0,98.0,63.0,99.0,13.0,62.0,48.0,33.0,82.0,5.0,89.0,59.0,36.0,60.0,65.0,50.0,54.0,68.0,96.0,61.0,90.0,99.0,48.0,64.0,58.0,12.0,71.0,34.0,79.0,61.0,74.0,82.0,58.0,36.0,61.0,51.0,100.0,100.0,57.0,89.0,71.0,93.0,13.0,42.0],"hard":[0.0,0.0,1.0,0.0,17.0,19.0,27.0,3.0,1.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,9.0,1.0,0.0,1.0,1.0,0.0,3.0,0.0,0.0,2.0,1.0,11.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,2.0,1.0,0.0,0.0,0.0,15.0,14.0,1.0,2.0,0.0,5.0,0.0,13.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:starVLA","name":"starVLA","setting":"cotrain","easy_mean":44.3,"hard_mean":3.3,"easy":[79.0,79.0,48.0,18.0,59.0,77.0,56.0,95.0,11.0,58.0,2.0,76.0,31.0,38.0,58.0,17.0,23.0,8.0,42.0,60.0,22.0,26.0,76.0,68.0,86.0,4.0,98.0,85.0,42.0,81.0,33.0,10.0,3.0,19.0,59.0,16.0,48.0,92.0,0.0,34.0,12.0,7.0,76.0,97.0,3.0,55.0,49.0,68.0,13.0,0.0],"hard":[0.0,4.0,1.0,0.0,0.0,7.0,3.0,42.0,0.0,1.0,0.0,0.0,0.0,0.0,3.0,0.0,2.0,0.0,14.0,18.0,0.0,0.0,5.0,6.0,14.0,0.0,3.0,1.0,3.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,16.0,0.0,0.0,0.0,6.0,6.0,6.0,1.0,1.0,0.0,0.0,0.0,0.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:FastWAM","name":"FastWAM","setting":"cotrain","easy_mean":77.8,"hard_mean":1.9,"easy":[99.0,82.0,81.0,52.0,99.0,95.0,94.0,100.0,66.0,98.0,14.0,91.0,96.0,92.0,94.0,33.0,84.0,17.0,72.0,87.0,69.0,60.0,87.0,85.0,97.0,77.0,98.0,100.0,67.0,90.0,59.0,55.0,82.0,83.0,94.0,85.0,87.0,90.0,55.0,42.0,81.0,68.0,100.0,100.0,89.0,99.0,80.0,94.0,30.0,39.0],"hard":[0.0,0.0,0.0,0.0,60.0,7.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0,9.0,10.0,0.0,0.0,0.0,0.0,0.0,3.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"sft:RDT","name":"RDT","setting":"sft","easy_mean":34.5,"hard_mean":13.72,"easy":[81.0,77.0,3.0,0.0,61.0,80.0,64.0,74.0,45.0,90.0,23.0,72.0,25.0,8.0,43.0,2.0,59.0,37.0,2.0,42.0,3.0,1.0,10.0,5.0,50.0,19.0,6.0,78.0,4.0,56.0,12.0,1.0,33.0,1.0,15.0,15.0,35.0,41.0,21.0,33.0,50.0,4.0,84.0,74.0,2.0,21.0,51.0,76.0,1.0,35.0],"hard":[75.0,37.0,0.0,0.0,12.0,9.0,32.0,43.0,14.0,31.0,16.0,9.0,12.0,0.0,11.0,0.0,32.0,20.0,0.0,13.0,1.0,1.0,2.0,1.0,27.0,6.0,5.0,17.0,4.0,7.0,2.0,0.0,17.0,0.0,5.0,6.0,7.0,24.0,4.0,18.0,5.0,1.0,51.0,45.0,0.0,2.0,17.0,30.0,0.0,15.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:π0","name":"π0","setting":"sft","easy_mean":46.42,"hard_mean":16.34,"easy":[90.0,43.0,19.0,7.0,63.0,44.0,83.0,96.0,45.0,98.0,11.0,84.0,58.0,21.0,53.0,0.0,85.0,80.0,27.0,57.0,31.0,27.0,17.0,23.0,80.0,41.0,34.0,88.0,15.0,37.0,20.0,7.0,16.0,10.0,36.0,35.0,28.0,62.0,54.0,68.0,68.0,18.0,99.0,97.0,17.0,42.0,66.0,91.0,3.0,27.0],"hard":[56.0,21.0,5.0,1.0,11.0,3.0,24.0,80.0,8.0,13.0,3.0,36.0,21.0,1.0,22.0,2.0,46.0,50.0,6.0,12.0,1.0,6.0,4.0,1.0,4.0,5.0,2.0,45.0,0.0,11.0,10.0,1.0,2.0,0.0,11.0,7.0,6.0,29.0,13.0,18.0,15.0,1.0,51.0,60.0,0.0,1.0,24.0,41.0,4.0,23.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:ACT","name":"ACT","setting":"sft","easy_mean":29.74,"hard_mean":1.74,"easy":[97.0,56.0,1.0,0.0,32.0,58.0,68.0,94.0,42.0,85.0,7.0,88.0,22.0,0.0,36.0,0.0,56.0,86.0,7.0,31.0,1.0,0.0,6.0,7.0,49.0,1.0,16.0,72.0,9.0,61.0,1.0,0.0,15.0,0.0,1.0,2.0,5.0,31.0,27.0,15.0,1.0,2.0,63.0,74.0,0.0,25.0,48.0,82.0,2.0,5.0],"hard":[23.0,3.0,0.0,0.0,4.0,3.0,1.0,25.0,0.0,0.0,0.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,1.0,0.0,0.0,0.0,4.0,10.0,0.0,0.0,0.0,0.0,0.0,2.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:DP","name":"DP","setting":"sft","easy_mean":28.04,"hard_mean":0.64,"easy":[97.0,42.0,0.0,1.0,61.0,54.0,49.0,98.0,10.0,53.0,8.0,39.0,39.0,1.0,47.0,1.0,49.0,5.0,6.0,24.0,2.0,13.0,14.0,11.0,72.0,18.0,40.0,41.0,8.0,37.0,3.0,0.0,15.0,1.0,22.0,13.0,23.0,6.0,22.0,42.0,13.0,9.0,59.0,65.0,0.0,7.0,63.0,61.0,2.0,36.0],"hard":[0.0,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,18.0,8.0,0.0,0.0,0.0,0.0,0.0,1.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:DP3","name":"DP3","setting":"sft","easy_mean":55.24,"hard_mean":4.96,"easy":[99.0,72.0,3.0,2.0,77.0,90.0,85.0,98.0,70.0,100.0,17.0,97.0,70.0,41.0,68.0,12.0,82.0,61.0,52.0,60.0,46.0,49.0,26.0,19.0,72.0,67.0,48.0,86.0,13.0,65.0,36.0,4.0,65.0,15.0,60.0,44.0,58.0,69.0,60.0,72.0,74.0,31.0,100.0,98.0,1.0,24.0,57.0,83.0,18.0,46.0],"hard":[3.0,8.0,0.0,0.0,14.0,0.0,53.0,2.0,0.0,3.0,1.0,0.0,6.0,0.0,3.0,0.0,7.0,22.0,1.0,1.0,2.0,0.0,1.0,0.0,18.0,2.0,3.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,2.0,3.0,21.0,1.0,1.0,1.0,25.0,19.0,0.0,0.0,5.0,6.0,0.0,8.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"}],"updated":"2026-08-15","updated_note":"Add GigaBrain-0.7 co-train results"}
   </script>
   <script>
     const DATA = JSON.parse(document.getElementById('lb-data').textContent);
     let sortKey = 'hard';
+    let viewMode = 'all';
 
     const fmt = (v, digits) => {
       if (digits != null) return v.toFixed(digits) + '%';
@@ -316,8 +403,22 @@
       return [...DATA.entries].sort((a, b) => (b[key] - a[key]) || (b[alt] - a[alt]));
     };
 
-    const renderRank = () => {
+    const visibleRankEntries = () => {
       const rows = sortedEntries();
+      return viewMode === 'top10' ? rows.slice(0, 10) : rows;
+    };
+
+    const settingNameOf = (key) => key === 'hard' ? 'clean2random（hard）' : 'clean2clean（easy）';
+
+    const updateRankHeading = () => {
+      const settingName = settingNameOf(sortKey);
+      const suffix = viewMode === 'top10' ? ' · Top 10' : '';
+      document.getElementById('rankHeading').textContent =
+        `Overall Ranking — ${settingName}${suffix}`;
+    };
+
+    const renderRank = () => {
+      const rows = visibleRankEntries();
       const tbody = document.querySelector('#rankTable tbody');
       tbody.innerHTML = rows.map((e, i) => {
         const rank = i + 1;
@@ -327,12 +428,16 @@
         const easyDigits = e.setting === 'sft' ? 2 : 1;
         const hardDigits = e.setting === 'sft' ? 2 : 1;
         const contributor = e.contributor || 'RoboTwin Team';
+        const listedAt = e.listed_at || '—';
+        const hardStyle = sortKey === 'hard' ? heat(e.hard_mean) : '';
+        const easyStyle = sortKey === 'easy' ? heat(e.easy_mean) : '';
         return `<tr>
           <td class="sticky-left"><span class="rank-num ${rank <= 3 ? 'top' : ''}">#${rank}</span></td>
           <td class="col-method"><span class="method-name">${e.name}</span>${badge}</td>
           <td class="contributor">${contributor}</td>
-          <td class="score-easy" style="${heat(e.easy_mean)}">${fmt(e.easy_mean, easyDigits)}</td>
-          <td class="score-hard" style="${heat(e.hard_mean)}">${fmt(e.hard_mean, hardDigits)}</td>
+          <td class="listed-at">${listedAt}</td>
+          <td class="score-hard" style="${hardStyle}">${fmt(e.hard_mean, hardDigits)}</td>
+          <td class="score-easy" style="${easyStyle}">${fmt(e.easy_mean, easyDigits)}</td>
         </tr>`;
       }).join('');
     };
@@ -374,19 +479,37 @@
 
     const setSort = (key) => {
       sortKey = key;
-      document.querySelectorAll('.sort-btn').forEach(btn => {
+      const isHard = key === 'hard';
+      const settingName = settingNameOf(key);
+      const evalLabel = isHard ? 'demo_randomized' : 'demo_clean';
+      document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.sort === key);
       });
       document.getElementById('sortHint').textContent =
-        key === 'hard'
-          ? 'Sorted by Hard (demo_randomized) mean ↓'
-          : 'Sorted by Easy (demo_clean) mean ↓';
+        `Ranked by ${settingName} mean ↓`;
+      document.getElementById('rankSettingTitle').innerHTML =
+        `<em>${settingName}</em>`;
+      document.getElementById('rankSettingEval').innerHTML =
+        `<b>Eval / sort</b>: ${evalLabel}`;
+      updateRankHeading();
       renderRank();
       renderTasks();
     };
 
-    document.querySelectorAll('.sort-btn').forEach(btn => {
+    const setView = (mode) => {
+      viewMode = mode;
+      document.querySelectorAll('.sort-btn[data-view]').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.view === mode);
+      });
+      updateRankHeading();
+      renderRank();
+    };
+
+    document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
       btn.addEventListener('click', () => setSort(btn.dataset.sort));
+    });
+    document.querySelectorAll('.sort-btn[data-view]').forEach(btn => {
+      btn.addEventListener('click', () => setView(btn.dataset.view));
     });
 
     
