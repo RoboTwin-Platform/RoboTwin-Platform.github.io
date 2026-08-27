@@ -247,6 +247,7 @@
     }
     .score-easy { color: var(--easy); font-weight: 750; }
     .score-hard { color: var(--hard); font-weight: 750; }
+    .score-avg { color: var(--brand-green-deep); font-weight: 750; }
     .sort-active { box-shadow: inset 0 -3px 0 rgba(255,255,255,0.85); }
     .news ul { margin: 8px 0 0; padding-left: 18px; }
     .news li { margin: 6px 0; font-size: 14px; color: var(--text-soft); }
@@ -265,7 +266,7 @@
           <img src="https://robotwin-platform.github.io/doc/assets/robotwin-text-logo.jpg" alt="RoboTwin" />
           <span class="lb-title">2.0 Leaderboard</span>
         </h1>
-        <p class="lb-sub"><b>Settings</b>: clean2random（hard） / clean2clean（easy） · 50 demo_clean × 50 tasks · Aloha-AgileX · Updated <span id="updatedAt"></span></p>
+        <p class="lb-sub"><b>Settings</b>: Average（c2c+c2r） / clean2random（hard） / clean2clean（easy） · 50 demo_clean × 50 tasks · Aloha-AgileX · Updated <span id="updatedAt"></span></p>
       </div>
       <nav class="lb-nav">
         <a href="./">Home</a>
@@ -282,7 +283,8 @@
         Training data is fixed to <b>50 <i>demo_clean</i> trajectories × 50 tasks</b> (2,500 demos total)
         on <b>Aloha-AgileX</b>, then evaluated 100 trials/task under <i><b>demo_clean</b></i> and
         <i><b>demo_randomized</b></i>. Use the ranking control to switch titles between
-        <b>clean2random（hard）</b> and <b>clean2clean（easy）</b>. Co-train and Single-task SFT share one board.
+        <b>Average（c2c+c2r）</b>, <b>clean2random（hard）</b>, and <b>clean2clean（easy）</b>.
+        Co-train and Single-task SFT share one board. The default ranking is <b>Average（c2c+c2r）</b>.
       </p>
       <p style="margin-top:10px">
         <b>Listing rule:</b> only models with <b>publicly released code and weights</b> are eligible
@@ -306,6 +308,7 @@
         <span><b>Data</b>: 50 demo_clean × 50 tasks</span>
         <span><b>Co-train</b>: one policy jointly trained on all 50 tasks</span>
         <span><b>Single</b>: one checkpoint fine-tuned per task (paper baselines)</span>
+        <span><b>Average（c2c+c2r）</b>: ranked by (c2c + c2r) / 2</span>
         <span><b>clean2random（hard）</b>: ranked by demo_randomized</span>
         <span><b>clean2clean（easy）</b>: ranked by demo_clean</span>
         <span><b>Open</b>: public code + weights required</span>
@@ -317,7 +320,8 @@
       <div class="toolbar">
         <div class="sort-group">
           <span class="sort-label">Ranking setting</span>
-          <button class="sort-btn active" data-sort="hard" type="button">clean2random（hard）</button>
+          <button class="sort-btn active" data-sort="avg" type="button">Average（c2c+c2r）</button>
+          <button class="sort-btn" data-sort="hard" type="button">clean2random（hard）</button>
           <button class="sort-btn" data-sort="easy" type="button">clean2clean（easy）</button>
         </div>
         <div class="sort-group">
@@ -325,22 +329,22 @@
           <button class="sort-btn active" data-view="all" type="button">All</button>
           <button class="sort-btn" data-view="top10" type="button">Top 10</button>
         </div>
-        <div class="hint" id="sortHint">Ranked by clean2random（hard） mean ↓</div>
+        <div class="hint" id="sortHint">Ranked by Average（c2c+c2r） mean ↓</div>
       </div>
 
       <div class="setting-banner">
         <div class="setting-banner-kicker">Current ranking setting</div>
-        <h2 class="setting-banner-title" id="rankSettingTitle"><em>clean2random（hard）</em></h2>
+        <h2 class="setting-banner-title" id="rankSettingTitle"><em>Average（c2c+c2r）</em></h2>
         <div class="setting-banner-meta">
           <span><b>Train</b>: 50 demo_clean × 50 tasks (2,500)</span>
-          <span id="rankSettingEval"><b>Eval / sort</b>: demo_randomized</span>
+          <span id="rankSettingEval"><b>Eval / sort</b>: (c2c + c2r) / 2</span>
           <span><b>Robot</b>: Aloha-AgileX</span>
           <span><b>Track</b>: Co-train (+ Single SFT baselines)</span>
         </div>
       </div>
 
       <div class="updated-pill" id="updatedPill">Latest update: <b id="updatedAtDetail"></b></div>
-      <h2 id="rankHeading">Overall Ranking — clean2random（hard）</h2>
+      <h2 id="rankHeading">Overall Ranking — Average（c2c+c2r）</h2>
       <div class="table-scroll" style="max-height:none">
         <table class="lb rank-table" id="rankTable">
           <thead>
@@ -349,8 +353,9 @@
               <th class="col-method">Method</th>
               <th>Contributor</th>
               <th>Date</th>
-              <th>clean2random（hard）</th>
-              <th>clean2clean（easy）</th>
+              <th id="thAvg" class="sort-active">Average（c2c+c2r）</th>
+              <th id="thHard">clean2random（hard）</th>
+              <th id="thEasy">clean2clean（easy）</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -360,7 +365,7 @@
 
     <section class="panel">
       <h2>Per-task Results</h2>
-      <p class="hint" style="margin:0 0 10px">Columns follow the current clean2random（hard） / clean2clean（easy） ranking. Methods tagged <b>Single</b> are single-task SFT baselines.</p>
+      <p class="hint" style="margin:0 0 10px">Columns follow the current Average（c2c+c2r） / clean2random（hard） / clean2clean（easy） ranking. Methods tagged <b>Single</b> are single-task SFT baselines.</p>
       <div class="table-scroll">
         <table class="lb" id="taskTable">
           <thead></thead>
@@ -372,6 +377,7 @@
     <section class="panel news">
       <h2>News</h2>
       <ul>
+        <li><b>2026/08/27</b>: Add Average（c2c+c2r） ranking as the default board sort.</li>
         <li><b>2026/08/18</b>: Add 4D-WAM co-train results (clean2random).</li>
         <li><b>2026/08/17</b>: Add/update Spatial Forcing, starVLA, Abot-M0, and GalaxeaVLA co-train results.</li>
         <li><b>2026/08/15</b>: Add GigaBrain-0.7 co-train results (50 demo_clean × 50 tasks).</li>
@@ -386,7 +392,7 @@
   </script>
   <script>
     const DATA = JSON.parse(document.getElementById('lb-data').textContent);
-    let sortKey = 'hard';
+    let sortKey = 'avg';
     let viewMode = 'all';
 
     const fmt = (v, digits) => {
@@ -399,10 +405,20 @@
       return `background:rgba(101,164,135,${0.08 + 0.55 * t})`;
     };
 
+    const avgMean = (e) => (e.easy_mean + e.hard_mean) / 2;
+
+    const scoreOf = (e, key) => {
+      if (key === 'easy') return e.easy_mean;
+      if (key === 'hard') return e.hard_mean;
+      return avgMean(e);
+    };
+
     const sortedEntries = () => {
-      const key = sortKey === 'easy' ? 'easy_mean' : 'hard_mean';
-      const alt = sortKey === 'easy' ? 'hard_mean' : 'easy_mean';
-      return [...DATA.entries].sort((a, b) => (b[key] - a[key]) || (b[alt] - a[alt]));
+      const altKey = sortKey === 'easy' ? 'hard' : 'easy';
+      return [...DATA.entries].sort((a, b) =>
+        (scoreOf(b, sortKey) - scoreOf(a, sortKey)) ||
+        (scoreOf(b, altKey) - scoreOf(a, altKey))
+      );
     };
 
     const visibleRankEntries = () => {
@@ -410,7 +426,17 @@
       return viewMode === 'top10' ? rows.slice(0, 10) : rows;
     };
 
-    const settingNameOf = (key) => key === 'hard' ? 'clean2random（hard）' : 'clean2clean（easy）';
+    const settingNameOf = (key) => {
+      if (key === 'hard') return 'clean2random（hard）';
+      if (key === 'easy') return 'clean2clean（easy）';
+      return 'Average（c2c+c2r）';
+    };
+
+    const evalLabelOf = (key) => {
+      if (key === 'hard') return 'demo_randomized';
+      if (key === 'easy') return 'demo_clean';
+      return '(c2c + c2r) / 2';
+    };
 
     const updateRankHeading = () => {
       const settingName = settingNameOf(sortKey);
@@ -431,6 +457,9 @@
         const hardDigits = e.setting === 'sft' ? 2 : 1;
         const contributor = e.contributor || 'RoboTwin Team';
         const listedAt = e.listed_at || '—';
+        const avg = avgMean(e);
+        const avgDigits = e.setting === 'sft' ? 2 : 1;
+        const avgStyle = sortKey === 'avg' ? heat(avg) : '';
         const hardStyle = sortKey === 'hard' ? heat(e.hard_mean) : '';
         const easyStyle = sortKey === 'easy' ? heat(e.easy_mean) : '';
         return `<tr>
@@ -438,6 +467,7 @@
           <td class="col-method"><span class="method-name">${e.name}</span>${badge}</td>
           <td class="contributor">${contributor}</td>
           <td class="listed-at">${listedAt}</td>
+          <td class="score-avg" style="${avgStyle}">${fmt(avg, avgDigits)}</td>
           <td class="score-hard" style="${hardStyle}">${fmt(e.hard_mean, hardDigits)}</td>
           <td class="score-easy" style="${easyStyle}">${fmt(e.easy_mean, easyDigits)}</td>
         </tr>`;
@@ -481,18 +511,19 @@
 
     const setSort = (key) => {
       sortKey = key;
-      const isHard = key === 'hard';
       const settingName = settingNameOf(key);
-      const evalLabel = isHard ? 'demo_randomized' : 'demo_clean';
       document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.sort === key);
       });
+      document.getElementById('thAvg').classList.toggle('sort-active', key === 'avg');
+      document.getElementById('thHard').classList.toggle('sort-active', key === 'hard');
+      document.getElementById('thEasy').classList.toggle('sort-active', key === 'easy');
       document.getElementById('sortHint').textContent =
         `Ranked by ${settingName} mean ↓`;
       document.getElementById('rankSettingTitle').innerHTML =
         `<em>${settingName}</em>`;
       document.getElementById('rankSettingEval').innerHTML =
-        `<b>Eval / sort</b>: ${evalLabel}`;
+        `<b>Eval / sort</b>: ${evalLabelOf(key)}`;
       updateRankHeading();
       renderRank();
       renderTasks();
@@ -524,7 +555,7 @@
     };
     fillUpdated();
 
-    setSort('hard');
+    setSort('avg');
   </script>
 </body>
 </html>
