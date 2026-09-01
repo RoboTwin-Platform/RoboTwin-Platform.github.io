@@ -27,8 +27,8 @@
     }
     .lb-top-inner {
       width: min(var(--lb-max), calc(100% - 32px));
-      margin: 0 auto; padding: 16px 0 14px;
-      display: flex; align-items: end; justify-content: space-between;
+      margin: 0 auto; padding: 12px 0;
+      display: flex; align-items: center; justify-content: space-between;
       gap: 16px; flex-wrap: wrap;
     }
     .lb-brand {
@@ -46,27 +46,25 @@
       font-weight: 750;
       color: var(--text);
     }
-    .lb-sub { margin: 6px 0 0; color: var(--text-soft); font-size: 14px; }
-    .lb-sub b { color: var(--text); font-weight: 750; }
     .setting-banner {
-      margin: 0 0 14px;
-      padding: 16px 18px;
-      border-radius: 14px;
+      margin: 0 0 10px;
+      padding: 10px 14px;
+      border-radius: 12px;
       border: 1px solid rgba(101,164,135,0.4);
       background: linear-gradient(135deg, rgba(101,164,135,0.18), rgba(255,255,255,0.95));
     }
     .setting-banner-kicker {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 750;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--brand-green-deep);
-      margin-bottom: 4px;
+      margin-bottom: 2px;
     }
     .setting-banner-title {
       margin: 0;
       font-family: var(--display);
-      font-size: clamp(28px, 4vw, 36px);
+      font-size: clamp(20px, 2.6vw, 26px);
       font-weight: 750;
       letter-spacing: -0.02em;
       color: var(--text);
@@ -77,16 +75,16 @@
       color: var(--brand-green-deep);
     }
     .setting-banner-meta {
-      margin: 8px 0 0;
-      display: flex; flex-wrap: wrap; gap: 8px;
+      margin: 6px 0 0;
+      display: flex; flex-wrap: wrap; gap: 6px;
     }
     .setting-banner-meta span {
-      font-size: 13px; font-weight: 650;
+      font-size: 12px; font-weight: 650;
       color: var(--text);
       background: rgba(255,255,255,0.92);
       border: 1px solid var(--line);
       border-radius: 8px;
-      padding: 5px 10px;
+      padding: 3px 8px;
     }
     .setting-banner-meta b { color: var(--brand-green-deep); }
     .lb-nav { display: flex; gap: 8px; flex-wrap: wrap; }
@@ -99,20 +97,43 @@
     .lb-nav a:hover { border-color: var(--brand-green); color: var(--brand-green-deep); }
     .wrap {
       width: min(var(--lb-max), calc(100% - 32px));
-      margin: 0 auto; padding: 18px 0 48px;
+      margin: 0 auto; padding: 12px 0 40px;
     }
     .panel {
       background: rgba(255,255,255,0.82);
       border: 1px solid var(--line); border-radius: 16px;
-      padding: 18px; margin-bottom: 14px;
+      padding: 14px; margin-bottom: 12px;
       box-shadow: 0 10px 28px rgba(28, 42, 35, 0.04);
     }
     .panel h2 {
-      margin: 0 0 10px; font-family: var(--display);
-      font-size: 22px; letter-spacing: -0.02em; color: var(--text);
+      margin: 0 0 8px; font-family: var(--display);
+      font-size: 20px; letter-spacing: -0.02em; color: var(--text);
     }
     .setting p { margin: 0; line-height: 1.6; font-size: 15px; color: var(--text-soft); }
     .setting p b { color: var(--text); }
+    .listing-callout {
+      margin: 12px 0 0;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid rgba(180, 83, 9, 0.38);
+      background: linear-gradient(135deg, rgba(245, 158, 11, 0.16), rgba(255, 255, 255, 0.96));
+    }
+    .listing-callout__kicker {
+      font-size: 11px;
+      font-weight: 750;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #9a3412;
+      margin-bottom: 4px;
+    }
+    .listing-callout p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .listing-callout b { color: #9a3412; }
+    .listing-callout a { color: #9a3412; font-weight: 750; }
     .setting .tag {
       background: rgba(101,164,135,0.14); color: var(--brand-green-deep);
       padding: 1px 7px; border-radius: 6px; font-size: 12px; font-weight: 700;
@@ -220,29 +241,35 @@
       font-weight: 650;
       font-variant-numeric: tabular-nums;
     }
+    .rank-heading-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 8px 16px; flex-wrap: wrap;
+      margin: 0 0 8px;
+    }
+    .rank-heading-row h2 { margin: 0; }
     .updated-pill {
       display: inline-flex; align-items: center; gap: 6px;
-      margin: 0 0 12px;
-      padding: 7px 12px;
+      margin: 0;
+      padding: 4px 10px;
       border-radius: 8px;
       border: 1px solid var(--line);
       background: #f3f7f5;
       color: var(--text-soft);
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 650;
     }
     .updated-pill b { color: var(--text); font-weight: 750; }
     .toolbar {
-      display: flex; flex-wrap: wrap; gap: 12px;
+      display: flex; flex-wrap: wrap; gap: 10px;
       align-items: center; justify-content: space-between;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
     }
     .sort-group { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
     .sort-label { font-size: 13px; color: var(--text-soft); font-weight: 650; }
     .sort-btn {
       border: 1px solid var(--line); background: #fff; color: var(--text);
-      padding: 9px 14px; border-radius: 10px; cursor: pointer;
-      font-size: 14px; font-weight: 700; font-family: var(--sans);
+      padding: 6px 12px; border-radius: 8px; cursor: pointer;
+      font-size: 13px; font-weight: 700; font-family: var(--sans);
     }
     .sort-btn:hover { border-color: var(--brand-green); }
     .sort-btn.active {
@@ -293,8 +320,8 @@
     }
     /* ranking table */
     .rank-table { width: 100%; min-width: 0; }
-    .rank-table th, .rank-table td { white-space: nowrap; }
-    .rank-table .col-method { min-width: 180px; }
+    .rank-table th, .rank-table td { white-space: nowrap; padding: 6px 8px; }
+    .rank-table .col-method { min-width: 160px; }
     .rank-table .col-rank { width: 64px; }
     .rank-table .col-track { width: 104px; }
     .rank-table .sticky-left { text-align: center; }
@@ -513,7 +540,6 @@
           <img src="https://robotwin-platform.github.io/doc/assets/robotwin-text-logo.jpg" alt="RoboTwin" />
           <span class="lb-title">2.0 Leaderboard</span>
         </h1>
-        <p class="lb-sub"><b>Settings</b>: Average（c2c+c2r） / clean2random（hard） / clean2clean（easy） · 50 demo_clean × 50 tasks · Aloha-AgileX · Updated <span id="updatedAt"></span></p>
       </div>
       <nav class="lb-nav">
         <a href="./">Home</a>
@@ -535,14 +561,17 @@
         <b>Average（c2c+c2r）</b>, <b>clean2random（hard）</b>, and <b>clean2clean（easy）</b>.
         Co-train and Single-task SFT share one board. The default ranking is <b>Average（c2c+c2r）</b>.
       </p>
-      <p style="margin-top:10px">
-        <b>Submission &amp; listing policy:</b> to be listed on this leaderboard, a model must provide
-        <b>publicly released code</b>, <b>publicly released weights</b>, and a
-        <b>technical report</b> (arXiv paper or equivalent public document) describing the method.
-        To submit results or request listing, contact
-        <a href="mailto:chentianxing2002@gmail.com"><b>chentianxing2002@gmail.com</b></a>
-        with links to the code, weights, and report.
-      </p>
+      <div class="listing-callout">
+        <div class="listing-callout__kicker">Submission &amp; listing policy</div>
+        <p>
+          To be listed on this leaderboard, a model must provide
+          <b>publicly released code</b>, <b>publicly released weights</b>, and a
+          <b>technical report</b> (arXiv paper or equivalent public document) describing the method.
+          To submit results or request listing, contact
+          <a href="mailto:chentianxing2002@gmail.com">chentianxing2002@gmail.com</a>
+          with links to the code, weights, and report.
+        </p>
+      </div>
       <div class="xpl-hero">
         <div class="xpl-hero__headline">
           <h3 class="xpl-hero__title"><span class="t-blue">X</span><span class="t-black">Policy</span><span class="t-blue">Lab</span></h3>
@@ -627,8 +656,10 @@
         </div>
       </div>
 
-      <div class="updated-pill" id="updatedPill">Latest update: <b id="updatedAtDetail"></b></div>
-      <h2 id="rankHeading">Overall Ranking — Average（c2c+c2r）</h2>
+      <div class="rank-heading-row">
+        <h2 id="rankHeading">Overall Ranking — Average（c2c+c2r）</h2>
+        <div class="updated-pill" id="updatedPill">Latest update: <b id="updatedAtDetail"></b></div>
+      </div>
       <div class="table-scroll" style="max-height:none">
         <table class="lb rank-table" id="rankTable">
           <thead>

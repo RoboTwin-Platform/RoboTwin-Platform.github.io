@@ -159,11 +159,8 @@ LB.initRoboTwinBoard = function (data) {
   };
 
   const fillUpdated = () => {
-    const raw = board.updated || '';
-    const el1 = document.getElementById('updatedAt');
-    const el2 = document.getElementById('updatedAtDetail');
-    if (el1) el1.textContent = raw;
-    if (el2) el2.textContent = raw;
+    const el = document.getElementById('updatedAtDetail');
+    if (el) el.textContent = board.updated || '';
   };
 
   renderRankingButtons();
