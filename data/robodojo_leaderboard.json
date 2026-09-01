@@ -1,0 +1,1218 @@
+{
+  "schema_version": "1.0",
+  "board": {
+    "id": "robodojo-sim",
+    "name": "RoboDojo Sim Leaderboard",
+    "page_url": "https://robodojo-benchmark.com/LeaderBoard",
+    "data_url": "https://robotwin-platform.github.io/data/robodojo_leaderboard.json",
+    "source": "robodojo-benchmark.com",
+    "note": "Mirror of the official RoboDojo-sim board; this page previews the top 10.",
+    "evaluated_via": "XPolicyLab standard interface",
+    "preview_top_n": 10,
+    "default_dimension": "average",
+    "default_metric": "score",
+    "updated": "2026-08-31",
+    "dimensions": [
+      {
+        "id": "average",
+        "label": "Average"
+      },
+      {
+        "id": "generalizationStd",
+        "label": "Gen-Std"
+      },
+      {
+        "id": "generalizationRand",
+        "label": "Gen-Rand"
+      },
+      {
+        "id": "precision",
+        "label": "Precision"
+      },
+      {
+        "id": "longHorizon",
+        "label": "Long-Horizon"
+      },
+      {
+        "id": "memory",
+        "label": "Memory"
+      },
+      {
+        "id": "open",
+        "label": "Open"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "score",
+        "index": 0,
+        "label": "Score"
+      },
+      {
+        "id": "sr",
+        "index": 1,
+        "label": "SR",
+        "unit": "%"
+      }
+    ],
+    "entry_fields": {
+      "model": "display name of the model",
+      "team": "contributor team",
+      "<dimension>": "[score, success_rate] pair, indexed by metrics[].index"
+    }
+  },
+  "entries": [
+    {
+      "model": "DM0.5",
+      "team": "Dexmal",
+      "average": [
+        24.9,
+        19.34
+      ],
+      "generalizationStd": [
+        23.49,
+        18.0
+      ],
+      "generalizationRand": [
+        8.06,
+        4.0
+      ],
+      "precision": [
+        24.82,
+        16.75
+      ],
+      "longHorizon": [
+        33.7,
+        19.5
+      ],
+      "memory": [
+        47.74,
+        47.44
+      ],
+      "open": [
+        2.43,
+        2.08
+      ]
+    },
+    {
+      "model": "GalaxeaVLA (G0.5)",
+      "team": "Galaxea AI",
+      "average": [
+        20.23,
+        14.88
+      ],
+      "generalizationStd": [
+        26.74,
+        20.0
+      ],
+      "generalizationRand": [
+        11.16,
+        6.0
+      ],
+      "precision": [
+        28.25,
+        20.42
+      ],
+      "longHorizon": [
+        44.12,
+        32.25
+      ],
+      "memory": [
+        8.61,
+        7.33
+      ],
+      "open": [
+        1.73,
+        1.58
+      ]
+    },
+    {
+      "model": "Xiaomi-Robotics-1",
+      "team": "Xiaomi Robotics",
+      "average": [
+        20.07,
+        13.93
+      ],
+      "generalizationStd": [
+        35.65,
+        28.0
+      ],
+      "generalizationRand": [
+        11.44,
+        6.0
+      ],
+      "precision": [
+        26.69,
+        18.83
+      ],
+      "longHorizon": [
+        38.39,
+        23.67
+      ],
+      "memory": [
+        7.81,
+        6.56
+      ],
+      "open": [
+        3.94,
+        3.58
+      ]
+    },
+    {
+      "model": "Meituan-Robotics-0",
+      "team": "Meituan Robotics",
+      "average": [
+        14.95,
+        9.53
+      ],
+      "generalizationStd": [
+        19.28,
+        12.67
+      ],
+      "generalizationRand": [
+        8.22,
+        3.67
+      ],
+      "precision": [
+        16.77,
+        7.75
+      ],
+      "longHorizon": [
+        29.61,
+        18.58
+      ],
+      "memory": [
+        10.06,
+        8.89
+      ],
+      "open": [
+        4.54,
+        4.25
+      ]
+    },
+    {
+      "model": "Hy-Embodied-0.5-VLA",
+      "team": "Tencent Robotics X",
+      "average": [
+        13.07,
+        8.8
+      ],
+      "generalizationStd": [
+        21.98,
+        17.0
+      ],
+      "generalizationRand": [
+        1.57,
+        0.0
+      ],
+      "precision": [
+        13.81,
+        8.0
+      ],
+      "longHorizon": [
+        25.74,
+        14.92
+      ],
+      "memory": [
+        13.37,
+        12.11
+      ],
+      "open": [
+        0.65,
+        0.58
+      ]
+    },
+    {
+      "model": "Spatial Forcing",
+      "team": "OpenHelix Robotics",
+      "average": [
+        12.38,
+        8.04
+      ],
+      "generalizationStd": [
+        21.25,
+        15.0
+      ],
+      "generalizationRand": [
+        6.98,
+        4.0
+      ],
+      "precision": [
+        17.33,
+        10.58
+      ],
+      "longHorizon": [
+        23.26,
+        14.58
+      ],
+      "memory": [
+        5.43,
+        4.11
+      ],
+      "open": [
+        1.78,
+        1.58
+      ]
+    },
+    {
+      "model": "Pi-05",
+      "team": "RoboDojo Team",
+      "average": [
+        11.41,
+        6.91
+      ],
+      "generalizationStd": [
+        20.93,
+        15.0
+      ],
+      "generalizationRand": [
+        5.82,
+        1.0
+      ],
+      "precision": [
+        12.4,
+        5.5
+      ],
+      "longHorizon": [
+        23.54,
+        14.67
+      ],
+      "memory": [
+        5.78,
+        4.56
+      ],
+      "open": [
+        1.98,
+        1.67
+      ]
+    },
+    {
+      "model": "InternVLA-A1.5",
+      "team": "InternVLA Team",
+      "average": [
+        11.15,
+        7.14
+      ],
+      "generalizationStd": [
+        16.81,
+        12.0
+      ],
+      "generalizationRand": [
+        3.9,
+        2.0
+      ],
+      "precision": [
+        15.23,
+        10.17
+      ],
+      "longHorizon": [
+        23.8,
+        13.75
+      ],
+      "memory": [
+        4.93,
+        3.56
+      ],
+      "open": [
+        1.43,
+        1.42
+      ]
+    },
+    {
+      "model": "VLAct",
+      "team": "StarVLA Team",
+      "average": [
+        10.66,
+        7.6
+      ],
+      "generalizationStd": [
+        16.33,
+        12.0
+      ],
+      "generalizationRand": [
+        2.74,
+        1.0
+      ],
+      "precision": [
+        20.62,
+        15.25
+      ],
+      "longHorizon": [
+        20.12,
+        13.67
+      ],
+      "memory": [
+        0.66,
+        0.56
+      ],
+      "open": [
+        2.37,
+        2.25
+      ]
+    },
+    {
+      "model": "X-VLA",
+      "team": "RoboDojo Team",
+      "average": [
+        10.13,
+        6.52
+      ],
+      "generalizationStd": [
+        17.9,
+        12.0
+      ],
+      "generalizationRand": [
+        3.04,
+        1.0
+      ],
+      "precision": [
+        18.32,
+        12.0
+      ],
+      "longHorizon": [
+        16.53,
+        9.75
+      ],
+      "memory": [
+        4.76,
+        3.56
+      ],
+      "open": [
+        0.55,
+        0.5
+      ]
+    },
+    {
+      "model": "X-WAM",
+      "team": "X-WAM Team",
+      "average": [
+        7.69,
+        3.83
+      ],
+      "generalizationStd": [
+        11.24,
+        5.0
+      ],
+      "generalizationRand": [
+        3.54,
+        1.0
+      ],
+      "precision": [
+        6.72,
+        1.83
+      ],
+      "longHorizon": [
+        17.47,
+        9.08
+      ],
+      "memory": [
+        6.32,
+        4.67
+      ],
+      "open": [
+        0.57,
+        0.25
+      ]
+    },
+    {
+      "model": "Xiaomi-Robotics-0",
+      "team": "RoboDojo Team",
+      "average": [
+        6.93,
+        4.18
+      ],
+      "generalizationStd": [
+        13.81,
+        11.0
+      ],
+      "generalizationRand": [
+        1.05,
+        0.0
+      ],
+      "precision": [
+        8.42,
+        4.58
+      ],
+      "longHorizon": [
+        13.51,
+        6.92
+      ],
+      "memory": [
+        5.07,
+        3.67
+      ],
+      "open": [
+        0.22,
+        0.17
+      ]
+    },
+    {
+      "model": "StarVLA",
+      "team": "RoboDojo Team",
+      "average": [
+        6.4,
+        3.24
+      ],
+      "generalizationStd": [
+        7.54,
+        5.0
+      ],
+      "generalizationRand": [
+        0.33,
+        0.0
+      ],
+      "precision": [
+        9.9,
+        4.33
+      ],
+      "longHorizon": [
+        14.15,
+        6.5
+      ],
+      "memory": [
+        3.34,
+        2.44
+      ],
+      "open": [
+        0.68,
+        0.58
+      ]
+    },
+    {
+      "model": "GigaWorld-Policy-0",
+      "team": "RoboDojo Team",
+      "average": [
+        6.2,
+        3.27
+      ],
+      "generalizationStd": [
+        10.28,
+        6.0
+      ],
+      "generalizationRand": [
+        0.41,
+        0.0
+      ],
+      "precision": [
+        6.15,
+        1.83
+      ],
+      "longHorizon": [
+        15.51,
+        8.92
+      ],
+      "memory": [
+        3.46,
+        2.22
+      ],
+      "open": [
+        0.54,
+        0.5
+      ]
+    },
+    {
+      "model": "GalaxeaVLA (G0)",
+      "team": "RoboDojo Team",
+      "average": [
+        5.82,
+        2.96
+      ],
+      "generalizationStd": [
+        8.71,
+        6.0
+      ],
+      "generalizationRand": [
+        0.36,
+        0.0
+      ],
+      "precision": [
+        8.1,
+        3.83
+      ],
+      "longHorizon": [
+        12.6,
+        5.58
+      ],
+      "memory": [
+        3.17,
+        1.89
+      ],
+      "open": [
+        0.7,
+        0.67
+      ]
+    },
+    {
+      "model": "LingBot-VLA",
+      "team": "RoboDojo Team",
+      "average": [
+        5.5,
+        2.96
+      ],
+      "generalizationStd": [
+        10.88,
+        8.0
+      ],
+      "generalizationRand": [
+        2.55,
+        1.0
+      ],
+      "precision": [
+        5.33,
+        1.83
+      ],
+      "longHorizon": [
+        10.89,
+        5.25
+      ],
+      "memory": [
+        3.82,
+        2.78
+      ],
+      "open": [
+        0.72,
+        0.67
+      ]
+    },
+    {
+      "model": "EventVLA",
+      "team": "SJTU ScaleLab",
+      "average": [
+        4.97,
+        2.81
+      ],
+      "generalizationStd": [
+        6.68,
+        3.0
+      ],
+      "generalizationRand": [
+        1.22,
+        0.0
+      ],
+      "precision": [
+        10.13,
+        5.75
+      ],
+      "longHorizon": [
+        5.05,
+        0.83
+      ],
+      "memory": [
+        4.92,
+        4.78
+      ],
+      "open": [
+        0.8,
+        0.75
+      ]
+    },
+    {
+      "model": "AHA-WAM",
+      "team": "SJTU ScaleLab",
+      "average": [
+        4.82,
+        2.39
+      ],
+      "generalizationStd": [
+        10.32,
+        6.0
+      ],
+      "generalizationRand": [
+        1.26,
+        0.0
+      ],
+      "precision": [
+        5.86,
+        2.42
+      ],
+      "longHorizon": [
+        8.61,
+        2.67
+      ],
+      "memory": [
+        2.97,
+        2.78
+      ],
+      "open": [
+        0.88,
+        0.83
+      ]
+    },
+    {
+      "model": "ABot-M0",
+      "team": "RoboDojo Team",
+      "average": [
+        3.67,
+        1.73
+      ],
+      "generalizationStd": [
+        9.2,
+        5.0
+      ],
+      "generalizationRand": [
+        2.26,
+        2.0
+      ],
+      "precision": [
+        5.5,
+        1.75
+      ],
+      "longHorizon": [
+        3.96,
+        0.5
+      ],
+      "memory": [
+        2.44,
+        2.22
+      ],
+      "open": [
+        0.72,
+        0.67
+      ]
+    },
+    {
+      "model": "Fast-WAM",
+      "team": "RoboDojo Team",
+      "average": [
+        3.48,
+        2.03
+      ],
+      "generalizationStd": [
+        4.33,
+        2.0
+      ],
+      "generalizationRand": [
+        0.34,
+        0.0
+      ],
+      "precision": [
+        1.96,
+        0.0
+      ],
+      "longHorizon": [
+        9.14,
+        5.17
+      ],
+      "memory": [
+        3.55,
+        3.44
+      ],
+      "open": [
+        0.42,
+        0.42
+      ]
+    },
+    {
+      "model": "Pi-0",
+      "team": "RoboDojo Team",
+      "average": [
+        3.48,
+        1.53
+      ],
+      "generalizationStd": [
+        7.18,
+        5.0
+      ],
+      "generalizationRand": [
+        0.71,
+        0.0
+      ],
+      "precision": [
+        3.56,
+        0.75
+      ],
+      "longHorizon": [
+        6.19,
+        2.0
+      ],
+      "memory": [
+        3.47,
+        2.11
+      ],
+      "open": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "model": "GROOT-N1.7",
+      "team": "RoboDojo Team",
+      "average": [
+        2.85,
+        1.31
+      ],
+      "generalizationStd": [
+        3.97,
+        2.0
+      ],
+      "generalizationRand": [
+        0.35,
+        0.0
+      ],
+      "precision": [
+        2.54,
+        0.67
+      ],
+      "longHorizon": [
+        8.3,
+        3.58
+      ],
+      "memory": [
+        1.06,
+        0.89
+      ],
+      "open": [
+        0.18,
+        0.17
+      ]
+    },
+    {
+      "model": "InternVLA-A1",
+      "team": "RoboDojo Team",
+      "average": [
+        2.48,
+        1.08
+      ],
+      "generalizationStd": [
+        5.22,
+        4.0
+      ],
+      "generalizationRand": [
+        0.51,
+        0.0
+      ],
+      "precision": [
+        3.0,
+        0.92
+      ],
+      "longHorizon": [
+        4.79,
+        1.17
+      ],
+      "memory": [
+        1.58,
+        1.33
+      ],
+      "open": [
+        0.17,
+        0.17
+      ]
+    },
+    {
+      "model": "SmolVLA (Single Task)",
+      "team": "RoboDojo Team",
+      "average": [
+        1.83,
+        0.85
+      ],
+      "generalizationStd": [
+        3.28,
+        2.0
+      ],
+      "generalizationRand": [
+        0.09,
+        0.0
+      ],
+      "precision": [
+        2.87,
+        0.33
+      ],
+      "longHorizon": [
+        1.22,
+        0.25
+      ],
+      "memory": [
+        3.35,
+        2.44
+      ],
+      "open": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "LDA-1B",
+      "team": "RoboDojo Team",
+      "average": [
+        1.58,
+        0.51
+      ],
+      "generalizationStd": [
+        1.44,
+        0.0
+      ],
+      "generalizationRand": [
+        0.18,
+        0.0
+      ],
+      "precision": [
+        3.21,
+        0.5
+      ],
+      "longHorizon": [
+        1.92,
+        0.08
+      ],
+      "memory": [
+        2.08,
+        1.78
+      ],
+      "open": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "MolmoAct2",
+      "team": "RoboDojo Team",
+      "average": [
+        1.02,
+        0.38
+      ],
+      "generalizationStd": [
+        0.73,
+        0.0
+      ],
+      "generalizationRand": [
+        0.04,
+        0.0
+      ],
+      "precision": [
+        0.45,
+        0.0
+      ],
+      "longHorizon": [
+        2.32,
+        0.0
+      ],
+      "memory": [
+        1.02,
+        1.0
+      ],
+      "open": [
+        0.91,
+        0.83
+      ]
+    },
+    {
+      "model": "GO-1",
+      "team": "RoboDojo Team",
+      "average": [
+        0.99,
+        0.53
+      ],
+      "generalizationStd": [
+        3.16,
+        2.0
+      ],
+      "generalizationRand": [
+        0.01,
+        0.0
+      ],
+      "precision": [
+        1.45,
+        0.42
+      ],
+      "longHorizon": [
+        1.13,
+        0.25
+      ],
+      "memory": [
+        0.7,
+        0.67
+      ],
+      "open": [
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "model": "ACT (Single Task)",
+      "team": "RoboDojo Team",
+      "average": [
+        0.98,
+        0.32
+      ],
+      "generalizationStd": [
+        1.37,
+        1.0
+      ],
+      "generalizationRand": [
+        0.0,
+        0.0
+      ],
+      "precision": [
+        0.85,
+        0.0
+      ],
+      "longHorizon": [
+        1.73,
+        0.92
+      ],
+      "memory": [
+        1.65,
+        0.13
+      ],
+      "open": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "H-RDT",
+      "team": "RoboDojo Team",
+      "average": [
+        0.67,
+        0.12
+      ],
+      "generalizationStd": [
+        0.89,
+        0.0
+      ],
+      "generalizationRand": [
+        0.09,
+        0.0
+      ],
+      "precision": [
+        0.41,
+        0.0
+      ],
+      "longHorizon": [
+        2.23,
+        0.17
+      ],
+      "memory": [
+        0.12,
+        0.11
+      ],
+      "open": [
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "model": "RDT",
+      "team": "RoboDojo Team",
+      "average": [
+        0.51,
+        0.13
+      ],
+      "generalizationStd": [
+        0.82,
+        0.0
+      ],
+      "generalizationRand": [
+        0.29,
+        0.0
+      ],
+      "precision": [
+        0.38,
+        0.0
+      ],
+      "longHorizon": [
+        1.13,
+        0.0
+      ],
+      "memory": [
+        0.49,
+        0.33
+      ],
+      "open": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "DM0",
+      "team": "RoboDojo Team",
+      "average": [
+        0.45,
+        0.05
+      ],
+      "generalizationStd": [
+        0.93,
+        0.0
+      ],
+      "generalizationRand": [
+        0.04,
+        0.0
+      ],
+      "precision": [
+        0.61,
+        0.0
+      ],
+      "longHorizon": [
+        0.97,
+        0.08
+      ],
+      "memory": [
+        0.2,
+        0.11
+      ],
+      "open": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "Dexora-1B",
+      "team": "RoboDojo Team",
+      "average": [
+        0.38,
+        0.02
+      ],
+      "generalizationStd": [
+        0.8,
+        0.0
+      ],
+      "generalizationRand": [
+        0.18,
+        0.0
+      ],
+      "precision": [
+        0.49,
+        0.0
+      ],
+      "longHorizon": [
+        0.82,
+        0.0
+      ],
+      "memory": [
+        0.12,
+        0.0
+      ],
+      "open": [
+        0.01,
+        0.0
+      ]
+    },
+    {
+      "model": "A1",
+      "team": "RoboDojo Team",
+      "average": [
+        0.28,
+        0.02
+      ],
+      "generalizationStd": [
+        0.28,
+        0.0
+      ],
+      "generalizationRand": [
+        0.04,
+        0.0
+      ],
+      "precision": [
+        0.09,
+        0.0
+      ],
+      "longHorizon": [
+        1.07,
+        0.0
+      ],
+      "memory": [
+        0.0,
+        0.0
+      ],
+      "open": [
+        0.08,
+        0.08
+      ]
+    },
+    {
+      "model": "Spirit v1.5",
+      "team": "RoboDojo Team",
+      "average": [
+        0.23,
+        0.14
+      ],
+      "generalizationStd": [
+        1.6,
+        1.0
+      ],
+      "generalizationRand": [
+        0.0,
+        0.0
+      ],
+      "precision": [
+        0.03,
+        0.0
+      ],
+      "longHorizon": [
+        0.11,
+        0.0
+      ],
+      "memory": [
+        0.22,
+        0.22
+      ],
+      "open": [
+        0.0,
+        0.0
+      ]
+    },
+    {
+      "model": "TinyVLA",
+      "team": "RoboDojo Team",
+      "average": [
+        0.22,
+        0.07
+      ],
+      "generalizationStd": [
+        0.06,
+        0.0
+      ],
+      "generalizationRand": [
+        0.01,
+        0.0
+      ],
+      "precision": [
+        0.05,
+        0.0
+      ],
+      "longHorizon": [
+        0.67,
+        0.0
+      ],
+      "memory": [
+        0.11,
+        0.11
+      ],
+      "open": [
+        0.25,
+        0.25
+      ]
+    },
+    {
+      "model": "OpenVLA-OFT",
+      "team": "RoboDojo Team",
+      "average": [
+        0.21,
+        0.02
+      ],
+      "generalizationStd": [
+        0.03,
+        0.0
+      ],
+      "generalizationRand": [
+        0.06,
+        0.0
+      ],
+      "precision": [
+        0.2,
+        0.0
+      ],
+      "longHorizon": [
+        0.7,
+        0.0
+      ],
+      "memory": [
+        0.0,
+        0.0
+      ],
+      "open": [
+        0.08,
+        0.08
+      ]
+    }
+  ]
+}

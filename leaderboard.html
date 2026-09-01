@@ -4,9 +4,15 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RoboTwin 2.0 Leaderboard</title>
+  <link rel="alternate" type="application/json" href="data/index.json" title="Leaderboard data index">
+  <link rel="alternate" type="application/json" href="data/robotwin_leaderboard.json" title="RoboTwin 2.0 Leaderboard data">
+  <link rel="alternate" type="application/json" href="data/robodojo_leaderboard.json" title="RoboDojo Sim Leaderboard data">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="assets/css/site.css">
   <style>
-    :root { --lb-max: 1440px; }
+    :root { --lb-max: 90%; --logo-h: clamp(34px, 5vw, 48px); }
     body {
       background:
         radial-gradient(1000px 460px at 12% -12%, rgba(101, 164, 135, 0.18), transparent 60%),
@@ -32,7 +38,7 @@
       display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
     }
     .lb-brand img {
-      height: clamp(34px, 5vw, 48px);
+      height: var(--logo-h);
       width: auto;
       display: block;
     }
@@ -118,27 +124,91 @@
       border: 1px solid var(--line); border-radius: 8px; padding: 5px 10px;
     }
     .legend span b { color: var(--text); }
-    .proto-callout {
-      margin: 0 0 14px;
-      padding: 14px 16px;
+    .xpl-hero {
+      --xpl-blue: #4387f6;
+      --xpl-fg: #1b1b1b;
+      --xpl-muted: #6b7280;
+      --xpl-mono: "JetBrains Mono", Menlo, ui-monospace, monospace;
+      --xpl-serif: "EB Garamond", "Source Serif 4", Georgia, serif;
+      --xpl-sans: Inter, "Source Sans 3", "Segoe UI", sans-serif;
+      margin: 12px 0 0;
+      padding: 18px 20px 16px;
       border-radius: 12px;
-      border: 1px solid rgba(101,164,135,0.35);
-      background: linear-gradient(135deg, rgba(101,164,135,0.14), rgba(255,255,255,0.9));
+      border: 1px solid rgba(67, 135, 246, 0.22);
+      background: #fff;
     }
-    .proto-title {
-      font-family: var(--display);
-      font-size: 18px;
-      font-weight: 700;
+    .xpl-hero__headline {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 10px 16px;
+      margin: 0 0 14px;
+    }
+    .xpl-hero__title {
+      margin: 0;
+      font-family: Menlo, var(--xpl-mono);
+      font-size: clamp(1.7rem, 3.4vw, 2.25rem);
+      line-height: 1.1;
       letter-spacing: -0.02em;
-      color: var(--brand-green-deep);
-      margin-bottom: 4px;
+      font-weight: 700;
+      white-space: nowrap;
     }
-    .proto-body {
+    .xpl-hero__title .t-blue { color: var(--xpl-blue); }
+    .xpl-hero__title .t-black { color: var(--xpl-fg); }
+    .xpl-hero__subtitle {
+      margin: 0;
+      flex: 1 1 16rem;
+      font-family: var(--xpl-serif);
+      font-size: clamp(1.05rem, 1.8vw, 1.28rem);
+      line-height: 1.25;
+      font-weight: 500;
+      color: rgba(27, 27, 27, 0.78);
+    }
+    .xpl-hero__meta {
+      display: grid;
+      gap: 6px 16px;
+      margin: 0 0 14px;
+      font-family: var(--xpl-mono);
+      font-size: 13px;
+      line-height: 1.35;
+    }
+    .xpl-hero__row {
+      display: grid;
+      grid-template-columns: 108px 1fr;
+      gap: 8px;
+      align-items: baseline;
+    }
+    .xpl-hero__label { color: var(--xpl-fg); font-weight: 600; }
+    .xpl-hero__value { color: var(--xpl-muted); }
+    .xpl-hero__value a {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35em;
+      color: var(--xpl-fg);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    .xpl-hero__value a:hover { color: var(--xpl-blue); }
+    .xpl-hero__icon {
+      display: inline-block;
+      height: 1em;
+      width: 1em;
+      flex: 0 0 1em;
+      margin: 0;
+      vertical-align: middle;
+    }
+    .xpl-hero__note {
+      margin: 0;
+      font-family: var(--xpl-sans);
       font-size: 14px;
-      color: var(--text);
-      line-height: 1.5;
+      line-height: 1.55;
+      color: #374151;
     }
-    .proto-body b { color: var(--text); }
+    .xpl-hero__note b { color: var(--xpl-fg); }
+    .xpl-hero__note a { color: var(--xpl-blue); text-decoration: underline; text-underline-offset: 2px; }
+    @media (max-width: 640px) {
+      .xpl-hero__row { grid-template-columns: 1fr; gap: 2px; }
+    }
     .contributor {
       font-size: 12px;
       color: var(--text-soft);
@@ -226,22 +296,23 @@
     .rank-table th, .rank-table td { white-space: nowrap; }
     .rank-table .col-method { min-width: 180px; }
     .rank-table .col-rank { width: 64px; }
+    .rank-table .col-track { width: 104px; }
+    .rank-table .sticky-left { text-align: center; }
     .rank-num { font-weight: 750; color: var(--text-soft); }
     .rank-num.top { color: var(--brand-green-deep); }
     .method-name {
-      font-family: var(--display); font-size: 16px; font-weight: 700;
-      letter-spacing: -0.02em;
+      font-family: var(--display); font-size: 14px; font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+    .badge-sft, .badge-co {
+      display: inline-block; padding: 2px 7px;
+      border-radius: 6px; font-family: var(--sans); font-size: 11px;
+      font-weight: 750; letter-spacing: 0.03em;
     }
     .badge-sft {
-      display: inline-block; margin-left: 8px; padding: 2px 7px;
-      border-radius: 6px; font-family: var(--sans); font-size: 11px;
-      font-weight: 750; letter-spacing: 0.03em; vertical-align: 2px;
       color: var(--text-soft); background: #eef2f0; border: 1px solid var(--line);
     }
     .badge-co {
-      display: inline-block; margin-left: 8px; padding: 2px 7px;
-      border-radius: 6px; font-family: var(--sans); font-size: 11px;
-      font-weight: 750; letter-spacing: 0.03em; vertical-align: 2px;
       color: var(--brand-green-deep); background: rgba(101,164,135,0.14);
       border: 1px solid rgba(101,164,135,0.28);
     }
@@ -252,7 +323,183 @@
     .news ul { margin: 8px 0 0; padding-left: 18px; }
     .news li { margin: 6px 0; font-size: 14px; color: var(--text-soft); }
     .news li b { color: var(--text); }
+    .board-error code {
+      font-size: 12px; background: #f3f7f5;
+      border: 1px solid var(--line); border-radius: 6px; padding: 1px 5px;
+    }
+    .board-error {
+      padding: 18px; text-align: center;
+      font-size: 14px; color: var(--hard); white-space: normal;
+    }
     a { color: var(--brand-purple); }
+
+    /* ===== RoboDojo board (mirrors robodojo-benchmark.com styling) ===== */
+    #robodojo { scroll-margin-top: 88px; }
+    .dojo-board {
+      --dj-surface: #fff;
+      --dj-text: #202124;
+      --dj-muted: #5f6368;
+      --dj-soft: #80868b;
+      --dj-line: rgba(32, 34, 36, 0.12);
+      --dj-accent: #4285f4;
+      --dj-accent-soft: #e8f0fe;
+      --dj-font: "Google Sans Flex", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --dj-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", "SF Mono", Consolas, "Liberation Mono", Menlo, monospace;
+      border: 1px solid var(--dj-line);
+      border-radius: 8px;
+      background: var(--dj-surface);
+      overflow: hidden;
+      box-shadow: none;
+      padding: 0;
+    }
+    .dojo-board__toolbar {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      flex-wrap: wrap; gap: 10px 16px;
+      padding: 12px 16px;
+      border-bottom: 1px solid rgba(32,34,36,0.09);
+      background: #fafafb;
+    }
+    .dojo-board__toolbar-main { display: flex; flex-direction: column; align-items: flex-start; gap: 8px; min-width: 0; }
+    .dojo-board__title {
+      display: flex; align-items: center; gap: 10px; margin: 0;
+      color: var(--dj-text); font-family: var(--dj-font);
+      font-size: 20px; font-weight: 700; letter-spacing: -0.01em;
+    }
+    .dojo-board__title-logo {
+      height: var(--logo-h); width: auto; display: block;
+      background: transparent; padding: 0;
+    }
+    .dojo-board__title-meta { color: var(--dj-muted); font-size: 13px; font-weight: 500; }
+    .dojo-board__side { display: flex; flex-direction: column; align-items: flex-end; gap: 6px; }
+    .dojo-board__official-link {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--dj-font); font-size: 13px; font-weight: 600;
+      color: var(--dj-accent); text-decoration: none;
+    }
+    .dojo-board__official-link:hover { color: #1a73e8; text-decoration: underline; }
+    .dojo-board__stamp {
+      font-family: var(--dj-font); font-size: 12px; font-style: italic; font-weight: 500;
+      letter-spacing: 0.01em; color: rgba(32,33,36,0.58); white-space: nowrap;
+    }
+    .dojo-board__desc {
+      margin: 0; padding: 10px 16px;
+      border-bottom: 1px solid rgba(32,34,36,0.09);
+      color: var(--dj-muted); font-family: var(--dj-font);
+      font-size: 13px; line-height: 1.55;
+    }
+    .dojo-board__desc a { color: var(--dj-accent); }
+    .dojo-board__sort-bar { display: flex; align-items: center; flex-wrap: wrap; gap: 12px 20px; min-width: 0; }
+    .dojo-board__sort-group { display: flex; align-items: center; gap: 10px; min-width: 0; }
+    .dojo-board__sort-label {
+      color: var(--dj-muted); font-family: var(--dj-font);
+      font-size: 11px; font-weight: 600; letter-spacing: 0.04em;
+      text-transform: uppercase; white-space: nowrap;
+    }
+    .dojo-board__chips {
+      display: inline-flex; align-items: center; flex-wrap: wrap; gap: 2px;
+      padding: 2px; border: 1px solid rgba(32,34,36,0.10); border-radius: 999px;
+      background: var(--dj-surface);
+    }
+    .dojo-board__chip {
+      display: inline-flex; align-items: center; justify-content: center;
+      min-height: 24px; margin: 0; padding: 0 10px; border: 0; border-radius: 999px;
+      background: transparent; color: var(--dj-muted);
+      font-family: var(--dj-mono); font-size: 10px; font-weight: 760;
+      letter-spacing: 0.06em; cursor: pointer; white-space: nowrap;
+      transition: color .14s ease, background .14s ease;
+    }
+    .dojo-board__chip:hover { color: var(--dj-text); }
+    .dojo-board__chip.is-active { background: var(--dj-accent-soft); color: var(--dj-accent); }
+    .dojo-board__scroll { overflow-x: auto; }
+    table.dojo-board__table {
+      border-collapse: collapse; table-layout: auto;
+      min-width: 1080px; width: 100%;
+      font-family: var(--dj-font);
+    }
+    .dojo-board__table th, .dojo-board__table td {
+      padding: 0 12px; text-align: center; vertical-align: middle;
+      border-bottom: 1px solid rgba(32,34,36,0.09);
+      border-right: 0;
+    }
+    .dojo-board__table thead th {
+      position: sticky; top: 0; z-index: 1; height: 40px;
+      background: #f2f3f4; color: var(--dj-soft);
+      font-family: var(--dj-mono); font-size: 10px; font-weight: 760;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      box-shadow: inset 0 -1px rgba(32,34,36,0.09);
+    }
+    .dojo-board__table thead th.is-sorted { color: var(--dj-accent); }
+    .dojo-board__th-sort {
+      border: 0; background: transparent; padding: 0; margin: 0;
+      font: inherit; color: inherit; letter-spacing: inherit; text-transform: inherit;
+      cursor: pointer; white-space: nowrap;
+    }
+    .dojo-board__th-sort:hover { color: var(--dj-accent); }
+    .dojo-board__table td { height: 48px; color: var(--dj-text); font-size: 13px; }
+    .dojo-board__table tbody tr:last-child td { border-bottom: 0; }
+    .dojo-board__rank {
+      font-family: var(--dj-mono); font-size: 14px; font-weight: 760;
+      font-variant-numeric: tabular-nums; color: var(--dj-muted); width: 64px;
+    }
+    .dojo-board__medal {
+      display: inline-block; font-size: 18px; line-height: 1; vertical-align: middle;
+      font-family: "Segoe UI Emoji", "Apple Color Emoji", "Noto Color Emoji", system-ui, sans-serif;
+    }
+    .dojo-board__model {
+      min-width: 170px;
+      font-family: var(--dj-font); font-size: 14px; font-weight: 600;
+      color: var(--dj-text); letter-spacing: -0.01em; white-space: nowrap;
+    }
+    .dojo-board__contributor {
+      min-width: 130px; white-space: nowrap;
+      font-family: var(--dj-font); font-size: 13px; font-weight: 500;
+      color: rgba(32,33,36,0.78);
+    }
+    .dojo-board__metric {
+      font-family: var(--dj-mono); font-size: 12px; font-weight: 700;
+      font-variant-numeric: tabular-nums; color: var(--dj-text); white-space: nowrap;
+    }
+    .dojo-board__metric.is-sort-col { background: rgba(66,133,244,0.05); }
+    .dojo-board__metric.is-leader { font-weight: 780; color: var(--dj-accent); }
+    .dojo-board__row[data-rank="1"] td { background: rgba(232,240,254,0.55); }
+    .dojo-board__row:hover td { background: rgba(66,133,244,0.07); }
+    .dojo-board__row[data-rank="1"]:hover td { background: rgba(232,240,254,0.72); }
+    .dojo-board__row:hover .dojo-board__rank { color: var(--dj-accent); }
+    .dojo-board__full {
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      width: 100%; min-height: 42px; margin: 0; padding: 8px 16px;
+      border-top: 1px solid rgba(32,34,36,0.09);
+      background: var(--dj-surface); color: var(--dj-accent);
+      font-family: var(--dj-mono); font-size: 10px; font-weight: 760;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      transition: color .14s ease, background .14s ease;
+    }
+    .dojo-board__full:hover { color: #1a73e8; background: rgba(66,133,244,0.05); }
+    .xpolicy-bridge {
+      margin: 0 0 14px;
+      padding: 16px 18px;
+      border-radius: 14px;
+      border: 1px solid rgba(104, 52, 154, 0.22);
+      background: linear-gradient(135deg, rgba(101,164,135,0.16), rgba(104,52,154,0.08), rgba(255,255,255,0.95));
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 14px; flex-wrap: wrap;
+    }
+    .xpolicy-bridge__path {
+      display: flex; align-items: center; flex-wrap: wrap; gap: 8px 10px;
+      font-family: var(--display); font-size: 16px; font-weight: 750;
+      letter-spacing: -0.02em; color: var(--text);
+    }
+    .xpolicy-bridge__path img { height: var(--logo-h); width: auto; display: block; background: transparent; padding: 0; }
+    .xpolicy-bridge__hub {
+      color: #fff; background: #4387f6;
+      border-radius: 999px; padding: 4px 10px; font-size: 13px; font-weight: 750;
+    }
+    .xpolicy-bridge__note {
+      margin: 0; max-width: 520px;
+      font-size: 13px; line-height: 1.5; color: var(--text-soft);
+    }
+    .xpolicy-bridge__note b { color: var(--text); }
+
     @media (max-width: 700px) {
       .toolbar { align-items: stretch; }
     }
@@ -270,6 +517,8 @@
       </div>
       <nav class="lb-nav">
         <a href="./">Home</a>
+        <a href="#robodojo">RoboDojo</a>
+        <a href="https://xpolicylab.github.io/" target="_blank" rel="noopener">XPolicyLab</a>
         <a href="https://robotwin-platform.github.io/doc/" target="_blank">Docs</a>
         <a href="https://arxiv.org/pdf/2506.18088" target="_blank">Paper</a>
       </nav>
@@ -287,22 +536,58 @@
         Co-train and Single-task SFT share one board. The default ranking is <b>Average（c2c+c2r）</b>.
       </p>
       <p style="margin-top:10px">
-        <b>Listing rule:</b> only models with <b>publicly released code and weights</b> are eligible
-        for this leaderboard. To submit or request listing, contact
-        <a href="mailto:chentianxing2002@gmail.com"><b>chentianxing2002@gmail.com</b></a>.
+        <b>Submission &amp; listing policy:</b> to be listed on this leaderboard, a model must provide
+        <b>publicly released code</b>, <b>publicly released weights</b>, and a
+        <b>technical report</b> (arXiv paper or equivalent public document) describing the method.
+        To submit results or request listing, contact
+        <a href="mailto:chentianxing2002@gmail.com"><b>chentianxing2002@gmail.com</b></a>
+        with links to the code, weights, and report.
       </p>
-      <div class="proto-callout" style="margin:12px 0 0">
-        <div class="proto-title">XPolicyLab</div>
-        <div class="proto-body">
-          Results on this leaderboard are reproduced via the
-          <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener"><b>XPolicyLab</b></a>
-          standard interface.
-          Website:
-          <a href="https://xpolicylab.github.io/" target="_blank" rel="noopener">https://xpolicylab.github.io/</a>
-          · Code:
-          <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener">https://github.com/XPolicyLab/XPolicyLab</a>.
-          The same stack is also shared with <b>RoboDojo</b> simulation and real-robot evaluation.
+      <div class="xpl-hero">
+        <div class="xpl-hero__headline">
+          <h3 class="xpl-hero__title"><span class="t-blue">X</span><span class="t-black">Policy</span><span class="t-blue">Lab</span></h3>
+          <p class="xpl-hero__subtitle">A Unified Standard and Open Ecosystem for Robot Policy Evaluation and Deployment</p>
         </div>
+        <div class="xpl-hero__meta">
+          <div class="xpl-hero__row">
+            <span class="xpl-hero__label">Institutions</span>
+            <span class="xpl-hero__value">MMLab@HKU &amp; THU</span>
+          </div>
+          <div class="xpl-hero__row">
+            <span class="xpl-hero__label">Paper</span>
+            <span class="xpl-hero__value">
+              <a href="https://arxiv.org/abs/2608.09892" target="_blank" rel="noopener noreferrer">
+                <img class="xpl-hero__icon" src="https://xpolicylab.github.io/assets/arxiv.svg" alt="">arXiv:2608.09892
+              </a>
+            </span>
+          </div>
+          <div class="xpl-hero__row">
+            <span class="xpl-hero__label">Code</span>
+            <span class="xpl-hero__value">
+              <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener noreferrer">
+                <img class="xpl-hero__icon" src="https://xpolicylab.github.io/assets/github.svg" alt="">github.com/XPolicyLab/XPolicyLab
+              </a>
+            </span>
+          </div>
+          <div class="xpl-hero__row">
+            <span class="xpl-hero__label">Contact</span>
+            <span class="xpl-hero__value">
+              Tianxing Chen (project lead),
+              <a href="mailto:chentianxing2002@gmail.com">chentianxing2002@gmail.com</a>
+            </span>
+          </div>
+          <div class="xpl-hero__row">
+            <span class="xpl-hero__label">Website</span>
+            <span class="xpl-hero__value">
+              <a href="https://xpolicylab.github.io/" target="_blank" rel="noopener noreferrer">xpolicylab.github.io</a>
+            </span>
+          </div>
+        </div>
+        <p class="xpl-hero__note">
+          The same adapters serve this <b>RoboTwin 2.0</b> board and
+          <a href="https://robodojo-benchmark.com/LeaderBoard" target="_blank" rel="noopener">RoboDojo</a>
+          (sim + real). Results here are reproduced via the XPolicyLab standard interface.
+        </p>
       </div>
       <div class="legend">
         <span><b>Data</b>: 50 demo_clean × 50 tasks</span>
@@ -311,7 +596,8 @@
         <span><b>Average（c2c+c2r）</b>: ranked by (c2c + c2r) / 2</span>
         <span><b>clean2random（hard）</b>: ranked by demo_randomized</span>
         <span><b>clean2clean（easy）</b>: ranked by demo_clean</span>
-        <span><b>Open</b>: public code + weights required</span>
+        <span><b>Open</b>: public code + weights + technical report required</span>
+        <span><b>XPolicyLab</b>: bridges RoboTwin ↔ RoboDojo</span>
         <span><b>Contributor</b>: RoboTwin Team</span>
       </div>
     </section>
@@ -320,9 +606,7 @@
       <div class="toolbar">
         <div class="sort-group">
           <span class="sort-label">Ranking setting</span>
-          <button class="sort-btn active" data-sort="avg" type="button">Average（c2c+c2r）</button>
-          <button class="sort-btn" data-sort="hard" type="button">clean2random（hard）</button>
-          <button class="sort-btn" data-sort="easy" type="button">clean2clean（easy）</button>
+          <span class="sort-group" id="rankSortChips"></span>
         </div>
         <div class="sort-group">
           <span class="sort-label">View</span>
@@ -352,10 +636,11 @@
               <th class="col-rank sticky-left">Rank</th>
               <th class="col-method">Method</th>
               <th>Contributor</th>
-              <th>Date</th>
               <th id="thAvg" class="sort-active">Average（c2c+c2r）</th>
               <th id="thHard">clean2random（hard）</th>
               <th id="thEasy">clean2clean（easy）</th>
+              <th class="col-track">Track</th>
+              <th>Date</th>
             </tr>
           </thead>
           <tbody></tbody>
@@ -374,188 +659,84 @@
       </div>
     </section>
 
+    <div class="xpolicy-bridge">
+      <div class="xpolicy-bridge__path">
+        <img src="https://robotwin-platform.github.io/doc/assets/robotwin-text-logo.jpg" alt="RoboTwin" />
+        <span aria-hidden="true">↔</span>
+        <span class="xpolicy-bridge__hub">XPolicyLab</span>
+        <span aria-hidden="true">↔</span>
+        <img class="dojo-mini" src="assets/img/robodojo_logo.png" alt="RoboDojo" />
+      </div>
+      <p class="xpolicy-bridge__note">
+        <b>XPolicyLab</b> bridges <b>RoboTwin</b> and <b>RoboDojo</b> with one policy interface,
+        data format, and train/eval pipeline.
+        <a href="https://xpolicylab.github.io/" target="_blank" rel="noopener">Website</a>
+        ·
+        <a href="https://github.com/XPolicyLab/XPolicyLab" target="_blank" rel="noopener">Code</a>
+      </p>
+    </div>
+
+    <section class="dojo-board" id="robodojo" aria-labelledby="dojo-board-title" style="margin-bottom:14px">
+      <div class="dojo-board__toolbar">
+        <div class="dojo-board__toolbar-main">
+          <h2 id="dojo-board-title" class="dojo-board__title">
+            <img class="dojo-board__title-logo" src="assets/img/robodojo_logo.png" alt="RoboDojo" />
+            <span>Sim Leaderboard</span>
+            <span class="dojo-board__title-meta" id="dojoSortMeta">Top 10 · Ranked by Average · Score ↓</span>
+          </h2>
+          <div class="dojo-board__sort-bar">
+            <div class="dojo-board__sort-group" role="group" aria-label="Sort by dimension">
+              <span class="dojo-board__sort-label">Dimension</span>
+              <div class="dojo-board__chips" id="dojoDimChips"></div>
+            </div>
+            <div class="dojo-board__sort-group" role="group" aria-label="Sort by metric">
+              <span class="dojo-board__sort-label">Rank by</span>
+              <div class="dojo-board__chips" id="dojoMetricChips"></div>
+            </div>
+          </div>
+        </div>
+        <div class="dojo-board__side">
+          <a class="dojo-board__official-link" href="https://robodojo-benchmark.com/LeaderBoard" target="_blank" rel="noreferrer">Official Leaderboard <span aria-hidden="true">↗</span></a>
+          <span class="dojo-board__stamp">Updated: <b><time id="dojoUpdatedAt" datetime=""></time></b></span>
+        </div>
+      </div>
+      <p class="dojo-board__desc">
+        <b>XPolicyLab</b> bridges <b>RoboTwin</b> and <b>RoboDojo</b>: one policy interface, one
+        data format, and one train/eval pipeline. Models listed here can be transferred to
+        <a href="https://robodojo-benchmark.com/LeaderBoard" target="_blank" rel="noopener">RoboDojo</a>
+        (sim + real) without rewriting a line of code.
+        Preview below shows the official <b>Top 10</b>; cells are <b>Score / SR%</b> per capability dimension.
+      </p>
+      <div class="dojo-board__scroll">
+        <table class="dojo-board__table" id="dojoTable">
+          <thead></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <a class="dojo-board__full" href="https://robodojo-benchmark.com/LeaderBoard" target="_blank" rel="noreferrer">
+        Show full leaderboard on robodojo-benchmark.com <span aria-hidden="true">↗</span>
+      </a>
+    </section>
+
     <section class="panel news">
       <h2>News</h2>
-      <ul>
-        <li><b>2026/08/27</b>: Add Average（c2c+c2r） ranking as the default board sort.</li>
-        <li><b>2026/08/18</b>: Add 4D-WAM co-train results (clean2random).</li>
-        <li><b>2026/08/17</b>: Add/update Spatial Forcing, starVLA, Abot-M0, and GalaxeaVLA co-train results.</li>
-        <li><b>2026/08/15</b>: Add GigaBrain-0.7 co-train results (50 demo_clean × 50 tasks).</li>
-        <li><b>2026/07/22</b>: Merge Co-train + Single-task SFT into one clean2random board; add Easy/Hard ranking.</li>
-        <li><b>2025/08/05</b>: Support RDT, π0, ACT, DP, and DP3 single-task SFT results.</li>
-      </ul>
+      <ul id="newsList"></ul>
     </section>
+
   </div>
 
-  <script id="lb-data" type="application/json">
-{"tasks":["Adjust Bottle","Beat Block Hammer","Blocks Ranking RGB","Blocks Ranking Size","Click Alarmclock","Click Bell","Dump Bin Bigbin","Grab Roller","Handover Block","Handover Mic","Hanging Mug","Lift Pot","Move Can Pot","Move Pillbottle Pad","Move Playingcard Away","Move Stapler Pad","Open Laptop","Open Microwave","Pick Diverse Bottles","Pick Dual Bottles","Place A2B Left","Place A2B Right","Place Bread Basket","Place Bread Skillet","Place Burger Fries","Place Can Basket","Place Cans Plasticbox","Place Container Plate","Place Dual Shoes","Place Empty Cup","Place Fan","Place Mouse Pad","Place Object Basket","Place Object Scale","Place Object Stand","Place Phone Stand","Place Shoe","Press Stapler","Put Bottles Dustbin","Put Object Cabinet","Rotate QRcode","Scan Object","Shake Bottle Horizontally","Shake Bottle","Stack Blocks Three","Stack Blocks Two","Stack Bowls Three","Stack Bowls Two","Stamp Seal","Turn Switch"],"entries":[{"id":"cotrain:GigaBrain_0_7","name":"GigaBrain-0.7","setting":"cotrain","easy_mean":66.8,"hard_mean":67.9,"easy":[98.0,94.0,68.0,42.0,98.0,98.0,90.0,100.0,16.0,100.0,26.0,86.0,86.0,32.0,58.0,26.0,78.0,82.0,38.0,26.0,68.0,58.0,60.0,80.0,82.0,20.0,8.0,94.0,68.0,90.0,78.0,26.0,74.0,64.0,88.0,36.0,88.0,90.0,68.0,78.0,54.0,32.0,100.0,100.0,60.0,80.0,70.0,90.0,52.0,42.0],"hard":[98.0,74.0,76.0,28.0,96.0,84.0,66.0,100.0,32.0,100.0,36.0,86.0,82.0,58.0,82.0,40.0,88.0,50.0,50.0,56.0,72.0,68.0,68.0,50.0,86.0,22.0,18.0,94.0,72.0,90.0,74.0,44.0,64.0,54.0,76.0,52.0,92.0,74.0,54.0,82.0,58.0,46.0,92.0,98.0,78.0,92.0,64.0,74.0,54.0,52.0],"contributor":"GigaAI","listed_at":"26.08.15"},{"id":"cotrain:Pi_05","name":"π0.5","setting":"cotrain","easy_mean":70.7,"hard_mean":46.0,"easy":[99.0,93.0,72.0,45.0,65.0,31.0,92.0,99.0,30.0,98.0,17.0,98.0,60.0,46.0,84.0,20.0,93.0,86.0,66.0,72.0,71.0,68.0,63.0,76.0,82.0,56.0,31.0,92.0,70.0,96.0,66.0,34.0,70.0,78.0,85.0,65.0,82.0,79.0,78.0,39.0,90.0,49.0,99.0,100.0,77.0,91.0,81.0,94.0,53.0,52.0],"hard":[77.0,23.0,44.0,21.0,50.0,35.0,84.0,97.0,12.0,6.0,14.0,35.0,10.0,32.0,65.0,18.0,68.0,59.0,42.0,57.0,49.0,39.0,60.0,47.0,86.0,10.0,73.0,72.0,45.0,80.0,26.0,31.0,29.0,38.0,47.0,37.0,50.0,63.0,50.0,22.0,21.0,40.0,100.0,100.0,25.0,43.0,52.0,70.0,21.0,25.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:X_WAM","name":"X-WAM","setting":"cotrain","easy_mean":70.0,"hard_mean":25.8,"easy":[92.0,92.0,85.0,33.0,95.0,100.0,88.0,95.0,21.0,97.0,17.0,77.0,77.0,78.0,83.0,26.0,72.0,9.0,74.0,99.0,70.0,59.0,82.0,82.0,93.0,63.0,93.0,95.0,38.0,93.0,47.0,49.0,52.0,66.0,83.0,35.0,76.0,85.0,71.0,28.0,47.0,32.0,97.0,96.0,72.0,97.0,69.0,93.0,58.0,68.0],"hard":[13.0,21.0,36.0,0.0,61.0,52.0,40.0,16.0,21.0,8.0,0.0,0.0,34.0,26.0,11.0,2.0,6.0,24.0,26.0,55.0,18.0,21.0,40.0,37.0,36.0,15.0,36.0,52.0,7.0,36.0,6.0,6.0,20.0,14.0,28.0,4.0,31.0,20.0,21.0,16.0,2.0,14.0,66.0,67.0,26.0,76.0,38.0,67.0,16.0,4.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:X_VLA","name":"X-VLA","setting":"cotrain","easy_mean":68.0,"hard_mean":20.9,"easy":[99.0,87.0,3.0,56.0,62.0,100.0,83.0,100.0,77.0,98.0,19.0,96.0,58.0,66.0,84.0,42.0,85.0,43.0,50.0,41.0,53.0,49.0,85.0,89.0,90.0,70.0,93.0,94.0,30.0,90.0,63.0,53.0,81.0,76.0,91.0,84.0,83.0,87.0,47.0,41.0,81.0,57.0,100.0,100.0,0.0,10.0,77.0,85.0,50.0,40.0],"hard":[33.0,9.0,4.0,25.0,43.0,63.0,41.0,20.0,1.3,1.0,2.0,15.0,0.0,3.0,5.0,0.0,16.0,5.0,30.0,51.0,15.0,13.0,52.0,17.0,35.0,9.0,60.0,39.0,12.0,16.0,1.0,0.0,6.0,6.0,43.0,5.0,39.0,73.0,20.0,21.0,1.0,9.0,78.0,76.0,0.0,2.0,9.0,15.0,2.0,6.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Xiaomi_Robotics_0","name":"Xiaomi Robotics-0","setting":"cotrain","easy_mean":62.9,"hard_mean":18.2,"easy":[100.0,51.0,57.0,19.0,97.0,100.0,94.0,99.0,31.0,92.0,16.0,67.0,63.0,65.0,77.0,16.0,90.0,45.0,47.0,56.0,45.0,36.0,54.0,63.0,85.0,52.0,10.0,91.0,31.0,92.0,50.0,18.0,76.0,54.0,84.0,44.0,75.0,79.0,73.0,35.0,56.0,46.0,100.0,99.0,73.0,85.0,78.0,93.0,46.0,38.0],"hard":[9.0,16.0,8.0,1.0,58.0,57.0,49.0,12.0,1.0,6.0,6.0,1.0,7.0,3.0,12.0,0.0,24.0,16.0,12.0,28.0,6.0,2.0,23.0,11.0,27.0,7.0,31.0,59.0,9.0,12.0,3.0,1.0,15.0,2.0,24.0,11.0,29.0,21.0,21.0,5.0,1.0,8.0,62.0,61.0,7.0,22.0,35.0,53.0,3.0,14.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:EventVLA","name":"EventVLA","setting":"cotrain","easy_mean":65.6,"hard_mean":15.7,"easy":[100.0,24.0,94.0,51.0,93.0,94.0,92.0,97.0,58.0,44.0,20.0,59.0,62.0,60.0,57.0,14.0,86.0,55.0,22.0,42.0,79.0,65.0,66.0,64.0,89.0,76.0,81.0,98.0,22.0,92.0,44.0,34.0,73.0,80.0,85.0,64.0,55.0,80.0,45.0,33.0,57.0,27.0,100.0,100.0,76.0,98.0,83.0,96.0,69.0,24.0],"hard":[24.0,1.0,6.0,1.0,30.0,48.0,64.0,48.0,4.0,5.0,2.0,1.0,0.0,3.0,17.0,2.0,23.0,44.0,9.0,8.0,20.0,17.0,15.0,4.0,7.0,7.0,14.0,15.0,1.0,18.0,5.0,6.0,29.0,24.0,32.0,3.0,10.0,32.0,31.0,27.0,1.0,3.0,37.0,34.0,3.0,13.0,11.0,17.0,3.0,8.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:AHA_WAM","name":"AHA-WAM","setting":"cotrain","easy_mean":64.3,"hard_mean":3.2,"easy":[100.0,52.0,60.0,32.0,98.0,100.0,90.0,98.0,63.0,99.0,13.0,62.0,48.0,33.0,82.0,5.0,89.0,59.0,36.0,60.0,65.0,50.0,54.0,68.0,96.0,61.0,90.0,99.0,48.0,64.0,58.0,12.0,71.0,34.0,79.0,61.0,74.0,82.0,58.0,36.0,61.0,51.0,100.0,100.0,57.0,89.0,71.0,93.0,13.0,42.0],"hard":[0.0,0.0,1.0,0.0,17.0,19.0,27.0,3.0,1.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,9.0,1.0,0.0,1.0,1.0,0.0,3.0,0.0,0.0,2.0,1.0,11.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,2.0,1.0,0.0,0.0,0.0,15.0,14.0,1.0,2.0,0.0,5.0,0.0,13.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:FastWAM","name":"FastWAM","setting":"cotrain","easy_mean":77.8,"hard_mean":1.9,"easy":[99.0,82.0,81.0,52.0,99.0,95.0,94.0,100.0,66.0,98.0,14.0,91.0,96.0,92.0,94.0,33.0,84.0,17.0,72.0,87.0,69.0,60.0,87.0,85.0,97.0,77.0,98.0,100.0,67.0,90.0,59.0,55.0,82.0,83.0,94.0,85.0,87.0,90.0,55.0,42.0,81.0,68.0,100.0,100.0,89.0,99.0,80.0,94.0,30.0,39.0],"hard":[0.0,0.0,0.0,0.0,60.0,7.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0,9.0,10.0,0.0,0.0,0.0,0.0,0.0,3.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Spatial_Forcing","name":"Spatial Forcing","setting":"cotrain","easy_mean":77.2,"hard_mean":26.74,"easy":[97.0,74.0,83.0,42.0,89.0,97.0,83.0,98.0,62.0,100.0,17.0,98.0,69.0,77.0,96.0,31.0,89.0,66.0,72.0,90.0,67.0,55.0,84.0,82.0,98.0,77.0,94.0,97.0,83.0,94.0,74.0,35.0,79.0,73.0,96.0,83.0,88.0,89.0,58.0,37.0,87.0,76.0,99.0,99.0,75.0,96.0,79.0,96.0,39.0,40.0],"hard":[71.0,13.0,7.0,3.0,28.0,28.0,70.0,94.0,2.0,2.0,1.0,0.0,1.0,14.0,15.0,1.0,15.0,18.0,38.0,47.0,11.0,6.0,53.0,30.0,71.0,10.0,11.0,54.0,2.0,33.0,7.0,9.0,16.0,4.0,32.0,1.0,61.0,55.0,41.0,1.0,22.0,6.0,87.0,84.0,0.0,19.0,55.0,79.0,2.0,7.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:starVLA","name":"starVLA","setting":"cotrain","easy_mean":46.52,"hard_mean":3.16,"easy":[84.0,75.0,39.0,14.0,60.0,75.0,54.0,94.0,6.0,66.0,1.0,68.0,33.0,40.0,62.0,14.0,22.0,10.0,43.0,60.0,24.0,25.0,82.0,79.0,85.0,4.0,95.0,87.0,30.0,85.0,30.0,11.0,4.0,20.0,66.0,18.0,46.0,91.0,11.0,29.0,11.0,63.0,98.0,100.0,20.0,53.0,46.0,65.0,12.0,16.0],"hard":[0.0,2.0,2.0,0.0,0.0,7.0,4.0,44.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,1.0,15.0,20.0,0.0,1.0,5.0,2.0,11.0,0.0,2.0,3.0,2.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,0.0,10.0,0.0,0.0,0.0,5.0,9.0,5.0,1.0,1.0,0.0,0.0,0.0,0.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:Abot_M0","name":"Abot-M0","setting":"cotrain","easy_mean":57.4,"hard_mean":30.36,"easy":[99.0,72.0,61.0,33.0,0.0,5.0,89.0,100.0,16.0,90.0,7.0,51.0,42.0,56.0,78.0,16.0,68.0,67.0,12.0,28.0,56.0,41.0,70.0,73.0,93.0,38.0,56.0,100.0,28.0,97.0,48.0,31.0,70.0,73.0,79.0,33.0,74.0,78.0,46.0,41.0,52.0,38.0,97.0,96.0,39.0,82.0,76.0,92.0,45.0,38.0],"hard":[49.0,33.0,23.0,7.0,21.0,11.0,68.0,91.0,0.0,22.0,4.0,29.0,4.0,4.0,50.0,4.0,64.0,26.0,7.0,19.0,26.0,22.0,47.0,25.0,55.0,13.0,36.0,62.0,15.0,43.0,10.0,5.0,33.0,23.0,25.0,26.0,24.0,52.0,26.0,22.0,6.0,17.0,85.0,84.0,10.0,42.0,44.0,65.0,19.0,20.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:GalaxeaVLA","name":"GalaxeaVLA","setting":"cotrain","easy_mean":62.7,"hard_mean":12.72,"easy":[100.0,82.0,42.0,19.0,79.0,77.0,88.0,100.0,10.0,85.0,20.0,75.0,58.0,69.0,88.0,8.0,74.0,41.0,62.0,77.0,56.0,47.0,77.0,70.0,90.0,67.0,89.0,97.0,44.0,91.0,41.0,19.0,70.0,35.0,79.0,53.0,67.0,74.0,54.0,37.0,66.0,42.0,100.0,100.0,28.0,85.0,59.0,92.0,33.0,20.0],"hard":[10.0,31.0,1.0,0.0,7.0,27.0,40.0,33.0,0.0,2.0,1.0,0.0,5.0,2.0,13.0,1.0,13.0,13.0,11.0,21.0,5.0,3.0,32.0,14.0,32.0,6.0,22.0,38.0,9.0,3.0,2.0,1.0,3.0,2.0,27.0,8.0,22.0,17.0,3.0,5.0,2.0,6.0,46.0,45.0,1.0,9.0,5.0,27.0,2.0,8.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:4D_WAM","name":"4D-WAM","setting":"cotrain","easy_mean":81.5,"hard_mean":41.8,"easy":[80.0,92.0,88.0,54.0,100.0,98.0,86.0,100.0,79.0,85.0,70.0,88.0,94.0,89.0,82.0,43.0,85.0,68.0,77.0,92.0,71.0,62.0,87.0,82.0,86.0,83.0,94.0,93.0,66.0,99.0,48.0,54.0,75.0,79.0,87.0,84.0,83.0,76.0,68.0,69.0,79.0,73.0,98.0,98.0,95.0,100.0,82.0,94.0,74.0,86.0],"hard":[36.0,28.0,10.0,8.0,70.0,77.0,57.0,68.0,25.0,13.0,10.0,9.0,17.0,22.0,35.0,12.0,82.0,12.0,44.0,67.0,19.0,42.0,77.0,69.0,72.0,51.0,48.0,82.0,19.0,70.0,17.0,9.0,40.0,24.0,42.0,21.0,52.0,61.0,19.0,47.0,67.0,53.0,70.0,72.0,82.0,34.0,27.0,81.0,10.0,11.0],"contributor":"OpenHelix Robotics","listed_at":"26.08.18"},{"id":"sft:RDT","name":"RDT","setting":"sft","easy_mean":34.5,"hard_mean":13.72,"easy":[81.0,77.0,3.0,0.0,61.0,80.0,64.0,74.0,45.0,90.0,23.0,72.0,25.0,8.0,43.0,2.0,59.0,37.0,2.0,42.0,3.0,1.0,10.0,5.0,50.0,19.0,6.0,78.0,4.0,56.0,12.0,1.0,33.0,1.0,15.0,15.0,35.0,41.0,21.0,33.0,50.0,4.0,84.0,74.0,2.0,21.0,51.0,76.0,1.0,35.0],"hard":[75.0,37.0,0.0,0.0,12.0,9.0,32.0,43.0,14.0,31.0,16.0,9.0,12.0,0.0,11.0,0.0,32.0,20.0,0.0,13.0,1.0,1.0,2.0,1.0,27.0,6.0,5.0,17.0,4.0,7.0,2.0,0.0,17.0,0.0,5.0,6.0,7.0,24.0,4.0,18.0,5.0,1.0,51.0,45.0,0.0,2.0,17.0,30.0,0.0,15.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:π0","name":"π0","setting":"sft","easy_mean":46.42,"hard_mean":16.34,"easy":[90.0,43.0,19.0,7.0,63.0,44.0,83.0,96.0,45.0,98.0,11.0,84.0,58.0,21.0,53.0,0.0,85.0,80.0,27.0,57.0,31.0,27.0,17.0,23.0,80.0,41.0,34.0,88.0,15.0,37.0,20.0,7.0,16.0,10.0,36.0,35.0,28.0,62.0,54.0,68.0,68.0,18.0,99.0,97.0,17.0,42.0,66.0,91.0,3.0,27.0],"hard":[56.0,21.0,5.0,1.0,11.0,3.0,24.0,80.0,8.0,13.0,3.0,36.0,21.0,1.0,22.0,2.0,46.0,50.0,6.0,12.0,1.0,6.0,4.0,1.0,4.0,5.0,2.0,45.0,0.0,11.0,10.0,1.0,2.0,0.0,11.0,7.0,6.0,29.0,13.0,18.0,15.0,1.0,51.0,60.0,0.0,1.0,24.0,41.0,4.0,23.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:ACT","name":"ACT","setting":"sft","easy_mean":29.74,"hard_mean":1.74,"easy":[97.0,56.0,1.0,0.0,32.0,58.0,68.0,94.0,42.0,85.0,7.0,88.0,22.0,0.0,36.0,0.0,56.0,86.0,7.0,31.0,1.0,0.0,6.0,7.0,49.0,1.0,16.0,72.0,9.0,61.0,1.0,0.0,15.0,0.0,1.0,2.0,5.0,31.0,27.0,15.0,1.0,2.0,63.0,74.0,0.0,25.0,48.0,82.0,2.0,5.0],"hard":[23.0,3.0,0.0,0.0,4.0,3.0,1.0,25.0,0.0,0.0,0.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,1.0,0.0,0.0,0.0,4.0,10.0,0.0,0.0,0.0,0.0,0.0,2.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:DP","name":"DP","setting":"sft","easy_mean":28.04,"hard_mean":0.64,"easy":[97.0,42.0,0.0,1.0,61.0,54.0,49.0,98.0,10.0,53.0,8.0,39.0,39.0,1.0,47.0,1.0,49.0,5.0,6.0,24.0,2.0,13.0,14.0,11.0,72.0,18.0,40.0,41.0,8.0,37.0,3.0,0.0,15.0,1.0,22.0,13.0,23.0,6.0,22.0,42.0,13.0,9.0,59.0,65.0,0.0,7.0,63.0,61.0,2.0,36.0],"hard":[0.0,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,18.0,8.0,0.0,0.0,0.0,0.0,0.0,1.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:DP3","name":"DP3","setting":"sft","easy_mean":55.24,"hard_mean":4.96,"easy":[99.0,72.0,3.0,2.0,77.0,90.0,85.0,98.0,70.0,100.0,17.0,97.0,70.0,41.0,68.0,12.0,82.0,61.0,52.0,60.0,46.0,49.0,26.0,19.0,72.0,67.0,48.0,86.0,13.0,65.0,36.0,4.0,65.0,15.0,60.0,44.0,58.0,69.0,60.0,72.0,74.0,31.0,100.0,98.0,1.0,24.0,57.0,83.0,18.0,46.0],"hard":[3.0,8.0,0.0,0.0,14.0,0.0,53.0,2.0,0.0,3.0,1.0,0.0,6.0,0.0,3.0,0.0,7.0,22.0,1.0,1.0,2.0,0.0,1.0,0.0,18.0,2.0,3.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,2.0,3.0,21.0,1.0,1.0,1.0,25.0,19.0,0.0,0.0,5.0,6.0,0.0,8.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"}],"updated":"2026-08-18","updated_note":"Add 4D-WAM co-train results"}
+  <!-- Offline fallback only. data/*.json is canonical; regenerate these blocks
+       with: python3 tools/sync_leaderboard_data.py -->
+  <script id="robotwin-data-fallback" type="application/json">
+{"schema_version":"1.0","board":{"id":"robotwin2","name":"RoboTwin 2.0 Leaderboard","page_url":"https://robotwin-platform.github.io/leaderboard","data_url":"https://robotwin-platform.github.io/data/robotwin_leaderboard.json","robot":"Aloha-AgileX","train_data":"50 demo_clean x 50 tasks (2,500 demos)","eval_protocol":"100 trials/task under demo_clean and demo_randomized","evaluated_via":"XPolicyLab standard interface","default_contributor":"RoboTwin Team","default_ranking":"avg","updated":"2026-09-01","updated_note":"Add OLA-Geo and OLA-Sem co-train results","rankings":[{"id":"avg","label":"Average（c2c+c2r）","value":"(easy_mean + hard_mean) / 2","eval":"(c2c + c2r) / 2"},{"id":"hard","label":"clean2random（hard）","value":"hard_mean","eval":"demo_randomized"},{"id":"easy","label":"clean2clean（easy）","value":"easy_mean","eval":"demo_clean"}],"settings":[{"id":"cotrain","label":"Co-train","description":"one policy jointly trained on all 50 tasks"},{"id":"sft","label":"Single","description":"one checkpoint fine-tuned per task"}],"entry_fields":{"id":"stable entry id, '<setting>:<slug>'","name":"display name of the method","setting":"cotrain | sft","contributor":"team that produced the numbers","listed_at":"date added to the board, YY.MM.DD","easy_mean":"mean success rate (%) under demo_clean","hard_mean":"mean success rate (%) under demo_randomized","easy":"per-task success rate (%) under demo_clean, aligned with tasks[]","hard":"per-task success rate (%) under demo_randomized, aligned with tasks[]"}},"tasks":["Adjust Bottle","Beat Block Hammer","Blocks Ranking RGB","Blocks Ranking Size","Click Alarmclock","Click Bell","Dump Bin Bigbin","Grab Roller","Handover Block","Handover Mic","Hanging Mug","Lift Pot","Move Can Pot","Move Pillbottle Pad","Move Playingcard Away","Move Stapler Pad","Open Laptop","Open Microwave","Pick Diverse Bottles","Pick Dual Bottles","Place A2B Left","Place A2B Right","Place Bread Basket","Place Bread Skillet","Place Burger Fries","Place Can Basket","Place Cans Plasticbox","Place Container Plate","Place Dual Shoes","Place Empty Cup","Place Fan","Place Mouse Pad","Place Object Basket","Place Object Scale","Place Object Stand","Place Phone Stand","Place Shoe","Press Stapler","Put Bottles Dustbin","Put Object Cabinet","Rotate QRcode","Scan Object","Shake Bottle Horizontally","Shake Bottle","Stack Blocks Three","Stack Blocks Two","Stack Bowls Three","Stack Bowls Two","Stamp Seal","Turn Switch"],"entries":[{"id":"cotrain:GigaBrain_0_7","name":"GigaBrain-0.7","setting":"cotrain","easy_mean":66.8,"hard_mean":67.9,"easy":[98.0,94.0,68.0,42.0,98.0,98.0,90.0,100.0,16.0,100.0,26.0,86.0,86.0,32.0,58.0,26.0,78.0,82.0,38.0,26.0,68.0,58.0,60.0,80.0,82.0,20.0,8.0,94.0,68.0,90.0,78.0,26.0,74.0,64.0,88.0,36.0,88.0,90.0,68.0,78.0,54.0,32.0,100.0,100.0,60.0,80.0,70.0,90.0,52.0,42.0],"hard":[98.0,74.0,76.0,28.0,96.0,84.0,66.0,100.0,32.0,100.0,36.0,86.0,82.0,58.0,82.0,40.0,88.0,50.0,50.0,56.0,72.0,68.0,68.0,50.0,86.0,22.0,18.0,94.0,72.0,90.0,74.0,44.0,64.0,54.0,76.0,52.0,92.0,74.0,54.0,82.0,58.0,46.0,92.0,98.0,78.0,92.0,64.0,74.0,54.0,52.0],"contributor":"GigaAI","listed_at":"26.08.15"},{"id":"cotrain:Pi_05","name":"π0.5","setting":"cotrain","easy_mean":70.7,"hard_mean":46.0,"easy":[99.0,93.0,72.0,45.0,65.0,31.0,92.0,99.0,30.0,98.0,17.0,98.0,60.0,46.0,84.0,20.0,93.0,86.0,66.0,72.0,71.0,68.0,63.0,76.0,82.0,56.0,31.0,92.0,70.0,96.0,66.0,34.0,70.0,78.0,85.0,65.0,82.0,79.0,78.0,39.0,90.0,49.0,99.0,100.0,77.0,91.0,81.0,94.0,53.0,52.0],"hard":[77.0,23.0,44.0,21.0,50.0,35.0,84.0,97.0,12.0,6.0,14.0,35.0,10.0,32.0,65.0,18.0,68.0,59.0,42.0,57.0,49.0,39.0,60.0,47.0,86.0,10.0,73.0,72.0,45.0,80.0,26.0,31.0,29.0,38.0,47.0,37.0,50.0,63.0,50.0,22.0,21.0,40.0,100.0,100.0,25.0,43.0,52.0,70.0,21.0,25.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:X_WAM","name":"X-WAM","setting":"cotrain","easy_mean":70.0,"hard_mean":25.8,"easy":[92.0,92.0,85.0,33.0,95.0,100.0,88.0,95.0,21.0,97.0,17.0,77.0,77.0,78.0,83.0,26.0,72.0,9.0,74.0,99.0,70.0,59.0,82.0,82.0,93.0,63.0,93.0,95.0,38.0,93.0,47.0,49.0,52.0,66.0,83.0,35.0,76.0,85.0,71.0,28.0,47.0,32.0,97.0,96.0,72.0,97.0,69.0,93.0,58.0,68.0],"hard":[13.0,21.0,36.0,0.0,61.0,52.0,40.0,16.0,21.0,8.0,0.0,0.0,34.0,26.0,11.0,2.0,6.0,24.0,26.0,55.0,18.0,21.0,40.0,37.0,36.0,15.0,36.0,52.0,7.0,36.0,6.0,6.0,20.0,14.0,28.0,4.0,31.0,20.0,21.0,16.0,2.0,14.0,66.0,67.0,26.0,76.0,38.0,67.0,16.0,4.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:X_VLA","name":"X-VLA","setting":"cotrain","easy_mean":68.0,"hard_mean":20.9,"easy":[99.0,87.0,3.0,56.0,62.0,100.0,83.0,100.0,77.0,98.0,19.0,96.0,58.0,66.0,84.0,42.0,85.0,43.0,50.0,41.0,53.0,49.0,85.0,89.0,90.0,70.0,93.0,94.0,30.0,90.0,63.0,53.0,81.0,76.0,91.0,84.0,83.0,87.0,47.0,41.0,81.0,57.0,100.0,100.0,0.0,10.0,77.0,85.0,50.0,40.0],"hard":[33.0,9.0,4.0,25.0,43.0,63.0,41.0,20.0,1.3,1.0,2.0,15.0,0.0,3.0,5.0,0.0,16.0,5.0,30.0,51.0,15.0,13.0,52.0,17.0,35.0,9.0,60.0,39.0,12.0,16.0,1.0,0.0,6.0,6.0,43.0,5.0,39.0,73.0,20.0,21.0,1.0,9.0,78.0,76.0,0.0,2.0,9.0,15.0,2.0,6.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Xiaomi_Robotics_0","name":"Xiaomi Robotics-0","setting":"cotrain","easy_mean":62.9,"hard_mean":18.2,"easy":[100.0,51.0,57.0,19.0,97.0,100.0,94.0,99.0,31.0,92.0,16.0,67.0,63.0,65.0,77.0,16.0,90.0,45.0,47.0,56.0,45.0,36.0,54.0,63.0,85.0,52.0,10.0,91.0,31.0,92.0,50.0,18.0,76.0,54.0,84.0,44.0,75.0,79.0,73.0,35.0,56.0,46.0,100.0,99.0,73.0,85.0,78.0,93.0,46.0,38.0],"hard":[9.0,16.0,8.0,1.0,58.0,57.0,49.0,12.0,1.0,6.0,6.0,1.0,7.0,3.0,12.0,0.0,24.0,16.0,12.0,28.0,6.0,2.0,23.0,11.0,27.0,7.0,31.0,59.0,9.0,12.0,3.0,1.0,15.0,2.0,24.0,11.0,29.0,21.0,21.0,5.0,1.0,8.0,62.0,61.0,7.0,22.0,35.0,53.0,3.0,14.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:EventVLA","name":"EventVLA","setting":"cotrain","easy_mean":65.6,"hard_mean":15.7,"easy":[100.0,24.0,94.0,51.0,93.0,94.0,92.0,97.0,58.0,44.0,20.0,59.0,62.0,60.0,57.0,14.0,86.0,55.0,22.0,42.0,79.0,65.0,66.0,64.0,89.0,76.0,81.0,98.0,22.0,92.0,44.0,34.0,73.0,80.0,85.0,64.0,55.0,80.0,45.0,33.0,57.0,27.0,100.0,100.0,76.0,98.0,83.0,96.0,69.0,24.0],"hard":[24.0,1.0,6.0,1.0,30.0,48.0,64.0,48.0,4.0,5.0,2.0,1.0,0.0,3.0,17.0,2.0,23.0,44.0,9.0,8.0,20.0,17.0,15.0,4.0,7.0,7.0,14.0,15.0,1.0,18.0,5.0,6.0,29.0,24.0,32.0,3.0,10.0,32.0,31.0,27.0,1.0,3.0,37.0,34.0,3.0,13.0,11.0,17.0,3.0,8.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:AHA_WAM","name":"AHA-WAM","setting":"cotrain","easy_mean":64.3,"hard_mean":3.2,"easy":[100.0,52.0,60.0,32.0,98.0,100.0,90.0,98.0,63.0,99.0,13.0,62.0,48.0,33.0,82.0,5.0,89.0,59.0,36.0,60.0,65.0,50.0,54.0,68.0,96.0,61.0,90.0,99.0,48.0,64.0,58.0,12.0,71.0,34.0,79.0,61.0,74.0,82.0,58.0,36.0,61.0,51.0,100.0,100.0,57.0,89.0,71.0,93.0,13.0,42.0],"hard":[0.0,0.0,1.0,0.0,17.0,19.0,27.0,3.0,1.0,3.0,0.0,0.0,0.0,0.0,0.0,0.0,9.0,1.0,0.0,1.0,1.0,0.0,3.0,0.0,0.0,2.0,1.0,11.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,5.0,2.0,1.0,0.0,0.0,0.0,15.0,14.0,1.0,2.0,0.0,5.0,0.0,13.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:FastWAM","name":"FastWAM","setting":"cotrain","easy_mean":77.8,"hard_mean":1.9,"easy":[99.0,82.0,81.0,52.0,99.0,95.0,94.0,100.0,66.0,98.0,14.0,91.0,96.0,92.0,94.0,33.0,84.0,17.0,72.0,87.0,69.0,60.0,87.0,85.0,97.0,77.0,98.0,100.0,67.0,90.0,59.0,55.0,82.0,83.0,94.0,85.0,87.0,90.0,55.0,42.0,81.0,68.0,100.0,100.0,89.0,99.0,80.0,94.0,30.0,39.0],"hard":[0.0,0.0,0.0,0.0,60.0,7.0,0.0,2.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3.0,0.0,0.0,0.0,0.0,9.0,10.0,0.0,0.0,0.0,0.0,0.0,3.0],"contributor":"RoboTwin Team","listed_at":"26.08.10"},{"id":"cotrain:Spatial_Forcing","name":"Spatial Forcing","setting":"cotrain","easy_mean":77.2,"hard_mean":26.74,"easy":[97.0,74.0,83.0,42.0,89.0,97.0,83.0,98.0,62.0,100.0,17.0,98.0,69.0,77.0,96.0,31.0,89.0,66.0,72.0,90.0,67.0,55.0,84.0,82.0,98.0,77.0,94.0,97.0,83.0,94.0,74.0,35.0,79.0,73.0,96.0,83.0,88.0,89.0,58.0,37.0,87.0,76.0,99.0,99.0,75.0,96.0,79.0,96.0,39.0,40.0],"hard":[71.0,13.0,7.0,3.0,28.0,28.0,70.0,94.0,2.0,2.0,1.0,0.0,1.0,14.0,15.0,1.0,15.0,18.0,38.0,47.0,11.0,6.0,53.0,30.0,71.0,10.0,11.0,54.0,2.0,33.0,7.0,9.0,16.0,4.0,32.0,1.0,61.0,55.0,41.0,1.0,22.0,6.0,87.0,84.0,0.0,19.0,55.0,79.0,2.0,7.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:starVLA","name":"starVLA","setting":"cotrain","easy_mean":46.52,"hard_mean":3.16,"easy":[84.0,75.0,39.0,14.0,60.0,75.0,54.0,94.0,6.0,66.0,1.0,68.0,33.0,40.0,62.0,14.0,22.0,10.0,43.0,60.0,24.0,25.0,82.0,79.0,85.0,4.0,95.0,87.0,30.0,85.0,30.0,11.0,4.0,20.0,66.0,18.0,46.0,91.0,11.0,29.0,11.0,63.0,98.0,100.0,20.0,53.0,46.0,65.0,12.0,16.0],"hard":[0.0,2.0,2.0,0.0,0.0,7.0,4.0,44.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,2.0,1.0,15.0,20.0,0.0,1.0,5.0,2.0,11.0,0.0,2.0,3.0,2.0,0.0,1.0,0.0,1.0,1.0,0.0,0.0,0.0,10.0,0.0,0.0,0.0,5.0,9.0,5.0,1.0,1.0,0.0,0.0,0.0,0.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:Abot_M0","name":"Abot-M0","setting":"cotrain","easy_mean":57.4,"hard_mean":30.36,"easy":[99.0,72.0,61.0,33.0,0.0,5.0,89.0,100.0,16.0,90.0,7.0,51.0,42.0,56.0,78.0,16.0,68.0,67.0,12.0,28.0,56.0,41.0,70.0,73.0,93.0,38.0,56.0,100.0,28.0,97.0,48.0,31.0,70.0,73.0,79.0,33.0,74.0,78.0,46.0,41.0,52.0,38.0,97.0,96.0,39.0,82.0,76.0,92.0,45.0,38.0],"hard":[49.0,33.0,23.0,7.0,21.0,11.0,68.0,91.0,0.0,22.0,4.0,29.0,4.0,4.0,50.0,4.0,64.0,26.0,7.0,19.0,26.0,22.0,47.0,25.0,55.0,13.0,36.0,62.0,15.0,43.0,10.0,5.0,33.0,23.0,25.0,26.0,24.0,52.0,26.0,22.0,6.0,17.0,85.0,84.0,10.0,42.0,44.0,65.0,19.0,20.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:GalaxeaVLA","name":"GalaxeaVLA","setting":"cotrain","easy_mean":62.7,"hard_mean":12.72,"easy":[100.0,82.0,42.0,19.0,79.0,77.0,88.0,100.0,10.0,85.0,20.0,75.0,58.0,69.0,88.0,8.0,74.0,41.0,62.0,77.0,56.0,47.0,77.0,70.0,90.0,67.0,89.0,97.0,44.0,91.0,41.0,19.0,70.0,35.0,79.0,53.0,67.0,74.0,54.0,37.0,66.0,42.0,100.0,100.0,28.0,85.0,59.0,92.0,33.0,20.0],"hard":[10.0,31.0,1.0,0.0,7.0,27.0,40.0,33.0,0.0,2.0,1.0,0.0,5.0,2.0,13.0,1.0,13.0,13.0,11.0,21.0,5.0,3.0,32.0,14.0,32.0,6.0,22.0,38.0,9.0,3.0,2.0,1.0,3.0,2.0,27.0,8.0,22.0,17.0,3.0,5.0,2.0,6.0,46.0,45.0,1.0,9.0,5.0,27.0,2.0,8.0],"contributor":"RoboTwin Team","listed_at":"26.08.17"},{"id":"cotrain:4D_WAM","name":"4D-WAM","setting":"cotrain","easy_mean":81.5,"hard_mean":41.8,"easy":[80.0,92.0,88.0,54.0,100.0,98.0,86.0,100.0,79.0,85.0,70.0,88.0,94.0,89.0,82.0,43.0,85.0,68.0,77.0,92.0,71.0,62.0,87.0,82.0,86.0,83.0,94.0,93.0,66.0,99.0,48.0,54.0,75.0,79.0,87.0,84.0,83.0,76.0,68.0,69.0,79.0,73.0,98.0,98.0,95.0,100.0,82.0,94.0,74.0,86.0],"hard":[36.0,28.0,10.0,8.0,70.0,77.0,57.0,68.0,25.0,13.0,10.0,9.0,17.0,22.0,35.0,12.0,82.0,12.0,44.0,67.0,19.0,42.0,77.0,69.0,72.0,51.0,48.0,82.0,19.0,70.0,17.0,9.0,40.0,24.0,42.0,21.0,52.0,61.0,19.0,47.0,67.0,53.0,70.0,72.0,82.0,34.0,27.0,81.0,10.0,11.0],"contributor":"OpenHelix Robotics","listed_at":"26.08.18"},{"id":"cotrain:OLA_Geo","name":"OLA-Geo","setting":"cotrain","easy_mean":82.96,"hard_mean":33.64,"easy":[100.0,80.0,81.0,48.0,99.0,100.0,98.0,100.0,89.0,99.0,19.0,99.0,92.0,88.0,98.0,27.0,97.0,100.0,82.0,97.0,79.0,71.0,88.0,92.0,100.0,79.0,98.0,98.0,66.0,95.0,74.0,29.0,90.0,78.0,97.0,83.0,83.0,98.0,77.0,49.0,92.0,79.0,100.0,100.0,76.0,95.0,82.0,96.0,68.0,43.0],"hard":[44.0,12.0,29.0,8.0,58.0,57.0,80.0,80.0,1.0,8.0,6.0,0.0,6.0,19.0,36.0,10.0,49.0,18.0,26.0,25.0,29.0,24.0,43.0,29.0,60.0,6.0,14.0,68.0,6.0,69.0,31.0,23.0,14.0,28.0,42.0,29.0,54.0,41.0,45.0,14.0,25.0,25.0,90.0,92.0,7.0,50.0,53.0,74.0,8.0,17.0],"contributor":"OLA-HKUSTGZ","listed_at":"26.09.01"},{"id":"cotrain:OLA_Sem","name":"OLA-Sem","setting":"cotrain","easy_mean":75.12,"hard_mean":67.56,"easy":[72.0,65.0,64.0,36.0,100.0,100.0,96.0,100.0,24.0,89.0,16.0,100.0,46.0,78.0,90.0,58.0,90.0,76.0,76.0,92.0,65.0,85.0,84.0,81.0,94.0,36.0,97.0,97.0,87.0,98.0,76.0,59.0,54.0,69.0,81.0,75.0,79.0,98.0,44.0,40.0,46.0,42.0,92.0,89.0,74.0,91.0,88.0,94.0,87.0,86.0],"hard":[71.0,55.0,66.0,37.0,91.0,98.0,94.0,100.0,17.0,80.0,15.0,91.0,45.0,71.0,92.0,53.0,74.0,43.0,77.0,84.0,64.0,80.0,80.0,67.0,75.0,34.0,85.0,92.0,76.0,94.0,68.0,55.0,49.0,63.0,77.0,63.0,78.0,95.0,37.0,27.0,40.0,32.0,70.0,70.0,52.0,90.0,81.0,90.0,70.0,70.0],"contributor":"OLA-HKUSTGZ","listed_at":"26.09.01"},{"id":"sft:RDT","name":"RDT","setting":"sft","easy_mean":34.5,"hard_mean":13.72,"easy":[81.0,77.0,3.0,0.0,61.0,80.0,64.0,74.0,45.0,90.0,23.0,72.0,25.0,8.0,43.0,2.0,59.0,37.0,2.0,42.0,3.0,1.0,10.0,5.0,50.0,19.0,6.0,78.0,4.0,56.0,12.0,1.0,33.0,1.0,15.0,15.0,35.0,41.0,21.0,33.0,50.0,4.0,84.0,74.0,2.0,21.0,51.0,76.0,1.0,35.0],"hard":[75.0,37.0,0.0,0.0,12.0,9.0,32.0,43.0,14.0,31.0,16.0,9.0,12.0,0.0,11.0,0.0,32.0,20.0,0.0,13.0,1.0,1.0,2.0,1.0,27.0,6.0,5.0,17.0,4.0,7.0,2.0,0.0,17.0,0.0,5.0,6.0,7.0,24.0,4.0,18.0,5.0,1.0,51.0,45.0,0.0,2.0,17.0,30.0,0.0,15.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:π0","name":"π0","setting":"sft","easy_mean":46.42,"hard_mean":16.34,"easy":[90.0,43.0,19.0,7.0,63.0,44.0,83.0,96.0,45.0,98.0,11.0,84.0,58.0,21.0,53.0,0.0,85.0,80.0,27.0,57.0,31.0,27.0,17.0,23.0,80.0,41.0,34.0,88.0,15.0,37.0,20.0,7.0,16.0,10.0,36.0,35.0,28.0,62.0,54.0,68.0,68.0,18.0,99.0,97.0,17.0,42.0,66.0,91.0,3.0,27.0],"hard":[56.0,21.0,5.0,1.0,11.0,3.0,24.0,80.0,8.0,13.0,3.0,36.0,21.0,1.0,22.0,2.0,46.0,50.0,6.0,12.0,1.0,6.0,4.0,1.0,4.0,5.0,2.0,45.0,0.0,11.0,10.0,1.0,2.0,0.0,11.0,7.0,6.0,29.0,13.0,18.0,15.0,1.0,51.0,60.0,0.0,1.0,24.0,41.0,4.0,23.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:ACT","name":"ACT","setting":"sft","easy_mean":29.74,"hard_mean":1.74,"easy":[97.0,56.0,1.0,0.0,32.0,58.0,68.0,94.0,42.0,85.0,7.0,88.0,22.0,0.0,36.0,0.0,56.0,86.0,7.0,31.0,1.0,0.0,6.0,7.0,49.0,1.0,16.0,72.0,9.0,61.0,1.0,0.0,15.0,0.0,1.0,2.0,5.0,31.0,27.0,15.0,1.0,2.0,63.0,74.0,0.0,25.0,48.0,82.0,2.0,5.0],"hard":[23.0,3.0,0.0,0.0,4.0,3.0,1.0,25.0,0.0,0.0,0.0,0.0,4.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,6.0,1.0,0.0,0.0,0.0,4.0,10.0,0.0,0.0,0.0,0.0,0.0,2.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:DP","name":"DP","setting":"sft","easy_mean":28.04,"hard_mean":0.64,"easy":[97.0,42.0,0.0,1.0,61.0,54.0,49.0,98.0,10.0,53.0,8.0,39.0,39.0,1.0,47.0,1.0,49.0,5.0,6.0,24.0,2.0,13.0,14.0,11.0,72.0,18.0,40.0,41.0,8.0,37.0,3.0,0.0,15.0,1.0,22.0,13.0,23.0,6.0,22.0,42.0,13.0,9.0,59.0,65.0,0.0,7.0,63.0,61.0,2.0,36.0],"hard":[0.0,0.0,0.0,0.0,5.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,18.0,8.0,0.0,0.0,0.0,0.0,0.0,1.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"},{"id":"sft:DP3","name":"DP3","setting":"sft","easy_mean":55.24,"hard_mean":4.96,"easy":[99.0,72.0,3.0,2.0,77.0,90.0,85.0,98.0,70.0,100.0,17.0,97.0,70.0,41.0,68.0,12.0,82.0,61.0,52.0,60.0,46.0,49.0,26.0,19.0,72.0,67.0,48.0,86.0,13.0,65.0,36.0,4.0,65.0,15.0,60.0,44.0,58.0,69.0,60.0,72.0,74.0,31.0,100.0,98.0,1.0,24.0,57.0,83.0,18.0,46.0],"hard":[3.0,8.0,0.0,0.0,14.0,0.0,53.0,2.0,0.0,3.0,1.0,0.0,6.0,0.0,3.0,0.0,7.0,22.0,1.0,1.0,2.0,0.0,1.0,0.0,18.0,2.0,3.0,1.0,0.0,1.0,1.0,1.0,0.0,0.0,0.0,2.0,2.0,3.0,21.0,1.0,1.0,1.0,25.0,19.0,0.0,0.0,5.0,6.0,0.0,8.0],"contributor":"RoboTwin Team","listed_at":"25.08.04"}],"news":[{"date":"2026-09-01","text":"Add OLA-Geo and OLA-Sem co-train results."},{"date":"2026-08-27","text":"Add Average（c2c+c2r） ranking as the default board sort."},{"date":"2026-08-18","text":"Add 4D-WAM co-train results (clean2random)."},{"date":"2026-08-17","text":"Add/update Spatial Forcing, starVLA, Abot-M0, and GalaxeaVLA co-train results."},{"date":"2026-08-15","text":"Add GigaBrain-0.7 co-train results (50 demo_clean × 50 tasks)."},{"date":"2026-07-22","text":"Merge Co-train + Single-task SFT into one clean2random board; add Easy/Hard ranking."},{"date":"2025-08-05","text":"Support RDT, π0, ACT, DP, and DP3 single-task SFT results."}]}
   </script>
-  <script>
-    const DATA = JSON.parse(document.getElementById('lb-data').textContent);
-    let sortKey = 'avg';
-    let viewMode = 'all';
-
-    const fmt = (v, digits) => {
-      if (digits != null) return v.toFixed(digits) + '%';
-      return (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1)) + '%';
-    };
-
-    const heat = (v) => {
-      const t = Math.max(0, Math.min(100, v)) / 100;
-      return `background:rgba(101,164,135,${0.08 + 0.55 * t})`;
-    };
-
-    const avgMean = (e) => (e.easy_mean + e.hard_mean) / 2;
-
-    const scoreOf = (e, key) => {
-      if (key === 'easy') return e.easy_mean;
-      if (key === 'hard') return e.hard_mean;
-      return avgMean(e);
-    };
-
-    const sortedEntries = () => {
-      const altKey = sortKey === 'easy' ? 'hard' : 'easy';
-      return [...DATA.entries].sort((a, b) =>
-        (scoreOf(b, sortKey) - scoreOf(a, sortKey)) ||
-        (scoreOf(b, altKey) - scoreOf(a, altKey))
-      );
-    };
-
-    const visibleRankEntries = () => {
-      const rows = sortedEntries();
-      return viewMode === 'top10' ? rows.slice(0, 10) : rows;
-    };
-
-    const settingNameOf = (key) => {
-      if (key === 'hard') return 'clean2random（hard）';
-      if (key === 'easy') return 'clean2clean（easy）';
-      return 'Average（c2c+c2r）';
-    };
-
-    const evalLabelOf = (key) => {
-      if (key === 'hard') return 'demo_randomized';
-      if (key === 'easy') return 'demo_clean';
-      return '(c2c + c2r) / 2';
-    };
-
-    const updateRankHeading = () => {
-      const settingName = settingNameOf(sortKey);
-      const suffix = viewMode === 'top10' ? ' · Top 10' : '';
-      document.getElementById('rankHeading').textContent =
-        `Overall Ranking — ${settingName}${suffix}`;
-    };
-
-    const renderRank = () => {
-      const rows = visibleRankEntries();
-      const tbody = document.querySelector('#rankTable tbody');
-      tbody.innerHTML = rows.map((e, i) => {
-        const rank = i + 1;
-        const badge = e.setting === 'sft'
-          ? '<span class="badge-sft">Single</span>'
-          : '<span class="badge-co">Co-train</span>';
-        const easyDigits = e.setting === 'sft' ? 2 : 1;
-        const hardDigits = e.setting === 'sft' ? 2 : 1;
-        const contributor = e.contributor || 'RoboTwin Team';
-        const listedAt = e.listed_at || '—';
-        const avg = avgMean(e);
-        const avgDigits = e.setting === 'sft' ? 2 : 1;
-        const avgStyle = sortKey === 'avg' ? heat(avg) : '';
-        const hardStyle = sortKey === 'hard' ? heat(e.hard_mean) : '';
-        const easyStyle = sortKey === 'easy' ? heat(e.easy_mean) : '';
-        return `<tr>
-          <td class="sticky-left"><span class="rank-num ${rank <= 3 ? 'top' : ''}">#${rank}</span></td>
-          <td class="col-method"><span class="method-name">${e.name}</span>${badge}</td>
-          <td class="contributor">${contributor}</td>
-          <td class="listed-at">${listedAt}</td>
-          <td class="score-avg" style="${avgStyle}">${fmt(avg, avgDigits)}</td>
-          <td class="score-hard" style="${hardStyle}">${fmt(e.hard_mean, hardDigits)}</td>
-          <td class="score-easy" style="${easyStyle}">${fmt(e.easy_mean, easyDigits)}</td>
-        </tr>`;
-      }).join('');
-    };
-
-    const renderTasks = () => {
-      const rows = sortedEntries();
-      const thead = document.querySelector('#taskTable thead');
-      const tbody = document.querySelector('#taskTable tbody');
-
-      thead.innerHTML = `
-        <tr>
-          <th class="sticky-left">Task</th>
-          ${rows.map(e => {
-            const mark = e.setting === 'sft' ? ' <span style="opacity:.9">· Single</span>' : '';
-            return `<th colspan="2">${e.name}${mark}</th>`;
-          }).join('')}
-        </tr>
-        <tr class="sub">
-          <th class="sticky-left"></th>
-          ${rows.map(() => `<th>Easy</th><th>Hard</th>`).join('')}
-        </tr>`;
-
-      const body = DATA.tasks.map((task, ti) => {
-        const cells = rows.map(e => {
-          const easy = e.easy[ti], hard = e.hard[ti];
-          return `<td style="${heat(easy)}">${fmt(easy)}</td><td style="${heat(hard)}">${fmt(hard)}</td>`;
-        }).join('');
-        return `<tr><th class="sticky-left">${task}</th>${cells}</tr>`;
-      });
-
-      const avg = rows.map(e => {
-        const d = e.setting === 'sft' ? 2 : 1;
-        return `<td class="avg" style="${heat(e.easy_mean)}">${fmt(e.easy_mean, d)}</td>
-                <td class="avg" style="${heat(e.hard_mean)}">${fmt(e.hard_mean, d)}</td>`;
-      }).join('');
-      body.push(`<tr class="avg-row"><th class="sticky-left">Average</th>${avg}</tr>`);
-      tbody.innerHTML = body.join('');
-    };
-
-    const setSort = (key) => {
-      sortKey = key;
-      const settingName = settingNameOf(key);
-      document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.sort === key);
-      });
-      document.getElementById('thAvg').classList.toggle('sort-active', key === 'avg');
-      document.getElementById('thHard').classList.toggle('sort-active', key === 'hard');
-      document.getElementById('thEasy').classList.toggle('sort-active', key === 'easy');
-      document.getElementById('sortHint').textContent =
-        `Ranked by ${settingName} mean ↓`;
-      document.getElementById('rankSettingTitle').innerHTML =
-        `<em>${settingName}</em>`;
-      document.getElementById('rankSettingEval').innerHTML =
-        `<b>Eval / sort</b>: ${evalLabelOf(key)}`;
-      updateRankHeading();
-      renderRank();
-      renderTasks();
-    };
-
-    const setView = (mode) => {
-      viewMode = mode;
-      document.querySelectorAll('.sort-btn[data-view]').forEach(btn => {
-        btn.classList.toggle('active', btn.dataset.view === mode);
-      });
-      updateRankHeading();
-      renderRank();
-    };
-
-    document.querySelectorAll('.sort-btn[data-sort]').forEach(btn => {
-      btn.addEventListener('click', () => setSort(btn.dataset.sort));
-    });
-    document.querySelectorAll('.sort-btn[data-view]').forEach(btn => {
-      btn.addEventListener('click', () => setView(btn.dataset.view));
-    });
-
-    
-    const fillUpdated = () => {
-      const raw = DATA.updated || '';
-      const el1 = document.getElementById('updatedAt');
-      const el2 = document.getElementById('updatedAtDetail');
-      if (el1) el1.textContent = raw;
-      if (el2) el2.textContent = raw;
-    };
-    fillUpdated();
-
-    setSort('avg');
+  <script id="robodojo-data-fallback" type="application/json">
+{"schema_version":"1.0","board":{"id":"robodojo-sim","name":"RoboDojo Sim Leaderboard","page_url":"https://robodojo-benchmark.com/LeaderBoard","data_url":"https://robotwin-platform.github.io/data/robodojo_leaderboard.json","source":"robodojo-benchmark.com","note":"Mirror of the official RoboDojo-sim board; this page previews the top 10.","evaluated_via":"XPolicyLab standard interface","preview_top_n":10,"default_dimension":"average","default_metric":"score","updated":"2026-08-31","dimensions":[{"id":"average","label":"Average"},{"id":"generalizationStd","label":"Gen-Std"},{"id":"generalizationRand","label":"Gen-Rand"},{"id":"precision","label":"Precision"},{"id":"longHorizon","label":"Long-Horizon"},{"id":"memory","label":"Memory"},{"id":"open","label":"Open"}],"metrics":[{"id":"score","index":0,"label":"Score"},{"id":"sr","index":1,"label":"SR","unit":"%"}],"entry_fields":{"model":"display name of the model","team":"contributor team","<dimension>":"[score, success_rate] pair, indexed by metrics[].index"}},"entries":[{"model":"DM0.5","team":"Dexmal","average":[24.9,19.34],"generalizationStd":[23.49,18.0],"generalizationRand":[8.06,4.0],"precision":[24.82,16.75],"longHorizon":[33.7,19.5],"memory":[47.74,47.44],"open":[2.43,2.08]},{"model":"GalaxeaVLA (G0.5)","team":"Galaxea AI","average":[20.23,14.88],"generalizationStd":[26.74,20.0],"generalizationRand":[11.16,6.0],"precision":[28.25,20.42],"longHorizon":[44.12,32.25],"memory":[8.61,7.33],"open":[1.73,1.58]},{"model":"Xiaomi-Robotics-1","team":"Xiaomi Robotics","average":[20.07,13.93],"generalizationStd":[35.65,28.0],"generalizationRand":[11.44,6.0],"precision":[26.69,18.83],"longHorizon":[38.39,23.67],"memory":[7.81,6.56],"open":[3.94,3.58]},{"model":"Meituan-Robotics-0","team":"Meituan Robotics","average":[14.95,9.53],"generalizationStd":[19.28,12.67],"generalizationRand":[8.22,3.67],"precision":[16.77,7.75],"longHorizon":[29.61,18.58],"memory":[10.06,8.89],"open":[4.54,4.25]},{"model":"Hy-Embodied-0.5-VLA","team":"Tencent Robotics X","average":[13.07,8.8],"generalizationStd":[21.98,17.0],"generalizationRand":[1.57,0.0],"precision":[13.81,8.0],"longHorizon":[25.74,14.92],"memory":[13.37,12.11],"open":[0.65,0.58]},{"model":"Spatial Forcing","team":"OpenHelix Robotics","average":[12.38,8.04],"generalizationStd":[21.25,15.0],"generalizationRand":[6.98,4.0],"precision":[17.33,10.58],"longHorizon":[23.26,14.58],"memory":[5.43,4.11],"open":[1.78,1.58]},{"model":"Pi-05","team":"RoboDojo Team","average":[11.41,6.91],"generalizationStd":[20.93,15.0],"generalizationRand":[5.82,1.0],"precision":[12.4,5.5],"longHorizon":[23.54,14.67],"memory":[5.78,4.56],"open":[1.98,1.67]},{"model":"InternVLA-A1.5","team":"InternVLA Team","average":[11.15,7.14],"generalizationStd":[16.81,12.0],"generalizationRand":[3.9,2.0],"precision":[15.23,10.17],"longHorizon":[23.8,13.75],"memory":[4.93,3.56],"open":[1.43,1.42]},{"model":"VLAct","team":"StarVLA Team","average":[10.66,7.6],"generalizationStd":[16.33,12.0],"generalizationRand":[2.74,1.0],"precision":[20.62,15.25],"longHorizon":[20.12,13.67],"memory":[0.66,0.56],"open":[2.37,2.25]},{"model":"X-VLA","team":"RoboDojo Team","average":[10.13,6.52],"generalizationStd":[17.9,12.0],"generalizationRand":[3.04,1.0],"precision":[18.32,12.0],"longHorizon":[16.53,9.75],"memory":[4.76,3.56],"open":[0.55,0.5]},{"model":"X-WAM","team":"X-WAM Team","average":[7.69,3.83],"generalizationStd":[11.24,5.0],"generalizationRand":[3.54,1.0],"precision":[6.72,1.83],"longHorizon":[17.47,9.08],"memory":[6.32,4.67],"open":[0.57,0.25]},{"model":"Xiaomi-Robotics-0","team":"RoboDojo Team","average":[6.93,4.18],"generalizationStd":[13.81,11.0],"generalizationRand":[1.05,0.0],"precision":[8.42,4.58],"longHorizon":[13.51,6.92],"memory":[5.07,3.67],"open":[0.22,0.17]},{"model":"StarVLA","team":"RoboDojo Team","average":[6.4,3.24],"generalizationStd":[7.54,5.0],"generalizationRand":[0.33,0.0],"precision":[9.9,4.33],"longHorizon":[14.15,6.5],"memory":[3.34,2.44],"open":[0.68,0.58]},{"model":"GigaWorld-Policy-0","team":"RoboDojo Team","average":[6.2,3.27],"generalizationStd":[10.28,6.0],"generalizationRand":[0.41,0.0],"precision":[6.15,1.83],"longHorizon":[15.51,8.92],"memory":[3.46,2.22],"open":[0.54,0.5]},{"model":"GalaxeaVLA (G0)","team":"RoboDojo Team","average":[5.82,2.96],"generalizationStd":[8.71,6.0],"generalizationRand":[0.36,0.0],"precision":[8.1,3.83],"longHorizon":[12.6,5.58],"memory":[3.17,1.89],"open":[0.7,0.67]},{"model":"LingBot-VLA","team":"RoboDojo Team","average":[5.5,2.96],"generalizationStd":[10.88,8.0],"generalizationRand":[2.55,1.0],"precision":[5.33,1.83],"longHorizon":[10.89,5.25],"memory":[3.82,2.78],"open":[0.72,0.67]},{"model":"EventVLA","team":"SJTU ScaleLab","average":[4.97,2.81],"generalizationStd":[6.68,3.0],"generalizationRand":[1.22,0.0],"precision":[10.13,5.75],"longHorizon":[5.05,0.83],"memory":[4.92,4.78],"open":[0.8,0.75]},{"model":"AHA-WAM","team":"SJTU ScaleLab","average":[4.82,2.39],"generalizationStd":[10.32,6.0],"generalizationRand":[1.26,0.0],"precision":[5.86,2.42],"longHorizon":[8.61,2.67],"memory":[2.97,2.78],"open":[0.88,0.83]},{"model":"ABot-M0","team":"RoboDojo Team","average":[3.67,1.73],"generalizationStd":[9.2,5.0],"generalizationRand":[2.26,2.0],"precision":[5.5,1.75],"longHorizon":[3.96,0.5],"memory":[2.44,2.22],"open":[0.72,0.67]},{"model":"Fast-WAM","team":"RoboDojo Team","average":[3.48,2.03],"generalizationStd":[4.33,2.0],"generalizationRand":[0.34,0.0],"precision":[1.96,0.0],"longHorizon":[9.14,5.17],"memory":[3.55,3.44],"open":[0.42,0.42]},{"model":"Pi-0","team":"RoboDojo Team","average":[3.48,1.53],"generalizationStd":[7.18,5.0],"generalizationRand":[0.71,0.0],"precision":[3.56,0.75],"longHorizon":[6.19,2.0],"memory":[3.47,2.11],"open":[0.25,0.25]},{"model":"GROOT-N1.7","team":"RoboDojo Team","average":[2.85,1.31],"generalizationStd":[3.97,2.0],"generalizationRand":[0.35,0.0],"precision":[2.54,0.67],"longHorizon":[8.3,3.58],"memory":[1.06,0.89],"open":[0.18,0.17]},{"model":"InternVLA-A1","team":"RoboDojo Team","average":[2.48,1.08],"generalizationStd":[5.22,4.0],"generalizationRand":[0.51,0.0],"precision":[3.0,0.92],"longHorizon":[4.79,1.17],"memory":[1.58,1.33],"open":[0.17,0.17]},{"model":"SmolVLA (Single Task)","team":"RoboDojo Team","average":[1.83,0.85],"generalizationStd":[3.28,2.0],"generalizationRand":[0.09,0.0],"precision":[2.87,0.33],"longHorizon":[1.22,0.25],"memory":[3.35,2.44],"open":[0.0,0.0]},{"model":"LDA-1B","team":"RoboDojo Team","average":[1.58,0.51],"generalizationStd":[1.44,0.0],"generalizationRand":[0.18,0.0],"precision":[3.21,0.5],"longHorizon":[1.92,0.08],"memory":[2.08,1.78],"open":[0.0,0.0]},{"model":"MolmoAct2","team":"RoboDojo Team","average":[1.02,0.38],"generalizationStd":[0.73,0.0],"generalizationRand":[0.04,0.0],"precision":[0.45,0.0],"longHorizon":[2.32,0.0],"memory":[1.02,1.0],"open":[0.91,0.83]},{"model":"GO-1","team":"RoboDojo Team","average":[0.99,0.53],"generalizationStd":[3.16,2.0],"generalizationRand":[0.01,0.0],"precision":[1.45,0.42],"longHorizon":[1.13,0.25],"memory":[0.7,0.67],"open":[0.08,0.08]},{"model":"ACT (Single Task)","team":"RoboDojo Team","average":[0.98,0.32],"generalizationStd":[1.37,1.0],"generalizationRand":[0.0,0.0],"precision":[0.85,0.0],"longHorizon":[1.73,0.92],"memory":[1.65,0.13],"open":[0.0,0.0]},{"model":"H-RDT","team":"RoboDojo Team","average":[0.67,0.12],"generalizationStd":[0.89,0.0],"generalizationRand":[0.09,0.0],"precision":[0.41,0.0],"longHorizon":[2.23,0.17],"memory":[0.12,0.11],"open":[0.08,0.08]},{"model":"RDT","team":"RoboDojo Team","average":[0.51,0.13],"generalizationStd":[0.82,0.0],"generalizationRand":[0.29,0.0],"precision":[0.38,0.0],"longHorizon":[1.13,0.0],"memory":[0.49,0.33],"open":[0.0,0.0]},{"model":"DM0","team":"RoboDojo Team","average":[0.45,0.05],"generalizationStd":[0.93,0.0],"generalizationRand":[0.04,0.0],"precision":[0.61,0.0],"longHorizon":[0.97,0.08],"memory":[0.2,0.11],"open":[0.0,0.0]},{"model":"Dexora-1B","team":"RoboDojo Team","average":[0.38,0.02],"generalizationStd":[0.8,0.0],"generalizationRand":[0.18,0.0],"precision":[0.49,0.0],"longHorizon":[0.82,0.0],"memory":[0.12,0.0],"open":[0.01,0.0]},{"model":"A1","team":"RoboDojo Team","average":[0.28,0.02],"generalizationStd":[0.28,0.0],"generalizationRand":[0.04,0.0],"precision":[0.09,0.0],"longHorizon":[1.07,0.0],"memory":[0.0,0.0],"open":[0.08,0.08]},{"model":"Spirit v1.5","team":"RoboDojo Team","average":[0.23,0.14],"generalizationStd":[1.6,1.0],"generalizationRand":[0.0,0.0],"precision":[0.03,0.0],"longHorizon":[0.11,0.0],"memory":[0.22,0.22],"open":[0.0,0.0]},{"model":"TinyVLA","team":"RoboDojo Team","average":[0.22,0.07],"generalizationStd":[0.06,0.0],"generalizationRand":[0.01,0.0],"precision":[0.05,0.0],"longHorizon":[0.67,0.0],"memory":[0.11,0.11],"open":[0.25,0.25]},{"model":"OpenVLA-OFT","team":"RoboDojo Team","average":[0.21,0.02],"generalizationStd":[0.03,0.0],"generalizationRand":[0.06,0.0],"precision":[0.2,0.0],"longHorizon":[0.7,0.0],"memory":[0.0,0.0],"open":[0.08,0.08]}]}
   </script>
+
+  <script src="assets/js/leaderboard/sources.js"></script>
+  <script src="assets/js/leaderboard/robotwin-board.js"></script>
+  <script src="assets/js/leaderboard/robodojo-board.js"></script>
+  <script src="assets/js/leaderboard/main.js"></script>
 </body>
 </html>
