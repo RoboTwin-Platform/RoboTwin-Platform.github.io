@@ -2,6 +2,7 @@
   const boards = [
     { source: LB.SOURCES.robotwin, init: LB.initRoboTwinBoard, errorAt: '#rankTable tbody' },
     { source: LB.SOURCES.robodojo, init: LB.initRoboDojoBoard, errorAt: '#dojoTable tbody' },
+    { source: LB.SOURCES.robodojoReal, init: LB.initRoboDojoRealBoard, errorAt: '#dojoRealTable tbody' },
   ];
 
   boards.forEach(({ source, init, errorAt }) => {

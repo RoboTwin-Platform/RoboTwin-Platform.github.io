@@ -1,0 +1,277 @@
+{
+  "schema_version": "1.0",
+  "board": {
+    "id": "robodojo-real",
+    "name": "RoboDojo Real Leaderboard",
+    "page_url": "https://robodojo-benchmark.com/LeaderBoard",
+    "data_url": "https://robotwin-platform.github.io/data/robodojo_real_leaderboard.json",
+    "source": "robodojo-benchmark.com",
+    "note": "Mirror of the official RoboDojo-real board; this page previews the top 10.",
+    "evaluated_via": "XPolicyLab standard interface",
+    "preview_top_n": 10,
+    "default_dimension": "average",
+    "default_metric": "score",
+    "updated": "2026-09-05",
+    "dimensions": [
+      {
+        "id": "average",
+        "label": "Average"
+      },
+      {
+        "id": "arxX5",
+        "label": "ARX X5"
+      },
+      {
+        "id": "piper",
+        "label": "Piper"
+      },
+      {
+        "id": "piperX",
+        "label": "Piper X"
+      }
+    ],
+    "metrics": [
+      {
+        "id": "score",
+        "index": 0,
+        "label": "Score"
+      },
+      {
+        "id": "sr",
+        "index": 1,
+        "label": "SR",
+        "unit": "%"
+      }
+    ],
+    "entry_fields": {
+      "model": "display name of the model",
+      "team": "contributor team",
+      "average": "[score, success_rate] overall",
+      "arxX5": "[score, success_rate] on ARX X5",
+      "piper": "[score, success_rate] on Piper",
+      "piperX": "[score, success_rate] on Piper X"
+    }
+  },
+  "entries": [
+    {
+      "model": "OpenWAM-α",
+      "team": "OpenWAM Team",
+      "average": [
+        37.6,
+        24.4
+      ],
+      "arxX5": [
+        39.0,
+        23.3
+      ],
+      "piper": [
+        46.7,
+        36.7
+      ],
+      "piperX": [
+        27.2,
+        13.3
+      ]
+    },
+    {
+      "model": "Pi-05",
+      "team": "RoboDojo Team",
+      "average": [
+        22.9,
+        12.8
+      ],
+      "arxX5": [
+        27.7,
+        13.3
+      ],
+      "piper": [
+        32.0,
+        21.7
+      ],
+      "piperX": [
+        9.1,
+        3.3
+      ]
+    },
+    {
+      "model": "InternVLA-A1",
+      "team": "RoboDojo Team",
+      "average": [
+        12.0,
+        7.2
+      ],
+      "arxX5": [
+        10.0,
+        3.3
+      ],
+      "piper": [
+        23.2,
+        18.3
+      ],
+      "piperX": [
+        2.7,
+        0.0
+      ]
+    },
+    {
+      "model": "GalaxeaVLA (G0)",
+      "team": "RoboDojo Team",
+      "average": [
+        9.0,
+        4.4
+      ],
+      "arxX5": [
+        3.4,
+        0.0
+      ],
+      "piper": [
+        22.0,
+        13.3
+      ],
+      "piperX": [
+        1.7,
+        0.0
+      ]
+    },
+    {
+      "model": "Xiaomi-Robotics-0",
+      "team": "RoboDojo Team",
+      "average": [
+        7.9,
+        3.9
+      ],
+      "arxX5": [
+        15.0,
+        8.3
+      ],
+      "piper": [
+        7.6,
+        3.3
+      ],
+      "piperX": [
+        1.2,
+        0.0
+      ]
+    },
+    {
+      "model": "X-VLA",
+      "team": "RoboDojo Team",
+      "average": [
+        7.6,
+        3.3
+      ],
+      "arxX5": [
+        6.8,
+        1.7
+      ],
+      "piper": [
+        15.9,
+        8.3
+      ],
+      "piperX": [
+        0.1,
+        0.0
+      ]
+    },
+    {
+      "model": "GROOT-N1.7",
+      "team": "RoboDojo Team",
+      "average": [
+        5.9,
+        1.7
+      ],
+      "arxX5": [
+        9.3,
+        1.7
+      ],
+      "piper": [
+        6.8,
+        3.3
+      ],
+      "piperX": [
+        1.4,
+        0.0
+      ]
+    },
+    {
+      "model": "Pi-0",
+      "team": "RoboDojo Team",
+      "average": [
+        5.8,
+        1.7
+      ],
+      "arxX5": [
+        8.1,
+        0.0
+      ],
+      "piper": [
+        9.0,
+        5.0
+      ],
+      "piperX": [
+        0.3,
+        0.0
+      ]
+    },
+    {
+      "model": "StarVLA",
+      "team": "RoboDojo Team",
+      "average": [
+        4.1,
+        1.7
+      ],
+      "arxX5": [
+        0.0,
+        0.0
+      ],
+      "piper": [
+        12.0,
+        5.0
+      ],
+      "piperX": [
+        0.5,
+        0.0
+      ]
+    },
+    {
+      "model": "Spirit v1.5",
+      "team": "RoboDojo Team",
+      "average": [
+        1.6,
+        0.6
+      ],
+      "arxX5": [
+        0.0,
+        0.0
+      ],
+      "piper": [
+        4.0,
+        1.7
+      ],
+      "piperX": [
+        0.7,
+        0.0
+      ]
+    },
+    {
+      "model": "DM0",
+      "team": "RoboDojo Team",
+      "average": [
+        0.0,
+        0.0
+      ],
+      "arxX5": [
+        0.0,
+        0.0
+      ],
+      "piper": [
+        0.0,
+        0.0
+      ],
+      "piperX": [
+        0.0,
+        0.0
+      ]
+    }
+  ]
+}

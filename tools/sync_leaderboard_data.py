@@ -19,6 +19,7 @@ PAGE = ROOT / "leaderboard.html"
 BLOCKS = {
     "robotwin-data-fallback": ROOT / "data" / "robotwin_leaderboard.json",
     "robodojo-data-fallback": ROOT / "data" / "robodojo_leaderboard.json",
+    "robodojo-real-data-fallback": ROOT / "data" / "robodojo_real_leaderboard.json",
 }
 
 

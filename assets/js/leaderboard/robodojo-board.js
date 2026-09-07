@@ -21,7 +21,7 @@ const renderChips = (elId, options, isActive, onPick) => {
   });
 };
 
-LB.initRoboDojoBoard = function (data) {
+const mountDojoBoard = (data, ids) => {
   const board = data.board || {};
   const entries = data.entries || [];
   const dims = board.dimensions || [];
@@ -37,20 +37,21 @@ LB.initRoboDojoBoard = function (data) {
     a.model.localeCompare(b.model));
 
   const render = () => {
-    renderChips('dojoDimChips', dims, (o) => o.id === dim, (o) => { dim = o.id; render(); });
-    renderChips('dojoMetricChips', metrics, (o) => o.id === metric.id, (o) => { metric = o; render(); });
+    renderChips(ids.dimChips, dims, (o) => o.id === dim, (o) => { dim = o.id; render(); });
+    renderChips(ids.metricChips, metrics, (o) => o.id === metric.id, (o) => { metric = o; render(); });
 
     const dimLabel = (dims.find((d) => d.id === dim) || {}).label || dim;
-    const meta = document.getElementById('dojoSortMeta');
+    const meta = document.getElementById(ids.sortMeta);
     if (meta) meta.textContent = `Top ${topN} · Ranked by ${dimLabel} \u00b7 ${metric.label} \u2193`;
 
-    const stamp = document.getElementById('dojoUpdatedAt');
+    const stamp = document.getElementById(ids.updatedAt);
     if (stamp && board.updated) {
       stamp.textContent = board.updated;
       stamp.setAttribute('datetime', board.updated);
     }
 
-    const thead = document.querySelector('#dojoTable thead');
+    const table = document.querySelector(ids.table);
+    const thead = table.querySelector('thead');
     thead.innerHTML = `<tr>
       <th scope="col">Rank</th>
       <th scope="col">Model</th>
@@ -62,20 +63,39 @@ LB.initRoboDojoBoard = function (data) {
     });
 
     const shown = sorted().slice(0, topN);
-    const tbody = document.querySelector('#dojoTable tbody');
-    tbody.innerHTML = shown.map((e, i) => {
+    table.querySelector('tbody').innerHTML = shown.map((e, i) => {
       const rank = i + 1;
       const medal = MEDALS[rank];
       return `<tr class="dojo-board__row" data-rank="${rank}">
         <td class="dojo-board__rank">${medal ? `<span class="dojo-board__medal" aria-label="Rank ${rank}">${medal}</span>` : rank}</td>
         <td class="dojo-board__model">${e.model}</td>
-        <td class="dojo-board__contributor">${e.team}</td>
+        <td class="dojo-board__contributor">${e.team || '—'}</td>
         ${dims.map((d) => `<td class="dojo-board__metric${d.id === dim ? ' is-sort-col' : ''}${d.id === dim && rank === 1 ? ' is-leader' : ''}">${fmtCell(e[d.id])}</td>`).join('')}
       </tr>`;
     }).join('');
   };
 
   render();
+};
+
+LB.initRoboDojoBoard = function (data) {
+  mountDojoBoard(data, {
+    dimChips: 'dojoDimChips',
+    metricChips: 'dojoMetricChips',
+    sortMeta: 'dojoSortMeta',
+    updatedAt: 'dojoUpdatedAt',
+    table: '#dojoTable',
+  });
+};
+
+LB.initRoboDojoRealBoard = function (data) {
+  mountDojoBoard(data, {
+    dimChips: 'dojoRealDimChips',
+    metricChips: 'dojoRealMetricChips',
+    sortMeta: 'dojoRealSortMeta',
+    updatedAt: 'dojoRealUpdatedAt',
+    table: '#dojoRealTable',
+  });
 };
 
 })(window.RoboTwinLB);

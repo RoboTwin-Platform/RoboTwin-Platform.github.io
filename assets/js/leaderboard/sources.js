@@ -7,6 +7,7 @@ window.RoboTwinLB = window.RoboTwinLB || {};
   LB.SOURCES = {
     robotwin: { url: 'data/robotwin_leaderboard.json', fallback: 'robotwin-data-fallback' },
     robodojo: { url: 'data/robodojo_leaderboard.json', fallback: 'robodojo-data-fallback' },
+    robodojoReal: { url: 'data/robodojo_real_leaderboard.json', fallback: 'robodojo-real-data-fallback' },
   };
 
   function readInline(elementId) {

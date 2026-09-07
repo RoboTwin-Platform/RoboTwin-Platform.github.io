@@ -2373,6 +2373,10 @@
   ],
   "news": [
     {
+      "date": "2026-09-05",
+      "text": "Add OpenWAM-α RoboDojo sim (17.18 / 11.92%) and real (37.6 / 24.4%) results."
+    },
+    {
       "date": "2026-09-01",
       "text": "Add OLA-Geo and OLA-Sem co-train results."
     },

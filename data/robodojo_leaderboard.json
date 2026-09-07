@@ -11,7 +11,7 @@
     "preview_top_n": 10,
     "default_dimension": "average",
     "default_metric": "score",
-    "updated": "2026-08-31",
+    "updated": "2026-09-05",
     "dimensions": [
       {
         "id": "average",
@@ -156,6 +156,38 @@
       "open": [
         3.94,
         3.58
+      ]
+    },
+    {
+      "model": "OpenWAM-α",
+      "team": "OpenWAM Team",
+      "average": [
+        17.18,
+        11.92
+      ],
+      "generalizationStd": [
+        33.16,
+        25.56
+      ],
+      "generalizationRand": [
+        8.26,
+        4.11
+      ],
+      "precision": [
+        18.45,
+        9.25
+      ],
+      "longHorizon": [
+        34.93,
+        25.33
+      ],
+      "memory": [
+        10.41,
+        9.11
+      ],
+      "open": [
+        1.41,
+        1.08
       ]
     },
     {
