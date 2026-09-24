@@ -2,14 +2,14 @@
   "schema_version": "1.0",
   "site": "https://robotwin-platform.github.io",
   "description": "Machine-readable leaderboards published by RoboTwin, evaluated via the XPolicyLab standard interface.",
-  "updated": "2026-09-05",
+  "updated": "2026-09-24",
   "boards": [
     {
       "id": "robotwin2",
       "name": "RoboTwin 2.0 Leaderboard",
       "page_url": "https://robotwin-platform.github.io/leaderboard",
       "data_url": "https://robotwin-platform.github.io/data/robotwin_leaderboard.json",
-      "updated": "2026-09-01"
+      "updated": "2026-09-24"
     },
     {
       "id": "robodojo-sim",
