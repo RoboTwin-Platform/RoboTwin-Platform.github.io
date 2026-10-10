@@ -16,14 +16,14 @@
       "name": "RoboDojo Sim Leaderboard",
       "page_url": "https://robodojo-benchmark.com/LeaderBoard",
       "data_url": "https://robotwin-platform.github.io/data/robodojo_leaderboard.json",
-      "updated": "2026-09-05"
+      "updated": "2026-10-09"
     },
     {
       "id": "robodojo-real",
       "name": "RoboDojo Real Leaderboard",
       "page_url": "https://robodojo-benchmark.com/LeaderBoard",
       "data_url": "https://robotwin-platform.github.io/data/robodojo_real_leaderboard.json",
-      "updated": "2026-09-05"
+      "updated": "2026-10-09"
     }
   ]
 }

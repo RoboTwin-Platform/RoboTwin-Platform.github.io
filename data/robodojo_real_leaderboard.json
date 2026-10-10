@@ -11,7 +11,7 @@
     "preview_top_n": 10,
     "default_dimension": "average",
     "default_metric": "score",
-    "updated": "2026-09-05",
+    "updated": "2026-10-09",
     "dimensions": [
       {
         "id": "average",
@@ -50,7 +50,8 @@
       "arxX5": "[score, success_rate] on ARX X5",
       "piper": "[score, success_rate] on Piper",
       "piperX": "[score, success_rate] on Piper X"
-    }
+    },
+    "data_source": "https://robodojo-benchmark.com/data/leaderboard.generated.json"
   },
   "entries": [
     {
@@ -61,7 +62,7 @@
         24.4
       ],
       "arxX5": [
-        39.0,
+        39,
         23.3
       ],
       "piper": [
@@ -85,7 +86,7 @@
         13.3
       ],
       "piper": [
-        32.0,
+        32,
         21.7
       ],
       "piperX": [
@@ -97,11 +98,11 @@
       "model": "InternVLA-A1",
       "team": "RoboDojo Team",
       "average": [
-        12.0,
+        12,
         7.2
       ],
       "arxX5": [
-        10.0,
+        10,
         3.3
       ],
       "piper": [
@@ -110,27 +111,27 @@
       ],
       "piperX": [
         2.7,
-        0.0
+        0
       ]
     },
     {
       "model": "GalaxeaVLA (G0)",
       "team": "RoboDojo Team",
       "average": [
-        9.0,
+        9,
         4.4
       ],
       "arxX5": [
         3.4,
-        0.0
+        0
       ],
       "piper": [
-        22.0,
+        22,
         13.3
       ],
       "piperX": [
         1.7,
-        0.0
+        0
       ]
     },
     {
@@ -141,7 +142,7 @@
         3.9
       ],
       "arxX5": [
-        15.0,
+        15,
         8.3
       ],
       "piper": [
@@ -150,7 +151,7 @@
       ],
       "piperX": [
         1.2,
-        0.0
+        0
       ]
     },
     {
@@ -170,7 +171,7 @@
       ],
       "piperX": [
         0.1,
-        0.0
+        0
       ]
     },
     {
@@ -190,7 +191,7 @@
       ],
       "piperX": [
         1.4,
-        0.0
+        0
       ]
     },
     {
@@ -202,15 +203,15 @@
       ],
       "arxX5": [
         8.1,
-        0.0
+        0
       ],
       "piper": [
-        9.0,
-        5.0
+        9,
+        5
       ],
       "piperX": [
         0.3,
-        0.0
+        0
       ]
     },
     {
@@ -221,16 +222,16 @@
         1.7
       ],
       "arxX5": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "piper": [
-        12.0,
-        5.0
+        12,
+        5
       ],
       "piperX": [
         0.5,
-        0.0
+        0
       ]
     },
     {
@@ -241,36 +242,36 @@
         0.6
       ],
       "arxX5": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "piper": [
-        4.0,
+        4,
         1.7
       ],
       "piperX": [
         0.7,
-        0.0
+        0
       ]
     },
     {
       "model": "DM0",
       "team": "RoboDojo Team",
       "average": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "arxX5": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "piper": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "piperX": [
-        0.0,
-        0.0
+        0,
+        0
       ]
     }
   ]

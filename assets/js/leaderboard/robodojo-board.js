@@ -31,9 +31,10 @@ const mountDojoBoard = (data, ids) => {
   let dim = board.default_dimension || (dims[0] && dims[0].id);
   let metric = metrics.find((m) => m.id === board.default_metric) || metrics[0];
 
+  const cell = (e) => e[dim] || [0, 0];
   const sorted = () => [...entries].sort((a, b) =>
-    (b[dim][metric.index] - a[dim][metric.index]) ||
-    (b[dim][1 - metric.index] - a[dim][1 - metric.index]) ||
+    (cell(b)[metric.index] - cell(a)[metric.index]) ||
+    (cell(b)[1 - metric.index] - cell(a)[1 - metric.index]) ||
     a.model.localeCompare(b.model));
 
   const render = () => {

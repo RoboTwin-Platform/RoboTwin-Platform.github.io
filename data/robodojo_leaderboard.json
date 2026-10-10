@@ -11,19 +11,19 @@
     "preview_top_n": 10,
     "default_dimension": "average",
     "default_metric": "score",
-    "updated": "2026-09-05",
+    "updated": "2026-10-09",
     "dimensions": [
       {
         "id": "average",
         "label": "Average"
       },
       {
-        "id": "generalizationStd",
-        "label": "Gen-Std"
+        "id": "sft",
+        "label": "Avg. (w/o Open)"
       },
       {
-        "id": "generalizationRand",
-        "label": "Gen-Rand"
+        "id": "generalization",
+        "label": "Generalization"
       },
       {
         "id": "precision",
@@ -59,9 +59,330 @@
       "model": "display name of the model",
       "team": "contributor team",
       "<dimension>": "[score, success_rate] pair, indexed by metrics[].index"
-    }
+    },
+    "data_source": "https://robodojo-benchmark.com/data/leaderboard.generated.json"
   },
   "entries": [
+    {
+      "model": "VPP2",
+      "team": "RobotEra",
+      "average": [
+        39.26,
+        32.26
+      ],
+      "sft": [
+        47.93,
+        39.31
+      ],
+      "generalization": [
+        36.38,
+        29.5
+      ],
+      "precision": [
+        43.03,
+        35.17
+      ],
+      "longHorizon": [
+        56.28,
+        37
+      ],
+      "memory": [
+        56.01,
+        55.56
+      ],
+      "open": [
+        4.61,
+        4.08
+      ]
+    },
+    {
+      "model": "PhysicalRSI",
+      "team": "HKU MMLab & KAI",
+      "average": [
+        36.27,
+        31.38
+      ],
+      "sft": [
+        38.12,
+        33
+      ],
+      "generalization": [
+        21.3,
+        15.62
+      ],
+      "precision": [
+        38.05,
+        32.5
+      ],
+      "longHorizon": [
+        46.37,
+        37.33
+      ],
+      "memory": [
+        46.74,
+        46.56
+      ],
+      "open": [
+        28.88,
+        24.92
+      ]
+    },
+    {
+      "model": "Awomo-0.5",
+      "team": "Awomo",
+      "average": [
+        35.34,
+        29.64
+      ],
+      "sft": [
+        38.15,
+        31.33
+      ],
+      "generalization": [
+        30.31,
+        23.84
+      ],
+      "precision": [
+        39.65,
+        33.5
+      ],
+      "longHorizon": [
+        40.36,
+        26.75
+      ],
+      "memory": [
+        42.27,
+        41.22
+      ],
+      "open": [
+        24.09,
+        22.92
+      ]
+    },
+    {
+      "model": "Simate-beta",
+      "team": "Simate",
+      "average": [
+        33.95,
+        27.96
+      ],
+      "sft": [
+        40.15,
+        32.82
+      ],
+      "generalization": [
+        35.09,
+        27.95
+      ],
+      "precision": [
+        34.35,
+        26.92
+      ],
+      "longHorizon": [
+        57.84,
+        43.42
+      ],
+      "memory": [
+        33.33,
+        33
+      ],
+      "open": [
+        9.12,
+        8.5
+      ]
+    },
+    {
+      "model": "Rex-M1 Preview",
+      "team": "FT Lab & VisIncept",
+      "average": [
+        33.79,
+        27.44
+      ],
+      "sft": [
+        40.57,
+        32.78
+      ],
+      "generalization": [
+        34.05,
+        26.05
+      ],
+      "precision": [
+        32.82,
+        23.83
+      ],
+      "longHorizon": [
+        46.89,
+        33
+      ],
+      "memory": [
+        48.53,
+        48.22
+      ],
+      "open": [
+        6.67,
+        6.08
+      ]
+    },
+    {
+      "model": "VPP2-Preview",
+      "team": "RobotEra",
+      "average": [
+        31.4,
+        25.62
+      ],
+      "sft": [
+        37.79,
+        30.67
+      ],
+      "generalization": [
+        31.34,
+        24.62
+      ],
+      "precision": [
+        33.75,
+        25.58
+      ],
+      "longHorizon": [
+        35.31,
+        22.17
+      ],
+      "memory": [
+        50.78,
+        50.33
+      ],
+      "open": [
+        5.83,
+        5.42
+      ]
+    },
+    {
+      "model": "InternW0-Δ",
+      "team": "Shanghai AI Lab",
+      "average": [
+        30.77,
+        23.91
+      ],
+      "sft": [
+        35.76,
+        27.34
+      ],
+      "generalization": [
+        30.09,
+        22.78
+      ],
+      "precision": [
+        31.98,
+        23.25
+      ],
+      "longHorizon": [
+        46.29,
+        29.33
+      ],
+      "memory": [
+        34.67,
+        34
+      ],
+      "open": [
+        10.84,
+        10.17
+      ]
+    },
+    {
+      "model": "Liber-0 Preview",
+      "team": "LiberAI",
+      "average": [
+        30.74,
+        25.52
+      ],
+      "sft": [
+        36.76,
+        30.57
+      ],
+      "generalization": [
+        24.99,
+        18.61
+      ],
+      "precision": [
+        38.28,
+        33.17
+      ],
+      "longHorizon": [
+        45.98,
+        33.17
+      ],
+      "memory": [
+        37.77,
+        37.33
+      ],
+      "open": [
+        6.68,
+        5.33
+      ]
+    },
+    {
+      "model": "Liber-0 Lite",
+      "team": "LiberAI",
+      "average": [
+        29.24,
+        24.23
+      ],
+      "sft": [
+        35.78,
+        29.64
+      ],
+      "generalization": [
+        25.36,
+        19.11
+      ],
+      "precision": [
+        36.6,
+        31.08
+      ],
+      "longHorizon": [
+        45.5,
+        32.92
+      ],
+      "memory": [
+        35.68,
+        35.44
+      ],
+      "open": [
+        3.06,
+        2.58
+      ]
+    },
+    {
+      "model": "GPT-6-Astra",
+      "team": "RoboDojo Team",
+      "average": [
+        28.97,
+        22.48
+      ],
+      "sft": [
+        27.63,
+        20.36
+      ],
+      "generalization": [
+        33.36,
+        30.5
+      ],
+      "precision": [
+        12.65,
+        4
+      ],
+      "longHorizon": [
+        21.45,
+        8.25
+      ],
+      "memory": [
+        43.04,
+        38.67
+      ],
+      "open": [
+        34.36,
+        31
+      ]
+    },
     {
       "model": "DM0.5",
       "team": "Dexmal",
@@ -69,13 +390,13 @@
         24.9,
         19.34
       ],
-      "generalizationStd": [
-        23.49,
-        18.0
+      "sft": [
+        30.51,
+        23.66
       ],
-      "generalizationRand": [
-        8.06,
-        4.0
+      "generalization": [
+        15.77,
+        10.95
       ],
       "precision": [
         24.82,
@@ -95,19 +416,51 @@
       ]
     },
     {
+      "model": "ME-Brain-1.0",
+      "team": "Li Auto Inc.",
+      "average": [
+        21.67,
+        15.99
+      ],
+      "sft": [
+        25.63,
+        18.65
+      ],
+      "generalization": [
+        21.81,
+        15.34
+      ],
+      "precision": [
+        24.23,
+        15.92
+      ],
+      "longHorizon": [
+        32.96,
+        20.58
+      ],
+      "memory": [
+        23.53,
+        22.78
+      ],
+      "open": [
+        5.83,
+        5.33
+      ]
+    },
+    {
       "model": "GalaxeaVLA (G0.5)",
       "team": "Galaxea AI",
       "average": [
         20.23,
         14.88
       ],
-      "generalizationStd": [
-        26.74,
-        20.0
+      "sft": [
+        24.86,
+        18.21
       ],
-      "generalizationRand": [
-        11.16,
-        6.0
+      "generalization": [
+        18.46,
+        12.83
       ],
       "precision": [
         28.25,
@@ -133,13 +486,13 @@
         20.07,
         13.93
       ],
-      "generalizationStd": [
-        35.65,
-        28.0
+      "sft": [
+        24.11,
+        16.52
       ],
-      "generalizationRand": [
-        11.44,
-        6.0
+      "generalization": [
+        23.54,
+        17
       ],
       "precision": [
         26.69,
@@ -159,19 +512,51 @@
       ]
     },
     {
+      "model": "MachEmbodied-U0",
+      "team": "Li Auto Inc.",
+      "average": [
+        17.78,
+        11.51
+      ],
+      "sft": [
+        21.27,
+        13.59
+      ],
+      "generalization": [
+        16.07,
+        8.78
+      ],
+      "precision": [
+        24.2,
+        16.67
+      ],
+      "longHorizon": [
+        36.66,
+        22.25
+      ],
+      "memory": [
+        8.16,
+        6.67
+      ],
+      "open": [
+        3.78,
+        3.17
+      ]
+    },
+    {
       "model": "OpenWAM-α",
       "team": "OpenWAM Team",
       "average": [
         17.18,
         11.92
       ],
-      "generalizationStd": [
-        33.16,
-        25.56
+      "sft": [
+        21.13,
+        14.63
       ],
-      "generalizationRand": [
-        8.26,
-        4.11
+      "generalization": [
+        20.71,
+        14.83
       ],
       "precision": [
         18.45,
@@ -197,13 +582,13 @@
         14.95,
         9.53
       ],
-      "generalizationStd": [
-        19.28,
-        12.67
+      "sft": [
+        17.55,
+        10.85
       ],
-      "generalizationRand": [
-        8.22,
-        3.67
+      "generalization": [
+        13.75,
+        8.17
       ],
       "precision": [
         16.77,
@@ -223,23 +608,55 @@
       ]
     },
     {
+      "model": "HWM-CogWAM",
+      "team": "Horizon Robotics",
+      "average": [
+        14.34,
+        10.34
+      ],
+      "sft": [
+        17.21,
+        12.26
+      ],
+      "generalization": [
+        12.78,
+        9.28
+      ],
+      "precision": [
+        20.54,
+        14.58
+      ],
+      "longHorizon": [
+        27.35,
+        18.17
+      ],
+      "memory": [
+        8.18,
+        7
+      ],
+      "open": [
+        2.86,
+        2.67
+      ]
+    },
+    {
       "model": "Hy-Embodied-0.5-VLA",
       "team": "Tencent Robotics X",
       "average": [
         13.07,
         8.8
       ],
-      "generalizationStd": [
-        21.98,
-        17.0
+      "sft": [
+        16.17,
+        10.86
       ],
-      "generalizationRand": [
-        1.57,
-        0.0
+      "generalization": [
+        11.78,
+        8.39
       ],
       "precision": [
         13.81,
-        8.0
+        8
       ],
       "longHorizon": [
         25.74,
@@ -255,22 +672,86 @@
       ]
     },
     {
+      "model": "KinRT",
+      "team": "IIGroup",
+      "average": [
+        13.02,
+        8.8
+      ],
+      "sft": [
+        15.22,
+        10.04
+      ],
+      "generalization": [
+        14.02,
+        8.61
+      ],
+      "precision": [
+        15.65,
+        9.92
+      ],
+      "longHorizon": [
+        26.4,
+        18.08
+      ],
+      "memory": [
+        4.82,
+        3.56
+      ],
+      "open": [
+        4.23,
+        3.83
+      ]
+    },
+    {
+      "model": "SimpleMemVLA",
+      "team": "SimpleMemVLA Team",
+      "average": [
+        12.58,
+        9.27
+      ],
+      "sft": [
+        15.52,
+        11.4
+      ],
+      "generalization": [
+        6.36,
+        3.95
+      ],
+      "precision": [
+        7.42,
+        2.92
+      ],
+      "longHorizon": [
+        14.58,
+        5.5
+      ],
+      "memory": [
+        33.71,
+        33.22
+      ],
+      "open": [
+        0.85,
+        0.75
+      ]
+    },
+    {
       "model": "Spatial Forcing",
       "team": "OpenHelix Robotics",
       "average": [
         12.38,
         8.04
       ],
-      "generalizationStd": [
-        21.25,
-        15.0
+      "sft": [
+        15.03,
+        9.65
       ],
-      "generalizationRand": [
-        6.98,
-        4.0
+      "generalization": [
+        14.12,
+        9.34
       ],
       "precision": [
-        17.33,
+        17.32,
         10.58
       ],
       "longHorizon": [
@@ -290,16 +771,16 @@
       "model": "Pi-05",
       "team": "RoboDojo Team",
       "average": [
-        11.41,
-        6.91
+        11.44,
+        6.93
       ],
-      "generalizationStd": [
-        20.93,
-        15.0
+      "sft": [
+        13.8,
+        8.25
       ],
-      "generalizationRand": [
-        5.82,
-        1.0
+      "generalization": [
+        13.38,
+        8.17
       ],
       "precision": [
         12.4,
@@ -310,8 +791,8 @@
         14.67
       ],
       "memory": [
-        5.78,
-        4.56
+        5.89,
+        4.67
       ],
       "open": [
         1.98,
@@ -325,13 +806,13 @@
         11.15,
         7.14
       ],
-      "generalizationStd": [
-        16.81,
-        12.0
+      "sft": [
+        13.58,
+        8.58
       ],
-      "generalizationRand": [
-        3.9,
-        2.0
+      "generalization": [
+        10.35,
+        6.83
       ],
       "precision": [
         15.23,
@@ -351,23 +832,55 @@
       ]
     },
     {
+      "model": "StarVLA-PI_v3",
+      "team": "StarVLA Team",
+      "average": [
+        10.81,
+        7.51
+      ],
+      "sft": [
+        13.01,
+        8.89
+      ],
+      "generalization": [
+        11.22,
+        8.05
+      ],
+      "precision": [
+        17.77,
+        12.5
+      ],
+      "longHorizon": [
+        18.46,
+        11
+      ],
+      "memory": [
+        4.59,
+        4
+      ],
+      "open": [
+        2.03,
+        2
+      ]
+    },
+    {
       "model": "VLAct",
       "team": "StarVLA Team",
       "average": [
-        10.66,
-        7.6
+        10.65,
+        7.58
       ],
-      "generalizationStd": [
-        16.33,
-        12.0
+      "sft": [
+        12.72,
+        8.92
       ],
-      "generalizationRand": [
-        2.74,
-        1.0
+      "generalization": [
+        9.54,
+        6.28
       ],
       "precision": [
-        20.62,
-        15.25
+        20.57,
+        15.17
       ],
       "longHorizon": [
         20.12,
@@ -389,17 +902,17 @@
         10.13,
         6.52
       ],
-      "generalizationStd": [
-        17.9,
-        12.0
+      "sft": [
+        12.52,
+        8.02
       ],
-      "generalizationRand": [
-        3.04,
-        1.0
+      "generalization": [
+        10.47,
+        6.78
       ],
       "precision": [
         18.32,
-        12.0
+        12
       ],
       "longHorizon": [
         16.53,
@@ -415,19 +928,115 @@
       ]
     },
     {
+      "model": "MolmoAct2",
+      "team": "MolmoAct2 Team",
+      "average": [
+        8.99,
+        5.03
+      ],
+      "sft": [
+        10.04,
+        5.18
+      ],
+      "generalization": [
+        8.53,
+        4.67
+      ],
+      "precision": [
+        10.92,
+        4.5
+      ],
+      "longHorizon": [
+        15.2,
+        7
+      ],
+      "memory": [
+        5.53,
+        4.56
+      ],
+      "open": [
+        4.75,
+        4.42
+      ]
+    },
+    {
+      "model": "StarVLA-GR00T",
+      "team": "StarVLA Team",
+      "average": [
+        8.25,
+        4.67
+      ],
+      "sft": [
+        9.82,
+        5.36
+      ],
+      "generalization": [
+        7.96,
+        5.28
+      ],
+      "precision": [
+        9.56,
+        4.67
+      ],
+      "longHorizon": [
+        16.18,
+        7.17
+      ],
+      "memory": [
+        5.6,
+        4.33
+      ],
+      "open": [
+        1.95,
+        1.92
+      ]
+    },
+    {
+      "model": "StarVLA-OFT",
+      "team": "StarVLA Team",
+      "average": [
+        8.18,
+        4.82
+      ],
+      "sft": [
+        9.88,
+        5.7
+      ],
+      "generalization": [
+        7.41,
+        4.78
+      ],
+      "precision": [
+        16.08,
+        10.17
+      ],
+      "longHorizon": [
+        14.28,
+        6.17
+      ],
+      "memory": [
+        1.74,
+        1.67
+      ],
+      "open": [
+        1.41,
+        1.33
+      ]
+    },
+    {
       "model": "X-WAM",
       "team": "X-WAM Team",
       "average": [
         7.69,
         3.83
       ],
-      "generalizationStd": [
-        11.24,
-        5.0
+      "sft": [
+        9.47,
+        4.73
       ],
-      "generalizationRand": [
-        3.54,
-        1.0
+      "generalization": [
+        7.39,
+        3.33
       ],
       "precision": [
         6.72,
@@ -453,13 +1062,13 @@
         6.93,
         4.18
       ],
-      "generalizationStd": [
-        13.81,
-        11.0
+      "sft": [
+        8.61,
+        5.18
       ],
-      "generalizationRand": [
-        1.05,
-        0.0
+      "generalization": [
+        7.43,
+        5.55
       ],
       "precision": [
         8.42,
@@ -485,13 +1094,13 @@
         6.4,
         3.24
       ],
-      "generalizationStd": [
-        7.54,
-        5.0
+      "sft": [
+        7.83,
+        3.9
       ],
-      "generalizationRand": [
-        0.33,
-        0.0
+      "generalization": [
+        3.94,
+        2.33
       ],
       "precision": [
         9.9,
@@ -506,7 +1115,7 @@
         2.44
       ],
       "open": [
-        0.68,
+        0.67,
         0.58
       ]
     },
@@ -517,13 +1126,13 @@
         6.2,
         3.27
       ],
-      "generalizationStd": [
-        10.28,
-        6.0
+      "sft": [
+        7.62,
+        3.97
       ],
-      "generalizationRand": [
-        0.41,
-        0.0
+      "generalization": [
+        5.34,
+        2.89
       ],
       "precision": [
         6.15,
@@ -549,13 +1158,13 @@
         5.82,
         2.96
       ],
-      "generalizationStd": [
-        8.71,
-        6.0
+      "sft": [
+        7.1,
+        3.53
       ],
-      "generalizationRand": [
-        0.36,
-        0.0
+      "generalization": [
+        4.54,
+        2.83
       ],
       "precision": [
         8.1,
@@ -581,13 +1190,13 @@
         5.5,
         2.96
       ],
-      "generalizationStd": [
-        10.88,
-        8.0
+      "sft": [
+        6.69,
+        3.53
       ],
-      "generalizationRand": [
-        2.55,
-        1.0
+      "generalization": [
+        6.71,
+        4.28
       ],
       "precision": [
         5.33,
@@ -613,13 +1222,13 @@
         4.97,
         2.81
       ],
-      "generalizationStd": [
-        6.68,
-        3.0
+      "sft": [
+        6.01,
+        3.33
       ],
-      "generalizationRand": [
-        1.22,
-        0.0
+      "generalization": [
+        3.95,
+        1.94
       ],
       "precision": [
         10.13,
@@ -645,13 +1254,13 @@
         4.82,
         2.39
       ],
-      "generalizationStd": [
-        10.32,
-        6.0
+      "sft": [
+        5.81,
+        2.79
       ],
-      "generalizationRand": [
-        1.26,
-        0.0
+      "generalization": [
+        5.79,
+        3.27
       ],
       "precision": [
         5.86,
@@ -677,13 +1286,13 @@
         3.67,
         1.73
       ],
-      "generalizationStd": [
-        9.2,
-        5.0
+      "sft": [
+        4.41,
+        1.99
       ],
-      "generalizationRand": [
-        2.26,
-        2.0
+      "generalization": [
+        5.73,
+        3.5
       ],
       "precision": [
         5.5,
@@ -709,17 +1318,17 @@
         3.48,
         2.03
       ],
-      "generalizationStd": [
-        4.33,
-        2.0
+      "sft": [
+        4.25,
+        2.43
       ],
-      "generalizationRand": [
-        0.34,
-        0.0
+      "generalization": [
+        2.33,
+        1.11
       ],
       "precision": [
         1.96,
-        0.0
+        0
       ],
       "longHorizon": [
         9.14,
@@ -741,13 +1350,13 @@
         3.48,
         1.53
       ],
-      "generalizationStd": [
-        7.18,
-        5.0
+      "sft": [
+        4.29,
+        1.85
       ],
-      "generalizationRand": [
-        0.71,
-        0.0
+      "generalization": [
+        3.94,
+        2.55
       ],
       "precision": [
         3.56,
@@ -755,7 +1364,7 @@
       ],
       "longHorizon": [
         6.19,
-        2.0
+        2
       ],
       "memory": [
         3.47,
@@ -767,19 +1376,51 @@
       ]
     },
     {
+      "model": "DeepSeek-Flash",
+      "team": "RoboDojo Team",
+      "average": [
+        2.99,
+        1.92
+      ],
+      "sft": [
+        2.12,
+        0.83
+      ],
+      "generalization": [
+        2.42,
+        1.67
+      ],
+      "precision": [
+        1.75,
+        0
+      ],
+      "longHorizon": [
+        2.12,
+        0
+      ],
+      "memory": [
+        2.17,
+        1.67
+      ],
+      "open": [
+        6.5,
+        6.25
+      ]
+    },
+    {
       "model": "GROOT-N1.7",
       "team": "RoboDojo Team",
       "average": [
         2.85,
         1.31
       ],
-      "generalizationStd": [
-        3.97,
-        2.0
+      "sft": [
+        3.52,
+        1.59
       ],
-      "generalizationRand": [
-        0.35,
-        0.0
+      "generalization": [
+        2.16,
+        1.22
       ],
       "precision": [
         2.54,
@@ -805,16 +1446,16 @@
         2.48,
         1.08
       ],
-      "generalizationStd": [
-        5.22,
-        4.0
+      "sft": [
+        3.06,
+        1.31
       ],
-      "generalizationRand": [
-        0.51,
-        0.0
+      "generalization": [
+        2.86,
+        1.83
       ],
       "precision": [
-        3.0,
+        3,
         0.92
       ],
       "longHorizon": [
@@ -834,16 +1475,16 @@
       "model": "SmolVLA (Single Task)",
       "team": "RoboDojo Team",
       "average": [
-        1.83,
+        1.82,
         0.85
       ],
-      "generalizationStd": [
-        3.28,
-        2.0
+      "sft": [
+        2.28,
+        1.06
       ],
-      "generalizationRand": [
-        0.09,
-        0.0
+      "generalization": [
+        1.68,
+        1.22
       ],
       "precision": [
         2.87,
@@ -858,72 +1499,104 @@
         2.44
       ],
       "open": [
-        0.0,
-        0.0
+        0,
+        0
       ]
     },
     {
       "model": "LDA-1B",
       "team": "RoboDojo Team",
       "average": [
-        1.58,
-        0.51
+        1.66,
+        0.54
       ],
-      "generalizationStd": [
-        1.44,
-        0.0
+      "sft": [
+        2.06,
+        0.66
       ],
-      "generalizationRand": [
-        0.18,
-        0.0
+      "generalization": [
+        0.81,
+        0.11
       ],
       "precision": [
-        3.21,
-        0.5
+        3.33,
+        0.67
       ],
       "longHorizon": [
-        1.92,
+        1.98,
         0.08
       ],
       "memory": [
-        2.08,
+        2.11,
         1.78
       ],
       "open": [
-        0.0,
-        0.0
+        0.08,
+        0.08
       ]
     },
     {
-      "model": "MolmoAct2",
+      "model": "GPT-5.5",
       "team": "RoboDojo Team",
       "average": [
-        1.02,
-        0.38
+        1.13,
+        0.88
       ],
-      "generalizationStd": [
-        0.73,
-        0.0
+      "sft": [
+        0.7,
+        0.42
       ],
-      "generalizationRand": [
-        0.04,
-        0.0
+      "generalization": [
+        0.2,
+        0
       ],
       "precision": [
-        0.45,
-        0.0
+        0.42,
+        0
       ],
       "longHorizon": [
-        2.32,
-        0.0
+        0.51,
+        0
       ],
       "memory": [
-        1.02,
-        1.0
+        1.67,
+        1.67
       ],
       "open": [
-        0.91,
-        0.83
+        2.87,
+        2.75
+      ]
+    },
+    {
+      "model": "ACT (Single Task)",
+      "team": "RoboDojo Team",
+      "average": [
+        1.08,
+        0.47
+      ],
+      "sft": [
+        1.35,
+        0.59
+      ],
+      "generalization": [
+        0.69,
+        0.56
+      ],
+      "precision": [
+        0.85,
+        0
+      ],
+      "longHorizon": [
+        1.73,
+        0.92
+      ],
+      "memory": [
+        2.15,
+        0.89
+      ],
+      "open": [
+        0,
+        0
       ]
     },
     {
@@ -933,13 +1606,13 @@
         0.99,
         0.53
       ],
-      "generalizationStd": [
-        3.16,
-        2.0
+      "sft": [
+        1.22,
+        0.64
       ],
-      "generalizationRand": [
-        0.01,
-        0.0
+      "generalization": [
+        1.58,
+        1.22
       ],
       "precision": [
         1.45,
@@ -959,55 +1632,23 @@
       ]
     },
     {
-      "model": "ACT (Single Task)",
-      "team": "RoboDojo Team",
-      "average": [
-        0.98,
-        0.32
-      ],
-      "generalizationStd": [
-        1.37,
-        1.0
-      ],
-      "generalizationRand": [
-        0.0,
-        0.0
-      ],
-      "precision": [
-        0.85,
-        0.0
-      ],
-      "longHorizon": [
-        1.73,
-        0.92
-      ],
-      "memory": [
-        1.65,
-        0.13
-      ],
-      "open": [
-        0.0,
-        0.0
-      ]
-    },
-    {
       "model": "H-RDT",
       "team": "RoboDojo Team",
       "average": [
         0.67,
         0.12
       ],
-      "generalizationStd": [
-        0.89,
-        0.0
+      "sft": [
+        0.81,
+        0.13
       ],
-      "generalizationRand": [
-        0.09,
-        0.0
+      "generalization": [
+        0.49,
+        0.22
       ],
       "precision": [
         0.41,
-        0.0
+        0
       ],
       "longHorizon": [
         2.23,
@@ -1029,29 +1670,29 @@
         0.51,
         0.13
       ],
-      "generalizationStd": [
-        0.82,
-        0.0
+      "sft": [
+        0.64,
+        0.17
       ],
-      "generalizationRand": [
-        0.29,
-        0.0
+      "generalization": [
+        0.55,
+        0.33
       ],
       "precision": [
         0.38,
-        0.0
+        0
       ],
       "longHorizon": [
         1.13,
-        0.0
+        0
       ],
       "memory": [
         0.49,
         0.33
       ],
       "open": [
-        0.0,
-        0.0
+        0,
+        0
       ]
     },
     {
@@ -1061,17 +1702,17 @@
         0.45,
         0.05
       ],
-      "generalizationStd": [
-        0.93,
-        0.0
+      "sft": [
+        0.57,
+        0.06
       ],
-      "generalizationRand": [
-        0.04,
-        0.0
+      "generalization": [
+        0.49,
+        0.06
       ],
       "precision": [
         0.61,
-        0.0
+        0
       ],
       "longHorizon": [
         0.97,
@@ -1082,8 +1723,8 @@
         0.11
       ],
       "open": [
-        0.0,
-        0.0
+        0,
+        0
       ]
     },
     {
@@ -1093,29 +1734,29 @@
         0.38,
         0.02
       ],
-      "generalizationStd": [
-        0.8,
-        0.0
+      "sft": [
+        0.48,
+        0.03
       ],
-      "generalizationRand": [
-        0.18,
-        0.0
+      "generalization": [
+        0.49,
+        0.11
       ],
       "precision": [
         0.49,
-        0.0
+        0
       ],
       "longHorizon": [
         0.82,
-        0.0
+        0
       ],
       "memory": [
         0.12,
-        0.0
+        0
       ],
       "open": [
         0.01,
-        0.0
+        0
       ]
     },
     {
@@ -1125,25 +1766,25 @@
         0.28,
         0.02
       ],
-      "generalizationStd": [
-        0.28,
-        0.0
+      "sft": [
+        0.33,
+        0
       ],
-      "generalizationRand": [
-        0.04,
-        0.0
+      "generalization": [
+        0.16,
+        0
       ],
       "precision": [
         0.09,
-        0.0
+        0
       ],
       "longHorizon": [
         1.07,
-        0.0
+        0
       ],
       "memory": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "open": [
         0.08,
@@ -1157,29 +1798,29 @@
         0.23,
         0.14
       ],
-      "generalizationStd": [
-        1.6,
-        1.0
+      "sft": [
+        0.29,
+        0.18
       ],
-      "generalizationRand": [
-        0.0,
-        0.0
+      "generalization": [
+        0.8,
+        0.5
       ],
       "precision": [
         0.03,
-        0.0
+        0
       ],
       "longHorizon": [
         0.11,
-        0.0
+        0
       ],
       "memory": [
         0.22,
         0.22
       ],
       "open": [
-        0.0,
-        0.0
+        0,
+        0
       ]
     },
     {
@@ -1189,21 +1830,21 @@
         0.22,
         0.07
       ],
-      "generalizationStd": [
-        0.06,
-        0.0
+      "sft": [
+        0.22,
+        0.03
       ],
-      "generalizationRand": [
-        0.01,
-        0.0
+      "generalization": [
+        0.03,
+        0
       ],
       "precision": [
         0.05,
-        0.0
+        0
       ],
       "longHorizon": [
         0.67,
-        0.0
+        0
       ],
       "memory": [
         0.11,
@@ -1221,25 +1862,25 @@
         0.21,
         0.02
       ],
-      "generalizationStd": [
-        0.03,
-        0.0
+      "sft": [
+        0.24,
+        0
       ],
-      "generalizationRand": [
-        0.06,
-        0.0
+      "generalization": [
+        0.04,
+        0
       ],
       "precision": [
         0.2,
-        0.0
+        0
       ],
       "longHorizon": [
         0.7,
-        0.0
+        0
       ],
       "memory": [
-        0.0,
-        0.0
+        0,
+        0
       ],
       "open": [
         0.08,
