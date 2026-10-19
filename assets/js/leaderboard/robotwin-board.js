@@ -2,10 +2,11 @@ window.RoboTwinLB = window.RoboTwinLB || {};
 
 (function (LB) {
 
-const fmt = (v, digits) => {
-  if (digits != null) return v.toFixed(digits) + '%';
-  return (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1)) + '%';
-};
+const fmt = (v) =>
+  (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1)) + '%';
+
+// Half-up at two decimals; the epsilon keeps ties like 44.455 from flooring.
+const fmtMean = (v) => (Math.round(v * 100 + 1e-6) / 100).toFixed(2) + '%';
 
 const heat = (v) => {
   const t = Math.max(0, Math.min(100, v)) / 100;
@@ -34,7 +35,6 @@ LB.initRoboTwinBoard = function (data) {
   const rankingOf = (key) => rankings.find((r) => r.id === key) || { label: key, eval: key };
   const settingNameOf = (key) => rankingOf(key).label;
   const evalLabelOf = (key) => rankingOf(key).eval;
-  const digitsOf = (e) => (e.setting === 'sft' ? 2 : 1);
 
   const sortedEntries = () => {
     const altKey = sortKey === 'easy' ? 'hard' : 'easy';
@@ -64,7 +64,6 @@ LB.initRoboTwinBoard = function (data) {
       const badge = e.setting === 'sft'
         ? `<span class="badge-sft">${setting ? setting.label : 'Single'}</span>`
         : `<span class="badge-co">${setting ? setting.label : 'Co-train'}</span>`;
-      const digits = digitsOf(e);
       const avg = avgMean(e);
       const avgStyle = sortKey === 'avg' ? heat(avg) : '';
       const hardStyle = sortKey === 'hard' ? heat(e.hard_mean) : '';
@@ -73,9 +72,9 @@ LB.initRoboTwinBoard = function (data) {
         <td class="sticky-left"><span class="rank-num ${rank <= 3 ? 'top' : ''}">#${rank}</span></td>
         <td class="col-method"><span class="method-name">${e.name}</span></td>
         <td class="contributor">${e.contributor || defaultContributor}</td>
-        <td class="score-avg" style="${avgStyle}">${fmt(avg, digits)}</td>
-        <td class="score-hard" style="${hardStyle}">${fmt(e.hard_mean, digits)}</td>
-        <td class="score-easy" style="${easyStyle}">${fmt(e.easy_mean, digits)}</td>
+        <td class="score-avg" style="${avgStyle}">${fmtMean(avg)}</td>
+        <td class="score-hard" style="${hardStyle}">${fmtMean(e.hard_mean)}</td>
+        <td class="score-easy" style="${easyStyle}">${fmtMean(e.easy_mean)}</td>
         <td class="col-track">${badge}</td>
         <td class="listed-at">${e.listed_at || '—'}</td>
       </tr>`;
@@ -108,11 +107,10 @@ LB.initRoboTwinBoard = function (data) {
       return `<tr><th class="sticky-left">${task}</th>${cells}</tr>`;
     });
 
-    const avg = rows.map((e) => {
-      const d = digitsOf(e);
-      return `<td class="avg" style="${heat(e.easy_mean)}">${fmt(e.easy_mean, d)}</td>
-              <td class="avg" style="${heat(e.hard_mean)}">${fmt(e.hard_mean, d)}</td>`;
-    }).join('');
+    const avg = rows.map((e) =>
+      `<td class="avg" style="${heat(e.easy_mean)}">${fmtMean(e.easy_mean)}</td>
+              <td class="avg" style="${heat(e.hard_mean)}">${fmtMean(e.hard_mean)}</td>`
+    ).join('');
     body.push(`<tr class="avg-row"><th class="sticky-left">Average</th>${avg}</tr>`);
     tbody.innerHTML = body.join('');
   };
