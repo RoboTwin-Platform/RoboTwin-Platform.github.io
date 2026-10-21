@@ -12,7 +12,7 @@
     "default_contributor": "RoboTwin Team",
     "default_ranking": "avg",
     "updated": "2026-10-21",
-    "updated_note": "Add Phoenix-MWA co-train results",
+    "updated_note": "Add MWA-Phoenix co-train results",
     "rankings": [
       {
         "id": "avg",
@@ -3049,8 +3049,8 @@
       "listed_at": "26.10.19"
     },
     {
-      "id": "cotrain:Phoenix_MWA",
-      "name": "Phoenix-MWA",
+      "id": "cotrain:MWA_Phoenix",
+      "name": "MWA-Phoenix",
       "setting": "cotrain",
       "easy_mean": 86.54,
       "hard_mean": 72.42,
@@ -3158,14 +3158,14 @@
         60.0,
         50.0
       ],
-      "contributor": "OpenPhoenix Team",
+      "contributor": "Anyverse & OpenPhoenix",
       "listed_at": "26.10.21"
     }
   ],
   "news": [
     {
       "date": "2026-10-21",
-      "text": "Add Phoenix-MWA co-train results (86.54 / 72.42%)."
+      "text": "Add MWA-Phoenix co-train results (86.54 / 72.42%)."
     },
     {
       "date": "2026-10-19",
