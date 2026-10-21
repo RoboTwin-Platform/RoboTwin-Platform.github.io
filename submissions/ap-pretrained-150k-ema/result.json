@@ -1,5 +1,5 @@
 {
-  "display_name": "AP pretrained (150k EMA)",
+  "display_name": "Awomo-0.5I",
   "submission_status": "not_ready_for_official_listing",
   "optimizer_updates": 150000,
   "weights": "EMA",
