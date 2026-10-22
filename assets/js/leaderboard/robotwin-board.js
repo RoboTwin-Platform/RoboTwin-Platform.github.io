@@ -31,14 +31,16 @@ LB.initRoboTwinBoard = function (data) {
 
   let sortKey = board.default_ranking || 'avg';
   let viewMode = 'all';
+  let depthFilter = 'all';
 
   const rankingOf = (key) => rankings.find((r) => r.id === key) || { label: key, eval: key };
   const settingNameOf = (key) => rankingOf(key).label;
+  const shortNameOf = (key) => ({ avg: 'Average', hard: 'Clean → Random', easy: 'Clean → Clean' }[key] || settingNameOf(key));
   const evalLabelOf = (key) => rankingOf(key).eval;
 
   const sortedEntries = () => {
     const altKey = sortKey === 'easy' ? 'hard' : 'easy';
-    return [...entries].sort((a, b) =>
+    return entries.filter((e) => depthFilter === 'all' || e.depth === (depthFilter === 'yes')).sort((a, b) =>
       (scoreOf(b, sortKey) - scoreOf(a, sortKey)) ||
       (scoreOf(b, altKey) - scoreOf(a, altKey))
     );
@@ -50,9 +52,11 @@ LB.initRoboTwinBoard = function (data) {
   };
 
   const updateRankHeading = () => {
-    const suffix = viewMode === 'top10' ? ' · Top 10' : '';
+    const suffix = (depthFilter === 'all' ? '' : depthFilter === 'yes' ? ' · With depth' : ' · Without depth') + (viewMode === 'top10' ? ' · Top 10' : '');
+    const count = sortedEntries().length;
+    document.getElementById('resultCount').textContent = `${viewMode === 'top10' ? Math.min(10, count) : count} of ${entries.length} methods`;
     document.getElementById('rankHeading').textContent =
-      `Overall Ranking — ${settingNameOf(sortKey)}${suffix}`;
+      `Overall Ranking · ${shortNameOf(sortKey)}${suffix}`;
   };
 
   const renderRank = () => {
@@ -65,12 +69,13 @@ LB.initRoboTwinBoard = function (data) {
         ? `<span class="badge-sft">${setting ? setting.label : 'Single'}</span>`
         : `<span class="badge-co">${setting ? setting.label : 'Co-train'}</span>`;
       const avg = avgMean(e);
-      const avgStyle = sortKey === 'avg' ? heat(avg) : '';
-      const hardStyle = sortKey === 'hard' ? heat(e.hard_mean) : '';
-      const easyStyle = sortKey === 'easy' ? heat(e.easy_mean) : '';
+      const avgStyle = sortKey === 'avg' ? 'background:#edf5ef' : '';
+      const hardStyle = sortKey === 'hard' ? 'background:#edf5ef' : '';
+      const easyStyle = sortKey === 'easy' ? 'background:#edf5ef' : '';
       return `<tr>
         <td class="sticky-left"><span class="rank-num ${rank <= 3 ? 'top' : ''}">#${rank}</span></td>
         <td class="col-method"><span class="method-name">${e.name}</span></td>
+        <td class="col-depth ${e.depth ? 'depth-yes' : 'depth-no'}" aria-label="${e.depth ? 'Uses depth' : 'No depth'}">${e.depth ? '✓' : '✗'}</td>
         <td class="contributor">${e.contributor || defaultContributor}</td>
         <td class="score-avg" style="${avgStyle}">${fmtMean(avg)}</td>
         <td class="score-hard" style="${hardStyle}">${fmtMean(e.hard_mean)}</td>
@@ -140,11 +145,23 @@ LB.initRoboTwinBoard = function (data) {
     renderRank();
   };
 
+  const setDepth = (value) => {
+    depthFilter = value;
+    document.querySelectorAll('[data-depth]').forEach((btn) => {
+      const active = btn.dataset.depth === value;
+      btn.classList.toggle('active', active);
+      btn.setAttribute('aria-pressed', String(active));
+    });
+    updateRankHeading();
+    renderRank();
+    renderTasks();
+  };
+
   const renderRankingButtons = () => {
     const host = document.getElementById('rankSortChips');
     if (!host) return;
     host.innerHTML = rankings.map((r) =>
-      `<button class="sort-btn${r.id === sortKey ? ' active' : ''}" data-sort="${r.id}" type="button">${r.label}</button>`
+      `<button class="sort-btn${r.id === sortKey ? ' active' : ''}" data-sort="${r.id}" title="${r.label}" type="button">${shortNameOf(r.id)}</button>`
     ).join('');
   };
 
@@ -167,6 +184,10 @@ LB.initRoboTwinBoard = function (data) {
   });
   document.querySelectorAll('.sort-btn[data-view]').forEach((btn) => {
     btn.addEventListener('click', () => setView(btn.dataset.view));
+  });
+
+  document.querySelectorAll('[data-depth]').forEach((btn) => {
+    btn.addEventListener('click', () => setDepth(btn.dataset.depth));
   });
 
   renderNews();

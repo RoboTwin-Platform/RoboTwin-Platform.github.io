@@ -11,8 +11,8 @@
     "evaluated_via": "XPolicyLab standard interface",
     "default_contributor": "RoboTwin Team",
     "default_ranking": "avg",
-    "updated": "2026-10-21",
-    "updated_note": "Add MWA-Phoenix co-train results",
+    "updated": "2026-10-23",
+    "updated_note": "Add PrismWAM and PrismWAM* co-train results",
     "rankings": [
       {
         "id": "avg",
@@ -54,7 +54,8 @@
       "easy_mean": "mean success rate (%) under demo_clean",
       "hard_mean": "mean success rate (%) under demo_randomized",
       "easy": "per-task success rate (%) under demo_clean, aligned with tasks[]",
-      "hard": "per-task success rate (%) under demo_randomized, aligned with tasks[]"
+      "hard": "per-task success rate (%) under demo_randomized, aligned with tasks[]",
+      "depth": "whether evaluation requires observed depth or depth-derived point clouds; excludes depth estimated from RGB and training-only depth supervision"
     }
   },
   "tasks": [
@@ -221,7 +222,8 @@
         52.0
       ],
       "contributor": "GigaAI",
-      "listed_at": "26.08.15"
+      "listed_at": "26.08.15",
+      "depth": false
     },
     {
       "id": "cotrain:Pi_05",
@@ -334,7 +336,8 @@
         25.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:X_WAM",
@@ -447,7 +450,8 @@
         4.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:X_VLA",
@@ -560,7 +564,8 @@
         6.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:Xiaomi_Robotics_0",
@@ -673,7 +678,8 @@
         14.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:EventVLA",
@@ -786,7 +792,8 @@
         8.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:AHA_WAM",
@@ -899,7 +906,8 @@
         13.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:FastWAM",
@@ -1012,7 +1020,8 @@
         3.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.10"
+      "listed_at": "26.08.10",
+      "depth": false
     },
     {
       "id": "cotrain:Spatial_Forcing",
@@ -1125,7 +1134,8 @@
         7.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.17"
+      "listed_at": "26.08.17",
+      "depth": false
     },
     {
       "id": "cotrain:starVLA",
@@ -1238,7 +1248,8 @@
         0.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.17"
+      "listed_at": "26.08.17",
+      "depth": false
     },
     {
       "id": "cotrain:Abot_M0",
@@ -1351,7 +1362,8 @@
         20.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.17"
+      "listed_at": "26.08.17",
+      "depth": false
     },
     {
       "id": "cotrain:GalaxeaVLA",
@@ -1464,7 +1476,8 @@
         8.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "26.08.17"
+      "listed_at": "26.08.17",
+      "depth": false
     },
     {
       "id": "cotrain:4D_WAM",
@@ -1577,7 +1590,8 @@
         11.0
       ],
       "contributor": "OpenHelix Robotics",
-      "listed_at": "26.08.18"
+      "listed_at": "26.08.18",
+      "depth": false
     },
     {
       "id": "cotrain:OLA_Geo",
@@ -1690,7 +1704,8 @@
         17.0
       ],
       "contributor": "OLA-HKUSTGZ",
-      "listed_at": "26.09.01"
+      "listed_at": "26.09.01",
+      "depth": false
     },
     {
       "id": "cotrain:UniWAM",
@@ -1803,7 +1818,8 @@
         70.0
       ],
       "contributor": "OLA-HKUSTGZ",
-      "listed_at": "26.09.01"
+      "listed_at": "26.09.01",
+      "depth": false
     },
     {
       "id": "cotrain:ME_Dex_1_0",
@@ -1916,7 +1932,8 @@
         69.0
       ],
       "contributor": "Li Auto Inc.",
-      "listed_at": "26.09.24"
+      "listed_at": "26.09.24",
+      "depth": false
     },
     {
       "id": "cotrain:WorldScape_Policy_2_0",
@@ -2029,7 +2046,8 @@
         51.0
       ],
       "contributor": "ManiFold AI",
-      "listed_at": "26.09.24"
+      "listed_at": "26.09.24",
+      "depth": false
     },
     {
       "id": "cotrain:PatchWAM",
@@ -2142,7 +2160,8 @@
         36.0
       ],
       "contributor": "PatchWAM Team",
-      "listed_at": "26.10.02"
+      "listed_at": "26.10.02",
+      "depth": false
     },
     {
       "id": "cotrain:Discrete_Forcing",
@@ -2255,7 +2274,8 @@
         2.0
       ],
       "contributor": "OpenHelix Team",
-      "listed_at": "26.10.10"
+      "listed_at": "26.10.10",
+      "depth": false
     },
     {
       "id": "cotrain:ViGAR",
@@ -2368,7 +2388,8 @@
         55.0
       ],
       "contributor": "PKU DAGroup & AGIBOT",
-      "listed_at": "26.10.11"
+      "listed_at": "26.10.11",
+      "depth": false
     },
     {
       "id": "sft:RDT",
@@ -2481,7 +2502,8 @@
         15.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "25.08.04"
+      "listed_at": "25.08.04",
+      "depth": false
     },
     {
       "id": "sft:π0",
@@ -2594,7 +2616,8 @@
         23.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "25.08.04"
+      "listed_at": "25.08.04",
+      "depth": false
     },
     {
       "id": "sft:ACT",
@@ -2707,7 +2730,8 @@
         2.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "25.08.04"
+      "listed_at": "25.08.04",
+      "depth": false
     },
     {
       "id": "sft:DP",
@@ -2820,7 +2844,8 @@
         1.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "25.08.04"
+      "listed_at": "25.08.04",
+      "depth": false
     },
     {
       "id": "sft:DP3",
@@ -2933,7 +2958,8 @@
         8.0
       ],
       "contributor": "RoboTwin Team",
-      "listed_at": "25.08.04"
+      "listed_at": "25.08.04",
+      "depth": true
     },
     {
       "id": "cotrain:CloudRobo_WM",
@@ -3046,7 +3072,8 @@
         76.0
       ],
       "contributor": "CloudRobo Team",
-      "listed_at": "26.10.19"
+      "listed_at": "26.10.19",
+      "depth": false
     },
     {
       "id": "cotrain:MWA_Phoenix",
@@ -3159,10 +3186,243 @@
         50.0
       ],
       "contributor": "Anyverse & OpenPhoenix",
-      "listed_at": "26.10.21"
+      "listed_at": "26.10.21",
+      "depth": false
+    },
+    {
+      "id": "cotrain:PrismWAM",
+      "name": "PrismWAM",
+      "setting": "cotrain",
+      "easy_mean": 87.98,
+      "hard_mean": 53.16,
+      "easy": [
+        98.0,
+        81.0,
+        87.0,
+        56.0,
+        100.0,
+        100.0,
+        84.0,
+        100.0,
+        99.0,
+        95.0,
+        38.0,
+        99.0,
+        99.0,
+        100.0,
+        99.0,
+        33.0,
+        91.0,
+        57.0,
+        93.0,
+        100.0,
+        83.0,
+        80.0,
+        94.0,
+        90.0,
+        98.0,
+        81.0,
+        100.0,
+        100.0,
+        73.0,
+        99.0,
+        88.0,
+        89.0,
+        86.0,
+        88.0,
+        97.0,
+        88.0,
+        92.0,
+        92.0,
+        90.0,
+        89.0,
+        83.0,
+        94.0,
+        100.0,
+        100.0,
+        90.0,
+        98.0,
+        84.0,
+        94.0,
+        80.0,
+        70.0
+      ],
+      "hard": [
+        54.0,
+        48.0,
+        32.0,
+        27.0,
+        86.0,
+        78.0,
+        80.0,
+        89.0,
+        37.0,
+        24.0,
+        17.0,
+        67.0,
+        19.0,
+        19.0,
+        65.0,
+        8.0,
+        50.0,
+        19.0,
+        78.0,
+        96.0,
+        39.0,
+        41.0,
+        77.0,
+        66.0,
+        90.0,
+        31.0,
+        95.0,
+        68.0,
+        43.0,
+        70.0,
+        42.0,
+        29.0,
+        44.0,
+        37.0,
+        76.0,
+        47.0,
+        55.0,
+        50.0,
+        82.0,
+        28.0,
+        26.0,
+        72.0,
+        80.0,
+        79.0,
+        33.0,
+        60.0,
+        59.0,
+        74.0,
+        23.0,
+        49.0
+      ],
+      "contributor": "THU & NVIDIA",
+      "listed_at": "26.10.23",
+      "depth": true
+    },
+    {
+      "id": "cotrain:PrismWAM_Star",
+      "name": "PrismWAM*",
+      "setting": "cotrain",
+      "easy_mean": 91.84,
+      "hard_mean": 75.5,
+      "easy": [
+        100.0,
+        98.0,
+        93.0,
+        70.0,
+        100.0,
+        100.0,
+        92.0,
+        100.0,
+        98.0,
+        100.0,
+        59.0,
+        100.0,
+        100.0,
+        100.0,
+        100.0,
+        64.0,
+        94.0,
+        44.0,
+        92.0,
+        100.0,
+        92.0,
+        88.0,
+        95.0,
+        91.0,
+        96.0,
+        79.0,
+        100.0,
+        100.0,
+        94.0,
+        100.0,
+        97.0,
+        91.0,
+        88.0,
+        97.0,
+        99.0,
+        94.0,
+        99.0,
+        85.0,
+        92.0,
+        90.0,
+        89.0,
+        97.0,
+        100.0,
+        100.0,
+        95.0,
+        100.0,
+        82.0,
+        96.0,
+        95.0,
+        67.0
+      ],
+      "hard": [
+        97.0,
+        58.0,
+        72.0,
+        55.0,
+        98.0,
+        93.0,
+        82.0,
+        99.0,
+        66.0,
+        80.0,
+        41.0,
+        86.0,
+        47.0,
+        78.0,
+        92.0,
+        33.0,
+        83.0,
+        3.0,
+        84.0,
+        96.0,
+        74.0,
+        70.0,
+        78.0,
+        74.0,
+        100.0,
+        61.0,
+        99.0,
+        93.0,
+        70.0,
+        84.0,
+        68.0,
+        43.0,
+        78.0,
+        81.0,
+        90.0,
+        75.0,
+        95.0,
+        80.0,
+        93.0,
+        52.0,
+        49.0,
+        81.0,
+        97.0,
+        98.0,
+        87.0,
+        98.0,
+        79.0,
+        87.0,
+        33.0,
+        65.0
+      ],
+      "contributor": "THU & NVIDIA",
+      "listed_at": "26.10.23",
+      "depth": true
     }
   ],
   "news": [
+    {
+      "date": "2026-10-23",
+      "text": "Add PrismWAM (87.98 / 53.16%) and PrismWAM* (91.84 / 75.50%) co-train results."
+    },
     {
       "date": "2026-10-21",
       "text": "Add MWA-Phoenix co-train results (86.54 / 72.42%)."
