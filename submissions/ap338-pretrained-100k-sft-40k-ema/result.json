@@ -1,0 +1,65 @@
+{
+  "display_name": "Awomo-0.5I",
+  "submission_status": "not_ready_for_official_listing",
+  "model_family": "AP338",
+  "pretraining_updates": 100000,
+  "pretraining_checkpoint_basename": "epoch_32_step_99999",
+  "sft_optimizer_updates": 40000,
+  "weights": "EMA",
+  "ema_type": "power",
+  "ema_sigma_rel": 0.1,
+  "ema_num_updates": 40000,
+  "lora_weights": "vl_lora/ema.safetensors",
+  "checkpoint_run": "aap338-rw32-h20-resume-s17499-r03-20261022-112322",
+  "checkpoint_basename": "epoch_1_step_39999",
+  "evaluation_run": "aap338-rw32-s40000-rw-ema-213545/robotwin_p6000_r03",
+  "weight_sha256": null,
+  "weight_checksum_status": "full_checkpoint_payload_not_hashed_for_this_submission",
+  "metrics": {
+    "clean": {
+      "successes": 441,
+      "episodes": 500
+    },
+    "random": {
+      "successes": 421,
+      "episodes": 500
+    }
+  },
+  "total": {
+    "successes": 862,
+    "episodes": 1000,
+    "success_rate_percent": 86.2
+  },
+  "protocol": {
+    "prediction_horizon": 16,
+    "execution_prefix": 8,
+    "denoise_steps": 16,
+    "shift": 5,
+    "cfg_scale": 1,
+    "seed": 42,
+    "history_slots": 0,
+    "control_hz": 50,
+    "case_selection": "frozen historical seed/instruction/step-limit replay",
+    "task_count": 50,
+    "policy_scope": "one policy across all 50 tasks"
+  },
+  "episodes_per_task_condition": 10,
+  "source_manifest_sha256": "61d611811c3a9aa039c0c65de9fce118dab0099e25a6c2b489a8ae513fcec2ee",
+  "audit_file": "audit.json",
+  "audit_sha256": "a6b9be05c7c54b4a7cfcaffa06838a9a69464270d39dc3ba57911217c4326739",
+  "evidence_sha256": {
+    "cases.jsonl": "318b436dfc65b6345f8dececbf8e07027a8600086fd2ba0457f5f969b9908ce1",
+    "per_task.json": "4a37efc1fcc22ce8f54a14dd214b3f5d1763bc33b40ca097147550dcaa3dca30"
+  },
+  "public_artifacts": {
+    "code_url": null,
+    "weights_url": null,
+    "technical_report_url": null
+  },
+  "open_requirements": [
+    "Official board states 100 trials per task and condition; this evaluation uses 10.",
+    "Public code, weights and technical report URLs require verification.",
+    "Pretraining and training-data provenance must be finalized for listing."
+  ],
+  "audit_note": "The complete summary reports zero terminal infrastructure errors. All 100 scene-history proofs passed. Scores describe this checkpoint and evaluation only; they do not isolate the cause of improvement."
+}
