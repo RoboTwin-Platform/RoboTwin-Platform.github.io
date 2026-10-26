@@ -1,0 +1,472 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-10-26T06:46:57.165010+00:00",
+  "unique_cases": 1000,
+  "task_condition_groups": 100,
+  "episodes_per_task_condition": 10,
+  "terminal_infrastructure_errors": 0,
+  "scene_history_proofs_passed": 100,
+  "weight_loading_by_worker": {
+    "0": {
+      "weights": "ema",
+      "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+      "dit_keys": 171,
+      "lora_tensors": 504,
+      "lora_source": "vl_lora/ema.safetensors",
+      "ema_num_updates": 40000
+    },
+    "1": {
+      "weights": "ema",
+      "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+      "dit_keys": 171,
+      "lora_tensors": 504,
+      "lora_source": "vl_lora/ema.safetensors",
+      "ema_num_updates": 40000
+    },
+    "2": {
+      "weights": "ema",
+      "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+      "dit_keys": 171,
+      "lora_tensors": 504,
+      "lora_source": "vl_lora/ema.safetensors",
+      "ema_num_updates": 40000
+    },
+    "3": {
+      "weights": "ema",
+      "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+      "dit_keys": 171,
+      "lora_tensors": 504,
+      "lora_source": "vl_lora/ema.safetensors",
+      "ema_num_updates": 40000
+    }
+  },
+  "ema_metadata": {
+    "dtype": "float32",
+    "gamma": 6.937203937601806,
+    "num_updates": 40000,
+    "parameters": "trainable_only",
+    "schema_version": "power_function_ema_checkpoint_v1",
+    "sigma_rel": 0.1,
+    "type": "power"
+  },
+  "ema_metadata_sha256": "db3f8a5d32aa7ff2e43d6a7a4c47e8997b6730f39aa22fcd02cb426947cffbdc",
+  "source_artifact_sha256": {
+    "config.json": "18631dd97a869cf912053108c7ee8b78d59162bc52984cf161850c2d73d8e65f",
+    "summary.json": "ab5cd965f2563e24813aba469abbf4db90e98939e146b17a6c282b8b8c2cbf02",
+    "manifest.json": "61d611811c3a9aa039c0c65de9fce118dab0099e25a6c2b489a8ae513fcec2ee"
+  },
+  "scene_history_proof_sha256": [
+    {
+      "key": "adjust_bottle/clean",
+      "sha256": "657b5ce0cd7f3ed335f336f6e3a74c0d5eb9eaca88d5f6f5a1d5e5666e006569"
+    },
+    {
+      "key": "blocks_ranking_rgb/clean",
+      "sha256": "daf37f6bb9054b541123297f61e3521ee607e9938d8fec1748d6e67cc1e9910f"
+    },
+    {
+      "key": "click_alarmclock/clean",
+      "sha256": "09d9eae6ff56e6a2da6cf8b58cf6113672be947e241f541a421d148769939f72"
+    },
+    {
+      "key": "dump_bin_bigbin/clean",
+      "sha256": "a5ba519b359d74aa2e8615170245bd44666cb65358696a969691acec23a99214"
+    },
+    {
+      "key": "handover_block/clean",
+      "sha256": "63ffb01757835ecb51b772787a97089d490e205592018ca6ace9eb51b0a3e461"
+    },
+    {
+      "key": "hanging_mug/clean",
+      "sha256": "91fddf5568f4e3cce5a04baef4542e8908c7daa6e210c6a74cec4e7d6396a29e"
+    },
+    {
+      "key": "move_can_pot/clean",
+      "sha256": "7c5902de5c4f6b9002871ff233639022c6f046a7c7b79a10b04991ded941b51d"
+    },
+    {
+      "key": "move_playingcard_away/clean",
+      "sha256": "080a923334f284622885c6b15c0af306f701e117657ce736cfe6d0443df39a0e"
+    },
+    {
+      "key": "open_laptop/clean",
+      "sha256": "80184da9dda0151f91bb19e9304acc8a95ffb780529cfe13834b73169eb5ac6a"
+    },
+    {
+      "key": "pick_diverse_bottles/clean",
+      "sha256": "06a836bce76efec9d2d591567425718fe3ba595c8e6d33d375ee46c673323601"
+    },
+    {
+      "key": "place_a2b_left/clean",
+      "sha256": "774ef2944fd70849cf311ed281ed0bfcfe2ccd3b5b0d3d2ef3529beb4fc46106"
+    },
+    {
+      "key": "place_bread_basket/clean",
+      "sha256": "d9b83153c54dd186bec219c097147feabe9b27ca17f675b990fe8a64970c95e2"
+    },
+    {
+      "key": "place_burger_fries/clean",
+      "sha256": "33cc8e34251de10a3ccb6e74f059225ea663ba7c8dd779223bd8b4bdf4b0b1c6"
+    },
+    {
+      "key": "place_cans_plasticbox/clean",
+      "sha256": "429cbf3225155d6234a387a393586182c0d97fc86dc1732263923178f831dafc"
+    },
+    {
+      "key": "place_dual_shoes/clean",
+      "sha256": "5d6e5b4c0afe0eec43475cbf0d304f6ee8c1a3b06c7dc0c496a2c26d921820fe"
+    },
+    {
+      "key": "place_fan/clean",
+      "sha256": "121c8fe088f8300a5d856e9901cb8a7347b4f7a79e7183086511cbe4a3e0cd8c"
+    },
+    {
+      "key": "place_object_basket/clean",
+      "sha256": "edb67f73adc661a458751ee879afc35b27b919908eff00aa2e499abd95269ac2"
+    },
+    {
+      "key": "place_object_stand/clean",
+      "sha256": "49a7ca438a908acaeda166f119d82787f34923602638ccd034361f6d32859a82"
+    },
+    {
+      "key": "place_shoe/clean",
+      "sha256": "b251fc7ac51ba92cdf78273707be4ec94e327d9f37dce707e8373e6e1d889088"
+    },
+    {
+      "key": "put_bottles_dustbin/clean",
+      "sha256": "e627dcc4f27f21ec9d0633e030873857e12c0d54c358fda0f6838b0073b7a899"
+    },
+    {
+      "key": "rotate_qrcode/clean",
+      "sha256": "0323d34d7c76687c7a074282cdeff8f643c20f146f6e624090580c0b7a094120"
+    },
+    {
+      "key": "shake_bottle/clean",
+      "sha256": "91ef579382715abe3025d901e289e755c507ca2d61b88022dff6b4f57e4dede0"
+    },
+    {
+      "key": "stack_blocks_three/clean",
+      "sha256": "29840d019ef1a701728de6c8c822c526b9ae6637d33115efe558226b336d21d1"
+    },
+    {
+      "key": "stack_bowls_three/clean",
+      "sha256": "7bec004f306a321c7091d2c7a06c2512a2526a902d5477f2682b915997f8a6ad"
+    },
+    {
+      "key": "stamp_seal/clean",
+      "sha256": "985499a0f9792cc7b41ff4be545ab8b3d062baab108133a65d7efbb077245572"
+    },
+    {
+      "key": "adjust_bottle/random",
+      "sha256": "902f0b470140f9c1e51c34945527db39095f97b89b7558117caf52dd03929357"
+    },
+    {
+      "key": "blocks_ranking_rgb/random",
+      "sha256": "6c061fbe9425f97f2b9a54bd3aee11880ffa90ae98214f19bc42e8d72ddf5f53"
+    },
+    {
+      "key": "click_alarmclock/random",
+      "sha256": "3ae266cf21912c999d1c23bdcc1eb0e573af6413620948b71f6bbf6e09cec923"
+    },
+    {
+      "key": "dump_bin_bigbin/random",
+      "sha256": "8c87d0521880d56493510473e045f842aeca094c8235a85dd9e4824130e201b2"
+    },
+    {
+      "key": "handover_block/random",
+      "sha256": "de9922d23db84971251d7d3ed4ebb2c9a555e9d3414cb699f913dd309e01da5e"
+    },
+    {
+      "key": "hanging_mug/random",
+      "sha256": "6e4c132fd1a1e10e3ce46d20c8a60d884ff3875748a61abc800cd062e9990f5f"
+    },
+    {
+      "key": "move_can_pot/random",
+      "sha256": "2b68ae0757801d5e19f227971f04a6f5ad02320d5e82f70a4e594262af9fd920"
+    },
+    {
+      "key": "move_playingcard_away/random",
+      "sha256": "efd107369a5cc105af2e855816375844fc38918e5cdf18790ac742ecd35367f5"
+    },
+    {
+      "key": "open_laptop/random",
+      "sha256": "1911e4246a7f41fd8cfe456aac4c906af209384cff6a53ccf5a8d980260c7773"
+    },
+    {
+      "key": "pick_diverse_bottles/random",
+      "sha256": "686c50e8103b4d33633d195c9d611f6be3738556b5b479113f70e253bc3bf43b"
+    },
+    {
+      "key": "place_a2b_left/random",
+      "sha256": "31dd7ecba57716ca202c27c2ddb9ed35ba065019cd43e07d249791b5d614ceb9"
+    },
+    {
+      "key": "place_bread_basket/random",
+      "sha256": "e1598d780c38cb6ab8a3de79d526576375d07b8626496aa9f6fba3651dd06ca9"
+    },
+    {
+      "key": "place_burger_fries/random",
+      "sha256": "7de92c4cd7831789418b5708b3a01f1879d61758279a53c5f26a7bc007b0d067"
+    },
+    {
+      "key": "place_cans_plasticbox/random",
+      "sha256": "5a3430805ae6ad03fd62a80f60ee2ded31aa9c42332efb6906ad78e511461837"
+    },
+    {
+      "key": "place_dual_shoes/random",
+      "sha256": "631bad30ea8e128169fb990480a1ae110c7e7fa84ba748d3c382dc70f68c38ec"
+    },
+    {
+      "key": "place_fan/random",
+      "sha256": "1a257eedc96382a0dd2da104ddce2898d88c5cffb53c71a0b748b67c76308561"
+    },
+    {
+      "key": "place_object_basket/random",
+      "sha256": "7e330e4e0d596db16193248f1568e442a0104544a4959b942aabc89b86814b09"
+    },
+    {
+      "key": "place_object_stand/random",
+      "sha256": "e83f07a378bd7fbf17a6d102040bd59522a22acc007de20b08f82466a5d1f9ad"
+    },
+    {
+      "key": "place_shoe/random",
+      "sha256": "e2e5ec326c61104e82070979f65796bd45aaad7b0fafe68a9c7e7123bc217b43"
+    },
+    {
+      "key": "put_bottles_dustbin/random",
+      "sha256": "8083b5916505fb9e69166250bb86f116bb412db9e68a01acde723a3827dc1ea5"
+    },
+    {
+      "key": "rotate_qrcode/random",
+      "sha256": "e37c0c6ffb2fc4ab5553d0616ce93490f41a9d0436bcf0167c0ddbb7bd50441c"
+    },
+    {
+      "key": "shake_bottle/random",
+      "sha256": "b0304357ee40f4b3c01ba71af3e3eaf430907403dc8f2737696d78cf878c721d"
+    },
+    {
+      "key": "stack_blocks_three/random",
+      "sha256": "63d2bc466d7933b8c117bdc2fb3a204349c89e451f57b96741e288fad32eb55f"
+    },
+    {
+      "key": "stack_bowls_three/random",
+      "sha256": "d133bdcec1301c85217e5a0ecf4fac34d161d08755fa641614a1fe88eb8277eb"
+    },
+    {
+      "key": "stamp_seal/random",
+      "sha256": "67c7ae3d9e6ef6a18eda3e69f3a42ba411cf533fa4c0df891a4155e23791a011"
+    },
+    {
+      "key": "beat_block_hammer/clean",
+      "sha256": "f2c9e061b0873457c9ddae3a41a448f35d96902d9c93a0acd5c444afedd8461c"
+    },
+    {
+      "key": "blocks_ranking_size/clean",
+      "sha256": "58244b5e6b7bf0076317086706d4838d6870a9b3ffb0ef5fb5b374378f4f13ff"
+    },
+    {
+      "key": "click_bell/clean",
+      "sha256": "3795271742d37892954fbb52fbc41136516891097d170dfac85c7b9da2632a35"
+    },
+    {
+      "key": "grab_roller/clean",
+      "sha256": "83c15194a44b943ff9674ac18b7ea951522ed6f53550a2d7753e23d915444118"
+    },
+    {
+      "key": "handover_mic/clean",
+      "sha256": "d5d31698a37312b35b50341e05be5152945b9a5f493425a3fc51c656eae6ad24"
+    },
+    {
+      "key": "lift_pot/clean",
+      "sha256": "925a931e651a02fdc379c5dfe7665bbd2a2586c6a3ffb024f5460cf99d6b8545"
+    },
+    {
+      "key": "move_pillbottle_pad/clean",
+      "sha256": "52d33e74637835b87c9f2b799c0f17a1968b73e68286004b6c13cfdd7e149af5"
+    },
+    {
+      "key": "move_stapler_pad/clean",
+      "sha256": "96d4058698d1ce4bf2b9e626fb0c0eb73c375d7fb189652968a7f2e765366c79"
+    },
+    {
+      "key": "open_microwave/clean",
+      "sha256": "a912643ae2311cffd2be23fd42e4e3ffaec24cc468ffef56a130a453cccc3ba3"
+    },
+    {
+      "key": "pick_dual_bottles/clean",
+      "sha256": "0bd7c21b103ef77a56ccda3c199e1da2a952f9fb4f8eef56015e1423871b2761"
+    },
+    {
+      "key": "place_a2b_right/clean",
+      "sha256": "166f185030e352c19ebf747e0417017312e369f6616b7f9d131660a0c99ebc97"
+    },
+    {
+      "key": "place_bread_skillet/clean",
+      "sha256": "c1dcb2d9e9af3943f6a6a8ef63e13d76467f8aa287a90a9666c1d993d093d5c3"
+    },
+    {
+      "key": "place_can_basket/clean",
+      "sha256": "70988123cc340dfcd0f68c12aab712c52601f12d061e3e0eecf239b9d4ba5915"
+    },
+    {
+      "key": "place_container_plate/clean",
+      "sha256": "146939ad3f4a2f9363d97c76aa8dec566204718cfb3be8cc4874f2b6b9ae9d48"
+    },
+    {
+      "key": "place_empty_cup/clean",
+      "sha256": "8c49d4187228f62f2577ed9036fe294985959857caeb797698f5ed6c38828dba"
+    },
+    {
+      "key": "place_mouse_pad/clean",
+      "sha256": "efef1042643e2fc4c0cdcba0ca50ce449dea73f1abb34e8a8887ae5978be6d25"
+    },
+    {
+      "key": "place_object_scale/clean",
+      "sha256": "5acc77ebce8ffc39cb43d9a6f684ee6a27957155bc13394603b41f6634bb8dd4"
+    },
+    {
+      "key": "place_phone_stand/clean",
+      "sha256": "d098398779b802a52f382dbc746f245339c7d20b9522a7ea9d3c46f8fdf3f8c6"
+    },
+    {
+      "key": "press_stapler/clean",
+      "sha256": "b34340105bb2c02f7683162575c2530b708abc0c4036adb595a6a96705796347"
+    },
+    {
+      "key": "put_object_cabinet/clean",
+      "sha256": "4188dc8357cf92100817fffd3a289c94a04059b9b73818ace79504789391e040"
+    },
+    {
+      "key": "scan_object/clean",
+      "sha256": "ba234522fa57f53ec4cddc6ee919b1bf5709f9928829fb5f447c4146f073552e"
+    },
+    {
+      "key": "shake_bottle_horizontally/clean",
+      "sha256": "9ee58577274305ca315b95099c6d38c37144cc281f7dc500bc6a351bc2195653"
+    },
+    {
+      "key": "stack_blocks_two/clean",
+      "sha256": "e58705b7d8b8d4073a6a9c9ebe8e06a3b8c901db262ce883ed4b109811052942"
+    },
+    {
+      "key": "stack_bowls_two/clean",
+      "sha256": "94fff1a7a3c6b20d745f88f51fb49c3e33e1d987d4b6b8df60fe1c150b5c2288"
+    },
+    {
+      "key": "turn_switch/clean",
+      "sha256": "97402f63fe201baf90e0bf8c112ae98b2b785fd9e3994e2e24951cf4b3d7cd6a"
+    },
+    {
+      "key": "beat_block_hammer/random",
+      "sha256": "f23e4e84aac5a94809cf99b99905871638656412184ecfd526a60465dd075f1e"
+    },
+    {
+      "key": "blocks_ranking_size/random",
+      "sha256": "0bb5cf1a881fa9b084157b40fd23ecb5b9e4b44cb57c7b7b610f9ced18f10f7d"
+    },
+    {
+      "key": "click_bell/random",
+      "sha256": "cf9085f5effbef92cc62331dafe9ab0a0edaaffbc4646e6a628445bb84c67002"
+    },
+    {
+      "key": "grab_roller/random",
+      "sha256": "0aa5c32359ba110100c765330a9517b0c7b5b8e25826296ffbf053c3004c860d"
+    },
+    {
+      "key": "handover_mic/random",
+      "sha256": "829ccfa8b67013be72fce147a176678b318957aaea9aa82ad09ab7cd080f3ab8"
+    },
+    {
+      "key": "lift_pot/random",
+      "sha256": "44b1b1a7d480ee557804ab3c825088fc1b8761b23bfbbbe5eed195d7967a68a3"
+    },
+    {
+      "key": "move_pillbottle_pad/random",
+      "sha256": "c6aea884cfdee0aa79d0cb8b3141e4c1db21328222f7e1d7f3af0617bd89f587"
+    },
+    {
+      "key": "move_stapler_pad/random",
+      "sha256": "80f9928c48c8bcd077d6c8fa0a30815b1c29110006592a55f04aa93204dfd33c"
+    },
+    {
+      "key": "open_microwave/random",
+      "sha256": "09371c6afe7c43c3481d384ef146f33a5f4a674a8ca36d2dedd0255e7ac66493"
+    },
+    {
+      "key": "pick_dual_bottles/random",
+      "sha256": "646b5fe22608a34f52cc08c5af24804f0d113b948fce34bfe913c2b8f5edcf51"
+    },
+    {
+      "key": "place_a2b_right/random",
+      "sha256": "857e667860d1a416b74c2b9940a3295cf9717d9f72bbd7dccc0dc7c99e3bb1c9"
+    },
+    {
+      "key": "place_bread_skillet/random",
+      "sha256": "42a9c6b956cb5a8897cde1b96fd31ae139ad547174f5a26d87ce1b89dfed43e8"
+    },
+    {
+      "key": "place_can_basket/random",
+      "sha256": "e77c09fac0fc5b82a777e26e537a1355046ec595ad9d31ec7a9390d10f941b4c"
+    },
+    {
+      "key": "place_container_plate/random",
+      "sha256": "6fa205b5683d21ac0088ebd690306968d62c666732125e2f9421457ede2a11e1"
+    },
+    {
+      "key": "place_empty_cup/random",
+      "sha256": "42fa05de679c584310ba59312f33c1dc57488b041eaf3c6867d110b27705cc16"
+    },
+    {
+      "key": "place_mouse_pad/random",
+      "sha256": "919b0356e0dbd38406c9104a6aaf710e74d2e0484b26765155b7dd7a7892c607"
+    },
+    {
+      "key": "place_object_scale/random",
+      "sha256": "279796d61d1f50bfad6a64fa12cde9948b35d541845b36c895c80353392933a8"
+    },
+    {
+      "key": "place_phone_stand/random",
+      "sha256": "b8212ee5a65ef2aa65193ea1abbe7f6540189ce3291e77270ff466957a699cd8"
+    },
+    {
+      "key": "press_stapler/random",
+      "sha256": "0888cc2ffc8d9f38ff45f36695c40246f46058152124ada31fe92ffa58d87933"
+    },
+    {
+      "key": "put_object_cabinet/random",
+      "sha256": "bf8625247411d938d813c8fbd1a7f92975639294282a5a241b2a390c54a292e3"
+    },
+    {
+      "key": "scan_object/random",
+      "sha256": "c1c1eb28095380aaff38e368863a8b1f0c67a8aff53ca93aa49cb629946cc69e"
+    },
+    {
+      "key": "shake_bottle_horizontally/random",
+      "sha256": "fff5bc906e052f7df58cc3c6b724e9f48bf919a041cd0087b612e6f9663bef1c"
+    },
+    {
+      "key": "stack_blocks_two/random",
+      "sha256": "ec0c6f71e0646947d3c23c8f6c81e02f70948327f50a261877c435d81a071fa5"
+    },
+    {
+      "key": "stack_bowls_two/random",
+      "sha256": "7305723be793768fa9d07df9b35883f434a99f235654ee7a0a855dae926b2b0e"
+    },
+    {
+      "key": "turn_switch/random",
+      "sha256": "0aab0f5b110a162e6133f0f4da1928863fa81166007996b4164b05a15271f753"
+    }
+  ],
+  "checks": [
+    "Live episode records equal the previously audited records.",
+    "All 100 task-condition totals agree with the completed terminal summary.",
+    "Every outcome agrees with its scene-history proof.",
+    "All four model workers loaded DiT Power EMA and paired LoRA EMA at 40000 SFT updates.",
+    "The source checkpoint has its completion marker and EMA metadata."
+  ],
+  "limits": [
+    "No new inference evaluation was run for this PR update.",
+    "Full checkpoint payload checksums and public downloads have not been verified.",
+    "This is a frozen historical-case evaluation with 10 trials per task and condition."
+  ]
+}
