@@ -1,3 +1,5 @@
+> Historical 10-trial result. The completed 100-trial draft is in [`../ap338-pretrained-100k-sft-40k-ema-100ep/`](../ap338-pretrained-100k-sft-40k-ema-100ep/README.md).
+
 # Awomo-0.5I: AP338 EMA evaluation submission draft
 
 This submission records AP338 initialized from 100,000 pretraining updates and evaluated after 40,000 RobotWin SFT updates. It contains 1,000 completed rollouts from one policy across 50 tasks and two conditions.

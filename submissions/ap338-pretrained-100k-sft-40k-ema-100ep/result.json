@@ -1,0 +1,68 @@
+{
+  "model_family": "AP338",
+  "pretraining_updates": 100000,
+  "pretraining_checkpoint_basename": "epoch_32_step_99999",
+  "sft_optimizer_updates": 40000,
+  "weights": "EMA",
+  "ema_type": "power",
+  "ema_sigma_rel": 0.1,
+  "ema_num_updates": 40000,
+  "lora_weights": "vl_lora/ema.safetensors",
+  "checkpoint_run": "aap338-rw32-h20-resume-s17499-r03-20261022-112322",
+  "checkpoint_basename": "epoch_1_step_39999",
+  "weight_sha256": null,
+  "weight_checksum_status": "full_checkpoint_payload_not_hashed_for_this_submission",
+  "public_artifacts": {
+    "code_url": null,
+    "weights_url": null,
+    "technical_report_url": null
+  },
+  "display_name": "Awomo-0.6",
+  "submission_status": "not_ready_for_official_listing",
+  "episodes_per_task_condition": 100,
+  "metrics": {
+    "clean": {
+      "successes": 4408,
+      "episodes": 5000,
+      "success_rate_percent": 88.16
+    },
+    "random": {
+      "successes": 4239,
+      "episodes": 5000,
+      "success_rate_percent": 84.78
+    }
+  },
+  "total": {
+    "successes": 8647,
+    "episodes": 10000,
+    "success_rate_percent": 86.47
+  },
+  "protocol": {
+    "prediction_horizon": 16,
+    "execution_prefix": 8,
+    "denoise_steps": 16,
+    "shift": 5,
+    "cfg_scale": 1,
+    "seed": 42,
+    "history_slots": 0,
+    "control_hz": 50,
+    "case_selection": "10 historical seed/instruction/step-limit cases followed by 90 sequential expert-qualified cases; expert-stage exceptions skipped and recorded; recovered prefixes replay-verified",
+    "task_count": 50,
+    "policy_scope": "one policy across all 50 tasks",
+    "official_protocol_equivalence": "not independently established"
+  },
+  "source_manifest_sha256": "61d611811c3a9aa039c0c65de9fce118dab0099e25a6c2b489a8ae513fcec2ee",
+  "prior_10ep_result": "../ap338-pretrained-100k-sft-40k-ema/result.json",
+  "open_requirements": [
+    "One historical-prefix case has differing expert and policy initial scene signatures; the reason and official-protocol effect remain unresolved.",
+    "Official 100-trial protocol and recovered replay equivalence have not been independently established.",
+    "Public code, weights, and technical report URLs require verification.",
+    "Pretraining and training-data provenance must be finalized."
+  ],
+  "evidence_sha256": {
+    "cases.jsonl": "06510be83cd839c3d87d00cc3899df2bbaa7e68e43975dd6707cecd7bb468481",
+    "per_task.json": "35f455f94f62f18bb6ffdd23fb263636fadc20f0c6ecb31dcfca43ac450da01b",
+    "expert_exceptions.json": "a013a5e407bcd0b0818266e987a0a70b6cd803f1e7dc7407e74efded82264a3a",
+    "audit.json": "36cfa391bacd708cbb4aa68613ec0b7a76c30e181ff29289cbaa0bef34f84fe3"
+  }
+}
