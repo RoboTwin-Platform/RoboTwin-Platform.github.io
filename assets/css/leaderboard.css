@@ -654,9 +654,10 @@ body { background: #f6f8f7; font-size: 14px; line-height: 1.6; }
 .contributor { font-size: 11px; font-weight: 400; color: #7d8981; }
 .rank-num { font-size: 11px; color: #8d9891; font-weight: 400; }
 .rank-num.top { color: #35704f; font-weight: 600; }
+.rank-medal { display: inline-block; font-size: 22px; line-height: 1; vertical-align: middle; }
 .rank-table .score-avg, .rank-table .score-hard, .rank-table .score-easy { color: #56695d; font-size: 12px; font-weight: 500; }
 .rank-table .score-avg { font-weight: 700; color: #386c4e; }
-.rank-table .col-depth { font-size: 14px; }
+.rank-table tbody .col-depth { font-size: 14px; }
 .depth-yes { color: #458362; }
 .depth-no { color: #a5b0a8; }
 .badge-sft, .badge-co { font-size: 10px; font-weight: 400; letter-spacing: 0; padding: 2px 6px; border: 0; border-radius: 4px; background: #f0f5f1; color: #74867a; }

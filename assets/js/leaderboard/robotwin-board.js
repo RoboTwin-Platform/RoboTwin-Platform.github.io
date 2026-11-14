@@ -64,6 +64,7 @@ LB.initRoboTwinBoard = function (data) {
     const tbody = document.querySelector('#rankTable tbody');
     tbody.innerHTML = rows.map((e, i) => {
       const rank = i + 1;
+      const medal = ['🥇', '🥈', '🥉'][i];
       const setting = settings.get(e.setting);
       const badge = e.setting === 'sft'
         ? `<span class="badge-sft">${setting ? setting.label : 'Single'}</span>`
@@ -73,7 +74,7 @@ LB.initRoboTwinBoard = function (data) {
       const hardStyle = sortKey === 'hard' ? 'background:#edf5ef' : '';
       const easyStyle = sortKey === 'easy' ? 'background:#edf5ef' : '';
       return `<tr>
-        <td class="sticky-left"><span class="rank-num ${rank <= 3 ? 'top' : ''}">#${rank}</span></td>
+        <td class="sticky-left">${medal ? `<span class="rank-medal" role="img" aria-label="Rank ${rank}">${medal}</span>` : `<span class="rank-num">#${rank}</span>`}</td>
         <td class="col-method"><span class="method-name">${e.name}</span></td>
         <td class="col-depth ${e.depth ? 'depth-yes' : 'depth-no'}" aria-label="${e.depth ? 'Uses depth' : 'No depth'}">${e.depth ? '✓' : '✗'}</td>
         <td class="contributor">${e.contributor || defaultContributor}</td>
