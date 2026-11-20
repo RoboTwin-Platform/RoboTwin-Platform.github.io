@@ -3,12 +3,13 @@ window.RoboTwinLB = window.RoboTwinLB || {};
 (function (LB) {
 
 const fmt = (v) =>
-  (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1)) + '%';
+  !Number.isFinite(v) ? '—' : (Math.abs(v - Math.round(v)) < 1e-9 ? String(Math.round(v)) : v.toFixed(1)) + '%';
 
 // Half-up at two decimals; the epsilon keeps ties like 44.455 from flooring.
 const fmtMean = (v) => (Math.round(v * 100 + 1e-6) / 100).toFixed(2) + '%';
 
 const heat = (v) => {
+  if (!Number.isFinite(v)) return '';
   const t = Math.max(0, Math.min(100, v)) / 100;
   return `background:rgba(101,164,135,${0.08 + 0.55 * t})`;
 };
@@ -29,9 +30,62 @@ LB.initRoboTwinBoard = function (data) {
   const settings = new Map((board.settings || []).map((s) => [s.id, s]));
   const defaultContributor = board.default_contributor || '—';
 
+  const annotationButton = (e) => e.annotation
+    ? `<button class="method-annotation" data-entry-id="${e.id}" aria-label="Why ${e.name} is starred" aria-expanded="false">*</button>` : '';
+  const note = document.createElement('div');
+  note.className = 'method-note';
+  note.id = 'methodEvaluationNote';
+  note.setAttribute('popover', 'auto');
+  note.setAttribute('role', 'note');
+  document.body.appendChild(note);
+  let activeButton = null;
+  let pinned = false;
+  const closeNote = () => {
+    note.hidePopover();
+    activeButton?.setAttribute('aria-expanded', 'false');
+    activeButton = null;
+    pinned = false;
+  };
+  const showNote = (button) => {
+    if (activeButton !== button) closeNote();
+    activeButton = button;
+    note.textContent = entries.find((e) => e.id === button.dataset.entryId).annotation;
+    button.setAttribute('aria-describedby', note.id);
+    button.setAttribute('aria-expanded', 'true');
+    note.showPopover();
+    const rect = button.getBoundingClientRect();
+    note.style.left = `${Math.max(12, Math.min(rect.left, window.innerWidth - note.offsetWidth - 12))}px`;
+    note.style.top = `${Math.max(12, Math.min(rect.bottom + 8, window.innerHeight - note.offsetHeight - 12))}px`;
+  };
+  document.addEventListener('pointerover', (event) => {
+    const button = event.target.closest('.method-annotation');
+    if (button) showNote(button);
+  });
+  document.addEventListener('pointerout', (event) => {
+    if (event.target.closest('.method-annotation') && !pinned && document.activeElement !== activeButton) closeNote();
+  });
+  document.addEventListener('focusin', (event) => {
+    if (event.target.matches('.method-annotation')) showNote(event.target);
+  });
+  document.addEventListener('focusout', (event) => {
+    if (event.target.matches('.method-annotation') && !pinned) closeNote();
+  });
+  document.addEventListener('click', (event) => {
+    const button = event.target.closest('.method-annotation');
+    if (button) {
+      if (pinned && activeButton === button) closeNote();
+      else { showNote(button); pinned = true; }
+    } else if (!note.contains(event.target)) closeNote();
+  });
+  document.addEventListener('keydown', (event) => { if (event.key === 'Escape') closeNote(); });
+  window.addEventListener('resize', closeNote);
+  document.addEventListener('scroll', closeNote, true);
+
   let sortKey = board.default_ranking || 'avg';
   let viewMode = 'all';
   let depthFilter = 'all';
+  let hideStarred = false;
+  const isStarred = (entry) => Boolean(entry.annotation) || entry.name.includes('*');
 
   const rankingOf = (key) => rankings.find((r) => r.id === key) || { label: key, eval: key };
   const settingNameOf = (key) => rankingOf(key).label;
@@ -40,7 +94,10 @@ LB.initRoboTwinBoard = function (data) {
 
   const sortedEntries = () => {
     const altKey = sortKey === 'easy' ? 'hard' : 'easy';
-    return entries.filter((e) => depthFilter === 'all' || e.depth === (depthFilter === 'yes')).sort((a, b) =>
+    return entries.filter((e) =>
+      (depthFilter === 'all' || e.depth === (depthFilter === 'yes')) &&
+      (!hideStarred || !isStarred(e))
+    ).sort((a, b) =>
       (scoreOf(b, sortKey) - scoreOf(a, sortKey)) ||
       (scoreOf(b, altKey) - scoreOf(a, altKey))
     );
@@ -56,10 +113,11 @@ LB.initRoboTwinBoard = function (data) {
     const count = sortedEntries().length;
     document.getElementById('resultCount').textContent = `${viewMode === 'top10' ? Math.min(10, count) : count} of ${entries.length} methods`;
     document.getElementById('rankHeading').textContent =
-      `Overall Ranking · ${shortNameOf(sortKey)}${suffix}`;
+      `Overall Ranking · ${shortNameOf(sortKey)}${suffix}${hideStarred ? ' · Unstarred only' : ''}`;
   };
 
   const renderRank = () => {
+    closeNote();
     const rows = visibleRankEntries();
     const tbody = document.querySelector('#rankTable tbody');
     tbody.innerHTML = rows.map((e, i) => {
@@ -75,7 +133,7 @@ LB.initRoboTwinBoard = function (data) {
       const easyStyle = sortKey === 'easy' ? 'background:#edf5ef' : '';
       return `<tr>
         <td class="sticky-left">${medal ? `<span class="rank-medal" role="img" aria-label="Rank ${rank}">${medal}</span>` : `<span class="rank-num">#${rank}</span>`}</td>
-        <td class="col-method"><span class="method-name">${e.name}</span></td>
+        <td class="col-method"><span class="method-name">${e.name}</span>${annotationButton(e)}</td>
         <td class="col-depth ${e.depth ? 'depth-yes' : 'depth-no'}" aria-label="${e.depth ? 'Uses depth' : 'No depth'}">${e.depth ? '✓' : '✗'}</td>
         <td class="contributor">${e.contributor || defaultContributor}</td>
         <td class="score-avg" style="${avgStyle}">${fmtMean(avg)}</td>
@@ -97,7 +155,7 @@ LB.initRoboTwinBoard = function (data) {
         <th class="sticky-left">Task</th>
         ${rows.map((e) => {
           const mark = e.setting === 'sft' ? ' <span style="opacity:.9">· Single</span>' : '';
-          return `<th colspan="2">${e.name}${mark}</th>`;
+          return `<th colspan="2">${e.name}${annotationButton(e)}${mark}</th>`;
         }).join('')}
       </tr>
       <tr class="sub">
@@ -107,7 +165,7 @@ LB.initRoboTwinBoard = function (data) {
 
     const body = tasks.map((task, ti) => {
       const cells = rows.map((e) => {
-        const easy = e.easy[ti], hard = e.hard[ti];
+        const easy = e.easy?.[ti], hard = e.hard?.[ti];
         return `<td style="${heat(easy)}">${fmt(easy)}</td><td style="${heat(hard)}">${fmt(hard)}</td>`;
       }).join('');
       return `<tr><th class="sticky-left">${task}</th>${cells}</tr>`;
@@ -192,6 +250,14 @@ LB.initRoboTwinBoard = function (data) {
   });
 
   renderNews();
+  document.getElementById('hideStarred').addEventListener('click', (event) => {
+    hideStarred = !hideStarred;
+    event.currentTarget.classList.toggle('active', hideStarred);
+    event.currentTarget.setAttribute('aria-pressed', String(hideStarred));
+    updateRankHeading();
+    renderRank();
+    renderTasks();
+  });
   fillUpdated();
   setSort(sortKey);
 };

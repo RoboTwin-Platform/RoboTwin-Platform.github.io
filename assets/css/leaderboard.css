@@ -714,3 +714,7 @@ body { background: #f6f8f7; font-size: 14px; line-height: 1.6; }
   html { scroll-behavior: auto; }
   *, *::before, *::after { transition: none !important; }
 }
+
+.method-annotation { border: 0; padding: 2px 5px; background: transparent; color: #356d4c; cursor: help; font: inherit; font-weight: 700; }
+.method-annotation:hover, .method-annotation:focus-visible { background: #eaf2ec; border-radius: 4px; outline: 2px solid #79aa8c; }
+.method-note { position: fixed; inset: auto; margin: 0; box-sizing: border-box; width: min(360px, calc(100vw - 24px)); max-height: calc(100vh - 24px); overflow: auto; padding: 16px; border: 1px solid #cbdccf; border-radius: 10px; background: #fff; color: #344e3e; font: 14px/1.7 var(--sans); box-shadow: 0 8px 28px #193d2626; }
