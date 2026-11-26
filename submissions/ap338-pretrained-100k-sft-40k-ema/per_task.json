@@ -1,0 +1,602 @@
+[
+  {
+    "task": "adjust_bottle",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "adjust_bottle",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "beat_block_hammer",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "beat_block_hammer",
+    "condition": "random",
+    "successes": 5,
+    "episodes": 10
+  },
+  {
+    "task": "blocks_ranking_rgb",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "blocks_ranking_rgb",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "blocks_ranking_size",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "blocks_ranking_size",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "click_alarmclock",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "click_alarmclock",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "click_bell",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "click_bell",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "dump_bin_bigbin",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "dump_bin_bigbin",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "grab_roller",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "grab_roller",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "handover_block",
+    "condition": "clean",
+    "successes": 0,
+    "episodes": 10
+  },
+  {
+    "task": "handover_block",
+    "condition": "random",
+    "successes": 0,
+    "episodes": 10
+  },
+  {
+    "task": "handover_mic",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "handover_mic",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "hanging_mug",
+    "condition": "clean",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "hanging_mug",
+    "condition": "random",
+    "successes": 6,
+    "episodes": 10
+  },
+  {
+    "task": "lift_pot",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "lift_pot",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "move_can_pot",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "move_can_pot",
+    "condition": "random",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "move_pillbottle_pad",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "move_pillbottle_pad",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "move_playingcard_away",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "move_playingcard_away",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "move_stapler_pad",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "move_stapler_pad",
+    "condition": "random",
+    "successes": 6,
+    "episodes": 10
+  },
+  {
+    "task": "open_laptop",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "open_laptop",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "open_microwave",
+    "condition": "clean",
+    "successes": 6,
+    "episodes": 10
+  },
+  {
+    "task": "open_microwave",
+    "condition": "random",
+    "successes": 3,
+    "episodes": 10
+  },
+  {
+    "task": "pick_diverse_bottles",
+    "condition": "clean",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "pick_diverse_bottles",
+    "condition": "random",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "pick_dual_bottles",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "pick_dual_bottles",
+    "condition": "random",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "place_a2b_left",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_a2b_left",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_a2b_right",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_a2b_right",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_bread_basket",
+    "condition": "clean",
+    "successes": 6,
+    "episodes": 10
+  },
+  {
+    "task": "place_bread_basket",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_bread_skillet",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_bread_skillet",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_burger_fries",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_burger_fries",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_can_basket",
+    "condition": "clean",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "place_can_basket",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_cans_plasticbox",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_cans_plasticbox",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_container_plate",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_container_plate",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_dual_shoes",
+    "condition": "clean",
+    "successes": 6,
+    "episodes": 10
+  },
+  {
+    "task": "place_dual_shoes",
+    "condition": "random",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "place_empty_cup",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_empty_cup",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_fan",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_fan",
+    "condition": "random",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "place_mouse_pad",
+    "condition": "clean",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "place_mouse_pad",
+    "condition": "random",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "place_object_basket",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_object_basket",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "place_object_scale",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_object_scale",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_object_stand",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_object_stand",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_phone_stand",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_phone_stand",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_shoe",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "place_shoe",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "press_stapler",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "press_stapler",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "put_bottles_dustbin",
+    "condition": "clean",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "put_bottles_dustbin",
+    "condition": "random",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "put_object_cabinet",
+    "condition": "clean",
+    "successes": 6,
+    "episodes": 10
+  },
+  {
+    "task": "put_object_cabinet",
+    "condition": "random",
+    "successes": 3,
+    "episodes": 10
+  },
+  {
+    "task": "rotate_qrcode",
+    "condition": "clean",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "rotate_qrcode",
+    "condition": "random",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "scan_object",
+    "condition": "clean",
+    "successes": 5,
+    "episodes": 10
+  },
+  {
+    "task": "scan_object",
+    "condition": "random",
+    "successes": 5,
+    "episodes": 10
+  },
+  {
+    "task": "shake_bottle",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "shake_bottle",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "shake_bottle_horizontally",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "shake_bottle_horizontally",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stack_blocks_three",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stack_blocks_three",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stack_blocks_two",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stack_blocks_two",
+    "condition": "random",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stack_bowls_three",
+    "condition": "clean",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "stack_bowls_three",
+    "condition": "random",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "stack_bowls_two",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stack_bowls_two",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  },
+  {
+    "task": "stamp_seal",
+    "condition": "clean",
+    "successes": 10,
+    "episodes": 10
+  },
+  {
+    "task": "stamp_seal",
+    "condition": "random",
+    "successes": 8,
+    "episodes": 10
+  },
+  {
+    "task": "turn_switch",
+    "condition": "clean",
+    "successes": 7,
+    "episodes": 10
+  },
+  {
+    "task": "turn_switch",
+    "condition": "random",
+    "successes": 9,
+    "episodes": 10
+  }
+]

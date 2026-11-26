@@ -1,0 +1,681 @@
+{
+  "status": "passed",
+  "verified_utc": "2026-11-10T03:37:46.603853+00:00",
+  "unique_cases": 10000,
+  "task_condition_groups": 100,
+  "episodes_per_task_condition": 100,
+  "scene_history_proofs_passed": 100,
+  "recovery_prefix_validation": "passed where applicable",
+  "source_runs": [
+    "ap338-s40000-100ep-p6000-20261103-r2",
+    "ap338-s40000-100ep-p6000-20261105-recovery-r1",
+    "ap338-s40000-100ep-p6000-20261106-retry-r2",
+    "ap338-s40000-100ep-p6000-20261108-finish-r4"
+  ],
+  "weight_loading_by_run": {
+    "ap338-s40000-100ep-p6000-20261103-r2": [
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      }
+    ],
+    "ap338-s40000-100ep-p6000-20261105-recovery-r1": [
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      }
+    ],
+    "ap338-s40000-100ep-p6000-20261106-retry-r2": [
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      }
+    ],
+    "ap338-s40000-100ep-p6000-20261108-finish-r4": [
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      },
+      {
+        "weights": "ema",
+        "dit_source": "ema/ (Power EMA sigma_rel 0.1)",
+        "dit_keys": 171,
+        "lora_tensors": 504,
+        "lora_source": "vl_lora/ema.safetensors",
+        "ema_num_updates": 40000
+      }
+    ]
+  },
+  "scene_history_proofs_sha256": [
+    {
+      "key": "adjust_bottle/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "3880e686981d36fcdc9e030ae516ca0e62a1e478a570fc1c7590c536582dba1f"
+    },
+    {
+      "key": "beat_block_hammer/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "35df47c7906e6b4ec219d06680bb153d0ee004496f37562632dd164d335fbc0b"
+    },
+    {
+      "key": "blocks_ranking_rgb/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "60f00db72cc31b3c2b99f9c333a0260aede2ce9e3c930ca1a9f63e3578b0ed98"
+    },
+    {
+      "key": "blocks_ranking_size/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "343a96b81433b5dd2181b26dc06ff2025926e53f14f98dcaac847dd87b9ebbc6"
+    },
+    {
+      "key": "click_alarmclock/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "4eabe01816df11dfa46554909e7c523af180b20edab05921b4fd3d9c3aa53e36"
+    },
+    {
+      "key": "click_bell/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "d34ab715cbc87e864dd4023687dff0c09d2ef414bafe4d3ba107fcf0af6d15e7"
+    },
+    {
+      "key": "dump_bin_bigbin/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "89705be746663d833d46d5a2ac539e0fab467930e9890f6f1b9a22940e110e65"
+    },
+    {
+      "key": "grab_roller/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "2c09e1653fc3bdeea7c005853ae18985aae6c42936df3127bd29514986755f1a"
+    },
+    {
+      "key": "handover_block/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "bcc41f5cd5832939b6c7950f4ffb31bf4c5076c6741fd8bde5798b6a67139c72"
+    },
+    {
+      "key": "handover_mic/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "6f3cfd14a4a4cddec2396b772eee8f1cd1309c8d1d45ff8e1460f861cc6e8eac"
+    },
+    {
+      "key": "hanging_mug/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "c83fdcd40b702987071287fb7e5266e9538340ce2f4e15280cdf668e606ccc3d"
+    },
+    {
+      "key": "lift_pot/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "cf4e6001ad5abaa0f1be5212f037f1209b66a709990ca8dc4f5d92912664beea"
+    },
+    {
+      "key": "move_can_pot/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "83409f8f3ea7ca05839538d34dc0d4d3f2adc224ca5d58eff343ae11af5d7140"
+    },
+    {
+      "key": "move_pillbottle_pad/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "086ca37d730e5def512a5f1bee2ade6d737211684c61cc0dc3da248e72620d6d"
+    },
+    {
+      "key": "move_playingcard_away/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "1f43c2141a2c17f122ed626f83964f8c349931a1a481d5cc2a41c7d5760c6ced"
+    },
+    {
+      "key": "move_stapler_pad/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "cc276546347f3234e02238a900e7caf9f4027e3a7fe010eb9faf886043dab7f6"
+    },
+    {
+      "key": "open_laptop/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "ef5f1b4d9bf9af758232976f88a1c1b32dfcbb85142eb13e63f8685fce6ef281"
+    },
+    {
+      "key": "open_microwave/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "9b48a183fc18e6c23793b7b88e3f00d32f9646cdba1a5d3ad9fd77282a91bbc0"
+    },
+    {
+      "key": "pick_diverse_bottles/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "06cfac996a59e58d070f06fc67314dd1ebc8b46359269527193594e554d8637d"
+    },
+    {
+      "key": "pick_dual_bottles/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "aab66b7ccfc2ff99ac26d5c68d64ba9fd17785e54dae7423e1894a248a1c8bfb"
+    },
+    {
+      "key": "place_a2b_left/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "fbfa6f70115ad2f4c347498617246c0fef821ae0a34ad4c385dfe3dc15d79051"
+    },
+    {
+      "key": "place_a2b_right/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "de7c3204aaf62f64e12386eb5143dc50aa09af4aa07c17baae4e7a80246c0e9b"
+    },
+    {
+      "key": "place_bread_basket/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "16432354ead47532bc02ca291f6ff5aabb797b30a95336fc930d51c351de793c"
+    },
+    {
+      "key": "place_bread_skillet/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "ecfae67bafd273e8b64a7fbf8fc914f48a4566c687d6db5a9c701a6b56b0d2cd"
+    },
+    {
+      "key": "place_burger_fries/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "428755257fc97a5cf6d33c92a71b0d81e6620e4cd9a94508aade76878ca0a846"
+    },
+    {
+      "key": "place_can_basket/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261105-recovery-r1",
+      "sha256": "743324bb2cdf51a2ea46421c7643c78ea6792785840a92328300024b2c55733c"
+    },
+    {
+      "key": "place_cans_plasticbox/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "e7c31d8716d27c0998286c5d82c54802e6c95489abc2c0adaa2fabb1f4afedcc"
+    },
+    {
+      "key": "place_container_plate/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "316435b908cf98e4864cee60bb08e0eeaa0ef71abfb0e6e5d04f06c8a36ae535"
+    },
+    {
+      "key": "place_dual_shoes/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "25c5032ca0e0e479dbaeb3052365c5278b98da6a67f89f92d7f676f6fb1aadd2"
+    },
+    {
+      "key": "place_empty_cup/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "40027626ffe383d9f366d07581865c9045a4d2dd0e1adeff1497d7f84158502a"
+    },
+    {
+      "key": "place_fan/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "440b1506524351531d102566d206a80cf0db3b64eee4b2963d0c676ddcadd5d5"
+    },
+    {
+      "key": "place_mouse_pad/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "d5ce8b0afbc168758b0c97c78ed7e675af53e97c792fd36bd34c6ce26925e283"
+    },
+    {
+      "key": "place_object_basket/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "e6d39100602d41475690d9a5a36dfb6c492dfee05634eab4681b7a2691711040"
+    },
+    {
+      "key": "place_object_scale/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "9f60d2391d17479f8050b529c9490ea16db0dc13bd5ed2232fbc1979ee7f77a7"
+    },
+    {
+      "key": "place_object_stand/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "a43601eab9a192b77e7355dda96cab3f0d151762bef49324e3ce97456bfcd7e9"
+    },
+    {
+      "key": "place_phone_stand/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "2ff7ba0f76bf3a287d30c021940fc65a4f367b9e242c67e1f46ef3cccb7aa947"
+    },
+    {
+      "key": "place_shoe/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "1b8e0bfc85f2c40059189bdc51f56f7998e6b38890e34e75a8351b53157c5212"
+    },
+    {
+      "key": "press_stapler/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "e11ba1d31e7a9a8fd43a7a7f2e1505af08caa5a512d5fbeebe8a89cf1a42bde3"
+    },
+    {
+      "key": "put_bottles_dustbin/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "6088bf18fc2e9199b02342db58358d67c391a752ddba02518c241780ca812aa3"
+    },
+    {
+      "key": "put_object_cabinet/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "a3cd7071a2a61f72d02ca10f18f4d805d57fb7534765d54a2c7b5799250bcee6"
+    },
+    {
+      "key": "rotate_qrcode/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "730e77b5a5b32827435d2ba326118cd992c741023880bc55e44619f5ac428c4b"
+    },
+    {
+      "key": "scan_object/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "ef7b69a13751391328a628d57ed872803d0c4bb48ebb59e413abe70455accf3c"
+    },
+    {
+      "key": "shake_bottle/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "ca21b71dbec74f28adb095a1438f7626b2be29f22bcda2b0115aa00ae096bd55"
+    },
+    {
+      "key": "shake_bottle_horizontally/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "86498eb732598391785ae35accfecd86083090fcd71b8dafd2638f353bf0c334"
+    },
+    {
+      "key": "stack_blocks_three/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "0ad4b11a113b16ffcfb21961e4201ab7fa11516b4d21a1ca418ad6cb4872f8f5"
+    },
+    {
+      "key": "stack_blocks_two/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "3a53048b62f286c057b50b497d321d8cf241349d95fceb93d75dbad6f6d30cea"
+    },
+    {
+      "key": "stack_bowls_three/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "09fb37533a82ff27af56b3701535d07d0e3f8ef5e74a579146afde61ed65702f"
+    },
+    {
+      "key": "stack_bowls_two/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "86c3d7fa5dce79da6493c77e8021514d1db60dcda1d7c18633cdc4c1d1631c7b"
+    },
+    {
+      "key": "stamp_seal/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "e5d8d34f24d01ef0cc43e2834924859f1a2cf0749133086cb808ff02be4223ca"
+    },
+    {
+      "key": "turn_switch/clean",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "a116a3b21c9e1d5e9b338fcce7b3ed72578669d6ef9ad6d475d95b94d5a714b3"
+    },
+    {
+      "key": "adjust_bottle/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "23c6eb7f8b5f130f669a3225b485bbe5fe8aaedd4b982edf1dc016107db70251"
+    },
+    {
+      "key": "beat_block_hammer/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "008a9467c87ebe9571f8006bede41a23cadf41d69c199fcbc6d1a6e55fde0b57"
+    },
+    {
+      "key": "blocks_ranking_rgb/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "b33d9d88bd833b1c5783758df4d28d6f6db0e010081c9027e7f5147548213e15"
+    },
+    {
+      "key": "blocks_ranking_size/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "81abc11d7a5eb17075de3acfef07b68986e9c3289920b4bb61ab0ee1f9e9e5db"
+    },
+    {
+      "key": "click_alarmclock/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "73c47657e3b51f387622600ea0194fed9f7499394e5736a02292f8a141fd0663"
+    },
+    {
+      "key": "click_bell/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "ac14675d33af499aa4083435dd74c2c641bafb00ed2f49bb1f69efb19fd87255"
+    },
+    {
+      "key": "dump_bin_bigbin/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "5f69da7a30dea2caade5618bf0ce725b0c0da351e824777ac598c3ab95ff1c8d"
+    },
+    {
+      "key": "grab_roller/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "aefb7b126da8706dd5d7e6e0ab48d68140b9657ebbef1872a907588e11aa2a8f"
+    },
+    {
+      "key": "handover_block/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "8bf11944f0133c014c90b504d0781f461cad68fe0d7d2db014f92f39a73ad97f"
+    },
+    {
+      "key": "handover_mic/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "1443a9f6b2ed007adef9bf028c0babe9ef50c03e3e51c231c75c064aaba0186f"
+    },
+    {
+      "key": "hanging_mug/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "a70d6b60d19bbae60483eb0a95a7c2d20f8f85727ee9c80711f2aca072c71b9c"
+    },
+    {
+      "key": "lift_pot/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "ffc02095641e38cfd5dd45a1e239dfc1eb6ef0a6d251c5d6174502c4cbc8d3dc"
+    },
+    {
+      "key": "move_can_pot/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "5f2fd1adc51afa731e8f0c995655551ed79886d9f5641a8018716769dc3fcbc7"
+    },
+    {
+      "key": "move_pillbottle_pad/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "7b8bd4db6d25aec1ea5d995e8ca77e59665326fd36b8d4aed4bfbde58661c605"
+    },
+    {
+      "key": "move_playingcard_away/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "1a4784637eac5c1861538708bf1e50c42fcfce10e3d3738654c7f3a400a33b60"
+    },
+    {
+      "key": "move_stapler_pad/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "7e56abb9ef753cf0290f65685cc5d3ef0c1e0cb818ba25757068d9b97cfb5103"
+    },
+    {
+      "key": "open_laptop/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "35a84e5c6f6cecce15c38c7a7c623cae299f0df5cb40805906b90d287152fcfd"
+    },
+    {
+      "key": "open_microwave/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "e6f74ef2980015e656e739520a9281a7b47358f7aef79895a5d91667fabfcb6a"
+    },
+    {
+      "key": "pick_diverse_bottles/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "29d9aa8c3d898b1309746698c61fecaaa57ef6f6c7897189ae9375da22c9a0b0"
+    },
+    {
+      "key": "pick_dual_bottles/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "da8b5be7e452e575984c8bce3e51eb9ffa84dbf421af94951ac323d3947ee3d1"
+    },
+    {
+      "key": "place_a2b_left/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "a3f0755248b625d989c207d4bb514f4ac975490fd5f4eb0748ab1381d6165167"
+    },
+    {
+      "key": "place_a2b_right/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "576cf128fd6123ab9550674f9dffd765696226c15a3af754e01a779065c0410c"
+    },
+    {
+      "key": "place_bread_basket/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "54ae0ef4fbe595941fb5464d470ae753181a385f5196354ae20f345220e34fb5"
+    },
+    {
+      "key": "place_bread_skillet/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "2e97813a351943c2a53a01ee36d04688101baeec396364b37db612159f078675"
+    },
+    {
+      "key": "place_burger_fries/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "1164833ec8824fc4be9cd1145277ba2bd44539cd030f6253e591e10b90640adc"
+    },
+    {
+      "key": "place_can_basket/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "3437abb3de061de441665e4c5a49cef1ca1c7f7c1eeed1865221638fea45e924"
+    },
+    {
+      "key": "place_cans_plasticbox/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "312402ec34d148706e9385ba9d0134c4e19b19a1bdf9cdfd0fc79c52740609cd"
+    },
+    {
+      "key": "place_container_plate/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "b3c2b55b68234eaae5adc93a9b23c0a01e6f7949d2e5664d8601263e7e67475b"
+    },
+    {
+      "key": "place_dual_shoes/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "a6617207c41deed5befc5e798f38975cf0dadc0dff1772ccfdd34ecb56442235"
+    },
+    {
+      "key": "place_empty_cup/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "9b52d756b7e34dcb8446aef951214148b7952f0f1f75b44204dd2e1c90dc88e0"
+    },
+    {
+      "key": "place_fan/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "4acbd65d2467eb42ae256c5e30f3a9afbf9134cab45e9744a92b116c55ad3398"
+    },
+    {
+      "key": "place_mouse_pad/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "a92fa3cfbf5369d598ff5721f1cb2b0a47260f326dbdaf2b70f786cc1096b536"
+    },
+    {
+      "key": "place_object_basket/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261105-recovery-r1",
+      "sha256": "b943c439ec692325eeb580c80356186137dfcd2c0aa13bfc067ece2b3a27f8f2"
+    },
+    {
+      "key": "place_object_scale/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "1150e646de473d7a7dde2116dcc91de8a0a94de992201dd1749b53e429567839"
+    },
+    {
+      "key": "place_object_stand/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "e82d94caeac33f9044c3dfd3f3b85317ab5c1e7b915621d01dd8e00e28586d0f"
+    },
+    {
+      "key": "place_phone_stand/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "ed853835be6f1f59b0f82bb236a709a6013d2971810ce8932e0c9bebd1ac8877"
+    },
+    {
+      "key": "place_shoe/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "935a84740ea4b47a5481840b89dd6ded883ec36c187dc17f195b6c1c684dbdb3"
+    },
+    {
+      "key": "press_stapler/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261106-retry-r2",
+      "sha256": "d6d89293e641784e823ef84ef3140e780547cf9274ad8098d2a860235cec5104"
+    },
+    {
+      "key": "put_bottles_dustbin/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "f5f363fefe8cdb87b603afd13c06ec1a71695508b94031c75b1393857651bf21"
+    },
+    {
+      "key": "put_object_cabinet/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "6fb8207e9388cd67919b8e350498458cca5622709e45dc4c13c3f8bd244db71d"
+    },
+    {
+      "key": "rotate_qrcode/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "0762a8d95794ed4e6b61ad7fd896a08708cf4aec75463b73a35e0de202017078"
+    },
+    {
+      "key": "scan_object/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "ac60b74b314e474b7768cf1f9dcc37f0505ad3cfec8c307f25fe3226d2a2d246"
+    },
+    {
+      "key": "shake_bottle/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "5b9b1185374c13fe1d2899720f4f176f9c6b34d059b9018420baa768dab5b050"
+    },
+    {
+      "key": "shake_bottle_horizontally/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "58c42ff50e0a6d0fc14a09545f7bafa240801f7a97d14fcc3b439fa4e69e0b98"
+    },
+    {
+      "key": "stack_blocks_three/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "3566677e9abad2d2e99fc0514d430784e955a38770fb52cc75f707d4c80febad"
+    },
+    {
+      "key": "stack_blocks_two/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "eef8b11eb3bfce33846601e6544e8e083d106c008a81c14aff8d0a520180ba3a"
+    },
+    {
+      "key": "stack_bowls_three/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "ce1a94a1c85af850e56b4d54f147769bc81de1317a1b39f851f4078cb1b3dd23"
+    },
+    {
+      "key": "stack_bowls_two/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261108-finish-r4",
+      "sha256": "9dcc28ff2e309b192c73bc4efcb63ea8eff4dc520835a77c5e8013fd1b116956"
+    },
+    {
+      "key": "stamp_seal/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "31664332e65ba13f20ab1bdd7d7df010bf42d337e4a3f410009d8c9e399bfb23"
+    },
+    {
+      "key": "turn_switch/random",
+      "source_run": "ap338-s40000-100ep-p6000-20261103-r2",
+      "sha256": "33cb6c672f6bb4c6c75c7efecc3e7f17578ff76086bb8eebc6d5a054ef7611dd"
+    }
+  ],
+  "expert_exception_candidates_count": 2400,
+  "note": "Earlier unit failures were recovered; expert candidate errors are recorded and excluded before policy rollout according to native harness handling. This does not establish official protocol equivalence.",
+  "extension_manifest_and_teacher_pass_checks": {
+    "policy_episodes_checked": 10000,
+    "manifest_mismatches": 0,
+    "extension_expert_pass_failures": 0
+  },
+  "expert_vs_policy_initial_scene_signature": {
+    "equal": 9999,
+    "different": 1,
+    "differences": [
+      {
+        "task": "put_bottles_dustbin",
+        "condition": "random",
+        "episode_idx": 0,
+        "seed": 4300000,
+        "historical_prefix": true,
+        "expert_scene_sha256": "e9a69c9a508447fd1c28c45e5b74b1eee73b89347d59966ebc3b06070f21ab33",
+        "policy_scene_sha256": "b5da27baa63e4863b789d8c5170104a064637d09fff94d47b02ace995a9e671b",
+        "expert_clutter_count": 10,
+        "policy_clutter_count": 7,
+        "outcome": "failure",
+        "status": "unresolved"
+      }
+    ]
+  }
+}
